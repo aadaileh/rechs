@@ -10,6 +10,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -29,16 +30,16 @@ public class Measurment implements Serializable {
     @JsonIgnore
     private Appliance appliance;
 
-    @NotBlank
+    @NotNull
     private Double watts;
 
-    @NotBlank
+    @NotNull
     private Double amps;
 
-    @NotBlank
+    @NotNull
     private Double volts;
 
-    @NotBlank
+    @NotNull
     private Double kwh;
 
     @NotBlank
