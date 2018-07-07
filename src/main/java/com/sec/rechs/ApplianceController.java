@@ -49,130 +49,103 @@ public class ApplianceController {
     // Get data from node
     @GetMapping("/nodes/{nodeId}/data")
     public String getNodeData() {
-        LOG.info("Starting Local ZWAVE App");
         try {
-            doZwaveStuff();
+            ZWaveSession s = new LocalZwaveSession();
+            s.connect();
+
+            MyEventListener myEventListener = new MyEventListener();
+            myEventListener.setApplianceRepository(applianceRepository);
+            myEventListener.setMeasurmentRepository(measurmentRepository);
+
+            s.subscribe(myEventListener);
+            final List<ZWaveNode> nodes = s.getDeviceManager().getNodes();
+            s.schedule(new MeterGetAction(3, 6, Electric_WATT), SECONDS, 10);
+            sleepUninterruptibly(5, SECONDS);
+
+            s.doAction(new SwitchAction(3, SwitchAction.STATE.ON));
+
         } catch (HomeAutomationException e) {
-            LOG.error("", e);
+            LOG.error("HomeAutomationException error::", e);
         }
 
         return "x";
     }
 
-    /**
-     * Initialises the binding. This is called after the 'updated' method
-     * has been called and all configuration has been passed.
-     */
-    public void doZwaveStuff() throws HomeAutomationException {
-        LOG.debug("Application startup");
-        ZWaveSession s = new LocalZwaveSession();
-
-        s.connect();
-
-//        List<ZWaveNode> nodes1 = s.getDeviceManager().getNodes();
-
-
-//        while(!s.isNetworkReady()) {
-//            LOG.info("Network not ready yet, sleeping");
-//            sleepUninterruptibly(1, TimeUnit.SECONDS);
-//        }
-
-        s.subscribe(new MyEventListener());
-
-        final List<ZWaveNode> nodes = s.getDeviceManager().getNodes();
-
-//        scheduledExecutorService.scheduleAtFixedRate(() ->
-//                s.getDeviceManager().getNodes()
-//                        .forEach(n -> LOG.info("Node found: {} status: {} availability: {} endpoints: {}", n.getNodeId(), n.getNodeStatus(),
-//                                n.getAvailability(), n.getEndpoints()))
-//                , 30, 60, SECONDS);
-
-
-        s.schedule(new MeterGetAction(3, 6, Electric_WATT), SECONDS, 10);
-
-        LOG.info("Network is ready, sending message");
-        sleepUninterruptibly(5, SECONDS);
-
-        s.doAction(new SwitchAction(3, SwitchAction.STATE.ON));
-
-
-//        s.doAction(new GenerateCommandClassPollAction(3, 0, CommandClass.SWITCH_BINARY));
-//        s.doAction(new GenerateCommandClassPollAction(3, 1, CommandClass.METER));
-//
-//        s.doAction(new MeterGetAction(3, 1, MeterScale.Electric_WATT));
-//
-//        s.doAction(new MultiInstanceEndpointAction(3));
-//
-//        s.doAction(new SwitchAction(3, SwitchAction.STATE.OFF));
-//        s.doAction(new MeterGetAction(3, MeterScale.Electric_KWH));
-//        s.doAction(new SwitchAction(3, 2, SwitchAction.STATE.OFF));
-//        s.doAction(new SwitchAction(3, 3, SwitchAction.STATE.OFF));
-//        s.doAction(new SwitchAction(3, 4, SwitchAction.STATE.OFF));
-//        s.doAction(new SwitchAction(3, 5, SwitchAction.STATE.OFF));
-//        s.doAction(new SwitchAction(3, SwitchAction.STATE.ON));
-//        s.doAction(new SwitchAction(3, 6, SwitchAction.STATE.OFF));
-//        s.doAction(new SwitchAction(3, 50));
-//        s.doAction(new SwitchAction(3, 50));
-//
-//
-//        s.doAction(new SwitchMultiLevelGetAction(3));
-//
-//        s.doAction(new RequestNodeInfoAction(3));
-//
-////        int nodeId = 13;
-////        int dimmerLevel = 50;
-////        s.doAction(new SwitchAction(() -> nodeId, SwitchAction.STATE.ON));
-////        s.doAction(new SwitchAction(() -> 7, SwitchAction.STATE.ON));
-////        s.doAction(new SwitchAction(() -> 7, dimmerLevel));
-//
-//        LOG.info("Waiting a bit to switch off so we can see some visual effect");
-//        sleepUninterruptibly(10, SECONDS);
-//
-//        s.doAction(new SwitchAction(3, SwitchAction.STATE.OFF));
-//        s.doAction(new SwitchAction(15, SwitchAction.STATE.OFF));
-//        s.doAction(new SwitchAction(14, 6, SwitchAction.STATE.OFF));
-//        s.doAction(new SwitchAction(14, 1, SwitchAction.STATE.ON));
-//        s.doAction(new SwitchAction(14, 2, SwitchAction.STATE.ON));
-//        s.doAction(new SwitchAction(14, 3, SwitchAction.STATE.ON));
-//        s.doAction(new SwitchAction(14, 4, SwitchAction.STATE.ON));
-//        s.doAction(new SwitchAction(14, 5, SwitchAction.STATE.ON));
-//        s.doAction(new SwitchAction(14, 6, SwitchAction.STATE.ON));
-//        s.doAction(new SwitchAction(7, 100));
-//
-//
-//
-////        s.doAction(new SwitchAction(() -> nodeId, SwitchAction.STATE.OFF));
-////        s.doAction(new SwitchAction(() -> 7, 0));
-////        s.doAction(new SwitchAction(() -> nodeId, SwitchAction.STATE.OFF));
-////        s.doAction(new SwitchAction(() -> 7, SwitchAction.STATE.OFF));
-//
-//        LOG.info("Actions done");
-//        sleepUninterruptibly(3, SECONDS);
-//
-//
-    }
-
     public class MyEventListener implements EventHandler {
 
-        @Autowired
-        MeasurmentRepository measurmentRepository2;
+        MeasurmentRepository measurmentRepository = null;
+        ApplianceRepository applianceRepository = null;
 
-        @Autowired
-        ApplianceRepository applianceRepository2;
+        Double kwh;
+        Double amps;
+        Double volts;
+        Double watts;
+
+        public MeasurmentRepository getMeasurmentRepository() {
+            return measurmentRepository;
+        }
+
+        public void setMeasurmentRepository(MeasurmentRepository measurmentRepository) {
+            this.measurmentRepository = measurmentRepository;
+        }
+
+        public ApplianceRepository getApplianceRepository() {
+            return applianceRepository;
+        }
+
+        public void setApplianceRepository(ApplianceRepository applianceRepository) {
+            this.applianceRepository = applianceRepository;
+        }
 
         @EventSubscribe
         public void receive(ZWaveEvent event) throws Exception {
+
+
             LOG.info("Received an event (customized): {}", event);
 
-            BigDecimal value = ((MeterEvent) event).getValue();
-            Measurment measurment = new Measurment();
-            applianceRepository2.findById(3L).map(appliance -> {
-                measurment.setAppliance(appliance);
-                measurment.setKwh(123.1);
-                return measurmentRepository2.save(measurment);
-            }).orElseThrow(() -> new ResourceNotFoundException("Appliance", "id", 3));
+            if(event instanceof MeterEvent) {
 
-            //return event.getValue();
+                BigDecimal value = ((MeterEvent) event).getValue();
+                Measurment measurment = new Measurment();
+
+                if(((MeterEvent) event).getScale().getLabel().equals("Energy")) {
+                    this.kwh = ((MeterEvent) event).getValue().doubleValue();
+                } else {
+                    this.kwh = null;
+                }
+
+                if(((MeterEvent) event).getScale().getLabel().equals("Current")) {
+                    this.amps = ((MeterEvent) event).getValue().doubleValue();
+                } else {
+                    this.amps = null;
+                }
+
+                if(((MeterEvent) event).getScale().getLabel().equals("Voltage")) {
+                    this.volts = ((MeterEvent) event).getValue().doubleValue();
+                } else {
+                    this.volts = null;
+                }
+
+                if(((MeterEvent) event).getScale().getLabel().equals("Power")) {
+                    this.watts = ((MeterEvent) event).getValue().doubleValue();
+                } else {
+                    this.watts = null;
+                }
+
+                measurment.setKwh(this.kwh);
+                measurment.setCreatedBy("Abu Adaleh");
+                measurment.setAmps(this.amps);
+                measurment.setVolts(this.volts);
+                measurment.setWatts(this.watts);
+
+                applianceRepository.findById((long) 3).map(appliance -> {
+                    measurment.setAppliance(appliance);
+                    return measurmentRepository.save(measurment);
+                }).orElseThrow(() -> new ResourceNotFoundException("Appliance", "id", 3));
+
+                //return event.getValue();
+
+            }
         }
 
         @EventSubscribe

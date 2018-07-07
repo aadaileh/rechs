@@ -30,16 +30,12 @@ public class Measurment implements Serializable {
     @JsonIgnore
     private Appliance appliance;
 
-    @NotNull
     private Double watts;
 
-    @NotNull
     private Double amps;
 
-    @NotNull
     private Double volts;
 
-    @NotNull
     private Double kwh;
 
     @NotBlank
