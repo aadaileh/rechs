@@ -48,27 +48,25 @@ public class ApplianceController {
 
     // Get data from node
     @GetMapping("/nodes/{nodeId}/data")
-    public String getNodeData() {
+    public void registerNodesMeasurments() {
         try {
-            ZWaveSession s = new LocalZwaveSession();
-            s.connect();
+            ZWaveSession zWaveSession = new LocalZwaveSession();
+            zWaveSession.connect();
 
             MyEventListener myEventListener = new MyEventListener();
             myEventListener.setApplianceRepository(applianceRepository);
             myEventListener.setMeasurmentRepository(measurmentRepository);
 
-            s.subscribe(myEventListener);
-            final List<ZWaveNode> nodes = s.getDeviceManager().getNodes();
-            s.schedule(new MeterGetAction(3, 6, Electric_WATT), SECONDS, 10);
-            sleepUninterruptibly(5, SECONDS);
+            zWaveSession.subscribe(myEventListener);
+//final List<ZWaveNode> nodes = zWaveSession.getDeviceManager().getNodes();
+//zWaveSession.schedule(new MeterGetAction(3, 6, Electric_WATT), SECONDS, 10);
+            sleepUninterruptibly(10, SECONDS);
 
-            s.doAction(new SwitchAction(3, SwitchAction.STATE.ON));
+//zWaveSession.doAction(new SwitchAction(3, SwitchAction.STATE.ON));
 
         } catch (HomeAutomationException e) {
             LOG.error("HomeAutomationException error::", e);
         }
-
-        return "x";
     }
 
     public class MyEventListener implements EventHandler {
@@ -99,9 +97,6 @@ public class ApplianceController {
 
         @EventSubscribe
         public void receive(ZWaveEvent event) throws Exception {
-
-
-            LOG.info("Received an event (customized): {}", event);
 
             if(event instanceof MeterEvent) {
 
