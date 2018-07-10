@@ -1,6 +1,61 @@
-<?php5
-	
+<?php
+echo "<pre>";
+print_r($_POST);
+echo "</pre>";
+
+session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 0);
+
+if($_POST) {
+
+   $username = trim(stripslashes($_POST['username']));
+   $password = trim(stripslashes($_POST['password']));
+
+   $userId = $_SESSION["userId"];
+   $cvId = $_SESSION["cvId"];
+
+  if (!isset($error) && !$error) {
+
+    // verify login
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+    CURLOPT_URL => "http://localhost:8282/api/authentication/verify",
+    CURLOPT_CUSTOMREQUEST => "POST",
+    CURLOPT_POSTFIELDS => "{
+        \"username\":\"" . $username . "\",
+        \"password\":\"" . $password . "\"
+      }",
+  	CURLOPT_PORT=>"8282",
+    CURLOPT_RETURNTRANSFER=>true,
+    CURLOPT_ENCODING=>"",
+    CURLOPT_MAXREDIRS=>10,
+    CURLOPT_TIMEOUT=>30,
+    CURLOPT_HTTP_VERSION=>CURL_HTTP_VERSION_1_1,
+    CURLOPT_HTTPHEADER => array(
+      "authorization: Basic YXBpdXNlcjpwYXNz",
+      "content-type: application/json")
+  ));
+  	$response = curl_exec($curl);
+  	$err = curl_error($curl);
+  	curl_close($curl);
+  	if ($err) {
+  	echo "cURL Error #:" . $err;
+      $response = "Create CV Personal Information failed<br>Please try again!!";
+  	} else {
+  	$data = json_decode($response);
+  if ($data != "") {
+    $_SESSION["contactInformationId"] = $data->contactInformationId;
+    $response = "OK";
+  } else {
+    $response = "Create CV Contact Information failed<br>Please try again!!";
+  }
+  }
+ }
+    echo $response;
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,36 +101,6 @@
   </div>
 </nav>
 
-<!--
-<div class="container">
-  <h2>Welcome to <b>RECHS</b> Application</h2><br>
-  <p>Project RECHS stands for <b>R</b>eduction of <b>E</b>lectricity <b>C</b>onsumption in <b>H</b>ousehold <b>S</b>ector.</p><br>
-  <p>
-    It is not a secret that our planet's resources are facing critical challenges and suffering from unfair use. Consequences of depletion of natural resources did start appearing in a way that affects every single soul on this planet. Energy is a key factor in this aspect, because a major part of the damage is caused by using the resources to generate energy in all shapes. All efforts must be concentrated in two main branches: generating energy from clean and renewable resources and reduce the energy consumption. The focus of this project will be on how to reduce the electricity consumption in household's sector.<br><br>
-    This document is an attempt to provide a clear understanding of the Project RECHS and how it should assist householders to reduce their electricity consumption and ultimately their energy expenses by replacing their appliances and switching their local energy provider. The focus is drawn on describing these aims and the techniques suggested to achieve them. Technically, the system is based on using Z-Wave compatible plug-ins which will be attached to the household appliances to measure and control them remotely and semi-automatically.
-    Risk management plan and project plan are part of this document to provide a clear and transparent view for all stakeholders about the nature and the progress of the project. This should assist project team to achieve high stakeholder engagement and participating.
-  </p>
-</div>
--->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -91,9 +116,9 @@
 
                     <div style="padding-top:30px" class="panel-body" >
 
-                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                        <div style="display:block;" id="login-alert" class="alert alert-danger col-sm-12">Something went wrong check and try again</div>
 
-                        <form id="loginform" class="form-horizontal" role="form">
+                        <form id="loginform" class="form-horizontal" role="form" action="post">
 
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -109,7 +134,7 @@
                                     <!-- Button -->
 
                                     <div class="col-sm-12 controls" style="text-align: right;">
-                                      <a id="btn-login" href="#" class="btn btn-success">Login</a>
+                                      <a id="btn-login" href="index.php" class="btn btn-success">Login</a>
 
                                     </div>
                                 </div>
