@@ -5,6 +5,7 @@ import com.sec.rechs.Exception.ResourceNotFoundException;
 import com.sec.rechs.Model.Measurment;
 import com.sec.rechs.Repository.ApplianceRepository;
 import com.sec.rechs.Repository.MeasurmentRepository;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,7 +15,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/measurments")
 public class MeasurmentController {
 
     @Autowired
@@ -24,30 +25,34 @@ public class MeasurmentController {
     ApplianceRepository applianceRepository;
 
     // Get All Measurments
-    @GetMapping("/measurments")
+    @GetMapping("/")
+    @ApiOperation("Retrieve all measurments for all appliances")
     public List<Measurment> getAllMeasurments() {
         return measurmentRepository.findAll();
     }
 
     // Create a new Measurment
-    @PostMapping("/appliances/{applianceId}/measurments")
+    @PostMapping("/{applianceId}")
+    @ApiOperation("Save a measurment")
     public Measurment createMeasurment(@PathVariable (value = "applianceId") Long applianceId,
                                  @Valid @RequestBody Measurment measurment) {
         return applianceRepository.findById(applianceId).map(appliance -> {
             measurment.setAppliance(appliance);
             return measurmentRepository.save(measurment);
-        }).orElseThrow(() -> new ResourceNotFoundException("Appliance", "id", applianceId));
+        }).orElseThrow(() -> new ResourceNotFoundException("ApplianceController", "id", applianceId));
     }
 
     // Get a Single Measurment
-    @GetMapping("/measurments/{id}")
+    @GetMapping("/{id}")
+    @ApiOperation("Retrieve a measurment by id")
     public Measurment getMeasurmentById(@PathVariable(value = "id") Long measurmentId) {
         return measurmentRepository.findById(measurmentId)
                 .orElseThrow(() -> new ResourceNotFoundException("Measurment", "id", measurmentId));
     }
 
-    // Get an Appliance Measurments
-    @GetMapping("/appliances/{applianceId}/measurments")
+    // Get an ApplianceController Measurments
+    @GetMapping("/{applianceId}")
+    @ApiOperation("Retrieve measurments from an appliance by id")
     public Page<Measurment> getAllMeasurmentsByApplianceId(@PathVariable (value = "applianceId") Long applianceId,
                                                            Pageable pageable) {
         return measurmentRepository.findByApplianceId(applianceId, pageable);
