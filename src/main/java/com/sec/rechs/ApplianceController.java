@@ -4,21 +4,18 @@ package com.sec.rechs;
 import com.oberasoftware.base.event.EventHandler;
 import com.oberasoftware.base.event.EventSubscribe;
 import com.oberasoftware.home.zwave.api.ZWaveSession;
-import com.oberasoftware.home.zwave.api.actions.SwitchAction;
-import com.oberasoftware.home.zwave.api.actions.devices.MeterGetAction;
 import com.oberasoftware.home.zwave.api.events.ZWaveEvent;
 import com.oberasoftware.home.zwave.api.events.devices.DeviceSensorEvent;
 import com.oberasoftware.home.zwave.api.events.devices.MeterEvent;
 import com.oberasoftware.home.zwave.api.events.devices.SwitchEvent;
 import com.oberasoftware.home.zwave.api.events.devices.SwitchLevelEvent;
-import com.oberasoftware.home.zwave.core.ZWaveNode;
 import com.oberasoftware.home.zwave.exceptions.HomeAutomationException;
 import com.oberasoftware.home.zwave.local.LocalZwaveSession;
-import com.sec.rechs.exception.ResourceNotFoundException;
-import com.sec.rechs.model.Appliance;
-import com.sec.rechs.model.Measurment;
-import com.sec.rechs.repository.ApplianceRepository;
-import com.sec.rechs.repository.MeasurmentRepository;
+import com.sec.rechs.Exception.ResourceNotFoundException;
+import com.sec.rechs.Model.Appliance;
+import com.sec.rechs.Model.Measurment;
+import com.sec.rechs.Repository.ApplianceRepository;
+import com.sec.rechs.Repository.MeasurmentRepository;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +26,6 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import static com.google.common.util.concurrent.Uninterruptibles.sleepUninterruptibly;
-import static com.oberasoftware.home.zwave.api.messages.types.MeterScale.Electric_WATT;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.slf4j.LoggerFactory.getLogger;
 
@@ -38,7 +34,6 @@ import static org.slf4j.LoggerFactory.getLogger;
 public class ApplianceController {
 
     private static final Logger LOG = getLogger(ApplianceController.class);
-
 
     @Autowired
     MeasurmentRepository measurmentRepository;

@@ -4,17 +4,22 @@ import com.oberasoftware.base.event.EventHandler;
 import com.oberasoftware.base.event.EventSubscribe;
 import com.oberasoftware.home.zwave.api.ZWaveSession;
 import com.oberasoftware.home.zwave.api.actions.SwitchAction;
-import com.oberasoftware.home.zwave.api.actions.devices.MeterGetAction;
+import com.oberasoftware.home.zwave.api.actions.devices.*;
 import com.oberasoftware.home.zwave.api.events.ZWaveEvent;
 import com.oberasoftware.home.zwave.api.events.devices.DeviceSensorEvent;
 import com.oberasoftware.home.zwave.api.events.devices.SwitchEvent;
 import com.oberasoftware.home.zwave.api.events.devices.SwitchLevelEvent;
+import com.oberasoftware.home.zwave.api.messages.types.CommandClass;
+import com.oberasoftware.home.zwave.api.messages.types.MeterScale;
 import com.oberasoftware.home.zwave.core.ZWaveNode;
 import com.oberasoftware.home.zwave.exceptions.HomeAutomationException;
 import com.oberasoftware.home.zwave.local.LocalZwaveSession;
 import org.slf4j.Logger;
 
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import static com.google.common.util.concurrent.Uninterruptibles.sleepUninterruptibly;
 import static com.oberasoftware.home.zwave.api.messages.types.MeterScale.Electric_WATT;

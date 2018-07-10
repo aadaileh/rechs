@@ -1,6 +1,6 @@
-package com.sec.rechs.repository;
+package com.sec.rechs.Repository;
 
-import com.sec.rechs.model.Measurment;
+import com.sec.rechs.Model.Measurment;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

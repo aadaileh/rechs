@@ -1,15 +1,13 @@
 package com.sec.rechs;
 
 
-import com.sec.rechs.exception.ResourceNotFoundException;
-import com.sec.rechs.model.Appliance;
-import com.sec.rechs.model.Measurment;
-import com.sec.rechs.repository.ApplianceRepository;
-import com.sec.rechs.repository.MeasurmentRepository;
+import com.sec.rechs.Exception.ResourceNotFoundException;
+import com.sec.rechs.Model.Measurment;
+import com.sec.rechs.Repository.ApplianceRepository;
+import com.sec.rechs.Repository.MeasurmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
