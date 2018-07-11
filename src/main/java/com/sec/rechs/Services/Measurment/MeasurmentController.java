@@ -2,13 +2,14 @@ package com.sec.rechs.Services.Measurment;
 
 
 import com.sec.rechs.Exception.ResourceNotFoundException;
+import com.sec.rechs.DTOs.AmpsAndDate;
+import com.sec.rechs.DTOs.KwhAndDate;
 import com.sec.rechs.Model.Measurment;
-import com.sec.rechs.Model.WattsAndDate;
+import com.sec.rechs.DTOs.WattsAndDate;
 import com.sec.rechs.Repository.ApplianceRepository;
 import com.sec.rechs.Repository.MeasurmentRepository;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -50,19 +51,28 @@ public class MeasurmentController {
                 .orElseThrow(() -> new ResourceNotFoundException("Measurment", "id", measurmentId));
     }
 
-    // Get an Appliance Measurments
-    @GetMapping("/appliance/{applianceId}")
-    @ApiOperation("Retrieve measurments from an appliance by id")
-    public List<WattsAndDate> getAllMeasurmentsByApplianceId(@PathVariable (value = "applianceId") Long applianceId,
-                                                           Pageable pageable) {
-
-        //List<WattsAndDate> byApplianceId = measurmentRepository.findByApplianceId(applianceId);
-
-        //List<Measurment> amps = measurmentRepository.findByApplianceIdAndAmpsIsNotNull(applianceId);
+    // Get an Appliance Measurments (Watts)
+    @GetMapping("/watts/appliance/{applianceId}")
+    @ApiOperation("Retrieve measurments (Watts) from an appliance by id")
+    public List<WattsAndDate> getWattsByApplianceId(@PathVariable (value = "applianceId") Long applianceId) {
         List<WattsAndDate> watts = measurmentRepository.findByApplianceIdAndWattsIsNotNull(applianceId);
-        //<Measurment> kwh = measurmentRepository.findByApplianceIdAndKwhIsNotNull(applianceId);
-
         return watts;
+    }
+
+    // Get an Appliance Measurments (Amps)
+    @GetMapping("/amps/appliance/{applianceId}")
+    @ApiOperation("Retrieve measurments (Ampers) from an appliance by id")
+    public List<AmpsAndDate> getAmpsByApplianceId(@PathVariable (value = "applianceId") Long applianceId) {
+        List<AmpsAndDate> amps = measurmentRepository.findByApplianceIdAndAmpsIsNotNull(applianceId);
+        return amps;
+    }
+
+    // Get an Appliance Measurments (Kwh)
+    @GetMapping("/kwh/appliance/{applianceId}")
+    @ApiOperation("Retrieve measurments (Kwh) from an appliance by id")
+    public List<KwhAndDate> getKwhByApplianceId(@PathVariable (value = "applianceId") Long applianceId) {
+        List<KwhAndDate> kwh = measurmentRepository.findByApplianceIdAndKwhIsNotNull(applianceId);
+        return kwh;
     }
 
     /*

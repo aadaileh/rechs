@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d8941bbd-1646-470d-be8d-b43dcf7611da" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/AmpsAndDate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/KwhAndDate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/WattsAndDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/WattsAndDate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java" afterDir="false" />
     </list>
@@ -44,8 +47,8 @@
       <file leaf-file-name="MeasurmentController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="61" column="66" lean-forward="true" selection-start-line="61" selection-start-column="66" selection-end-line="61" selection-end-column="66" />
+            <state relative-caret-position="211">
+              <caret line="73" column="98" selection-start-line="73" selection-start-column="98" selection-end-line="73" selection-end-column="98" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -53,11 +56,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MeasurmentRepository.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="KwhAndDate.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/KwhAndDate.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MeasurmentRepository.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+            <state relative-caret-position="228">
+              <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -65,14 +77,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WattsAndDate.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/WattsAndDate.java">
+      <file leaf-file-name="WattsAndDate.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/WattsAndDate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="119">
+              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AmpsAndDate.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/AmpsAndDate.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -126,9 +144,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Authentication/impl/AuthenticationServiceImplentations.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Account/AccountServiceInterface.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Account/AccountServiceController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Main/MainServiceController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Main/MainServiceInterface.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
@@ -175,8 +190,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentInterface.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/impl/MeasurmentImplentations.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/WattsAndDate.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/AmpsAndDate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/KwhAndDate.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/WattsAndDate.java" />
       </list>
     </option>
   </component>
@@ -348,10 +366,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.sec.rechs.Model" />
       <recent name="com.sec.rechs.Services.Measurment.impl" />
       <recent name="com.sec.rechs.Services.Measurment" />
       <recent name="com.sec.rechs.Repository" />
-      <recent name="com.sec.rechs.Model" />
       <recent name="com.sec.rechs.Clients" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -522,7 +540,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java</url>
-          <line>64</line>
+          <line>58</line>
           <properties />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
@@ -531,23 +549,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/Measurment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="19" column="70" selection-start-line="19" selection-start-column="70" selection-end-line="19" selection-end-column="70" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Exception/ResourceNotFoundException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="23" selection-start-column="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/ApplianceRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -825,10 +826,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/WattsAndDate.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        <state relative-caret-position="228">
+          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -837,21 +838,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="61" column="66" lean-forward="true" selection-start-line="61" selection-start-column="66" selection-end-line="61" selection-end-column="66" />
+        <state relative-caret-position="211">
+          <caret line="73" column="98" selection-start-line="73" selection-start-column="98" selection-end-line="73" selection-end-column="98" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/KwhAndDate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="68">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/AmpsAndDate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/WattsAndDate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
         </state>
       </provider>
     </entry>

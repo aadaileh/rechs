@@ -13,7 +13,7 @@ if(count($_SESSION["user"]) == 0) {
     //Get energy consumption data
     $curl = curl_init();
     curl_setopt_array($curl, array(
-    CURLOPT_URL => "http://127.0.0.1:8282/api/measurments/appliance/3",
+    CURLOPT_URL => "http://127.0.0.1:8282/api/measurments/watts/appliance/3",
     CURLOPT_CUSTOMREQUEST => "GET",
     CURLOPT_PORT=>"8282",
     CURLOPT_RETURNTRANSFER=>true,
