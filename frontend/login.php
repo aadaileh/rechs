@@ -1,19 +1,26 @@
 <?php
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
+//echo "<pre>";
+//print_r($_POST);
+//echo "</pre>";
+
+
 
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
+
+
+//Already logged in?
+if(count($_SESSION["user"]) > 0) { 
+  header('Location: /home.php');
+}
+
 
 if($_POST) {
 
    $username = trim(stripslashes($_POST['username']));
    $password = trim(stripslashes($_POST['password']));
 
-   $userId = $_SESSION["userId"];
-   $cvId = $_SESSION["cvId"];
 
   if (!isset($error) && !$error) {
 
@@ -38,22 +45,28 @@ if($_POST) {
   ));
   	$response = curl_exec($curl);
   	$err = curl_error($curl);
+
   	curl_close($curl);
   	if ($err) {
   	echo "cURL Error #:" . $err;
-      $response = "Create CV Personal Information failed<br>Please try again!!";
+      $error = "Username or password is not correct. Please try again or contact the admin.";
   	} else {
-  	$data = json_decode($response);
+  	
+    $data = json_decode($response);
+    $_SESSION["user"] = $data;
+
   if ($data != "") {
-    $_SESSION["contactInformationId"] = $data->contactInformationId;
-    $response = "OK";
+    //Forward to good page
+    header('Location: /home.php');
   } else {
-    $response = "Create CV Contact Information failed<br>Please try again!!";
+    $error = "Username or password is not correct. Please try again or contact the admin.";
   }
   }
  }
-    echo $response;
 }
+
+//echo $error;
+
 ?>
 
 <!DOCTYPE html>
@@ -65,41 +78,22 @@ if($_POST) {
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+  
+	 $(document).ready(function() {
+        if ( '<?php echo $error?>'.length != 0 ) {
+        	$('#login-alert').text('<?php echo $error?>');
+        	$('#login-alert').show();
+        } else {
+        	$('#login-alert').hide();
+        }
+    });
+
+  </script>
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">RECHS</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Appliances</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Charts</a></li>
-            <li><a href="#">Status Panel</a></li>
-            <li><a href="#">Schedular</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Node Management</a></li>
-        <li><a href="#">User Management</a></li>
-        <li><a href="#">Energy Provider Management</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<?php //include("inc/top-nav.php");?>
 
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
@@ -116,9 +110,9 @@ if($_POST) {
 
                     <div style="padding-top:30px" class="panel-body" >
 
-                        <div style="display:block;" id="login-alert" class="alert alert-danger col-sm-12">Something went wrong check and try again</div>
+                        <div style="display:none;" id="login-alert" class="alert alert-danger col-sm-12"></div>
 
-                        <form id="loginform" class="form-horizontal" role="form" action="post">
+                        <form id="loginform" class="form-horizontal" role="form" method="post">
 
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -134,7 +128,7 @@ if($_POST) {
                                     <!-- Button -->
 
                                     <div class="col-sm-12 controls" style="text-align: right;">
-                                      <a id="btn-login" href="index.php" class="btn btn-success">Login</a>
+                                      <a id="btn-login" href="#" class="btn btn-success" onClick="$('#loginform').submit()">Login</a>
 
                                     </div>
                                 </div>

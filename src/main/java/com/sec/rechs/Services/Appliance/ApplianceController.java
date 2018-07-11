@@ -26,7 +26,7 @@ import static org.slf4j.LoggerFactory.getLogger;
  *
  * @Author  Ahmed Al-Adaileh <k1530383@kingston.ac.uk> <ahmed.adaileh@gmail.com>
  * @version 1.0
- * @since   26.01.2018
+ * @since   26.06.2018
  */
 @RestController
 @RequestMapping("/api/appliances")

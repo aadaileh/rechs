@@ -1,4 +1,4 @@
-package com.sec.rechs;
+package com.sec.rechs.Services.Measurment;
 
 
 import com.sec.rechs.Exception.ResourceNotFoundException;
@@ -7,7 +7,6 @@ import com.sec.rechs.Repository.ApplianceRepository;
 import com.sec.rechs.Repository.MeasurmentRepository;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
@@ -50,12 +49,19 @@ public class MeasurmentController {
                 .orElseThrow(() -> new ResourceNotFoundException("Measurment", "id", measurmentId));
     }
 
-    // Get an ApplianceController Measurments
-    @GetMapping("/{applianceId}")
+    // Get an Appliance Measurments
+    @GetMapping("/appliance/{applianceId}")
     @ApiOperation("Retrieve measurments from an appliance by id")
-    public Page<Measurment> getAllMeasurmentsByApplianceId(@PathVariable (value = "applianceId") Long applianceId,
+    public List<Measurment> getAllMeasurmentsByApplianceId(@PathVariable (value = "applianceId") Long applianceId,
                                                            Pageable pageable) {
-        return measurmentRepository.findByApplianceId(applianceId, pageable);
+
+        //List<WattsAndDate> byApplianceId = measurmentRepository.findByApplianceId(applianceId);
+
+        //List<Measurment> amps = measurmentRepository.findByApplianceIdAndAmpsIsNotNull(applianceId);
+        List<Measurment> watts = measurmentRepository.findByApplianceIdAndWattsIsNotNull(applianceId);
+        //<Measurment> kwh = measurmentRepository.findByApplianceIdAndKwhIsNotNull(applianceId);
+
+        return watts;
     }
 
     /*
