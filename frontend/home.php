@@ -31,19 +31,29 @@ if(count($_SESSION["user"]) == 0) {
     curl_close($curl);
     if ($err) {
     echo "cURL Error #:" . $err;
-      $error = "Username or password is not correct. Please try again or contact the admin.";
+      $error = "Error while retrieving the data. Try refreshing the page.";
     } else {
     
     $data = json_decode($response);
-    $_SESSION["user"] = $data;
+  }
 
-  if ($data != "") {
-    //Forward to good page
-    header('Location: /home.php');
-  } else {
-    $error = "Username or password is not correct. Please try again or contact the admin.";
+/*
+  echo "<pre>data:";
+  print_r($data);
+  echo "</pre>";
+*/
+  $wattsArray = Array();
+  $DatesArray = Array();
+  foreach ($data as $key => $value) {
+    array_push($wattsArray, $value->watts);
+    array_push($DatesArray, $value->createdTimestamp);
   }
-  }
+
+
+/*  echo "<pre>wattsArray:";
+  print_r($wattsArray);
+  echo "</pre>";*/
+
 
 ?>
 
@@ -81,25 +91,25 @@ if(count($_SESSION["user"]) == 0) {
     var config = {
       type: 'line',
       data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
+        labels: [<?php echo "'" . implode("', '", $DatesArray) . "'";?>],
         datasets: [{
           label: 'Watt',
           backgroundColor: window.chartColors.red,
           borderColor: window.chartColors.red,
-          data: [10,20,60,50,40,60,80,10],
+          data: [<?php echo implode(",",$wattsArray);?>],
           fill: false,
         }, {
           label: 'Amper',
           fill: false,
           backgroundColor: window.chartColors.blue,
           borderColor: window.chartColors.blue,
-          data: [100,-20,-60,90,10,70,50,20],
+          data: [],
         }, {
           label: 'Kwh',
           fill: false,
           backgroundColor: window.chartColors.yellow,
           borderColor: window.chartColors.yellow,
-          data: [-100,20,60,-90,-10,-70,-50,-20],
+          data: [],
         }]
       },
       options: {
@@ -121,7 +131,7 @@ if(count($_SESSION["user"]) == 0) {
             display: true,
             scaleLabel: {
               display: true,
-              labelString: 'Week'
+              labelString: 'Months'
             }
           }],
           yAxes: [{

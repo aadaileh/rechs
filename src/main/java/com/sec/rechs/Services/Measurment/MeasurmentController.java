@@ -3,6 +3,7 @@ package com.sec.rechs.Services.Measurment;
 
 import com.sec.rechs.Exception.ResourceNotFoundException;
 import com.sec.rechs.Model.Measurment;
+import com.sec.rechs.Model.WattsAndDate;
 import com.sec.rechs.Repository.ApplianceRepository;
 import com.sec.rechs.Repository.MeasurmentRepository;
 import io.swagger.annotations.ApiOperation;
@@ -52,13 +53,13 @@ public class MeasurmentController {
     // Get an Appliance Measurments
     @GetMapping("/appliance/{applianceId}")
     @ApiOperation("Retrieve measurments from an appliance by id")
-    public List<Measurment> getAllMeasurmentsByApplianceId(@PathVariable (value = "applianceId") Long applianceId,
+    public List<WattsAndDate> getAllMeasurmentsByApplianceId(@PathVariable (value = "applianceId") Long applianceId,
                                                            Pageable pageable) {
 
         //List<WattsAndDate> byApplianceId = measurmentRepository.findByApplianceId(applianceId);
 
         //List<Measurment> amps = measurmentRepository.findByApplianceIdAndAmpsIsNotNull(applianceId);
-        List<Measurment> watts = measurmentRepository.findByApplianceIdAndWattsIsNotNull(applianceId);
+        List<WattsAndDate> watts = measurmentRepository.findByApplianceIdAndWattsIsNotNull(applianceId);
         //<Measurment> kwh = measurmentRepository.findByApplianceIdAndKwhIsNotNull(applianceId);
 
         return watts;

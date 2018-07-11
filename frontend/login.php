@@ -1,13 +1,16 @@
 <?php
-//echo "<pre>";
-//print_r($_POST);
-//echo "</pre>";
-
-
 
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
+
+/*
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
+
+exit();
+*/
 
 
 //Already logged in?
