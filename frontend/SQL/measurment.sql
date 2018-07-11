@@ -13,7 +13,7 @@ GROUP BY DATE(`created_timestamp`) limit 1000000000000000000;
 select HOUR('2018-07-07 12:33:37');
 
 SELECT 
-  CONCAT( HOUR(created_timestamp), ' to ', CONCAT( HOUR(created_timestamp), ':59:59' ) ) as time_frame, DATE(`created_timestamp`),AVG(kwh),
+  CONCAT( DATE(`created_timestamp`), ' ', CONCAT(  LPAD(HOUR(created_timestamp), 2, '0')  , ':00')), DATE(`created_timestamp`), AVG(kwh),
   COUNT(*) 
 FROM 
   rechs.measurments
