@@ -101,17 +101,9 @@ if(count($_SESSION["user"]) == 0) {
 
 <?php include("inc/top-nav.php");?>
 
-  <div style="width:75%;">
-    <canvas id="canvasKwh"></canvas>
-  </div>
-
-  <div style="width:75%;">
-    <canvas id="canvasWatts"></canvas>
-  </div>
-
-  <div style="width:75%;">
-    <canvas id="canvasAmper"></canvas>
-  </div>
+  <div style="width:31%;"><canvas id="canvasKwh"></canvas></div>
+  <div style="width:31%;"><canvas id="canvasWatts"></canvas></div>
+  <div style="width:50%;"><canvas id="canvasAmper"></canvas></div>
 
   <script>
     var configKwh = {
