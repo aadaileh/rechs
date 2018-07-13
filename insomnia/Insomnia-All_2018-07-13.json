@@ -1,0 +1,1688 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2018-07-13T19:23:52.096Z",
+	"__export_source": "insomnia.desktop.app:v5.16.6",
+	"resources": [
+		{
+			"_id": "wrk_24a9bc1cce904ea18bd43850ef64172d",
+			"created": 1515415119435,
+			"description": "",
+			"modified": 1515415119435,
+			"name": "Insomnia",
+			"parentId": null,
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_ba58518a376e4f4d9515147729d6f1a1",
+			"color": null,
+			"created": 1515415119479,
+			"data": {},
+			"isPrivate": false,
+			"modified": 1515415119479,
+			"name": "New Environment",
+			"parentId": "wrk_24a9bc1cce904ea18bd43850ef64172d",
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_8e3fff545f7b4d68a5358325b5ee1370",
+			"cookies": [
+				{
+					"creation": "2018-01-08T21:42:37.308Z",
+					"domain": "localhost",
+					"hostOnly": true,
+					"httpOnly": true,
+					"id": "9243074581464676",
+					"key": "JSESSIONID",
+					"lastAccessed": "2018-04-12T21:52:43.427Z",
+					"path": "/",
+					"value": "7AC5EBDD0FC716AB8A4DD053DDA910E9"
+				},
+				{
+					"creation": "2018-01-10T23:52:44.125Z",
+					"domain": "20180111t003913-dot-coursework-abc-banking-group.appspot.com",
+					"hostOnly": true,
+					"httpOnly": true,
+					"id": "06440525348450321",
+					"key": "JSESSIONID",
+					"lastAccessed": "2018-01-10T23:52:44.125Z",
+					"path": "/",
+					"value": "0562E7E8C8A23B7E9DF2ACF1835610E8"
+				},
+				{
+					"creation": "2018-01-11T12:49:08.304Z",
+					"domain": "calm-sea-95089.herokuapp.com",
+					"hostOnly": true,
+					"httpOnly": true,
+					"id": "8513762535048552",
+					"key": "JSESSIONID",
+					"lastAccessed": "2018-01-16T00:47:50.658Z",
+					"path": "/",
+					"secure": true,
+					"value": "7B18C62B62231453474AE2E43C8AE9E2"
+				},
+				{
+					"creation": "2018-01-11T13:20:42.108Z",
+					"domain": "warm-harbor-89034.herokuapp.com",
+					"hostOnly": true,
+					"httpOnly": true,
+					"id": "23223990815704365",
+					"key": "JSESSIONID",
+					"lastAccessed": "2018-02-05T13:08:45.533Z",
+					"path": "/",
+					"value": "61C719E07A6DB380ED0213D5F1053790"
+				},
+				{
+					"creation": "2018-01-28T15:07:40.880Z",
+					"domain": "abcbankinggroupcoursework-env.vfbka249qr.eu-west-2.elasticbeanstalk.com",
+					"hostOnly": true,
+					"httpOnly": true,
+					"id": "4551232936948082",
+					"key": "JSESSIONID",
+					"lastAccessed": "2018-01-30T10:40:16.079Z",
+					"path": "/",
+					"value": "EBA69625CC33DA0C6C57F04E183E2CFD"
+				}
+			],
+			"created": 1515415119577,
+			"modified": 1523569963427,
+			"name": "Default Jar",
+			"parentId": "wrk_24a9bc1cce904ea18bd43850ef64172d",
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "fld_ea0ce81fc3b44f5e9a03ffdf15bd1cab",
+			"created": 1515415512283,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1515415512283,
+			"modified": 1516367817661,
+			"name": "ABC Banking Group - LOCAL",
+			"parentId": "wrk_24a9bc1cce904ea18bd43850ef64172d",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_c4938bfa7ecf4beeb63dc9e34855d049",
+			"created": 1516367770129,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1515415512264.25,
+			"modified": 1517308776025,
+			"name": "ABC Banking Group - CLOUD (calm-sea)",
+			"parentId": "wrk_24a9bc1cce904ea18bd43850ef64172d",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_14a03ec06b6943818f9263906ead529c",
+			"created": 1517151973363,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1515415512258,
+			"modified": 1517151994429,
+			"name": "ABC Banking Group - AMAZON",
+			"parentId": "wrk_24a9bc1cce904ea18bd43850ef64172d",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_72eb05fb7e384c2e83d10586067b71ce",
+			"created": 1517308681264,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1515415512270.5,
+			"modified": 1517308703050,
+			"name": "ABC Banking Group - Heroku (warm-harbor)",
+			"parentId": "wrk_24a9bc1cce904ea18bd43850ef64172d",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_28cd4fe79c9649dfbe3ad19b911b6d7d",
+			"created": 1523559738449,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1523559738449,
+			"modified": 1523559738449,
+			"name": "NEGOTIUM",
+			"parentId": "wrk_24a9bc1cce904ea18bd43850ef64172d",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_840b5a79990542798df6cd85a6ec2814",
+			"created": 1530342767167,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1530342767167,
+			"modified": 1530342767167,
+			"name": "RECHS",
+			"parentId": "wrk_24a9bc1cce904ea18bd43850ef64172d",
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_09113784b90a49d58d71759816233810",
+			"authentication": {
+				"disabled": false,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{  \n\t \"username\":\"aadaileh\",\n   \"password\":\"pass\"\n}"
+			},
+			"created": 1515415520894,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_bbd400cd421c42ad9c7309dbaeb13a14",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1515415520894,
+			"method": "POST",
+			"modified": 1516702765582,
+			"name": "/api/main-service/login",
+			"parameters": [],
+			"parentId": "fld_ea0ce81fc3b44f5e9a03ffdf15bd1cab",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8080/api/main-service/login",
+			"_type": "request"
+		},
+		{
+			"_id": "req_ef72c41ea6024877b8ec95bae0e31fff",
+			"authentication": {
+				"disabled": false,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {},
+			"created": 1516231150209,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1515415520831.5,
+			"method": "GET",
+			"modified": 1523560611913,
+			"name": "/api/login-service/users/aadaileh",
+			"parameters": [],
+			"parentId": "fld_ea0ce81fc3b44f5e9a03ffdf15bd1cab",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8080/api/login-service/users/aadaileh",
+			"_type": "request"
+		},
+		{
+			"_id": "req_d67a9d38f4704962bbbc254344c7e9cc",
+			"authentication": {
+				"disabled": false,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {},
+			"created": 1516232100483,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1515415520862.75,
+			"method": "GET",
+			"modified": 1517314925395,
+			"name": "/api/main-service/users/12345",
+			"parameters": [],
+			"parentId": "fld_ea0ce81fc3b44f5e9a03ffdf15bd1cab",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8080/api/main-service/users/12345",
+			"_type": "request"
+		},
+		{
+			"_id": "req_05b1081c0ec64704b6b9babae43221ba",
+			"authentication": {
+				"disabled": false,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {},
+			"created": 1516235934166,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1515415520800.25,
+			"method": "GET",
+			"modified": 1516620011056,
+			"name": "/api/account-service/account/1",
+			"parameters": [],
+			"parentId": "fld_ea0ce81fc3b44f5e9a03ffdf15bd1cab",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8080/api/account-service/account/1",
+			"_type": "request"
+		},
+		{
+			"_id": "req_4a110e9398424ea99a7f9f763f888574",
+			"authentication": {
+				"disabled": false,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {},
+			"created": 1516620068761,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1515415520750.25,
+			"method": "GET",
+			"modified": 1516628179158,
+			"name": "/api/main-service/account/1",
+			"parameters": [],
+			"parentId": "fld_ea0ce81fc3b44f5e9a03ffdf15bd1cab",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8080/api/main-service/account/1",
+			"_type": "request"
+		},
+		{
+			"_id": "req_d001985d856a43e091355c57cde3eab2",
+			"authentication": {
+				"disabled": false,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{  \n\t\"clientId\":1,\n  \"iban\":\"UK1234567890tzuj67\",\n\t\"swift\": \"AHGJDGSDIU\",\n\t\"beneficiaryFullName\": \"Yazeed Smith\",\n\t\"beneficiaryAddress\": \"Hohenhaganer Str. 4, 42855 Remscheid Germany\",\n\t\"country\": \"uk\",\n\t\"city\": \"LONDON\",\n\t\"bankName\": \"CBC Bank\",\n\t\"branch\": \"Kingston\",\n\t\"amount\": 50,\n\t\"transferPurpose\": \"Accomodation rent\",\n\t\"transferOn\": \"ASAP\",\n\t\"notes\": \"Please transfer it asap\",\n\t\"transactionType\": \"w\",\n\t\"clientType\": \"online-banking\",\n\t\"currencyType\": \"EURO\"\n}"
+			},
+			"created": 1516654709218,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_cee76a67653a437898d780d8de787cb3",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1515415520700.25,
+			"method": "PUT",
+			"modified": 1516997918266,
+			"name": "/api/main-service/transfer-fund",
+			"parameters": [],
+			"parentId": "fld_ea0ce81fc3b44f5e9a03ffdf15bd1cab",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8080/api/main-service/transfer-fund",
+			"_type": "request"
+		},
+		{
+			"_id": "req_be7f7fef8e8f4e68a290d49d964f5ff2",
+			"authentication": {
+				"disabled": false,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{  \n\t \"username\":\"aadaileh\",\n   \"password\":\"pass\"\n}"
+			},
+			"created": 1516367770140,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_bbd400cd421c42ad9c7309dbaeb13a14",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1515415520894,
+			"method": "POST",
+			"modified": 1516367789026,
+			"name": "/api/main-service/login",
+			"parameters": [],
+			"parentId": "fld_c4938bfa7ecf4beeb63dc9e34855d049",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "https://calm-sea-95089.herokuapp.com/api/main-service/login",
+			"_type": "request"
+		},
+		{
+			"_id": "req_b7e58f29ff3b44bd9331e5c77e85b0b4",
+			"authentication": {
+				"disabled": false,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {},
+			"created": 1516367770150,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1515415520831.5,
+			"method": "GET",
+			"modified": 1516367800410,
+			"name": "/api/login-service/users/aadaileh",
+			"parameters": [],
+			"parentId": "fld_c4938bfa7ecf4beeb63dc9e34855d049",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "https://calm-sea-95089.herokuapp.com/api/login-service/users/aadaileh",
+			"_type": "request"
+		},
+		{
+			"_id": "req_496807a4d5d946039f23cd0ee8e01b20",
+			"authentication": {
+				"disabled": false,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {},
+			"created": 1516367770159,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1515415520862.75,
+			"method": "GET",
+			"modified": 1516367794223,
+			"name": "/api/main-service/users/123456789",
+			"parameters": [],
+			"parentId": "fld_c4938bfa7ecf4beeb63dc9e34855d049",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "https://calm-sea-95089.herokuapp.com/api/main-service/users/123456789",
+			"_type": "request"
+		},
+		{
+			"_id": "req_5facf2c2f0934b14b68e927b2e22723a",
+			"authentication": {
+				"disabled": false,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {},
+			"created": 1516367770176,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1515415520800.25,
+			"method": "GET",
+			"modified": 1516620026561,
+			"name": "/api/account-service/account/1",
+			"parameters": [],
+			"parentId": "fld_c4938bfa7ecf4beeb63dc9e34855d049",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "https://calm-sea-95089.herokuapp.com/api/account-service/account/1",
+			"_type": "request"
+		},
+		{
+			"_id": "req_6fd39d3a99b5423c9af47aa4e1318a61",
+			"authentication": {
+				"disabled": false,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{  \n\t \"username\":\"aadaileh\",\n   \"password\":\"pass\"\n}"
+			},
+			"created": 1517151973369,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_bbd400cd421c42ad9c7309dbaeb13a14",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1515415520894,
+			"method": "POST",
+			"modified": 1517152009173,
+			"name": "/api/main-service/login",
+			"parameters": [],
+			"parentId": "fld_14a03ec06b6943818f9263906ead529c",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://abcbankinggroupcoursework-env.vfbka249qr.eu-west-2.elasticbeanstalk.com/api/main-service/login",
+			"_type": "request"
+		},
+		{
+			"_id": "req_4d5995ed215140c2af4e3e431d8b0416",
+			"authentication": {
+				"disabled": false,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {},
+			"created": 1517151973374,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1515415520831.5,
+			"method": "GET",
+			"modified": 1517152027877,
+			"name": "/api/login-service/users/aadaileh",
+			"parameters": [],
+			"parentId": "fld_14a03ec06b6943818f9263906ead529c",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://abcbankinggroupcoursework-env.vfbka249qr.eu-west-2.elasticbeanstalk.com/api/login-service/users/aadaileh",
+			"_type": "request"
+		},
+		{
+			"_id": "req_08dcdd583ddf4b0b915c484a2ab27568",
+			"authentication": {
+				"disabled": false,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {},
+			"created": 1517151973379,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1515415520862.75,
+			"method": "GET",
+			"modified": 1517152019912,
+			"name": "/api/main-service/users/123456789",
+			"parameters": [],
+			"parentId": "fld_14a03ec06b6943818f9263906ead529c",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://abcbankinggroupcoursework-env.vfbka249qr.eu-west-2.elasticbeanstalk.com/api/main-service/users/12345",
+			"_type": "request"
+		},
+		{
+			"_id": "req_81592ac0eda346d598a1f108786f5618",
+			"authentication": {
+				"disabled": false,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {},
+			"created": 1517151973384,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1515415520800.25,
+			"method": "GET",
+			"modified": 1517152036933,
+			"name": "/api/account-service/account/1",
+			"parameters": [],
+			"parentId": "fld_14a03ec06b6943818f9263906ead529c",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://abcbankinggroupcoursework-env.vfbka249qr.eu-west-2.elasticbeanstalk.com/api/account-service/account/1",
+			"_type": "request"
+		},
+		{
+			"_id": "req_32b0b4f74f4e4145a3ff7c235e7ae8f9",
+			"authentication": {
+				"disabled": false,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {},
+			"created": 1517151973387,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1515415520750.25,
+			"method": "GET",
+			"modified": 1517152045453,
+			"name": "/api/main-service/account/1",
+			"parameters": [],
+			"parentId": "fld_14a03ec06b6943818f9263906ead529c",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://abcbankinggroupcoursework-env.vfbka249qr.eu-west-2.elasticbeanstalk.com/api/main-service/account/1",
+			"_type": "request"
+		},
+		{
+			"_id": "req_02058a59b292440bbe7662d14363f898",
+			"authentication": {
+				"disabled": false,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{  \n\t\"clientId\":1,\n  \"iban\":\"UK1234567890tzuj67\",\n\t\"swift\": \"AHGJDGSDIU\",\n\t\"beneficiaryFullName\": \"Yazeed Smith\",\n\t\"beneficiaryAddress\": \"Hohenhaganer Str. 4, 42855 Remscheid Germany\",\n\t\"country\": \"uk\",\n\t\"city\": \"LONDON\",\n\t\"bankName\": \"CBC Bank\",\n\t\"branch\": \"Kingston\",\n\t\"amount\": 50,\n\t\"transferPurpose\": \"Accomodation rent\",\n\t\"transferOn\": \"ASAP\",\n\t\"notes\": \"Please transfer it asap\",\n\t\"transactionType\": \"w\",\n\t\"clientType\": \"online-banking\",\n\t\"currencyType\": \"EURO\"\n}"
+			},
+			"created": 1517151973390,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_cee76a67653a437898d780d8de787cb3",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1515415520700.25,
+			"method": "PUT",
+			"modified": 1517152052939,
+			"name": "/api/main-service/transfer-fund",
+			"parameters": [],
+			"parentId": "fld_14a03ec06b6943818f9263906ead529c",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://abcbankinggroupcoursework-env.vfbka249qr.eu-west-2.elasticbeanstalk.com/api/main-service/transfer-fund",
+			"_type": "request"
+		},
+		{
+			"_id": "req_836ecc7dc0114c0eb1992faeb96428a3",
+			"authentication": {
+				"disabled": false,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{  \n\t \"username\":\"aadaileh\",\n   \"password\":\"pass\"\n}"
+			},
+			"created": 1517308681271,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_bbd400cd421c42ad9c7309dbaeb13a14",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1515415520894,
+			"method": "POST",
+			"modified": 1517308715686,
+			"name": "/api/main-service/login",
+			"parameters": [],
+			"parentId": "fld_72eb05fb7e384c2e83d10586067b71ce",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://warm-harbor-89034.herokuapp.com/api/main-service/login",
+			"_type": "request"
+		},
+		{
+			"_id": "req_c488c673deab448c9ecf2d67ca4cd29e",
+			"authentication": {
+				"disabled": false,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {},
+			"created": 1517308681277,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1515415520831.5,
+			"method": "GET",
+			"modified": 1517308732749,
+			"name": "/api/login-service/users/aadaileh",
+			"parameters": [],
+			"parentId": "fld_72eb05fb7e384c2e83d10586067b71ce",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://warm-harbor-89034.herokuapp.com/api/login-service/users/aadaileh",
+			"_type": "request"
+		},
+		{
+			"_id": "req_0c60cf2760d845e3bbbc47acaa23ae03",
+			"authentication": {
+				"disabled": false,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {},
+			"created": 1517308681286,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1515415520862.75,
+			"method": "GET",
+			"modified": 1517308765629,
+			"name": "/api/main-service/users/12345",
+			"parameters": [],
+			"parentId": "fld_72eb05fb7e384c2e83d10586067b71ce",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://warm-harbor-89034.herokuapp.com/api/main-service/users/12345",
+			"_type": "request"
+		},
+		{
+			"_id": "req_acae247ca118438cba3a90dd21f3a0e5",
+			"authentication": {
+				"disabled": false,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {},
+			"created": 1517308681291,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1515415520800.25,
+			"method": "GET",
+			"modified": 1517308739331,
+			"name": "/api/account-service/account/1",
+			"parameters": [],
+			"parentId": "fld_72eb05fb7e384c2e83d10586067b71ce",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://warm-harbor-89034.herokuapp.com/api/account-service/account/1",
+			"_type": "request"
+		},
+		{
+			"_id": "req_66d1f85293a244bbafb2d76763ea9f8d",
+			"authentication": {
+				"disabled": false,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {},
+			"created": 1517308681302,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1515415520750.25,
+			"method": "GET",
+			"modified": 1517308745887,
+			"name": "/api/main-service/account/1",
+			"parameters": [],
+			"parentId": "fld_72eb05fb7e384c2e83d10586067b71ce",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://warm-harbor-89034.herokuapp.com/api/main-service/account/1",
+			"_type": "request"
+		},
+		{
+			"_id": "req_1316f4ad13a043239206e5f4f9b039b0",
+			"authentication": {
+				"disabled": false,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{  \n\t\"clientId\":1,\n  \"iban\":\"UK1234567890tzuj67\",\n\t\"swift\": \"AHGJDGSDIU\",\n\t\"beneficiaryFullName\": \"Yazeed Smith\",\n\t\"beneficiaryAddress\": \"Hohenhaganer Str. 4, 42855 Remscheid Germany\",\n\t\"country\": \"uk\",\n\t\"city\": \"LONDON\",\n\t\"bankName\": \"CBC Bank\",\n\t\"branch\": \"Kingston\",\n\t\"amount\": 50,\n\t\"transferPurpose\": \"Accomodation rent\",\n\t\"transferOn\": \"ASAP\",\n\t\"notes\": \"Please transfer it asap\",\n\t\"transactionType\": \"w\",\n\t\"clientType\": \"online-banking\",\n\t\"currencyType\": \"EURO\"\n}"
+			},
+			"created": 1517308681308,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_cee76a67653a437898d780d8de787cb3",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1515415520700.25,
+			"method": "PUT",
+			"modified": 1517308752229,
+			"name": "/api/main-service/transfer-fund",
+			"parameters": [],
+			"parentId": "fld_72eb05fb7e384c2e83d10586067b71ce",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://warm-harbor-89034.herokuapp.com/api/main-service/transfer-fund",
+			"_type": "request"
+		},
+		{
+			"_id": "req_39e584142d5f415da335bb1d3f895d57",
+			"authentication": {
+				"disabled": false,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{  \n\t \"username\":\"aadaileh\",\n   \"password\":\"123\"\n}"
+			},
+			"created": 1523559796120,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_bbd400cd421c42ad9c7309dbaeb13a14",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1519487625366,
+			"method": "POST",
+			"modified": 1524487738421,
+			"name": "/api/main-service/login",
+			"parameters": [],
+			"parentId": "fld_28cd4fe79c9649dfbe3ad19b911b6d7d",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8080/api/login-service/login",
+			"_type": "request"
+		},
+		{
+			"_id": "req_c045eda01daf4e6a97bc0f0990ee26a1",
+			"authentication": {
+				"disabled": true,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{  \n\t \"fieldName\":\"aadaileh\",\n   \"fieldValue\":\"123\"\n}"
+			},
+			"created": 1523568792547,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_650c1323d10e4031967080d5da45039a",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1517451573130,
+			"method": "POST",
+			"modified": 1524487824950,
+			"name": "touch",
+			"parameters": [],
+			"parentId": "fld_28cd4fe79c9649dfbe3ad19b911b6d7d",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8080/touch",
+			"_type": "request"
+		},
+		{
+			"_id": "req_644c7ff4892e41d0a3c52b4a01342058",
+			"authentication": {
+				"disabled": true,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {},
+			"created": 1524683248384,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_650c1323d10e4031967080d5da45039a",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1516433547012,
+			"method": "GET",
+			"modified": 1524683302846,
+			"name": "confirm",
+			"parameters": [],
+			"parentId": "fld_28cd4fe79c9649dfbe3ad19b911b6d7d",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8080/negotium/api/confirm/3ce17e49f7f8c9190a1aa14747a0780b49bx",
+			"_type": "request"
+		},
+		{
+			"_id": "req_c01521b202d8443994e2354278b4df76",
+			"authentication": {
+				"disabled": true,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{  \n\t \"username\":\"abu@mailinator.com\",\n   \"password\":\"pass\"\n}"
+			},
+			"created": 1524726612658,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_650c1323d10e4031967080d5da45039a",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1515924533953,
+			"method": "POST",
+			"modified": 1524726932424,
+			"name": "login",
+			"parameters": [],
+			"parentId": "fld_28cd4fe79c9649dfbe3ad19b911b6d7d",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8080/negotium/api/login/",
+			"_type": "request"
+		},
+		{
+			"_id": "req_7458d1a5af314eca88e47f1352435d64",
+			"authentication": {
+				"disabled": false,
+				"password": "pass",
+				"type": "basic",
+				"username": "apiuser"
+			},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"gender\": \"man-255\",\n\t\"birthDate\": \"22/04/1976-255\",\n\t\"nationality\": \"UK-255\",\n\t\"residenceCountry\": \"UK-255\",\n\t\"maritalStatus\": \"married-255\",\n\t\"dependenciesNumber\": 3,\n\t\"usersId\": 643,\n\t\"cvId\": 255\n}"
+			},
+			"created": 1525093598727,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_650c1323d10e4031967080d5da45039a",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1516179040482.5,
+			"method": "POST",
+			"modified": 1525093884085,
+			"name": "cv->header",
+			"parameters": [],
+			"parentId": "fld_28cd4fe79c9649dfbe3ad19b911b6d7d",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8080/negotium/api/save/cv/personal-information/",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_3c0943057fdd441ea2f251740a775560",
+			"created": 1530785975272,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1530785975272,
+			"modified": 1530785975272,
+			"name": "Appliance",
+			"parentId": "fld_840b5a79990542798df6cd85a6ec2814",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_c94375b55fe24f34a783f09bd03b79c3",
+			"created": 1530786996620,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1530701337030.5,
+			"modified": 1530787019609,
+			"name": "Measurment",
+			"parentId": "fld_840b5a79990542798df6cd85a6ec2814",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_97cc5ea840ae47a9abde4c8195eacc0c",
+			"created": 1530787107393,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1530787107393,
+			"modified": 1530787107393,
+			"name": "ebay",
+			"parentId": "fld_840b5a79990542798df6cd85a6ec2814",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_f8fbaf6ec2b64ec28c18aeff6cff65d9",
+			"created": 1530916795152,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1530916795152,
+			"modified": 1530916795152,
+			"name": "Z-Wave",
+			"parentId": "fld_840b5a79990542798df6cd85a6ec2814",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_af8f28d5b9ef4dcdac3d5e443942c33f",
+			"created": 1531228749899,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1531228749900,
+			"modified": 1531228749899,
+			"name": "Authentication",
+			"parentId": "fld_840b5a79990542798df6cd85a6ec2814",
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_a997159e2af140768fb4d1aad80353f4",
+			"created": 1531476716605,
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1531476716606,
+			"modified": 1531476716605,
+			"name": "Node",
+			"parentId": "fld_840b5a79990542798df6cd85a6ec2814",
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_a6ea977971324ebe9c0cd27141c4df2b",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\"systemName\":\"My fourth system name \", \"label\":\"My fourth label\", \"type\":\"My fourth type\", \"createdBy\":\"Ahmed Adaileh\"}"
+			},
+			"created": 1530706574924,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_2935671f8bc24ded9388400dc30592c3",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1530706575024,
+			"method": "POST",
+			"modified": 1530785987047,
+			"name": "Create Appliance",
+			"parameters": [],
+			"parentId": "fld_3c0943057fdd441ea2f251740a775560",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://127.0.0.1:8282/api/appliances",
+			"_type": "request"
+		},
+		{
+			"_id": "req_c4931c8b36c846f495e0ff0dfe7e9bce",
+			"authentication": {},
+			"body": {},
+			"created": 1530783900708,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_2935671f8bc24ded9388400dc30592c3",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1530706574974,
+			"method": "GET",
+			"modified": 1530785989688,
+			"name": "Get Appliances",
+			"parameters": [],
+			"parentId": "fld_3c0943057fdd441ea2f251740a775560",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://127.0.0.1:8282/api/appliances",
+			"_type": "request"
+		},
+		{
+			"_id": "req_52c90d6bcd8a48a69421713348c68562",
+			"authentication": {},
+			"body": {},
+			"created": 1530785324562,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_2935671f8bc24ded9388400dc30592c3",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1530706574924,
+			"method": "GET",
+			"modified": 1530785993922,
+			"name": "Get Single Appliance",
+			"parameters": [],
+			"parentId": "fld_3c0943057fdd441ea2f251740a775560",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://127.0.0.1:8282/api/appliances/3",
+			"_type": "request"
+		},
+		{
+			"_id": "req_2a47cd3e4af04bb2b01dbb370f859b95",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\"systemName\":\"My fifth system name \", \"label\":\"My fifth label\", \"type\":\"My fifth type\", \"createdBy\":\"Ahmed Adaileh\"}"
+			},
+			"created": 1530785355483,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_2935671f8bc24ded9388400dc30592c3",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1530706574874,
+			"method": "PUT",
+			"modified": 1530785996275,
+			"name": "Update Single Appliance",
+			"parameters": [],
+			"parentId": "fld_3c0943057fdd441ea2f251740a775560",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://127.0.0.1:8282/api/appliances/51",
+			"_type": "request"
+		},
+		{
+			"_id": "req_f574f583216f4b89b636a5396b35add2",
+			"authentication": {},
+			"body": {},
+			"created": 1530785868745,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_2935671f8bc24ded9388400dc30592c3",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1530706574824,
+			"method": "DELETE",
+			"modified": 1530785998606,
+			"name": "Delete Single Appliance",
+			"parameters": [],
+			"parentId": "fld_3c0943057fdd441ea2f251740a775560",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://127.0.0.1:8282/api/appliances/4",
+			"_type": "request"
+		},
+		{
+			"_id": "req_04e38ecc33d247f68888e2d7710634fa",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"volts\":5.5, \n\t\"watts\": 2.2, \n\t\"kwh\":4.3, \n\t\"amps\":1.2, \n\t\"createdBy\":\"Ahmed Adaileh (Insomnia)\"\n}"
+			},
+			"created": 1530786996625,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_2935671f8bc24ded9388400dc30592c3",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1530706575024,
+			"method": "POST",
+			"modified": 1530788411497,
+			"name": "Create Measurment",
+			"parameters": [],
+			"parentId": "fld_c94375b55fe24f34a783f09bd03b79c3",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://127.0.0.1:8282/api/appliances/1/measurments",
+			"_type": "request"
+		},
+		{
+			"_id": "req_14a7c01486f54ff2a865f7a6c62f7943",
+			"authentication": {},
+			"body": {},
+			"created": 1530786996633,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_2935671f8bc24ded9388400dc30592c3",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1530706574974,
+			"method": "GET",
+			"modified": 1531379335356,
+			"name": "Get Measurment (Watts)",
+			"parameters": [],
+			"parentId": "fld_c94375b55fe24f34a783f09bd03b79c3",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://127.0.0.1:8282/api/measurments/watts/appliance/3",
+			"_type": "request"
+		},
+		{
+			"_id": "req_07acb441aa1044c793021e8d013c0359",
+			"authentication": {},
+			"body": {},
+			"created": 1530786996644,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_2935671f8bc24ded9388400dc30592c3",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1530706574924,
+			"method": "GET",
+			"modified": 1530787125895,
+			"name": "Get Single Measurment",
+			"parameters": [],
+			"parentId": "fld_c94375b55fe24f34a783f09bd03b79c3",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://127.0.0.1:8282/api/measurments/3",
+			"_type": "request"
+		},
+		{
+			"_id": "req_829550ab63e84c29bcd7d1d00309e3ac",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\"systemName\":\"My fifth system name \", \"label\":\"My fifth label\", \"type\":\"My fifth type\", \"createdBy\":\"Ahmed Adaileh\"}"
+			},
+			"created": 1530786996652,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_2935671f8bc24ded9388400dc30592c3",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1530706574874,
+			"method": "PUT",
+			"modified": 1530787129402,
+			"name": "Update Single Measurment",
+			"parameters": [],
+			"parentId": "fld_c94375b55fe24f34a783f09bd03b79c3",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://127.0.0.1:8282/api/measurments/51",
+			"_type": "request"
+		},
+		{
+			"_id": "req_1323ee17b4914801b54d26bd445b0530",
+			"authentication": {},
+			"body": {},
+			"created": 1530786996660,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_2935671f8bc24ded9388400dc30592c3",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1530706574824,
+			"method": "DELETE",
+			"modified": 1530787133608,
+			"name": "Delete Single Measurment",
+			"parameters": [],
+			"parentId": "fld_c94375b55fe24f34a783f09bd03b79c3",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://127.0.0.1:8282/api/measurments/4",
+			"_type": "request"
+		},
+		{
+			"_id": "req_6824db1a9ce24cda869606ec67bee552",
+			"authentication": {},
+			"body": {},
+			"created": 1531328024759,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_2935671f8bc24ded9388400dc30592c3",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1530706574949,
+			"method": "GET",
+			"modified": 1531328069991,
+			"name": "Get Measurment (Kwh)",
+			"parameters": [],
+			"parentId": "fld_c94375b55fe24f34a783f09bd03b79c3",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://127.0.0.1:8282/api/measurments/kwh/appliance/3",
+			"_type": "request"
+		},
+		{
+			"_id": "req_227359132c71452ba5123301de0396aa",
+			"authentication": {},
+			"body": {},
+			"created": 1531328047650,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_2935671f8bc24ded9388400dc30592c3",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1530706574936.5,
+			"method": "GET",
+			"modified": 1531379342589,
+			"name": "Get Measurment (Amps)",
+			"parameters": [],
+			"parentId": "fld_c94375b55fe24f34a783f09bd03b79c3",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://127.0.0.1:8282/api/measurments/amps/appliance/3",
+			"_type": "request"
+		},
+		{
+			"_id": "req_b94ad4e1f06f47348cdbd80deeba28e0",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/x-www-form-urlencoded",
+				"params": []
+			},
+			"created": 1530526822654,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_5579590ba53c4b999dfc144cbf1df93f",
+					"name": "Content-Type",
+					"value": "application/x-www-form-urlencoded"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1530526822654,
+			"method": "GET",
+			"modified": 1531469029849,
+			"name": "ebay product search",
+			"parameters": [
+				{
+					"id": "pair_71482245fb2343b7b45d49d675353145",
+					"name": "callname",
+					"value": "FindProducts"
+				},
+				{
+					"id": "pair_d8b139ab59234909a8cc25fc3f040e6b",
+					"name": "responseencoding",
+					"value": "XML"
+				},
+				{
+					"id": "pair_d3099146b1d84db0bf1f7b7eb28a49b0",
+					"name": "appid",
+					"value": "AhmedAlA-RECHSMSC-PRD-68bbc5abd-b7b36a04"
+				},
+				{
+					"id": "pair_804feaab3812418eab51e1a8b3bce968",
+					"name": "siteid",
+					"value": "77"
+				},
+				{
+					"id": "pair_4a1b4ee778764db6a3a93caa260d0274",
+					"name": "QueryKeywords",
+					"value": "kühlschrank"
+				},
+				{
+					"id": "pair_9033a20d5b384a08988356426c124bfd",
+					"name": "version",
+					"value": "991"
+				}
+			],
+			"parentId": "fld_97cc5ea840ae47a9abde4c8195eacc0c",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://open.api.ebay.com/shopping",
+			"_type": "request"
+		},
+		{
+			"_id": "req_8d52a189871144f9915dffe3838d9735",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/x-www-form-urlencoded",
+				"params": []
+			},
+			"created": 1531469185419,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_5579590ba53c4b999dfc144cbf1df93f",
+					"name": "Content-Type",
+					"value": "application/x-www-form-urlencoded"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1525007224010,
+			"method": "GET",
+			"modified": 1531470296827,
+			"name": "item details",
+			"parameters": [
+				{
+					"id": "pair_71482245fb2343b7b45d49d675353145",
+					"name": "callname",
+					"value": "findItemsByProduct"
+				},
+				{
+					"id": "pair_d8b139ab59234909a8cc25fc3f040e6b",
+					"name": "responseencoding",
+					"value": "XML"
+				},
+				{
+					"id": "pair_d3099146b1d84db0bf1f7b7eb28a49b0",
+					"name": "appid",
+					"value": "AhmedAlA-RECHSMSC-PRD-68bbc5abd-b7b36a04"
+				},
+				{
+					"id": "pair_804feaab3812418eab51e1a8b3bce968",
+					"name": "siteid",
+					"value": "77"
+				},
+				{
+					"id": "pair_4a1b4ee778764db6a3a93caa260d0274",
+					"name": "QueryKeywords",
+					"value": "kühlschrank"
+				},
+				{
+					"id": "pair_9033a20d5b384a08988356426c124bfd",
+					"name": "version",
+					"value": "991"
+				},
+				{
+					"id": "pair_0fb0ba1475c14e52bf7ca86b9e0164c9",
+					"name": "itemId",
+					"value": "102694063"
+				},
+				{
+					"id": "pair_4d87b2fe9edd4c3587a760d810a368e8",
+					"name": "OPERATION-NAME",
+					"value": "findItemsByProduct"
+				},
+				{
+					"id": "pair_a9fb4376523d454a82a6d99d9ea67677",
+					"name": "SERVICE-VERSION",
+					"value": "1.0.0"
+				},
+				{
+					"id": "pair_465517b5a08a4366a43fcac993db6817",
+					"name": "SECURITY-APPNAME",
+					"value": "AhmedAlA-RECHSMSC-PRD-68bbc5abd-b7b36a04"
+				},
+				{
+					"id": "pair_b917c331c64b411e80be66b68f6f301d",
+					"name": "RESPONSE-DATA-FORMAT",
+					"value": "XML"
+				},
+				{
+					"id": "pair_173f459c934e4958a1151be38836623d",
+					"name": "keywords",
+					"value": "kühlschrank"
+				},
+				{
+					"id": "pair_f57f2bfff20f42b5b9c50bae6ff5ca15",
+					"name": "productId",
+					"value": "102694063"
+				},
+				{
+					"disabled": true,
+					"id": "pair_fcc62ca60f1d4779b7d441a8a826a40f",
+					"name": "PRODUCT-ID",
+					"value": "102694063"
+				}
+			],
+			"parentId": "fld_97cc5ea840ae47a9abde4c8195eacc0c",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "https://svcs.ebay.com/services/search/FindingService/v1",
+			"_type": "request"
+		},
+		{
+			"_id": "req_b42dbed5eede4fbdbfbd638adb8d1e63",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n  \"password\": \"pass\",\n  \"username\": \"admin\"\n}"
+			},
+			"created": 1531228760375,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_6774b383d6c44bd98705b018e6497535",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1531228760375,
+			"method": "POST",
+			"modified": 1531258683381,
+			"name": "Verify Login",
+			"parameters": [],
+			"parentId": "fld_af8f28d5b9ef4dcdac3d5e443942c33f",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://localhost:8282/api/authentication/verify",
+			"_type": "request"
+		},
+		{
+			"_id": "req_10fbdc55abd64165b10d8ae87757cde5",
+			"authentication": {},
+			"body": {},
+			"created": 1530916813800,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_2935671f8bc24ded9388400dc30592c3",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1530851951272.5,
+			"method": "PATCH",
+			"modified": 1531509460074,
+			"name": "Get Nodes Data",
+			"parameters": [],
+			"parentId": "fld_a997159e2af140768fb4d1aad80353f4",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://127.0.0.1:8282/api/appliances/3/data",
+			"_type": "request"
+		},
+		{
+			"_id": "req_3031b04f154c49aabf4bc586af0f7606",
+			"authentication": {},
+			"body": {},
+			"created": 1531476728519,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_2935671f8bc24ded9388400dc30592c3",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1530779263148.25,
+			"method": "GET",
+			"modified": 1531508909614,
+			"name": "Turn off",
+			"parameters": [],
+			"parentId": "fld_a997159e2af140768fb4d1aad80353f4",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://127.0.0.1:8282/api/appliances/3/turnoff",
+			"_type": "request"
+		},
+		{
+			"_id": "req_8d54525d14f6453e86572264ac080795",
+			"authentication": {},
+			"body": {},
+			"created": 1531477128256,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_2935671f8bc24ded9388400dc30592c3",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1530742919086.125,
+			"method": "PATCH",
+			"modified": 1531509338503,
+			"name": "Turn on",
+			"parameters": [],
+			"parentId": "fld_a997159e2af140768fb4d1aad80353f4",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "http://127.0.0.1:8282/api/appliances/3/turnon",
+			"_type": "request"
+		}
+	]
+}
