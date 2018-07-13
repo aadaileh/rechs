@@ -104,4 +104,18 @@ public class ApplianceController {
 
         return ResponseEntity.ok().build();
     }
+
+    // Shutdown node by ID
+    @GetMapping("/{id}/turnoff")
+    @ApiOperation("Turn a node OFF by its id")
+    public void turnOffNode(@PathVariable(value = "id") int applianceId) {
+        applianceImplentations.turnOffNode(applianceId);
+    }
+
+    //Turn on down node by ID
+    @GetMapping("/{id}/turnon")
+    @ApiOperation("Turn a node ON by its id")
+    public void turnOnNode(@PathVariable(value = "id") int applianceId) {
+        applianceImplentations.turnOnNode(applianceId);
+    }
 }

@@ -2,6 +2,7 @@ package com.sec.rechs.Services.Appliance.impl;
 
 
 import com.oberasoftware.home.zwave.api.ZWaveSession;
+import com.oberasoftware.home.zwave.api.actions.SwitchAction;
 import com.oberasoftware.home.zwave.exceptions.HomeAutomationException;
 import com.oberasoftware.home.zwave.local.LocalZwaveSession;
 import com.sec.rechs.Listener.RechsEventListener;
@@ -48,6 +49,30 @@ public class ApplianceImplentations {
             sleepUninterruptibly(10, SECONDS);
 
 //zWaveSession.doAction(new SwitchAction(3, SwitchAction.STATE.ON));
+
+        } catch (HomeAutomationException e) {
+            LOG.error("HomeAutomationException error::", e);
+        }
+    }
+
+    public void turnOffNode(int nodeId) {
+        try {
+            ZWaveSession zWaveSession = new LocalZwaveSession();
+            zWaveSession.connect();
+
+            zWaveSession.doAction(new SwitchAction(nodeId, SwitchAction.STATE.OFF));
+
+        } catch (HomeAutomationException e) {
+            LOG.error("HomeAutomationException error::", e);
+        }
+    }
+
+    public void turnOnNode(int nodeId) {
+        try {
+            ZWaveSession zWaveSession = new LocalZwaveSession();
+            zWaveSession.connect();
+
+            zWaveSession.doAction(new SwitchAction(nodeId, SwitchAction.STATE.ON));
 
         } catch (HomeAutomationException e) {
             LOG.error("HomeAutomationException error::", e);
