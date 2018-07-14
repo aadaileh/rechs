@@ -27,6 +27,7 @@ if(count($_SESSION["user"]) == 0) {
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Appliances</a>
           <ul class="dropdown-menu">
+            <li><a href="appliances-overview.php">Overview</a></li>
             <li><a href="#">Charts</a></li>
             <li><a href="#">Status Panel</a></li>
             <li><a href="#">Schedular</a></li>
@@ -39,6 +40,7 @@ if(count($_SESSION["user"]) == 0) {
       <ul class="nav navbar-nav navbar-right">
         <li><a href="profile.php"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION["user"]->fullName;?></a></li>
         <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        <li><a href="accredits.php"><span class="glyphicon"></span> Accredits</a></li>
       </ul>
     </div>
   </div>

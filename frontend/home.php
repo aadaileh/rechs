@@ -79,16 +79,22 @@ if(count($_SESSION["user"]) == 0) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>RECHS - Home</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="inc/js/jquery.min.js"></script>
   <script src="inc/js/bootstrap.min.js"></script>
 
-
   <script src="/Chart.js-master/dist/Chart.bundle.js"></script>
   <script src="/Chart.js-master/samples/utils.js"></script>
+
+  <script>
+    $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+    });
+  </script>
+
   <style>
   canvas{
     -moz-user-select: none;
@@ -101,12 +107,42 @@ if(count($_SESSION["user"]) == 0) {
 
 <?php include("inc/top-nav.php");?>
 
-  <div style="width:31%;"><canvas id="canvasKwh"></canvas></div>
-  <div style="width:31%;"><canvas id="canvasWatts"></canvas></div>
-  <div style="width:50%;"><canvas id="canvasAmper"></canvas></div>
+<div style="float:left; width: 33%; padding-left: 5px;">
+  <div class="panel panel-primary">
+    <div class="panel-heading"><img src="inc/img/fridge.svg"><strong>Node 1: <a href="#" data-toggle="tooltip" title="Bosch Model 1234 Extra" style="color:white;">Refrigerator</a></strong></div>
+    <div class="panel-body">
+      <div><canvas id="canvasKwh1"></canvas></div>
+      <div><canvas id="canvasWatts1"></canvas></div>
+      <div><canvas id="canvasAmper1"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<div style="float:left; width: 33%; padding-left: 5px;">
+  <div class="panel panel-primary">
+    <div class="panel-heading"><img src="inc/img/tv.svg"><strong>Node 2: TV</strong></div>
+    <div class="panel-body">
+      <div><canvas id="canvasKwh2"></canvas></div>
+      <div><canvas id="canvasWatts2"></canvas></div>
+      <div><canvas id="canvasAmper2"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<div style="float:left; width: 33%; padding-left: 5px;">
+  <div class="panel panel-primary">
+    <div class="panel-heading"><img src="inc/img/lamp.svg"><strong>Node 3: Lamp</strong></div>
+    <div class="panel-body">
+      <div><canvas id="canvasKwh3"></canvas></div>
+      <div><canvas id="canvasWatts3"></canvas></div>
+      <div><canvas id="canvasAmper3"></canvas></div>
+    </div>
+  </div>
+</div>
+
 
   <script>
-    var configKwh = {
+    var configKwh1 = {
       type: 'line',
       data: {
         labels: [<?php echo "'" . implode("', '", $kwhArrays["dates"]) . "'";?>],
@@ -120,38 +156,16 @@ if(count($_SESSION["user"]) == 0) {
       },
       options: {
         responsive: true,
-        title: {
-          display: true,
-          text: 'Node Nr. 3 Consumption Development (3 Months)'
-        },
-        tooltips: {
-          mode: 'index',
-          intersect: false,
-        },
-        hover: {
-          mode: 'nearest',
-          intersect: true
-        },
+        title: {display: true, text: ''},
+        tooltips: {mode: 'index', intersect: false},
+        hover: {mode: 'nearest', intersect: true},
         scales: {
-          xAxes: [{
-            display: true,
-            scaleLabel: {
-              display: true,
-              labelString: 'Days'
-            }
-          }],
-          yAxes: [{
-            display: true,
-            scaleLabel: {
-              display: true,
-              labelString: 'Measurment'
-            }
-          }]
+          xAxes: [{display: true, scaleLabel: {display: true, labelString: 'Days'}}],
+          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Measurment'}}]
         }
       }
     };
-
-    var configWatts = {
+    var configWatts1 = {
       type: 'line',
       data: {
         labels: [<?php echo "'" . implode("', '", $kwhArrays["dates"]) . "'";?>],
@@ -165,38 +179,16 @@ if(count($_SESSION["user"]) == 0) {
       },
       options: {
         responsive: true,
-        title: {
-          display: true,
-          text: ''
-        },
-        tooltips: {
-          mode: 'index',
-          intersect: false,
-        },
-        hover: {
-          mode: 'nearest',
-          intersect: true
-        },
+        title: {display: true, text: ''},
+        tooltips: {mode: 'index', intersect: false},
+        hover: {mode: 'nearest', intersect: true},
         scales: {
-          xAxes: [{
-            display: true,
-            scaleLabel: {
-              display: true,
-              labelString: 'Days'
-            }
-          }],
-          yAxes: [{
-            display: true,
-            scaleLabel: {
-              display: true,
-              labelString: 'Measurment'
-            }
-          }]
+          xAxes: [{display: true, scaleLabel: {display: true, labelString: 'Days'}}],
+          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Measurment'}}]
         }
       }
     };
-
-    var configAmper = {
+    var configAmper1 = {
       type: 'line',
       data: {
         labels: [<?php echo "'" . implode("', '", $kwhArrays["dates"]) . "'";?>],
@@ -210,46 +202,179 @@ if(count($_SESSION["user"]) == 0) {
       },
       options: {
         responsive: true,
-        title: {
-          display: true,
-          text: ''
-        },
-        tooltips: {
-          mode: 'index',
-          intersect: false,
-        },
-        hover: {
-          mode: 'nearest',
-          intersect: true
-        },
+        title: {display: true, text: ''},
+        tooltips: {mode: 'index', intersect: false},
+        hover: {mode: 'nearest', intersect: true},
         scales: {
-          xAxes: [{
-            display: true,
-            scaleLabel: {
-              display: true,
-              labelString: 'Days'
-            }
-          }],
-          yAxes: [{
-            display: true,
-            scaleLabel: {
-              display: true,
-              labelString: 'Measurment'
-            }
-          }]
+          xAxes: [{display: true, scaleLabel: {display: true, labelString: 'Days'}}],
+          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Measurment'}}]
+        }
+      }
+    };
+
+    
+    var configKwh2 = {
+      type: 'line',
+      data: {
+        labels: [<?php echo "'" . implode("', '", $kwhArrays["dates"]) . "'";?>],
+        datasets: [{
+          label: 'Kwh',
+          backgroundColor: window.chartColors.red,
+          borderColor: window.chartColors.red,
+          data: [<?php echo implode(",",$kwhArrays["measurment"]);?>],
+          fill: false,
+        }]
+      },
+      options: {
+        responsive: true,
+        title: {display: true, text: ''},
+        tooltips: {mode: 'index', intersect: false},
+        hover: {mode: 'nearest', intersect: true},
+        scales: {
+          xAxes: [{display: true, scaleLabel: {display: true, labelString: 'Days'}}],
+          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Measurment'}}]
+        }
+      }
+    };
+    var configWatts2 = {
+      type: 'line',
+      data: {
+        labels: [<?php echo "'" . implode("', '", $kwhArrays["dates"]) . "'";?>],
+        datasets: [{
+          label: 'Watts',
+          fill: false,
+          backgroundColor: window.chartColors.blue,
+          borderColor: window.chartColors.blue,
+          data: [<?php echo implode(",",$wattsArrays["measurment"]);?>],
+        }]
+      },
+      options: {
+        responsive: true,
+        title: {display: true, text: ''},
+        tooltips: {mode: 'index', intersect: false},
+        hover: {mode: 'nearest', intersect: true},
+        scales: {
+          xAxes: [{display: true, scaleLabel: {display: true, labelString: 'Days'}}],
+          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Measurment'}}]
+        }
+      }
+    };
+    var configAmper2 = {
+      type: 'line',
+      data: {
+        labels: [<?php echo "'" . implode("', '", $kwhArrays["dates"]) . "'";?>],
+        datasets: [{
+          label: 'Amper',
+          fill: false,
+          backgroundColor: window.chartColors.yellow,
+          borderColor: window.chartColors.yellow,
+          data: [<?php echo implode(",",$ampsArrays["measurment"]);?>],
+        }]
+      },
+      options: {
+        responsive: true,
+        title: {display: true, text: ''},
+        tooltips: {mode: 'index', intersect: false},
+        hover: {mode: 'nearest', intersect: true},
+        scales: {
+          xAxes: [{display: true, scaleLabel: {display: true, labelString: 'Days'}}],
+          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Measurment'}}]
+        }
+      }
+    };
+
+    
+    var configKwh3 = {
+      type: 'line',
+      data: {
+        labels: [<?php echo "'" . implode("', '", $kwhArrays["dates"]) . "'";?>],
+        datasets: [{
+          label: 'Kwh',
+          backgroundColor: window.chartColors.red,
+          borderColor: window.chartColors.red,
+          data: [<?php echo implode(",",$kwhArrays["measurment"]);?>],
+          fill: false,
+        }]
+      },
+      options: {
+        responsive: true,
+        title: {display: true, text: ''},
+        tooltips: {mode: 'index', intersect: false},
+        hover: {mode: 'nearest', intersect: true},
+        scales: {
+          xAxes: [{display: true, scaleLabel: {display: true, labelString: 'Days'}}],
+          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Measurment'}}]
+        }
+      }
+    };
+    var configWatts3 = {
+      type: 'line',
+      data: {
+        labels: [<?php echo "'" . implode("', '", $kwhArrays["dates"]) . "'";?>],
+        datasets: [{
+          label: 'Watts',
+          fill: false,
+          backgroundColor: window.chartColors.blue,
+          borderColor: window.chartColors.blue,
+          data: [<?php echo implode(",",$wattsArrays["measurment"]);?>],
+        }]
+      },
+      options: {
+        responsive: true,
+        title: {display: true, text: ''},
+        tooltips: {mode: 'index', intersect: false},
+        hover: {mode: 'nearest', intersect: true},
+        scales: {
+          xAxes: [{display: true, scaleLabel: {display: true, labelString: 'Days'}}],
+          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Measurment'}}]
+        }
+      }
+    };
+    var configAmper3 = {
+      type: 'line',
+      data: {
+        labels: [<?php echo "'" . implode("', '", $kwhArrays["dates"]) . "'";?>],
+        datasets: [{
+          label: 'Amper',
+          fill: false,
+          backgroundColor: window.chartColors.yellow,
+          borderColor: window.chartColors.yellow,
+          data: [<?php echo implode(",",$ampsArrays["measurment"]);?>],
+        }]
+      },
+      options: {
+        responsive: true,
+        title: {display: true, text: ''},
+        tooltips: {mode: 'index', intersect: false},
+        hover: {mode: 'nearest', intersect: true},
+        scales: {
+          xAxes: [{display: true, scaleLabel: {display: true, labelString: 'Days'}}],
+          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Measurment'}}]
         }
       }
     };
 
     window.onload = function() {
-      var ctxKwh = document.getElementById('canvasKwh').getContext('2d');
-      window.myLine = new Chart(ctxKwh, configKwh);
+      var ctxKwh1 = document.getElementById('canvasKwh1').getContext('2d');
+      window.myLine = new Chart(ctxKwh1, configKwh1);
+      var ctxAmper1 = document.getElementById('canvasAmper1').getContext('2d');
+      window.myLine = new Chart(ctxAmper1, configAmper1);
+      var ctxWatts1 = document.getElementById('canvasWatts1').getContext('2d');
+      window.myLine = new Chart(ctxWatts1, configWatts1);
 
-      var ctxAmper = document.getElementById('canvasAmper').getContext('2d');
-      window.myLine = new Chart(ctxAmper, configAmper);
+      var ctxKwh2 = document.getElementById('canvasKwh2').getContext('2d');
+      window.myLine = new Chart(ctxKwh2, configKwh2);
+      var ctxAmper2 = document.getElementById('canvasAmper2').getContext('2d');
+      window.myLine = new Chart(ctxAmper2, configAmper2);
+      var ctxWatts2 = document.getElementById('canvasWatts2').getContext('2d');
+      window.myLine = new Chart(ctxWatts2, configWatts2);
 
-      var ctxWatts = document.getElementById('canvasWatts').getContext('2d');
-      window.myLine = new Chart(ctxWatts, configWatts);
+      var ctxKwh3 = document.getElementById('canvasKwh3').getContext('2d');
+      window.myLine = new Chart(ctxKwh3, configKwh3);
+      var ctxAmper3 = document.getElementById('canvasAmper3').getContext('2d');
+      window.myLine = new Chart(ctxAmper3, configAmper3);
+      var ctxWatts3 = document.getElementById('canvasWatts3').getContext('2d');
+      window.myLine = new Chart(ctxWatts3, configWatts3);
     };
   </script>
 
