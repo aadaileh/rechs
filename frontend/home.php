@@ -109,7 +109,7 @@ if(count($_SESSION["user"]) == 0) {
 
 <div style="float:left; width: 33%; padding-left: 5px;">
   <div class="panel panel-primary">
-    <div class="panel-heading"><img src="inc/img/fridge.svg"><strong>Node 1: <a href="#" data-toggle="tooltip" title="Bosch Model 1234 Extra" style="color:white;">Refrigerator</a></strong></div>
+    <div class="panel-heading"><strong>Node 1: <a href="#" data-toggle="tooltip" title="Bosch Model 1234 Extra" style="color:white;">Refrigerator</a></strong></div>
     <div class="panel-body">
       <div><canvas id="canvasKwh1"></canvas></div>
       <div><canvas id="canvasWatts1"></canvas></div>
@@ -120,7 +120,7 @@ if(count($_SESSION["user"]) == 0) {
 
 <div style="float:left; width: 33%; padding-left: 5px;">
   <div class="panel panel-primary">
-    <div class="panel-heading"><img src="inc/img/tv.svg"><strong>Node 2: TV</strong></div>
+    <div class="panel-heading"><strong>Node 2: TV</strong></div>
     <div class="panel-body">
       <div><canvas id="canvasKwh2"></canvas></div>
       <div><canvas id="canvasWatts2"></canvas></div>
@@ -131,7 +131,7 @@ if(count($_SESSION["user"]) == 0) {
 
 <div style="float:left; width: 33%; padding-left: 5px;">
   <div class="panel panel-primary">
-    <div class="panel-heading"><img src="inc/img/lamp.svg"><strong>Node 3: Lamp</strong></div>
+    <div class="panel-heading"><strong>Node 3: Lamp</strong></div>
     <div class="panel-body">
       <div><canvas id="canvasKwh3"></canvas></div>
       <div><canvas id="canvasWatts3"></canvas></div>
