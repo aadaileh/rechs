@@ -23,8 +23,8 @@ if(count($_SESSION["user"]) == 0) {
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="home.php">Home</a></li>
-        <li class="dropdown">
+        <li><a href="home.php">Home</a></li>
+        <li class="active dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Appliances</a>
           <ul class="dropdown-menu">
             <li><a href="appliances-overview.php">Overview</a></li>

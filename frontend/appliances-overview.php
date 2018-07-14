@@ -95,34 +95,23 @@ if(count($_SESSION["user"]) == 0) {
     });
   </script>
 
-  <style>
-  canvas{
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-  }
-  </style>
 </head>
 <body>
 
 <?php include("inc/top-nav.php");?>
 
-<div style="float:left; width: 33%; padding: 20px;">
-  <div class="panel panel-primary">
-    <div class="panel-heading"><img src="inc/img/fridge.svg"><strong>Node 1: <a href="#" data-toggle="tooltip" title="Bosch Model 1234 Extra" style="color:white;">Refrigerator</a></strong></div>
-  </div>
+<br><br><br><br>
+
+<div style="float:left; width: 33%; text-align: center;">
+  <a href="#" data-toggle="tooltip" title="Refrigerator: Bosch Model ETS 1234"><img src="inc/img/fridge.svg" width="50%"></a>
 </div>
 
-<div style="float:left; width: 33%; padding: 20px;">
-  <div class="panel panel-primary">
-    <div class="panel-heading"><img src="inc/img/tv.svg"><strong>Node 2: TV</strong></div>
-  </div>
+<div style="float:left; width: 33%; text-align: center;">
+  <a href="#" data-toggle="tooltip" title="TV: LG Model WS 567"><img src="inc/img/tv.svg" width="50%"></a>
 </div>
 
-<div style="float:left; width: 33%; padding: 20px;">
-  <div class="panel panel-primary">
-    <div class="panel-heading"><img src="inc/img/lamp.svg"><strong>Node 3: Lamp</strong></div>
-  </div>
+<div style="float:left; width: 33%; text-align: center;">
+  <a href="#" data-toggle="tooltip" title="Lamp: Normal lamp 0.2 Kwh"><img src="inc/img/lamp.svg" width="50%"></a>
 </div>
 
 
