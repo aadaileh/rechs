@@ -15,7 +15,7 @@ import java.util.List;
 public interface MeasurmentRepository extends JpaRepository<Measurment, Long> {
 
     @Query("SELECT " +
-            "CONCAT( YEAR(created_timestamp), '-', MONTH(created_timestamp), '-', DAY(created_timestamp)) as concatedDateTime, " +
+            "CONCAT( MONTH(created_timestamp), '/', DAY(created_timestamp), '/', YEAR(created_timestamp) ) as concatedDateTime, " +
             "AVG(amps) as AVGMeasurment, " +
             "COUNT(*) as counter " +
             "FROM Measurment " +
@@ -27,7 +27,7 @@ public interface MeasurmentRepository extends JpaRepository<Measurment, Long> {
     List<AmpsAndDate> findByApplianceIdAndAmpsIsNotNull(@Param("applianceId") Long ApplianceId);
 
     @Query("SELECT " +
-            "CONCAT( YEAR(created_timestamp), '-', MONTH(created_timestamp), '-', DAY(created_timestamp)) as concatedDateTime, " +
+            "CONCAT( MONTH(created_timestamp), '/', DAY(created_timestamp), '/', YEAR(created_timestamp) ) as concatedDateTime, " +
             "AVG(watts) as AVGMeasurment, " +
             "COUNT(*) as counter " +
             "FROM Measurment " +
@@ -39,7 +39,7 @@ public interface MeasurmentRepository extends JpaRepository<Measurment, Long> {
     List<WattsAndDate> findByApplianceIdAndWattsIsNotNull(@Param("applianceId") Long ApplianceId);
 
     @Query("SELECT " +
-            "CONCAT( YEAR(created_timestamp), '-', MONTH(created_timestamp), '-', DAY(created_timestamp)) as concatedDateTime, " +
+            "CONCAT( MONTH(created_timestamp), '/', DAY(created_timestamp), '/', YEAR(created_timestamp) ) as concatedDateTime, " +
             "AVG(kwh) as AVGMeasurment, " +
             "COUNT(*) as counter " +
             "FROM Measurment " +
