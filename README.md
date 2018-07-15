@@ -1,2 +1,2 @@
 # RECHS
-##Reduction of Energy Consumption in Household Sector.
+## Reduction of Energy Consumption in Household Sector.
