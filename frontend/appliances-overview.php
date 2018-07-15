@@ -95,6 +95,85 @@ if(count($_SESSION["user"]) == 0) {
     });
   </script>
 
+  <style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+</style>
+
+<script>
+$(document).ready(function(){
+    $("#stand-by-button").click(function(){
+
+
+        $.post("/inc/appliances-save.php",
+          {
+            standBy: document.getElementById("stand-by-button").checked,
+            city: "Duckburg"
+          },
+        
+        function(data, status){
+          //alert("Data: " + data + "\nStatus: " + status);
+          $("#stand-by-button-response").text(data);
+        });
+
+
+    });
+});
+</script>
+
 </head>
 <body>
 
@@ -104,6 +183,20 @@ if(count($_SESSION["user"]) == 0) {
 
 <div style="float:left; width: 33%; text-align: center;">
   <a href="#" data-toggle="tooltip" title="Refrigerator: Bosch Model ETS 1234"><img src="inc/img/fridge.svg" width="50%"></a>
+  1)On/off Function
+  2)Appliance details:
+    -Fridge: Type,Energy consumption,size
+    -TV: Type, energy consumption, size(in feet)
+    -Light: Type, energy consumption, Strength
+  3)Activate Stand-by mode: Yes/No
+  4)Link to the schedular
+  5)
+
+  <label class="switch">Stand-by Mode
+    <input id="stand-by-button" type="checkbox">
+    <span class="slider round"></span>
+  </label>
+  <div id="stand-by-button-response" style="color: red;"></div>
 </div>
 
 <div style="float:left; width: 33%; text-align: center;">
