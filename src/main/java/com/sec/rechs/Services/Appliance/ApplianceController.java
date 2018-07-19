@@ -1,6 +1,7 @@
 package com.sec.rechs.Services.Appliance;
 
 import com.sec.rechs.Exception.ResourceNotFoundException;
+import com.sec.rechs.Model.Appliance;
 import com.sec.rechs.Repository.ApplianceRepository;
 import com.sec.rechs.Repository.MeasurmentRepository;
 import com.sec.rechs.Services.Appliance.impl.ApplianceImplentations;
@@ -42,26 +43,26 @@ public class ApplianceController {
 
     ApplianceImplentations applianceImplentations = new ApplianceImplentations();
 
-    // Get data from node
-    @GetMapping("/{applianceId}/data")
-    @ApiOperation("Retrieve and save Node's measurements")
-    public void saveNodesMeasurments() {
+    // Record data from node
+    @GetMapping("/{applianceId}/record-data")
+    @ApiOperation("Record the requested node's measurements")
+    public void recordNodesMeasurments() {
         applianceImplentations.setApplianceRepository(applianceRepository);
         applianceImplentations.setMeasurmentRepository(measurmentRepository);
-        applianceImplentations.saveNodeMeasurments();
+        applianceImplentations.recordNodeMeasurments();
     }
 
-    // Get All Appliances
+    // Get All appliances
     @GetMapping("/")
     @ApiOperation("Return a list of available nodes")
     public List<com.sec.rechs.Model.Appliance> getAllNodes() {
         return applianceRepository.findAll();
     }
 
-    // Create a new ApplianceController
+    // Create a new appliance
     @PostMapping("/")
     @ApiOperation("Create new appliance")
-    public com.sec.rechs.Model.Appliance createAppliance(@Valid @RequestBody com.sec.rechs.Model.Appliance appliance) {
+    public com.sec.rechs.Model.Appliance createAppliance(@Valid @RequestBody Appliance appliance) {
 
         //HardwareManager hardwareManager = new HardwareManager();
         //ZWaveDriver zWaveDriver = new ZWaveDriver();
@@ -69,7 +70,7 @@ public class ApplianceController {
         return applianceRepository.save(appliance);
     }
 
-    // Get a Single Appliance
+    // Get a single appliance
     @GetMapping("/{id}")
     @ApiOperation("Retrieve a single appliance by id")
     public com.sec.rechs.Model.Appliance getApplianceById(@PathVariable(value = "id") Long applianceId) {
@@ -77,7 +78,7 @@ public class ApplianceController {
                 .orElseThrow(() -> new ResourceNotFoundException("ApplianceController", "id", applianceId));
     }
 
-    // Update a ApplianceController
+    // Update an appliance by Id
     @PutMapping("/{id}")
     @ApiOperation("Update appliance data by id")
     public com.sec.rechs.Model.Appliance updateAppliance(@PathVariable(value = "id") Long applianceId,
@@ -93,7 +94,7 @@ public class ApplianceController {
         return updatedAppliance;
     }
 
-    // Delete a ApplianceController
+    // Delete an appliance by Id
     @DeleteMapping("/{id}")
     @ApiOperation("Delete an appliance by id")
     public ResponseEntity<?> deleteAppliance(@PathVariable(value = "id") Long applianceId) {
@@ -105,17 +106,24 @@ public class ApplianceController {
         return ResponseEntity.ok().build();
     }
 
-    // Shutdown node by ID
+    // Turn off node by Id
     @PatchMapping("/{id}/turnoff")
     @ApiOperation("Turn a node OFF by its id")
     public void turnOffNode(@PathVariable(value = "id") int applianceId) {
         applianceImplentations.turnOffNode(applianceId);
     }
 
-    //Turn on down node by ID
+    //Turn on down node by Id
     @PatchMapping("/{id}/turnon")
     @ApiOperation("Turn a node ON by its id")
     public void turnOnNode(@PathVariable(value = "id") int applianceId) {
         applianceImplentations.turnOnNode(applianceId);
+    }
+
+    //Turn on down node by Id
+    @PatchMapping("/{id}/on-or-off")
+    @ApiOperation("Return appliance status: On/Off by id")
+    public void onOrOffNode(@PathVariable(value = "id") int applianceId) {
+        applianceImplentations.onOrOffNode(applianceId);
     }
 }

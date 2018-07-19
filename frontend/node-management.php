@@ -3,64 +3,75 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
 
-include("inc/cgi/library.php");
-
 //Already logged in?
 if(count($_SESSION["user"]) == 0) {
   echo "user is set in the session";
   header('Location: /login.php');
 }
 
-  $library = new Library();
 
-  $kwh_data = $library->makeCurl ("/measurments/kwh/appliance/3", "GET");
-  $kwh_measurmentArray = Array();
-  $kwh_datesArray = Array();
-  $kwh_allTogetherArray = Array();
-  foreach ($kwh_data as $kwh_key => $kwh_value) {
-    array_push($kwh_measurmentArray, $kwh_value->avgmeasurment);
-    array_push($kwh_datesArray, $kwh_value->concatedDateTime);
-  }
-  $kwh_allTogetherArray["measurment"] = $kwh_measurmentArray;
-  $kwh_allTogetherArray["dates"] = $kwh_datesArray;
-  $kwh_Arrays = $kwh_allTogetherArray;
+    function makeCurl ($measurment) {
 
+      $url = "http://127.0.0.1:8282/api/measurments/".$measurment."/appliance/3";
 
-  $watts_data = $library->makeCurl ("/measurments/watts/appliance/3", "GET");
-  $watts_measurmentArray = Array();
-  $watts_datesArray = Array();
-  $watts_allTogetherArray = Array();
-  foreach ($watts_data as $watts_key => $watts_value) {
-    array_push($watts_measurmentArray, $watts_value->avgmeasurment);
-    array_push($watts_datesArray, $watts_value->concatedDateTime);
-  }
-  $watts_allTogetherArray["measurment"] = $watts_measurmentArray;
-  $watts_allTogetherArray["dates"] = $watts_datesArray;
-  $watts_Arrays = $watts_allTogetherArray;
+      $curl = curl_init();
+      curl_setopt_array(
+        $curl, 
+        array(
+          CURLOPT_URL => $url,
+          CURLOPT_CUSTOMREQUEST => "GET",
+          CURLOPT_PORT=>"8282",
+          CURLOPT_RETURNTRANSFER=>true,
+          CURLOPT_ENCODING=>"",
+          CURLOPT_MAXREDIRS=>10,
+          CURLOPT_TIMEOUT=>30,
+          CURLOPT_HTTP_VERSION=>CURL_HTTP_VERSION_1_1,
+          CURLOPT_HTTPHEADER => array("authorization: Basic YXBpdXNlcjpwYXNz","content-type: application/json")
+        )
+      );
+      $response = curl_exec($curl);
+      $err = curl_error($curl);
 
+      curl_close($curl);
+      if ($err) {
+      echo "cURL Error #:" . $err;
+        $error = "Error while retrieving the: " . $measurment;
+      } else {
+      $data = json_decode($response);
+    }
 
-  $amps_data = $library->makeCurl ("/measurments/amps/appliance/3", "GET");
-  $amps_measurmentArray = Array();
-  $amps_datesArray = Array();
-  $amps_allTogetherArray = Array();
-  foreach ($amps_data as $amps_key => $amps_value) {
-    array_push($amps_measurmentArray, $amps_value->avgmeasurment);
-    array_push($amps_datesArray, $amps_value->concatedDateTime);
-  }
-  $amps_allTogetherArray["measurment"] = $amps_measurmentArray;
-  $amps_allTogetherArray["dates"] = $amps_datesArray;
-  $amps_Arrays = $amps_allTogetherArray;  
-
-  // echo "<pre>kwh_Arrays:";
-  // print_r($kwh_Arrays);
+  // echo "<pre>data:";
+  // print_r($data);
   // echo "</pre>";
 
-  // echo "<pre>watts_Arrays:";
-  // print_r($watts_Arrays);
+    $measurmentArray = Array();
+    $datesArray = Array();
+    $allTogetherArray = Array();
+    foreach ($data as $key => $value) {
+      array_push($measurmentArray, $value->avgmeasurment);
+      array_push($datesArray, $value->concatedDateTime);
+    }
+
+    $allTogetherArray["measurment"] = $measurmentArray;
+    $allTogetherArray["dates"] = $datesArray;
+
+    return $allTogetherArray;
+  }
+
+  $kwhArrays = makeCurl ('kwh');
+  $wattsArrays = makeCurl ('watts');
+  $ampsArrays = makeCurl ('amps');
+
+  // echo "<pre>kwhArrays:";
+  // print_r($kwhArrays);
   // echo "</pre>";
 
-  // echo "<pre>amps_Arrays:";
-  // print_r($amps_Arrays);
+  // echo "<pre>wattsArrays:";
+  // print_r($wattsArrays);
+  // echo "</pre>";
+
+  // echo "<pre>ampsArrays:";
+  // print_r($ampsArrays);
   // echo "</pre>";
 
 ?>
@@ -134,12 +145,12 @@ if(count($_SESSION["user"]) == 0) {
     var configKwh1 = {
       type: 'line',
       data: {
-        labels: [<?php echo "'" . implode("', '", $kwh_Arrays["dates"]) . "'";?>],
+        labels: [<?php echo "'" . implode("', '", $kwhArrays["dates"]) . "'";?>],
         datasets: [{
           label: 'Kwh',
           backgroundColor: window.chartColors.red,
           borderColor: window.chartColors.red,
-          data: [<?php echo implode(",",$kwh_Arrays["measurment"]);?>],
+          data: [<?php echo implode(",",$kwhArrays["measurment"]);?>],
           fill: false,
         }]
       },
@@ -157,13 +168,13 @@ if(count($_SESSION["user"]) == 0) {
     var configWatts1 = {
       type: 'line',
       data: {
-        labels: [<?php echo "'" . implode("', '", $watts_Arrays["dates"]) . "'";?>],
+        labels: [<?php echo "'" . implode("', '", $kwhArrays["dates"]) . "'";?>],
         datasets: [{
           label: 'Watts',
           fill: false,
           backgroundColor: window.chartColors.blue,
           borderColor: window.chartColors.blue,
-          data: [<?php echo implode(",",$watts_Arrays["measurment"]);?>],
+          data: [<?php echo implode(",",$wattsArrays["measurment"]);?>],
         }]
       },
       options: {
@@ -180,13 +191,13 @@ if(count($_SESSION["user"]) == 0) {
     var configAmper1 = {
       type: 'line',
       data: {
-        labels: [<?php echo "'" . implode("', '", $amps_Arrays["dates"]) . "'";?>],
+        labels: [<?php echo "'" . implode("', '", $kwhArrays["dates"]) . "'";?>],
         datasets: [{
           label: 'Amper',
           fill: false,
           backgroundColor: window.chartColors.yellow,
           borderColor: window.chartColors.yellow,
-          data: [<?php echo implode(",",$amps_Arrays["measurment"]);?>],
+          data: [<?php echo implode(",",$ampsArrays["measurment"]);?>],
         }]
       },
       options: {
@@ -205,12 +216,12 @@ if(count($_SESSION["user"]) == 0) {
     var configKwh2 = {
       type: 'line',
       data: {
-        labels: [<?php echo "'" . implode("', '", $kwh_Arrays["dates"]) . "'";?>],
+        labels: [<?php echo "'" . implode("', '", $kwhArrays["dates"]) . "'";?>],
         datasets: [{
           label: 'Kwh',
           backgroundColor: window.chartColors.red,
           borderColor: window.chartColors.red,
-          data: [<?php echo implode(",",$kwh_Arrays["measurment"]);?>],
+          data: [<?php echo implode(",",$kwhArrays["measurment"]);?>],
           fill: false,
         }]
       },
@@ -228,13 +239,13 @@ if(count($_SESSION["user"]) == 0) {
     var configWatts2 = {
       type: 'line',
       data: {
-        labels: [<?php echo "'" . implode("', '", $watts_Arrays["dates"]) . "'";?>],
+        labels: [<?php echo "'" . implode("', '", $kwhArrays["dates"]) . "'";?>],
         datasets: [{
           label: 'Watts',
           fill: false,
           backgroundColor: window.chartColors.blue,
           borderColor: window.chartColors.blue,
-          data: [<?php echo implode(",",$watts_Arrays["measurment"]);?>],
+          data: [<?php echo implode(",",$wattsArrays["measurment"]);?>],
         }]
       },
       options: {
@@ -251,13 +262,13 @@ if(count($_SESSION["user"]) == 0) {
     var configAmper2 = {
       type: 'line',
       data: {
-        labels: [<?php echo "'" . implode("', '", $amps_Arrays["dates"]) . "'";?>],
+        labels: [<?php echo "'" . implode("', '", $kwhArrays["dates"]) . "'";?>],
         datasets: [{
           label: 'Amper',
           fill: false,
           backgroundColor: window.chartColors.yellow,
           borderColor: window.chartColors.yellow,
-          data: [<?php echo implode(",",$amps_Arrays["measurment"]);?>],
+          data: [<?php echo implode(",",$ampsArrays["measurment"]);?>],
         }]
       },
       options: {
@@ -276,12 +287,12 @@ if(count($_SESSION["user"]) == 0) {
     var configKwh3 = {
       type: 'line',
       data: {
-        labels: [<?php echo "'" . implode("', '", $kwh_Arrays["dates"]) . "'";?>],
+        labels: [<?php echo "'" . implode("', '", $kwhArrays["dates"]) . "'";?>],
         datasets: [{
           label: 'Kwh',
           backgroundColor: window.chartColors.red,
           borderColor: window.chartColors.red,
-          data: [<?php echo implode(",",$kwh_Arrays["measurment"]);?>],
+          data: [<?php echo implode(",",$kwhArrays["measurment"]);?>],
           fill: false,
         }]
       },
@@ -299,13 +310,13 @@ if(count($_SESSION["user"]) == 0) {
     var configWatts3 = {
       type: 'line',
       data: {
-        labels: [<?php echo "'" . implode("', '", $watts_Arrays["dates"]) . "'";?>],
+        labels: [<?php echo "'" . implode("', '", $kwhArrays["dates"]) . "'";?>],
         datasets: [{
           label: 'Watts',
           fill: false,
           backgroundColor: window.chartColors.blue,
           borderColor: window.chartColors.blue,
-          data: [<?php echo implode(",",$watts_Arrays["measurment"]);?>],
+          data: [<?php echo implode(",",$wattsArrays["measurment"]);?>],
         }]
       },
       options: {
@@ -322,13 +333,13 @@ if(count($_SESSION["user"]) == 0) {
     var configAmper3 = {
       type: 'line',
       data: {
-        labels: [<?php echo "'" . implode("', '", $amps_Arrays["dates"]) . "'";?>],
+        labels: [<?php echo "'" . implode("', '", $kwhArrays["dates"]) . "'";?>],
         datasets: [{
           label: 'Amper',
           fill: false,
           backgroundColor: window.chartColors.yellow,
           borderColor: window.chartColors.yellow,
-          data: [<?php echo implode(",",$amps_Arrays["measurment"]);?>],
+          data: [<?php echo implode(",",$ampsArrays["measurment"]);?>],
         }]
       },
       options: {

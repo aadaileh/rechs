@@ -4,15 +4,6 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
 
-/*
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
-
-exit();
-*/
-
-
 //Already logged in?
 if(count($_SESSION["user"]) > 0) { 
   header('Location: /home.php');

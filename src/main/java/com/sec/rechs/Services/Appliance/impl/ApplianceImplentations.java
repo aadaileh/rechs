@@ -35,7 +35,7 @@ public class ApplianceImplentations {
     ApplianceRepository applianceRepository;
     MeasurmentRepository measurmentRepository;
 
-    public void saveNodeMeasurments() {
+    public void recordNodeMeasurments() {
         try {
             ZWaveSession zWaveSession = new LocalZwaveSession();
             zWaveSession.connect();
@@ -73,6 +73,20 @@ public class ApplianceImplentations {
             zWaveSession.connect();
 
             zWaveSession.doAction(new SwitchAction(nodeId, SwitchAction.STATE.ON));
+
+        } catch (HomeAutomationException e) {
+            LOG.error("HomeAutomationException error::", e);
+        }
+    }
+
+
+    public void onOrOffNode(int nodeId) {
+        try {
+            ZWaveSession zWaveSession = new LocalZwaveSession();
+            zWaveSession.connect();
+
+            zWaveSession.doAction(new SwitchAction(nodeId, SwitchAction.STATE.ON));
+            
 
         } catch (HomeAutomationException e) {
             LOG.error("HomeAutomationException error::", e);

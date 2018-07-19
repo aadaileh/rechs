@@ -3,76 +3,40 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
 
+include("inc/cgi/library.php");
+
 //Already logged in?
 if(count($_SESSION["user"]) == 0) {
   echo "user is set in the session";
   header('Location: /login.php');
 }
 
+  $library = new Library();
 
-    function makeCurl ($measurment) {
+  $data = $library->makeCurl ("/appliances/", "GET");
 
-      $url = "http://127.0.0.1:8282/api/measurments/".$measurment."/appliance/3";
+  $refrigerator = Array();
+  $tv = Array();
+  $lamp = Array();
 
-      $curl = curl_init();
-      curl_setopt_array(
-        $curl, 
-        array(
-          CURLOPT_URL => $url,
-          CURLOPT_CUSTOMREQUEST => "GET",
-          CURLOPT_PORT=>"8282",
-          CURLOPT_RETURNTRANSFER=>true,
-          CURLOPT_ENCODING=>"",
-          CURLOPT_MAXREDIRS=>10,
-          CURLOPT_TIMEOUT=>30,
-          CURLOPT_HTTP_VERSION=>CURL_HTTP_VERSION_1_1,
-          CURLOPT_HTTPHEADER => array("authorization: Basic YXBpdXNlcjpwYXNz","content-type: application/json")
-        )
-      );
-      $response = curl_exec($curl);
-      $err = curl_error($curl);
+  foreach ($data as $key => $value) {
 
-      curl_close($curl);
-      if ($err) {
-      echo "cURL Error #:" . $err;
-        $error = "Error while retrieving the: " . $measurment;
-      } else {
-      $data = json_decode($response);
+    if($value->type == "refrigerator") {
+       $refrigerator = $value;
+    }
+  
+    if($value->type == "tv") {
+      $tv = $value;
     }
 
-  // echo "<pre>data:";
-  // print_r($data);
-  // echo "</pre>";
-
-    $measurmentArray = Array();
-    $datesArray = Array();
-    $allTogetherArray = Array();
-    foreach ($data as $key => $value) {
-      array_push($measurmentArray, $value->avgmeasurment);
-      array_push($datesArray, $value->concatedDateTime);
-    }
-
-    $allTogetherArray["measurment"] = $measurmentArray;
-    $allTogetherArray["dates"] = $datesArray;
-
-    return $allTogetherArray;
+    if($value->type == "lamp") {
+      $lamp = $value;
+    }    
   }
 
-  $kwhArrays = makeCurl ('kwh');
-  $wattsArrays = makeCurl ('watts');
-  $ampsArrays = makeCurl ('amps');
-
-  // echo "<pre>kwhArrays:";
-  // print_r($kwhArrays);
-  // echo "</pre>";
-
-  // echo "<pre>wattsArrays:";
-  // print_r($wattsArrays);
-  // echo "</pre>";
-
-  // echo "<pre>ampsArrays:";
-  // print_r($ampsArrays);
-  // echo "</pre>";
+  echo "<pre>data:\n";
+  print_r($data);
+  echo "</pre>";
 
 ?>
 
@@ -83,6 +47,7 @@ if(count($_SESSION["user"]) == 0) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="inc/css/switch.css">
   <script src="inc/js/jquery.min.js"></script>
   <script src="inc/js/bootstrap.min.js"></script>
 
@@ -94,65 +59,6 @@ if(count($_SESSION["user"]) == 0) {
     $('[data-toggle="tooltip"]').tooltip(); 
     });
   </script>
-
-  <style>
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-
-.switch input {display:none;}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-</style>
-
 <script>
 $(document).ready(function(){
     $("#stand-by-button").click(function(){
@@ -168,45 +74,324 @@ $(document).ready(function(){
           //alert("Data: " + data + "\nStatus: " + status);
           $("#stand-by-button-response").text(data);
         });
-
-
     });
 });
 </script>
 
+<style type="text/css">
+  #theTable td {
+     vertical-align: middle;
+  }
+
+  #appliance {
+    float:left; 
+    width: 33%; 
+    padding: 0px 50px 0px 50px;
+  }
+
+  #panel-body {
+    #padding: 5px;
+  }
+</style>
+
 </head>
 <body>
 
-<?php include("inc/top-nav.php");?>
+<?php include("inc/cgi/top-nav.php");?>
 
-<br><br><br><br>
+<div id="appliance">
+  <div class="panel panel-primary">
+    <div class="panel-heading" style="background-color: #dff0d8;text-align: center;">
+      <a href="#" data-toggle="tooltip" title="Refrigerator: <?php echo $refrigerator->label; ?>"><img src="inc/img/fridge.svg" width="50%"></a>
+    </div>
+    <div class="panel-body" id="panel-body">
+      <!-- BODY -->
 
-<div style="float:left; width: 33%; text-align: center;">
-  <a href="#" data-toggle="tooltip" title="Refrigerator: Bosch Model ETS 1234"><img src="inc/img/fridge.svg" width="50%"></a>
-  1)On/off Function
-  2)Appliance details:
-    -Fridge: Type,Energy consumption,size
-    -TV: Type, energy consumption, size(in feet)
-    -Light: Type, energy consumption, Strength
-  3)Activate Stand-by mode: Yes/No
-  4)Link to the schedular
-  5)
+        <table class="table table-striped" id="theTable">
+          <thead>
+            <th colspan="2">
+              Appliance Details:
+            </th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Status:</td>
+              <td>
+                <?php
+                  if($refrigerator->status == 1) {
+                    echo '<img src="inc/img/check.svg" height="20%">';
+                  } else {
+                    echo '<img src="inc/img/unchecked.svg" height="20%">';
+                  }
+                ?>
+                </td>
+            </tr>
+            <tr>
+              <td>Label:</td>
+              <td><?php echo $refrigerator->label; ?></td>
+            </tr> 
+            <tr>
+              <td>Energy consumption:</td>
+              <td><?php echo $refrigerator->energyConsumption; ?></td>
+            </tr>
+            <tr>
+              <td>Energy Efficient Class:</td>
+              <td><?php echo $refrigerator->energyEfficientClass; ?></td>
+            </tr>            
+            <tr>
+              <td>Size:</td>
+              <td><?php echo $refrigerator->size . ' ' . $refrigerator->sizeUnit;; ?></td>
+            </tr>
+            <tr>
+              <td>Added on:</td>
+              <td><?php echo date('M/d/Y H:m:s', strtotime($refrigerator->createdTimestamp)); ?></td>
+            </tr>
+            <tr>
+              <td>Last successful shake-hands:</td>
+              <td><?php echo date('M/d/Y H:m:s', strtotime($refrigerator->updatedTimestamp)); ?></td>
+            </tr>            
+          </tbody>
+        </table>
 
-  <label class="switch">Stand-by Mode
-    <input id="stand-by-button" type="checkbox">
-    <span class="slider round"></span>
-  </label>
-  <div id="stand-by-button-response" style="color: red;"></div>
+        <br/>
+
+        <table class="table table-striped" id="theTable">
+          <thead>
+            <th colspan="2">
+              Appliance commands:
+            </th>
+          </thead>
+          <tbody>         
+            <tr>
+              <td>
+                <label class="switch">
+                  <input id="stand-by-button" type="checkbox"
+                    <?php 
+                      if ($refrigerator->standByStatus == 1) {
+                        echo "checked";
+                      }
+                    ?>
+                  >
+                  <span class="slider round"></span>
+                </label>
+              </td>
+              <td>
+                <div id="stand-by-button-response">Stand-by Mode is turned OFF</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="switch">
+                  <input id="stand-by-button" type="checkbox">
+                  <span class="slider round"></span>
+                </label>
+              </td>
+              <td>On/off Function</td>
+            </tr>           
+          </tbody>
+        </table>
+
+    </div>
+  </div>
 </div>
 
-<div style="float:left; width: 33%; text-align: center;">
-  <a href="#" data-toggle="tooltip" title="TV: LG Model WS 567"><img src="inc/img/tv.svg" width="50%"></a>
+<div id="appliance">
+  <div class="panel panel-primary">
+    <div class="panel-heading" style="background-color: #dff0d8; text-align: center;">
+      <a href="#" data-toggle="tooltip" title="TV: <?php echo $tv->label; ?>"><img src="inc/img/tv.svg" width="50%"></a>
+    </div>
+    <div class="panel-body" id="panel-body">
+
+      <!-- BODY -->
+
+        <table class="table table-striped" id="theTable">
+          <thead>
+            <th colspan="2">
+              Appliance Details:
+            </th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Status:
+              </td>
+              <td>
+                <?php
+                  if($tv->status == 1) {
+                    echo '<img src="inc/img/check.svg" height="20%">';
+                  } else {
+                    echo '<img src="inc/img/unchecked.svg" height="20%">';
+                  }
+                ?>
+              </td>
+            </tr>  
+            <tr>
+              <td>Label:</td>
+              <td><?php echo $tv->label; ?></td>
+            </tr> 
+            <tr>
+              <td>Energy consumption:</td>
+              <td><?php echo $tv->energyConsumption; ?></td>
+            </tr>
+            <tr>
+              <td>Energy Efficient Class:</td>
+              <td><?php echo $tv->energyEfficientClass; ?></td>
+            </tr>              
+            <tr>
+              <td>Size:</td>
+              <td><?php echo $tv->size . ' ' . $tv->sizeUnit;; ?></td>
+            </tr>
+            <tr>
+              <td>Added on:</td>
+              <td><?php echo date('M/d/Y H:m:s', strtotime($tv->createdTimestamp)); ?></td>
+            </tr>
+            <tr>
+              <td>Last successful shake-hands:</td>
+              <td><?php echo date('M/d/Y H:m:s', strtotime($tv->updatedTimestamp)); ?></td>
+            </tr> 
+          </tbody>
+        </table>
+
+        <br/>
+
+        <table class="table table-striped" id="theTable">
+          <thead>
+            <th colspan="2">
+              Appliance commands:
+            </th>
+          </thead>
+          <tbody>            
+            <tr>
+              <td>
+                <label class="switch">
+                  <input id="stand-by-button" type="checkbox"
+                    <?php 
+                      if ($tv->standByStatus == 1) {
+                        echo "checked";
+                      }
+                    ?>
+                  >
+                  <span class="slider round"></span>
+                </label>
+              </td>
+              <td>
+                <div id="stand-by-button-response">Stand-by Mode is turned OFF</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="switch">
+                  <input id="stand-by-button" type="checkbox">
+                  <span class="slider round"></span>
+                </label>
+              </td>
+              <td>On/off Function</td>
+            </tr>           
+          </tbody>
+        </table>
+
+
+    </div>
+  </div>
 </div>
 
-<div style="float:left; width: 33%; text-align: center;">
-  <a href="#" data-toggle="tooltip" title="Lamp: Normal lamp 0.2 Kwh"><img src="inc/img/lamp.svg" width="50%"></a>
-</div>
+<div id="appliance">
+  <div class="panel panel-primary">
+    <div class="panel-heading" style="background-color: #dff0d8;text-align: center;">
+      <a href="#" data-toggle="tooltip" title="Lamp: <?php echo $lamp->label; ?>"><img src="inc/img/lamp.svg" width="50%"></a>
+    </div>
+    <div class="panel-body" id="panel-body">
 
+      <!-- BODY -->
+        <table class="table table-striped" id="theTable">
+          <thead>
+            <th colspan="2">
+              Appliance Details:
+            </th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Status:
+              </td>
+              <td>
+                <?php
+                  if($lamp->status == 1) {
+                    echo '<img src="inc/img/check.svg" height="20%">';
+                  } else {
+                    echo '<img src="inc/img/unchecked.svg" height="20%">';
+                  }
+                ?>
+              </td>
+            </tr>             
+            <tr>
+              <td>Label:</td>
+              <td><?php echo $lamp->label; ?></td>
+            </tr> 
+            <tr>
+              <td>Energy consumption:</td>
+              <td><?php echo $lamp->energyConsumption; ?></td>
+            </tr>
+            <tr>
+              <td>Energy Efficient Class:</td>
+              <td><?php echo $lamp->energyEfficientClass; ?></td>
+            </tr>              
+            <tr>
+              <td>Size:</td>
+              <td><?php echo $lamp->size . ' ' . $lamp->sizeUnit;; ?></td>
+            </tr>
+            <tr>
+              <td>Added on:</td>
+              <td><?php echo date('M/d/Y H:m:s', strtotime($lamp->createdTimestamp)); ?></td>
+            </tr>
+            <tr>
+              <td>Last successful shake-hands:</td>
+              <td><?php echo date('M/d/Y H:m:s', strtotime($lamp->updatedTimestamp)); ?></td>
+            </tr> 
+          </tbody>
+        </table>
+
+        <br/>
+
+        <table class="table table-striped" id="theTable">
+          <thead>
+            <th colspan="2">
+              Appliance commands:
+            </th>
+          </thead>
+          <tbody>            
+            <tr>
+              <td>
+                <label class="switch">
+                  <input id="stand-by-button" type="checkbox">
+                  <span class="slider round"></span>
+                </label>
+              </td>
+              <td>
+                <div id="stand-by-button-response">Stand-by Mode is turned OFF</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="switch">
+                  <input id="stand-by-button" type="checkbox"
+                    <?php 
+                      if ($lamp->standByStatus == 1) {
+                        echo "checked";
+                      }
+                    ?>
+                  >
+                  <span class="slider round"></span>
+                </label>
+              </td>
+              <td>On/off Function</td>
+            </tr>           
+          </tbody>
+        </table>   
+
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

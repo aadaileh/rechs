@@ -57,18 +57,18 @@ switch ($scriptName) {
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="<?php echo $homeClass;?>"><a href="home.php">Home</a></li>
-        <li class="<?php echo $appliancesClass;?>dropdown" style="background-color: #eee;">
+        <li class="<?php echo $appliancesClass;?>dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Appliances</a>
           <ul class="dropdown-menu">
             <li><a href="appliances-overview.php">Overview</a></li>
-            <li><a href="#">Charts</a></li>
-            <li><a href="#">Status Panel</a></li>
-            <li><a href="#">Schedular</a></li>
+            <li><a href="appliances-charts.php">Charts</a></li>
+            <li><a href="appliances-status-panel.php">Status Panel</a></li>
+            <li><a href="appliances-schedular.php">Schedular</a></li>
           </ul>
         </li>
-        <li><a href="#">Node Management</a></li>
-        <li><a href="#">User Management</a></li>
-        <li><a href="#">Energy Provider Management</a></li>
+        <li class="<?php echo $nodeManagementClass;?>"><a href="node-management.php">Node Management</a></li>
+        <li class="<?php echo $userManagementClass;?>"><a href="user-management.php">User Management</a></li>
+        <li class="<?php echo $energyProviderManagementClass;?>"><a href="energy-provider-management.php">Energy Provider Management</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="profile.php"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION["user"]->fullName;?></a></li>
