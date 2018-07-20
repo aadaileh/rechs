@@ -63,10 +63,6 @@ public class ApplianceController {
     @PostMapping("/")
     @ApiOperation("Create new appliance")
     public com.sec.rechs.Model.Appliance createAppliance(@Valid @RequestBody Appliance appliance) {
-
-        //HardwareManager hardwareManager = new HardwareManager();
-        //ZWaveDriver zWaveDriver = new ZWaveDriver();
-
         return applianceRepository.save(appliance);
     }
 

@@ -48,8 +48,6 @@ public class ApplianceImplentations {
 
             sleepUninterruptibly(10, SECONDS);
 
-//zWaveSession.doAction(new SwitchAction(3, SwitchAction.STATE.ON));
-
         } catch (HomeAutomationException e) {
             LOG.error("HomeAutomationException error::", e);
         }
@@ -85,8 +83,18 @@ public class ApplianceImplentations {
             ZWaveSession zWaveSession = new LocalZwaveSession();
             zWaveSession.connect();
 
-            zWaveSession.doAction(new SwitchAction(nodeId, SwitchAction.STATE.ON));
-            
+//            zWaveSession.doAction(new SwitchAction(nodeId, SwitchAction.STATE.ON));
+//
+//            SwitchAction switchAction = new SwitchAction(3,0);
+//            switchAction.getDesiredState();
+
+            SwitchAction zWaveAction = new SwitchAction(nodeId, SwitchAction.STATE.OFF);
+            int level = zWaveAction.getLevel();
+            zWaveSession.doAction(zWaveAction);
+
+
+
+            int x =0;
 
         } catch (HomeAutomationException e) {
             LOG.error("HomeAutomationException error::", e);

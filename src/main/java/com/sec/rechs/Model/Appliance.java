@@ -21,7 +21,8 @@ public class Appliance implements Serializable {
 
     private String label;
     private Boolean status;
-    private String energyConsumption;
+    private Long annualEnergyConsumption;
+    private Long hourlyEnergyConsumption;
     private String size;
     private String sizeUnit;
     private Boolean standByStatus;
@@ -104,12 +105,20 @@ public class Appliance implements Serializable {
         this.status = status;
     }
 
-    public String getEnergyConsumption() {
-        return energyConsumption;
+    public Long getAnnualEnergyConsumption() {
+        return annualEnergyConsumption;
     }
 
-    public void setEnergyConsumption(String energyConsumption) {
-        this.energyConsumption = energyConsumption;
+    public void setAnnualEnergyConsumption(Long annualEnergyConsumption) {
+        this.annualEnergyConsumption = annualEnergyConsumption;
+    }
+
+    public Long getHourlyEnergyConsumption() {
+        return hourlyEnergyConsumption;
+    }
+
+    public void setHourlyEnergyConsumption(Long hourlyEnergyConsumption) {
+        this.hourlyEnergyConsumption = hourlyEnergyConsumption;
     }
 
     public String getSize() {

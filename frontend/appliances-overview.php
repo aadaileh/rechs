@@ -34,9 +34,9 @@ if(count($_SESSION["user"]) == 0) {
     }    
   }
 
-  echo "<pre>data:\n";
-  print_r($data);
-  echo "</pre>";
+  // echo "<pre>data:\n";
+  // print_r($data);
+  // echo "</pre>";
 
 ?>
 
@@ -131,9 +131,13 @@ $(document).ready(function(){
               <td><?php echo $refrigerator->label; ?></td>
             </tr> 
             <tr>
-              <td>Energy consumption:</td>
-              <td><?php echo $refrigerator->energyConsumption; ?></td>
+              <td>Annual Energy consumption:</td>
+              <td><?php echo $refrigerator->annualEnergyConsumption; ?> Kwh</td>
             </tr>
+            <tr>
+              <td>Energy consumption (in Watts):</td>
+              <td><?php echo $refrigerator->hourlyEnergyConsumption; ?> Watt</td>
+            </tr> 
             <tr>
               <td>Energy Efficient Class:</td>
               <td><?php echo $refrigerator->energyEfficientClass; ?></td>
@@ -230,9 +234,13 @@ $(document).ready(function(){
               <td><?php echo $tv->label; ?></td>
             </tr> 
             <tr>
-              <td>Energy consumption:</td>
-              <td><?php echo $tv->energyConsumption; ?></td>
+              <td>Annual Energy consumption:</td>
+              <td><?php echo $tv->annualEnergyConsumption; ?> Kwh</td>
             </tr>
+            <tr>
+              <td>Energy consumption (in Watts):</td>
+              <td><?php echo $tv->hourlyEnergyConsumption; ?> Watt</td>
+            </tr> 
             <tr>
               <td>Energy Efficient Class:</td>
               <td><?php echo $tv->energyEfficientClass; ?></td>
@@ -329,9 +337,13 @@ $(document).ready(function(){
               <td><?php echo $lamp->label; ?></td>
             </tr> 
             <tr>
-              <td>Energy consumption:</td>
-              <td><?php echo $lamp->energyConsumption; ?></td>
+              <td>Annual Energy consumption:</td>
+              <td><?php echo $lamp->annualEnergyConsumption; ?> Kwh</td>
             </tr>
+            <tr>
+              <td>Energy consumption (in Watts):</td>
+              <td><?php echo $lamp->hourlyEnergyConsumption; ?> Watt</td>
+            </tr>            
             <tr>
               <td>Energy Efficient Class:</td>
               <td><?php echo $lamp->energyEfficientClass; ?></td>
@@ -363,7 +375,13 @@ $(document).ready(function(){
             <tr>
               <td>
                 <label class="switch">
-                  <input id="stand-by-button" type="checkbox">
+                  <input id="stand-by-button" type="checkbox"
+                    <?php 
+                      if ($tv->standByStatus == 1) {
+                        echo "checked";
+                      }
+                    ?>
+                  >
                   <span class="slider round"></span>
                 </label>
               </td>
