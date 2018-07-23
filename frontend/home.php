@@ -146,10 +146,13 @@ if(count($_SESSION["user"]) == 0) {
     -webkit-user-select: none;
     -ms-user-select: none;
   }
-  #customized-home-panel{
-    width: 100%;
-    padding: 5px;
+  #customized-home-panel-left{
+    padding: 0px 0px 0px 20px;
   }
+  #customized-home-panel-right{
+    padding: 0px 20px 0px 0px;
+  }
+
   </style>
 </head>
 <body>
@@ -160,7 +163,7 @@ if(count($_SESSION["user"]) == 0) {
   <div class="row">
     <div class="col-sm-6">
 
-      <div style="" id="customized-home-panel">
+      <div id="customized-home-panel-left">
         <div class="panel panel-primary">
           <div class="panel-heading"><strong data-toggle="tooltip" title="Bosch Model 1234 Extra">Node 1: Refrigerator</strong></div>
           <div class="panel-body">
@@ -169,7 +172,7 @@ if(count($_SESSION["user"]) == 0) {
         </div>
       </div>
 
-      <div style="" id="customized-home-panel">
+      <div id="customized-home-panel-left">
         <div class="panel panel-primary">
           <div class="panel-heading"><strong>Node 2: TV</strong></div>
           <div class="panel-body">
@@ -178,7 +181,7 @@ if(count($_SESSION["user"]) == 0) {
         </div>
       </div>
 
-      <div style="" id="customized-home-panel">
+      <div id="customized-home-panel-left">
         <div class="panel panel-primary">
           <div class="panel-heading"><strong>Node 3: Lamp</strong></div>
           <div class="panel-body">
@@ -190,7 +193,7 @@ if(count($_SESSION["user"]) == 0) {
     </div>
     <div class="col-sm-6">
 
-      <div style="float:left;" id="customized-home-panel">
+      <div id="customized-home-panel-right">
         <div class="panel panel-primary">
           <div class="panel-heading"><a href="energy-provider-optimizer.php" data-toggle="tooltip" title="Energy Provider Optimizer" style="color:white;">
             <strong>EPO</strong> (<strong>E</strong>nergy <strong>P</strong>rovider <strong>O</strong>ptimizer)</a>
@@ -209,7 +212,7 @@ if(count($_SESSION["user"]) == 0) {
         </div>
       </div>
 
-      <div style="float:left;" id="customized-home-panel">
+      <div id="customized-home-panel-right">
         <div class="panel panel-primary">
           <div class="panel-heading"><span data-toggle="tooltip" title="Appliance Exchange Suggester">
             <strong>ARS</strong> (<strong>A</strong>ppliance <strong>R</strong>eplacement <strong>S</strong>uggester)</span>
@@ -231,7 +234,7 @@ if(count($_SESSION["user"]) == 0) {
         </div>
       </div>
 
-      <div style="float:right; clear: right;" id="customized-home-panel">
+      <div id="customized-home-panel-right">
         <div class="panel panel-primary">
           <div class="panel-heading"><span data-toggle="tooltip" title="A module defines the standby values and completely switch off the appliance when not needed"><strong>SH</strong> (<strong>S</strong>tandby <strong>H</strong>unter)</span></div>
           <div class="panel-body">
