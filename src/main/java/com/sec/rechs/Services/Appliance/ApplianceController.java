@@ -46,10 +46,10 @@ public class ApplianceController {
     // Record data from node
     @GetMapping("/{applianceId}/record-data")
     @ApiOperation("Record the requested node's measurements")
-    public void recordNodesMeasurments() {
+    public void recordNodesMeasurments(@PathVariable(value = "applianceId") Long applianceId) {
         applianceImplentations.setApplianceRepository(applianceRepository);
         applianceImplentations.setMeasurmentRepository(measurmentRepository);
-        applianceImplentations.recordNodeMeasurments();
+        applianceImplentations.recordNodeMeasurments(applianceId);
     }
 
     // Get All appliances

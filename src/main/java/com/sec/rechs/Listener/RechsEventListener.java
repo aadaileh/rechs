@@ -24,6 +24,7 @@ public class RechsEventListener implements EventHandler {
 
     MeasurmentRepository measurmentRepository;
     ApplianceRepository applianceRepository;
+    Long applianceId;
 
     @EventSubscribe
     public void receive(ZWaveEvent event) throws Exception {
@@ -68,10 +69,10 @@ public class RechsEventListener implements EventHandler {
             measurment.setVolts(volts);
             measurment.setWatts(watts);
 
-            applianceRepository.findById((long) 1).map(appliance -> {
+            applianceRepository.findById(applianceId).map(appliance -> {
                 measurment.setAppliance(appliance);
                 return measurmentRepository.save(measurment);
-            }).orElseThrow(() -> new ResourceNotFoundException("ApplianceController", "id", 1));
+            }).orElseThrow(() -> new ResourceNotFoundException("ApplianceController", "id", applianceId));
 
         }
     }
@@ -99,6 +100,14 @@ public class RechsEventListener implements EventHandler {
 
     public void setApplianceRepository(ApplianceRepository applianceRepository) {
         this.applianceRepository = applianceRepository;
+    }
+
+    public Long getApplianceId() {
+        return applianceId;
+    }
+
+    public void setApplianceId(Long applianceId) {
+        this.applianceId = applianceId;
     }
 }
 

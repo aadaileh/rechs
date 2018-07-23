@@ -20,7 +20,6 @@ public interface MeasurmentRepository extends JpaRepository<Measurment, Long> {
             "COUNT(*) as counter " +
             "FROM Measurment " +
             "WHERE appliance_id = :applianceId " +
-//            "AND amps != 0" +
             "GROUP BY " +
             "HOUR(created_timestamp)")
     List<AmpsAndDate> findAmpsByApplianceIdGroupByHour(@Param("applianceId") Long ApplianceId);
@@ -31,7 +30,6 @@ public interface MeasurmentRepository extends JpaRepository<Measurment, Long> {
             "COUNT(*) as counter " +
             "FROM Measurment " +
             "WHERE appliance_id = :applianceId " +
-//            "AND amps != 0" +
             "GROUP BY " +
             "DAY(created_timestamp)," +
             "MONTH(created_timestamp)," +
@@ -45,7 +43,6 @@ public interface MeasurmentRepository extends JpaRepository<Measurment, Long> {
             "COUNT(*) as counter " +
             "FROM Measurment " +
             "WHERE appliance_id = :applianceId " +
-//            "AND watts != 0" +
             "GROUP BY " +
             "HOUR(created_timestamp)")
     List<WattsAndDate> findWattsByApplianceIdGroupByHour(@Param("applianceId") Long ApplianceId);
@@ -56,7 +53,6 @@ public interface MeasurmentRepository extends JpaRepository<Measurment, Long> {
             "COUNT(*) as counter " +
             "FROM Measurment " +
             "WHERE appliance_id = :applianceId " +
-//            "AND watts != 0" +
             "GROUP BY " +
             "DAY(created_timestamp)," +
             "MONTH(created_timestamp)," +
@@ -70,7 +66,6 @@ public interface MeasurmentRepository extends JpaRepository<Measurment, Long> {
             "COUNT(*) as counter " +
             "FROM Measurment " +
             "WHERE appliance_id = :applianceId " +
-//            "AND kwh != 0" +
             "GROUP BY " +
             "HOUR(created_timestamp)")
     List<KwhAndDate> findKwhByApplianceIdGroupByHour(@Param("applianceId") Long ApplianceId);
@@ -81,7 +76,6 @@ public interface MeasurmentRepository extends JpaRepository<Measurment, Long> {
             "COUNT(*) as counter " +
             "FROM Measurment " +
             "WHERE appliance_id = :applianceId " +
-//            "AND kwh != 0" +
             "GROUP BY " +
             "DAY(created_timestamp)," +
             "MONTH(created_timestamp)," +

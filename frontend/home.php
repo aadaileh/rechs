@@ -147,8 +147,8 @@ if(count($_SESSION["user"]) == 0) {
     -ms-user-select: none;
   }
   #customized-home-panel{
-    width: 50%;
-    padding: 3px;
+    width: 100%;
+    padding: 5px;
   }
   </style>
 </head>
@@ -157,91 +157,112 @@ if(count($_SESSION["user"]) == 0) {
 <?php include("inc/cgi/top-nav.php");?>
 
 
-<div style="float:left; clear: left;" id="customized-home-panel">
-  <div class="panel panel-primary">
-    <div class="panel-heading"><strong data-toggle="tooltip" title="Bosch Model 1234 Extra">Node 1: Refrigerator</strong></div>
-    <div class="panel-body">
-      <div><canvas id="canvasWattsFrigerator"></canvas></div>
+  <div class="row">
+    <div class="col-sm-6">
+
+      <div style="" id="customized-home-panel">
+        <div class="panel panel-primary">
+          <div class="panel-heading"><strong data-toggle="tooltip" title="Bosch Model 1234 Extra">Node 1: Refrigerator</strong></div>
+          <div class="panel-body">
+            <div><canvas id="canvasWattsFrigerator"></canvas></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="" id="customized-home-panel">
+        <div class="panel panel-primary">
+          <div class="panel-heading"><strong>Node 2: TV</strong></div>
+          <div class="panel-body">
+            <div><canvas id="canvasWattsTv"></canvas></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="" id="customized-home-panel">
+        <div class="panel panel-primary">
+          <div class="panel-heading"><strong>Node 3: Lamp</strong></div>
+          <div class="panel-body">
+            <div><canvas id="canvasWattsLamp"></canvas></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-sm-6">
+
+      <div style="float:left;" id="customized-home-panel">
+        <div class="panel panel-primary">
+          <div class="panel-heading"><a href="energy-provider-optimizer.php" data-toggle="tooltip" title="Energy Provider Optimizer" style="color:white;">
+            <strong>EPO</strong> (<strong>E</strong>nergy <strong>P</strong>rovider <strong>O</strong>ptimizer)</a>
+          </div>
+          <div class="panel-body">
+            First time visited:<br>
+            Click <a href="/energy-provider-optimizer.php">here</a> to activate the Energy Provider Optimizer.<br><br>
+
+            View shown after activating the EPO (Energy Provider Optimizer):<br>
+            Searching for proper Energy Provider has revelaed the following result(s):<br>
+            1. XYZ Energy Provider<br>
+
+            Your current annual Electricity costs are XXX€. Once you switch to the suggested XYZ Energy Provider, you can save up to XX% of your costs. This means XX€ less annualy.
+            <br><br>
+          </div>
+        </div>
+      </div>
+
+      <div style="float:left;" id="customized-home-panel">
+        <div class="panel panel-primary">
+          <div class="panel-heading"><span data-toggle="tooltip" title="Appliance Exchange Suggester">
+            <strong>ARS</strong> (<strong>A</strong>ppliance <strong>R</strong>eplacement <strong>S</strong>uggester)</span>
+          </div>
+          <div class="panel-body">
+            Based on the calculated energy consumption, RECHS can make following suggestions:<br/><br/>
+            <strong>Node #1: (Refrigerator):</strong><br/>
+            Lorem ipsum dolor amet
+            <br><br>
+
+            <strong>Node #2: (TV):</strong><br/>
+            Lorem ipsum dolor amet
+            <br><br>
+
+            <strong>Node #3: (Lamp):</strong><br/>
+            Lorem ipsum dolor amet
+            <br><br>
+          </div>
+        </div>
+      </div>
+
+      <div style="float:right; clear: right;" id="customized-home-panel">
+        <div class="panel panel-primary">
+          <div class="panel-heading"><span data-toggle="tooltip" title="A module defines the standby values and completely switch off the appliance when not needed"><strong>SH</strong> (<strong>S</strong>tandby <strong>H</strong>unter)</span></div>
+          <div class="panel-body">
+            
+            Based on the calculated standby energy consumption and behaviour, RECHS has ascertained the following facts:<br/><br/>
+            <strong>Node #1: (Refrigerator):</strong><br/>
+            <strong style="color:red;">Standby is turned off.</strong> No tracking, neither suggestions are made. To turn it on, please refer to <a href="/appliances-overview.php">Appliances overview module</a>
+            <br><br>
+
+            <strong>Node #2: (TV):</strong><br/>
+            Lorem ipsum dolor amet
+            <br><br>
+
+            <strong>Node #3: (Lamp):</strong><br/>
+            Lorem ipsum dolor amet
+            <br><br>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
-</div>
-
-<div style="float:right; clear: right;" id="customized-home-panel">
-  <div class="panel panel-primary">
-    <div class="panel-heading"><a href="energy-provider-optimizer.php" data-toggle="tooltip" title="Energy Provider Optimizer" style="color:white;"><strong>EPO</strong> (<strong>E</strong>nergy <strong>P</strong>rovider <strong>O</strong>ptimizer)</a></div>
-    <div class="panel-body">
-      First time visited:<br>
-      Click <a href="/energy-provider-optimizer.php">here</a> to activate the Energy Provider Optimizer.<br><br>
-
-      View shown after activating the EPO (Energy Provider Optimizer):<br>
-      Searching for proper Energy Provider has revelaed the following result(s):<br>
-      1. XYZ Energy Provider<br>
-
-      Your current annual Electricity costs are XXX€. Once you switch to the suggested XYZ Energy Provider, you can save up to XX% of your costs. This means XX€ less annualy.
-      <br><br>
-    </div>
-  </div>
-</div>
 
 
-<div style="float:right; clear: right;" id="customized-home-panel">
-  <div class="panel panel-primary">
-    <div class="panel-heading"><span data-toggle="tooltip" title="Appliances Exchange Suggester"><strong>AES</strong> (<strong>A</strong>ppliances <strong>E</strong>xchange <strong>S</strong>uggester)</span></div>
-    <div class="panel-body">
-      Based on the calculated energy consumption, RECHS can make following suggestions:<br/><br/>
-      <strong>Node #1: (Refrigerator):</strong><br/>
-      Lorem ipsum dolor amet
-      <br><br>
 
-      <strong>Node #2: (TV):</strong><br/>
-      Lorem ipsum dolor amet
-      <br><br>
 
-      <strong>Node #3: (Lamp):</strong><br/>
-      Lorem ipsum dolor amet
-      <br><br>
-    </div>
-  </div>
-</div>
 
-<div style="float:right; clear: both;" id="customized-home-panel">
-  <div class="panel panel-primary">
-    <div class="panel-heading"><span data-toggle="tooltip" title="A module defines the standby values and completely switch off the appliance when not needed"><strong>SH</strong> (<strong>S</strong>tandby <strong>H</strong>unter)</span></div>
-    <div class="panel-body">
-      
-      Based on the calculated standby energy consumption and behaviour, RECHS has ascertained the following facts:<br/><br/>
-      <strong>Node #1: (Refrigerator):</strong><br/>
-      <strong style="color:red;">Standby is turned off.</strong> No tracking, neither suggestions are made. To turn it on, please refer to <a href="/appliances-overview.php">Appliances overview module</a>
-      <br><br>
 
-      <strong>Node #2: (TV):</strong><br/>
-      Lorem ipsum dolor amet
-      <br><br>
 
-      <strong>Node #3: (Lamp):</strong><br/>
-      Lorem ipsum dolor amet
-      <br><br>
-    </div>
-  </div>
-</div>
 
-<div style="float:left; clear: left;" id="customized-home-panel">
-  <div class="panel panel-primary">
-    <div class="panel-heading"><strong>Node 2: TV</strong></div>
-    <div class="panel-body">
-      <div><canvas id="canvasWattsTv"></canvas></div>
-    </div>
-  </div>
-</div>
 
-<div style="float:left;clear: left;" id="customized-home-panel">
-  <div class="panel panel-primary">
-    <div class="panel-heading"><strong>Node 3: Lamp</strong></div>
-    <div class="panel-body">
-      <div><canvas id="canvasWattsLamp"></canvas></div>
-    </div>
-  </div>
-</div>
 
 
 

@@ -35,7 +35,8 @@ public class ApplianceImplentations {
     ApplianceRepository applianceRepository;
     MeasurmentRepository measurmentRepository;
 
-    public void recordNodeMeasurments() {
+    public void recordNodeMeasurments(Long applianceId) {
+
         try {
             ZWaveSession zWaveSession = new LocalZwaveSession();
             zWaveSession.connect();
@@ -43,6 +44,7 @@ public class ApplianceImplentations {
             RechsEventListener rechsEventListener = new RechsEventListener();
             rechsEventListener.setApplianceRepository(applianceRepository);
             rechsEventListener.setMeasurmentRepository(measurmentRepository);
+            rechsEventListener.setApplianceId(applianceId);
 
             zWaveSession.subscribe(rechsEventListener);
 
