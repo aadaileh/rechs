@@ -52,26 +52,54 @@ public class MeasurmentController {
     }
 
     // Get an Appliance Measurments (Watts)
-    @GetMapping("/watts/appliance/{applianceId}")
+    @GetMapping("/watts/appliance/{applianceId}/group-by/{groupBy}")
     @ApiOperation("Retrieve measurments (Watts) from an appliance by id")
-    public List<WattsAndDate> getWattsByApplianceId(@PathVariable (value = "applianceId") Long applianceId) {
-        List<WattsAndDate> watts = measurmentRepository.findByApplianceIdAndWattsIsNotNull(applianceId);
+    public List<WattsAndDate> getWattsByApplianceId(
+            @PathVariable (value = "applianceId") Long applianceId,
+            @PathVariable (value = "groupBy") String groupBy) {
+
+        List<WattsAndDate> watts = null;
+
+        if (groupBy.equals("hour")) {
+            watts = measurmentRepository.findWattsByApplianceIdGroupByHour(applianceId);
+        } else {
+            watts = measurmentRepository.findWattsByApplianceIdGroupByYearAndMonthAndDay(applianceId);
+        }
+
         return watts;
     }
 
     // Get an Appliance Measurments (Amps)
-    @GetMapping("/amps/appliance/{applianceId}")
+    @GetMapping("/amps/appliance/{applianceId}/group-by/{groupBy}")
     @ApiOperation("Retrieve measurments (Ampers) from an appliance by id")
-    public List<AmpsAndDate> getAmpsByApplianceId(@PathVariable (value = "applianceId") Long applianceId) {
-        List<AmpsAndDate> amps = measurmentRepository.findByApplianceIdAndAmpsIsNotNull(applianceId);
+    public List<AmpsAndDate> getAmpsByApplianceId(
+            @PathVariable (value = "applianceId") Long applianceId,
+            @PathVariable (value = "groupBy") String groupBy) {
+
+        List<AmpsAndDate> amps = null;
+
+        if (groupBy.equals("hour")) {
+            amps = measurmentRepository.findAmpsByApplianceIdGroupByHour(applianceId);
+        } else {
+            amps = measurmentRepository.findAmpsByApplianceIdGroupByYearAndMonthAndDay(applianceId);
+        }
         return amps;
     }
 
     // Get an Appliance Measurments (Kwh)
-    @GetMapping("/kwh/appliance/{applianceId}")
+    @GetMapping("/kwh/appliance/{applianceId}/group-by/{groupBy}")
     @ApiOperation("Retrieve measurments (Kwh) from an appliance by id")
-    public List<KwhAndDate> getKwhByApplianceId(@PathVariable (value = "applianceId") Long applianceId) {
-        List<KwhAndDate> kwh = measurmentRepository.findByApplianceIdAndKwhIsNotNull(applianceId);
+    public List<KwhAndDate> getKwhByApplianceId(
+            @PathVariable (value = "applianceId") Long applianceId,
+            @PathVariable (value = "groupBy") String groupBy) {
+
+        List<KwhAndDate> kwh = null;
+
+        if (groupBy.equals("hour")) {
+            kwh = measurmentRepository.findKwhByApplianceIdGroupByHour(applianceId);
+        } else {
+            kwh = measurmentRepository.findKwhByApplianceIdGroupByYearAndMonthAndDay(applianceId);
+        }
         return kwh;
     }
 

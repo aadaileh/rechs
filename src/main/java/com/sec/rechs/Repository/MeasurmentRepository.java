@@ -15,39 +15,77 @@ import java.util.List;
 public interface MeasurmentRepository extends JpaRepository<Measurment, Long> {
 
     @Query("SELECT " +
-            "CONCAT( YEAR(created_timestamp), '-', MONTH(created_timestamp), '-', DAY(created_timestamp) ) as concatedDateTime, " +
-            "AVG(amps) as AVGMeasurment, " +
+            "CONCAT( HOUR(created_timestamp) ) as concatedDateTime, " +
+            "ROUND(AVG(amps),4) as AVGMeasurment, " +
             "COUNT(*) as counter " +
             "FROM Measurment " +
             "WHERE appliance_id = :applianceId " +
+//            "AND amps != 0" +
+            "GROUP BY " +
+            "HOUR(created_timestamp)")
+    List<AmpsAndDate> findAmpsByApplianceIdGroupByHour(@Param("applianceId") Long ApplianceId);
+
+    @Query("SELECT " +
+            "CONCAT( YEAR(created_timestamp), '-', MONTH(created_timestamp), '-', DAY(created_timestamp)) as concatedDateTime, " +
+            "ROUND(AVG(amps),4) as AVGMeasurment, " +
+            "COUNT(*) as counter " +
+            "FROM Measurment " +
+            "WHERE appliance_id = :applianceId " +
+//            "AND amps != 0" +
             "GROUP BY " +
             "DAY(created_timestamp)," +
             "MONTH(created_timestamp)," +
             "YEAR(created_timestamp)")
-    List<AmpsAndDate> findByApplianceIdAndAmpsIsNotNull(@Param("applianceId") Long ApplianceId);
+    List<AmpsAndDate> findAmpsByApplianceIdGroupByYearAndMonthAndDay(@Param("applianceId") Long ApplianceId);
+
+
+    @Query("SELECT " +
+            "CONCAT( HOUR(created_timestamp) ) as concatedDateTime, " +
+            "ROUND(AVG(watts),4) as AVGMeasurment, " +
+            "COUNT(*) as counter " +
+            "FROM Measurment " +
+            "WHERE appliance_id = :applianceId " +
+//            "AND watts != 0" +
+            "GROUP BY " +
+            "HOUR(created_timestamp)")
+    List<WattsAndDate> findWattsByApplianceIdGroupByHour(@Param("applianceId") Long ApplianceId);
 
     @Query("SELECT " +
             "CONCAT( YEAR(created_timestamp), '-', MONTH(created_timestamp), '-', DAY(created_timestamp) ) as concatedDateTime, " +
-            "AVG(watts) as AVGMeasurment, " +
+            "ROUND(AVG(watts),4) as AVGMeasurment, " +
             "COUNT(*) as counter " +
             "FROM Measurment " +
             "WHERE appliance_id = :applianceId " +
+//            "AND watts != 0" +
             "GROUP BY " +
             "DAY(created_timestamp)," +
             "MONTH(created_timestamp)," +
             "YEAR(created_timestamp)")
-    List<WattsAndDate> findByApplianceIdAndWattsIsNotNull(@Param("applianceId") Long ApplianceId);
+    List<WattsAndDate> findWattsByApplianceIdGroupByYearAndMonthAndDay(@Param("applianceId") Long ApplianceId);
+
 
     @Query("SELECT " +
-            "CONCAT( YEAR(created_timestamp), '-', MONTH(created_timestamp), '-', DAY(created_timestamp) ) as concatedDateTime, " +
-            "AVG(kwh) as AVGMeasurment, " +
+            "CONCAT( HOUR(created_timestamp) ) as concatedDateTime, " +
+            "ROUND(AVG(kwh),4) as AVGMeasurment, " +
             "COUNT(*) as counter " +
             "FROM Measurment " +
             "WHERE appliance_id = :applianceId " +
+//            "AND kwh != 0" +
+            "GROUP BY " +
+            "HOUR(created_timestamp)")
+    List<KwhAndDate> findKwhByApplianceIdGroupByHour(@Param("applianceId") Long ApplianceId);
+
+    @Query("SELECT " +
+            "CONCAT( YEAR(created_timestamp), '-', MONTH(created_timestamp), '-', DAY(created_timestamp)) as concatedDateTime, " +
+            "ROUND(AVG(kwh),4) as AVGMeasurment, " +
+            "COUNT(*) as counter " +
+            "FROM Measurment " +
+            "WHERE appliance_id = :applianceId " +
+//            "AND kwh != 0" +
             "GROUP BY " +
             "DAY(created_timestamp)," +
             "MONTH(created_timestamp)," +
             "YEAR(created_timestamp)")
-    List<KwhAndDate> findByApplianceIdAndKwhIsNotNull(@Param("applianceId") Long ApplianceId);
+    List<KwhAndDate> findKwhByApplianceIdGroupByYearAndMonthAndDay(@Param("applianceId") Long ApplianceId);
 
 }

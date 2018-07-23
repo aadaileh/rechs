@@ -30,6 +30,7 @@ public class Appliance implements Serializable {
     private String type;
     private String createdBy;
     private String energyEfficientClass;
+    private String externalLink;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -151,5 +152,13 @@ public class Appliance implements Serializable {
 
     public void setEnergyEfficientClass(String energyEfficientClass) {
         this.energyEfficientClass = energyEfficientClass;
+    }
+
+    public String getExternalLink() {
+        return externalLink;
+    }
+
+    public void setExternalLink(String externalLink) {
+        this.externalLink = externalLink;
     }
 }

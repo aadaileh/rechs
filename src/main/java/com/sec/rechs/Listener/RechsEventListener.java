@@ -11,12 +11,9 @@ import com.sec.rechs.Exception.ResourceNotFoundException;
 import com.sec.rechs.Model.Measurment;
 import com.sec.rechs.Repository.ApplianceRepository;
 import com.sec.rechs.Repository.MeasurmentRepository;
-import com.sec.rechs.Services.Appliance.impl.ApplianceImplentations;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
 
@@ -66,17 +63,15 @@ public class RechsEventListener implements EventHandler {
             }
 
             measurment.setKwh(kwh);
-            measurment.setCreatedBy("Abu Adaleh");
+            measurment.setCreatedBy("automatic");
             measurment.setAmps(amps);
             measurment.setVolts(volts);
             measurment.setWatts(watts);
 
-            applianceRepository.findById((long) 3).map(appliance -> {
+            applianceRepository.findById((long) 1).map(appliance -> {
                 measurment.setAppliance(appliance);
                 return measurmentRepository.save(measurment);
-            }).orElseThrow(() -> new ResourceNotFoundException("ApplianceController", "id", 3));
-
-            //return event.getValue();
+            }).orElseThrow(() -> new ResourceNotFoundException("ApplianceController", "id", 1));
 
         }
     }

@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d8941bbd-1646-470d-be8d-b43dcf7611da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/frontend/appliances-overview.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/appliances-overview.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/SQL/measurment.sql" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/SQL/measurment.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/appliances-charts.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/appliances-charts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/energy-provider-management.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/inc/cgi/library.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inc/cgi/library.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/inc/cgi/top-nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inc/cgi/top-nav.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Listener/RechsEventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Listener/RechsEventListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/Appliance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/Appliance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/ApplianceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/ApplianceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/impl/ApplianceImplentations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/impl/ApplianceImplentations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,8 +30,8 @@
       <file leaf-file-name="ApplianceController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/ApplianceController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="65" column="8" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="8" />
+            <state relative-caret-position="227">
+              <caret line="51" column="42" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
               <folding>
                 <element signature="e#1904#1905#0" expanded="true" />
                 <element signature="e#1956#1957#0" expanded="true" />
@@ -33,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Appliance.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Appliance.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/Appliance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="139" column="36" selection-start-line="139" selection-start-column="36" selection-end-line="139" selection-end-column="36" />
+            <state relative-caret-position="420">
+              <caret line="156" column="37" selection-start-line="156" selection-start-column="37" selection-end-line="156" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2323#2324#0" expanded="true" />
@@ -52,6 +59,9 @@
                 <element signature="e#2954#2955#0" expanded="true" />
                 <element signature="e#3228#3229#0" expanded="true" />
                 <element signature="e#3271#3272#0" expanded="true" />
+                <element signature="e#3832#3833#0" expanded="true" />
+                <element signature="e#3888#3889#0" expanded="true" />
+                <element signature="e#3936#3937#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -60,55 +70,17 @@
       <file leaf-file-name="ApplianceImplentations.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/impl/ApplianceImplentations.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="95" selection-start-line="95" selection-end-line="95" />
+            <state relative-caret-position="243">
+              <caret line="46" column="29" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SchedularController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Schedular/SchedularController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="43" selection-start-line="43" selection-end-line="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1331#1332#0" expanded="true" />
-                <element signature="e#1413#1414#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MeasurmentRepository.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MeasurmentRepository.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-44">
-              <caret line="17" column="104" selection-start-line="17" selection-start-column="104" selection-end-line="17" selection-end-column="104" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QuartzTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/sec/rechs/quartz/QuartzTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SimpleExample.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Schedular/SimpleExample.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="74" selection-start-line="74" selection-end-line="74" />
+            <state relative-caret-position="363">
+              <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -119,8 +91,20 @@
       <file leaf-file-name="RechsEventListener.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Listener/RechsEventListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="71" column="32" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="32" />
+            <state relative-caret-position="204">
+              <caret line="73" column="93" selection-start-line="73" selection-start-column="93" selection-end-line="73" selection-end-column="93" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MeasurmentController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="102" column="19" selection-start-line="102" selection-start-column="19" selection-end-line="102" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -133,15 +117,6 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SchedularImplentations.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Schedular/impl/SchedularImplentations.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -189,8 +164,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/impl/ApplianceImplentations.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/Appliance.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Authentication/AuthenticationInterface.java" />
@@ -236,10 +209,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Schedular/SimpleExample.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Schedular/HelloJob.java" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/ApplianceController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/impl/ApplianceImplentations.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/Appliance.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Listener/RechsEventListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java" />
       </list>
     </option>
   </component>
@@ -250,7 +225,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="260" />
     <option name="y" value="20" />
     <option name="width" value="1400" />
@@ -337,6 +312,13 @@
               <item name="rechs" type="462c0819:PsiDirectoryNode" />
               <item name="Services" type="462c0819:PsiDirectoryNode" />
               <item name="Schedular" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RECHS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rechs" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="RECHS" type="b2602c69:ProjectViewProjectNode" />
@@ -523,7 +505,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -547,9 +529,9 @@
       <window_info id="Image Layers" order="8" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="bottom" id="Version Control" order="12" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3233618" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36039886" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21073826" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13221477" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
       <window_info anchor="right" id="Google Cloud Storage" order="4" />
       <window_info anchor="right" id="Theme Preview" order="6" />
@@ -670,9 +652,6 @@ ZWaveDriver zWaveDriver = new ZWaveDriver();</expression-string>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/Transaction.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
@@ -732,13 +711,6 @@ ZWaveDriver zWaveDriver = new ZWaveDriver();</expression-string>
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="8" lean-forward="true" selection-start-column="8" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -817,16 +789,6 @@ ZWaveDriver zWaveDriver = new ZWaveDriver();</expression-string>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="33" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="73" column="23" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -981,16 +943,6 @@ ZWaveDriver zWaveDriver = new ZWaveDriver();</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/sec/rechs/quartz/QuartzTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Schedular/HelloJob.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1004,9 +956,16 @@ ZWaveDriver zWaveDriver = new ZWaveDriver();</expression-string>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Schedular/SimpleExample.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
+        <state relative-caret-position="255">
           <caret line="74" selection-start-line="74" selection-end-line="74" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1014,45 +973,27 @@ ZWaveDriver zWaveDriver = new ZWaveDriver();</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Listener/RechsEventListener.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/sec/rechs/quartz/QuartzTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="71" column="32" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-44">
-          <caret line="17" column="104" selection-start-line="17" selection-start-column="104" selection-end-line="17" selection-end-column="104" />
+        <state relative-caret-position="211">
+          <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/ApplianceController.java">
+    <entry file="jar://$PROJECT_DIR$/../library/obera_zwave.jar!/com/oberasoftware/home/zwave/api/ZWaveSession.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="65" column="8" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="8" />
-          <folding>
-            <element signature="e#1904#1905#0" expanded="true" />
-            <element signature="e#1956#1957#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/impl/ApplianceImplentations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="95" selection-start-line="95" selection-end-line="95" />
+        <state relative-caret-position="187">
+          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/Appliance.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="139" column="36" selection-start-line="139" selection-start-column="36" selection-end-line="139" selection-end-column="36" />
+        <state relative-caret-position="420">
+          <caret line="156" column="37" selection-start-line="156" selection-start-column="37" selection-end-line="156" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2323#2324#0" expanded="true" />
@@ -1067,6 +1008,54 @@ ZWaveDriver zWaveDriver = new ZWaveDriver();</expression-string>
             <element signature="e#2954#2955#0" expanded="true" />
             <element signature="e#3228#3229#0" expanded="true" />
             <element signature="e#3271#3272#0" expanded="true" />
+            <element signature="e#3832#3833#0" expanded="true" />
+            <element signature="e#3888#3889#0" expanded="true" />
+            <element signature="e#3936#3937#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/impl/ApplianceImplentations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="46" column="29" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/ApplianceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="51" column="42" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
+          <folding>
+            <element signature="e#1904#1905#0" expanded="true" />
+            <element signature="e#1956#1957#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="102" column="19" selection-start-line="102" selection-start-column="19" selection-end-line="102" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Listener/RechsEventListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="73" column="93" selection-start-line="73" selection-start-column="93" selection-end-line="73" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -36,9 +36,9 @@ switch ($scriptName) {
     $userManagementClass = 'active ';
     break;
 
-    case 'energy-provider-management.php':
-    //echo 'energyProviderManagementClass';
-    $energyProviderManagementClass = 'active ';
+    case 'energy-provider-optimizer.php':
+    //echo 'energyProviderOptimizerClass';
+    $energyProviderOptimizerClass = 'active ';
     break;   
 }
 
@@ -68,7 +68,7 @@ switch ($scriptName) {
         </li>
         <li class="<?php echo $nodeManagementClass;?>"><a href="node-management.php">Node Management</a></li>
         <li class="<?php echo $userManagementClass;?>"><a href="user-management.php">User Management</a></li>
-        <li class="<?php echo $energyProviderManagementClass;?>"><a href="energy-provider-management.php">Energy Provider Management</a></li>
+        <li class="<?php echo $energyProviderOptimizerClass;?>"><a href="energy-provider-optimizer.php">Energy Provider Optimizer</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="profile.php"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION["user"]->fullName;?></a></li>
