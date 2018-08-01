@@ -3,9 +3,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.sec</groupId>
+	<groupId>com.kingston.uni.sec</groupId>
 	<artifactId>rechs</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>rechs</name>
@@ -112,6 +112,12 @@
 			<artifactId>quartz-jobs</artifactId>
 			<version>2.3.0</version>
 		</dependency>
+
+        <dependency>
+            <groupId>com.oberasoftware</groupId>
+            <artifactId>obera_zwave</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
 	</dependencies>
 

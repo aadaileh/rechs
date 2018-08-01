@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import static org.slf4j.LoggerFactory.getLogger;
@@ -46,10 +48,12 @@ public class ApplianceController {
     // Record data from node
     @GetMapping("/{applianceId}/record-data")
     @ApiOperation("Record the requested node's measurements")
-    public void recordNodesMeasurments(@PathVariable(value = "applianceId") Long applianceId) {
+    public String recordNodesMeasurments(@PathVariable(value = "applianceId") Long applianceId) {
         applianceImplentations.setApplianceRepository(applianceRepository);
         applianceImplentations.setMeasurmentRepository(measurmentRepository);
         applianceImplentations.recordNodeMeasurments(applianceId);
+        
+        return "Recording job started on: " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd.MM.YYYY HH:mm:SS:SSS")).toString();
     }
 
     // Get All appliances
