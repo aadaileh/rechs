@@ -215,7 +215,7 @@ if(count($_SESSION["user"]) == 0) {
       <div id="customized-home-panel-right">
         <div class="panel panel-primary">
           <div class="panel-heading"><span data-toggle="tooltip" title="Appliance Exchange Suggester">
-            <strong>ARS</strong> (<strong>A</strong>ppliance <strong>R</strong>eplacement <strong>S</strong>uggester)</span>
+            <strong>ARR</strong> (<strong>A</strong>ppliance <strong>R</strong>eplacement <strong>R</strong>ecommender)</span>
           </div>
           <div class="panel-body">
             Based on the calculated energy consumption, RECHS can make following suggestions:<br/><br/>
@@ -236,7 +236,7 @@ if(count($_SESSION["user"]) == 0) {
 
       <div id="customized-home-panel-right">
         <div class="panel panel-primary">
-          <div class="panel-heading"><span data-toggle="tooltip" title="A module defines the standby values and completely switch off the appliance when not needed"><strong>SH</strong> (<strong>S</strong>tandby <strong>H</strong>unter)</span></div>
+          <div class="panel-heading"><span data-toggle="tooltip" title="A module defines the standby values and completely switch off the appliance when not needed"><strong>SDA</strong> (<strong>S</strong>tandby <strong>D</strong>etector & <strong>O</strong>ptimizer)</span></div>
           <div class="panel-body">
             
             Based on the calculated standby energy consumption and behaviour, RECHS has ascertained the following facts:<br/><br/>
@@ -250,6 +250,25 @@ if(count($_SESSION["user"]) == 0) {
 
             <strong>Node #3: (Lamp):</strong><br/>
             Lorem ipsum dolor amet
+            <br><br>
+          </div>
+        </div>
+      </div>
+
+      <div id="customized-home-panel-right">
+        <div class="panel panel-primary">
+          <div class="panel-heading"><span data-toggle="tooltip" title="A module defines the standby values and completely switch off the appliance when not needed"><strong>Schedular Details</strong></span></div>
+          <div class="panel-body">
+            
+            First time visited:<br>
+            Click <a href="/energy-provider-optimizer.php">here</a> to activate the Energy Provider Optimizer.<br><br>
+
+            View shown after activating the EPO (Energy Provider Optimizer):<br>
+            Searching for proper Energy Provider has revelaed the following result(s):<br>
+            1. XYZ Energy Provider<br>
+
+            Your current annual Electricity costs are XXX€. Once you switch to the suggested XYZ Energy Provider, you can save up to XX% of your costs. This means XX€ less annualy.
+            
             <br><br>
           </div>
         </div>
@@ -273,7 +292,7 @@ if(count($_SESSION["user"]) == 0) {
 
   <script>
     var configWattsFrigerator = {
-      type: 'line',
+      type: 'bar',
       data: {
         labels: [<?php echo "'" . implode("', '", $watts_Arrays["dates"]) . "'";?>],
         datasets: [{
@@ -322,29 +341,58 @@ if(count($_SESSION["user"]) == 0) {
     };
 
     
+    // var configWattsLamp = {
+    //   type: 'radar',
+    //   data: {
+    //     labels: [<?php echo "'" . implode("', '", $lamp_watts_Arrays["dates"]) . "'";?>],
+    //     datasets: [{
+    //       label: 'Watts',
+    //       fill: false,
+    //       backgroundColor: window.chartColors.yellow,
+    //       borderColor: window.chartColors.yellow,
+    //       data: [<?php echo implode(",",$lamp_watts_Arrays["measurment"]);?>],
+    //     }]
+    //   },
+    //   options: {
+    //     responsive: true,
+    //     title: {display: true, text: ''},
+    //     tooltips: {mode: 'index', intersect: false},
+    //     hover: {mode: 'nearest', intersect: true},
+    //     scales: {
+    //       xAxes: [{display: true, scaleLabel: {display: true, labelString: 'Hours'}}],
+    //       yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Measurment'}}]
+    //     }
+    //   }
+    // };
+
+    var color = Chart.helpers.color;
     var configWattsLamp = {
-      type: 'line',
+      type: 'radar',
       data: {
         labels: [<?php echo "'" . implode("', '", $lamp_watts_Arrays["dates"]) . "'";?>],
         datasets: [{
           label: 'Watts',
-          fill: false,
-          backgroundColor: window.chartColors.yellow,
+          backgroundColor: color(window.chartColors.yellow).alpha(0.2).rgbString(),
           borderColor: window.chartColors.yellow,
-          data: [<?php echo implode(",",$lamp_watts_Arrays["measurment"]);?>],
+          pointBackgroundColor: window.chartColors.yellow,
+          data: [<?php echo implode(",",$lamp_watts_Arrays["measurment"]);?>]
         }]
       },
       options: {
-        responsive: true,
-        title: {display: true, text: ''},
-        tooltips: {mode: 'index', intersect: false},
-        hover: {mode: 'nearest', intersect: true},
-        scales: {
-          xAxes: [{display: true, scaleLabel: {display: true, labelString: 'Hours'}}],
-          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Measurment'}}]
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: true,
+          text: ''
+        },
+        scale: {
+          ticks: {
+            beginAtZero: true
+          }
         }
       }
-    };
+    }; 
 
     window.onload = function() {
       var ctxWattsFrigerator = document.getElementById('canvasWattsFrigerator').getContext('2d');
@@ -353,8 +401,11 @@ if(count($_SESSION["user"]) == 0) {
       var ctxWattsTv = document.getElementById('canvasWattsTv').getContext('2d');
       window.myLine = new Chart(ctxWattsTv, configWattsTv);
 
-      var ctxWattsLamp = document.getElementById('canvasWattsLamp').getContext('2d');
-      window.myLine = new Chart(ctxWattsLamp, configWattsLamp);
+      // var ctxWattsLamp = document.getElementById('canvasWattsLamp').getContext('2d');
+      // window.myLine = new Chart(ctxWattsLamp, configWattsLamp);
+
+      window.myRadar = new Chart(document.getElementById('canvasWattsLamp'), configWattsLamp);
+
     };
   </script>
 

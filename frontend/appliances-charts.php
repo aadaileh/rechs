@@ -177,15 +177,15 @@ if(count($_SESSION["user"]) == 0) {
   // print_r($tv_amps_Arrays);
   // echo "</pre>";
 
-  echo "<pre>lamp_kwh_Arrays:";
-  print_r($lamp_kwh_Arrays);
-  echo "</pre>";
-  echo "<pre>lamp_watts_Arrays:";
-  print_r($lamp_watts_Arrays);
-  echo "</pre>";
-  echo "<pre>lamp_amps_Arrays:";
-  print_r($lamp_amps_Arrays);
-  echo "</pre>";
+  // echo "<pre>lamp_kwh_Arrays:";
+  // print_r($lamp_kwh_Arrays);
+  // echo "</pre>";
+  // echo "<pre>lamp_watts_Arrays:";
+  // print_r($lamp_watts_Arrays);
+  // echo "</pre>";
+  // echo "<pre>lamp_amps_Arrays:";
+  // print_r($lamp_amps_Arrays);
+  // echo "</pre>";
 ?>
 
 <!DOCTYPE html>
