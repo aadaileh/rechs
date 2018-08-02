@@ -20,7 +20,6 @@ switch ($scriptName) {
  
    case 'appliances-overview.php':
    case 'appliances-charts.php':
-   case 'appliances-status-panel.php':
    case 'appliances-schedular.php':
     //echo 'appliancesClass';
     $appliancesClass = 'active ';
@@ -62,7 +61,6 @@ switch ($scriptName) {
           <ul class="dropdown-menu">
             <li><a href="appliances-overview.php">Overview</a></li>
             <li><a href="appliances-charts.php">Detailed Charts</a></li>
-            <li><a href="appliances-status-panel.php">Status Panel</a></li>
             <li><a href="appliances-schedular.php">Schedular</a></li>
           </ul>
         </li>

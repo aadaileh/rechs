@@ -207,7 +207,7 @@ if(count($_SESSION["user"]) == 0) {
             1. XYZ Energy Provider<br>
 
             Your current annual Electricity costs are XXX€. Once you switch to the suggested XYZ Energy Provider, you can save up to XX% of your costs. This means XX€ less annualy.
-            <br><br>
+            <br>
           </div>
         </div>
       </div>
@@ -229,7 +229,7 @@ if(count($_SESSION["user"]) == 0) {
 
             <strong>Node #3: (Lamp):</strong><br/>
             Lorem ipsum dolor amet
-            <br><br>
+            <br>
           </div>
         </div>
       </div>
@@ -250,7 +250,7 @@ if(count($_SESSION["user"]) == 0) {
 
             <strong>Node #3: (Lamp):</strong><br/>
             Lorem ipsum dolor amet
-            <br><br>
+            <br>
           </div>
         </div>
       </div>
@@ -261,15 +261,31 @@ if(count($_SESSION["user"]) == 0) {
           <div class="panel-body">
             
             First time visited:<br>
-            Click <a href="/energy-provider-optimizer.php">here</a> to activate the Energy Provider Optimizer.<br><br>
+            Click <a href="/energy-provider-optimizer.php">here</a> to schedule new job.<br><br>
 
             View shown after activating the EPO (Energy Provider Optimizer):<br>
             Searching for proper Energy Provider has revelaed the following result(s):<br>
             1. XYZ Energy Provider<br>
 
             Your current annual Electricity costs are XXX€. Once you switch to the suggested XYZ Energy Provider, you can save up to XX% of your costs. This means XX€ less annualy.
+
+            <br>
+          </div>
+        </div>
+      </div>
+
+      <div id="customized-home-panel-right">
+        <div class="panel panel-primary">
+          <div class="panel-heading"><span data-toggle="tooltip" title="A module defines the standby values and completely switch off the appliance when not needed"><strong>Users Overview</strong></span></div>
+          <div class="panel-body">
             
-            <br><br>
+           
+            X Users are created.<br>
+            X Admins are created.<br>
+            X of them are active (logged in last 3 days).<br>
+            Last successful login done on MM/dd/YYYY at HH:mm:ss<br>
+            Last failed login done on MM/dd/YYYY at HH:mm:ss<br>
+
           </div>
         </div>
       </div>
