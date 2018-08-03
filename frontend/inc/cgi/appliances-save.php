@@ -5,7 +5,7 @@ ini_set('display_errors', 0);
 
 switch ($_POST["standBy"]) {
   case 'true':
-    echo "Stand-by Mode is turned ON";
+    echo "Stand-by Mode is turned ON".implode(",", $_POST);
     break;
   
   case 'false':

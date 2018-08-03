@@ -86,12 +86,27 @@ if(count($_SESSION["user"]) == 0) {
     $("#save-changes-btn").click(function(){
       $.post("/inc/cgi/appliances-schedular-save.php",
       {
-        // standBy: document.getElementById("stand-by-button").checked,
-        // city: "Duckburg"
+        dateTimeCal1: document.getElementById("date-time-picker-field1").value,
+        dateTimeCal2: document.getElementById("date-time-picker-field2").value, 
+        switchOptionEveryDay: document.getElementById("switchOptionEveryDay").checked,
+        switchOptionEveryMonday: document.getElementById("switchOptionEveryMonday").checked,
+        switchOptionEveryTuesday: document.getElementById("switchOptionEveryTuesday").checked,
+        switchOptionEveryWednesday: document.getElementById("switchOptionEveryWednesday").checked,
+        switchOptionEveryThursday: document.getElementById("switchOptionEveryThursday").checked,
+        switchOptionEveryFriday: document.getElementById("switchOptionEveryFriday").checked,
+        switchOptionEverySaturday: document.getElementById("switchOptionEverySaturday").checked,
+        switchOptionEverySunday: document.getElementById("switchOptionEverySunday").checked
       },
       function(data, status){
       alert("Data: " + data + "\nStatus: " + status);
-      $("#save-response").text(data);
+      if (data == "true") {
+        $("#save-response-true").show();
+        $("#save-response-false").hide();
+      } else {
+        $("#save-response-false").show();
+        $("#save-response-true").hide();
+      }
+      
       });
     });
   });
@@ -165,19 +180,17 @@ if(count($_SESSION["user"]) == 0) {
                 </div>
                 <div class="modal-body">
 
-                  <!-- 
-                  <div class="alert alert-success" role="alert" id="save-response">This is a success alert—check it out!</div>
-                  <div class="alert alert-danger" role="alert">This is a danger alert—check it out!</div>
-                  -->
+                  <div class="alert alert-success" role="alert" id="save-response-true" style="display: none;">This is a success alert—check it out!</div>
+                  <div class="alert alert-danger" role="alert" id="save-response-false" style="display: none;">This is a danger alert—check it out!</div>
 
-                  <form action="#" method="post" id="add-new-schedular" name="add-new-schedular">
+                  <form action="#" method="post" id="add-new-schedular-form" name="add-new-schedular-form ">
 
                     <div class="row">
                       <div class="col-sm-6">
                         
                             <strong>From:</strong><div class="form-group">
                                 <div class='input-group date' id='datetimepicker1'>
-                                    <input type='text' class="form-control" />
+                                    <input type='text' class="form-control" id='date-time-picker-field1'/>
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
@@ -188,7 +201,7 @@ if(count($_SESSION["user"]) == 0) {
                       <div class="col-sm-6">
                             <strong>To:</strong><div class="form-group">
                                 <div class='input-group date' id='datetimepicker2'>
-                                    <input type='text' class="form-control" />
+                                    <input type='text' class="form-control" id='date-time-picker-field2' />
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>

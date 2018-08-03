@@ -3,17 +3,19 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
 
-switch ($_POST["standBy"]) {
+$ret = ".." . implode(",", $_POST);
+
+switch ('false') {
   case 'true':
-    echo "Stand-by Mode is turned ON";
+    echo "true";
     break;
   
   case 'false':
-    echo "Stand-by Mode is turned OFF";
+    echo "false";
     break;
 
   default:
-    echo "No status defined. Something went wrong!!" . serialize($_POST);
+    echo serialize($_POST);
     break;
 }
 

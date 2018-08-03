@@ -64,14 +64,14 @@ $(document).ready(function(){
     $("#stand-by-button").click(function(){
 
 
-        $.post("/inc/appliances-save.php",
+        $.post("/inc/cgi/appliances-save.php",
           {
             standBy: document.getElementById("stand-by-button").checked,
             city: "Duckburg"
           },
         
         function(data, status){
-          //alert("Data: " + data + "\nStatus: " + status);
+          alert("Data: " + data + "\nStatus: " + status);
           $("#stand-by-button-response").text(data);
         });
     });
