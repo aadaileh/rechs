@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d8941bbd-1646-470d-be8d-b43dcf7611da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/frontend/appliances-charts.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/appliances-charts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/appliances-overview.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/appliances-overview.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/appliances-schedular.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/appliances-schedular.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/appliances-status-panel.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/appliances-status-panel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/energy-provider-optimizer.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/energy-provider-optimizer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node-management.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node-management.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/user-management.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/user-management.php" afterDir="false" />
-    </list>
+    <list default="true" id="d8941bbd-1646-470d-be8d-b43dcf7611da" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -280,7 +271,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533195613036" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533197157315" />
     <property name="extract.method.default.visibility" value="packageLocal" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/local-maven-repo/obera_zwave.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
