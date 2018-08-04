@@ -2,8 +2,10 @@ package com.sec.rechs.Services.Appliance;
 
 import com.sec.rechs.Exception.ResourceNotFoundException;
 import com.sec.rechs.Model.Appliance;
+import com.sec.rechs.Model.Schedule;
 import com.sec.rechs.Repository.ApplianceRepository;
 import com.sec.rechs.Repository.MeasurmentRepository;
+import com.sec.rechs.Repository.ScheduleRepository;
 import com.sec.rechs.Services.Appliance.impl.ApplianceImplentations;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -43,6 +45,9 @@ public class ApplianceController {
     @Autowired
     MeasurmentRepository measurmentRepository;
 
+    @Autowired
+    ScheduleRepository scheduleRepository;
+
     ApplianceImplentations applianceImplentations = new ApplianceImplentations();
 
     // Record data from node
@@ -52,7 +57,7 @@ public class ApplianceController {
         applianceImplentations.setApplianceRepository(applianceRepository);
         applianceImplentations.setMeasurmentRepository(measurmentRepository);
         applianceImplentations.recordNodeMeasurments(applianceId);
-        
+
         return "Recording job started on: " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd.MM.YYYY HH:mm:SS:SSS")).toString();
     }
 
@@ -125,5 +130,19 @@ public class ApplianceController {
     @ApiOperation("Return appliance status: On/Off by id")
     public void onOrOffNode(@PathVariable(value = "id") int applianceId) {
         applianceImplentations.onOrOffNode(applianceId);
+    }
+
+    // Create a new schedule
+    @PostMapping("/{id}/schedule/add")
+    @ApiOperation("Create new schedule for an appliance")
+    public Schedule createSchedule(
+            @PathVariable(value = "id") Long applianceId,
+            @Valid @RequestBody Schedule schedule) {
+
+        Appliance appliance = applianceRepository.findById(applianceId)
+                .orElseThrow(() -> new ResourceNotFoundException("ApplianceController", "id", applianceId));
+
+        schedule.setAppliance(appliance);
+        return scheduleRepository.save(schedule);
     }
 }

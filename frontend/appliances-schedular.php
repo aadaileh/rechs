@@ -81,11 +81,37 @@ if(count($_SESSION["user"]) == 0) {
     $('[data-toggle="tooltip"]').tooltip(); 
   });
 
-  //check all checkboxes when every-day is checked
+  //Remove all messages when modal button clicked
+  $(window).on('hide.bs.modal', function (e) {
+    $("#save-response-true").hide();
+    $("#save-response-false").hide(); 
+
+    $("#frig-modal-btn").click(function(){var clickedButtonValue = document.getElementById("frig-modal-btn").value;})
+  });
+
+
+  //Actions when hide modal
+  $(window).on('hide.bs.modal', function (e) {
+    $("#save-response-true").hide();
+    $("#save-response-false").hide(); 
+  });
+
+  var clickedButton = null;
+
+  //Actions when show modal 
+  $(window).on('show.bs.modal', function (e) {
+    var $activeElement = $(document.activeElement);
+    if ($activeElement.is('[data-toggle], [data-dismiss]')) {
+      $clickedButton = $(e.relatedTarget).data('button');
+    }
+  });
+
+  //Submit form
   $(document).ready(function(){
     $("#save-changes-btn").click(function(){
       $.post("/inc/cgi/appliances-schedular-save.php",
       {
+        clickedButton: $clickedButton,
         dateTimeCal1: document.getElementById("date-time-picker-field1").value,
         dateTimeCal2: document.getElementById("date-time-picker-field2").value, 
         switchOptionEveryDay: document.getElementById("switchOptionEveryDay").checked,
@@ -111,7 +137,7 @@ if(count($_SESSION["user"]) == 0) {
     });
   });
 
-  //Submit Form
+  //Set all checked when "every day" is checked
   $(document).ready(function(){
     $("#switchOptionEveryDay").click(function(){
       if ($('#switchOptionEveryDay').is(':checked')) {
@@ -161,19 +187,21 @@ if(count($_SESSION["user"]) == 0) {
     </div>
     <div class="panel-body">
       
-
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="float: right;"><span style="font-weight: bold; font-size: 12pt;">+</span></button>
+      <button data-button="frig" value="frig-button-value" id="frig-modal-btn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNewSchedularModal" style="float: right;"><span style="font-weight: bold; font-size: 12pt;">+</span></button>
+
+
+       <button data-button="tv" value="tv-button-value" id="tv-modal-btn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNewSchedularModal" style="float: right;"><span style="font-weight: bold; font-size: 12pt;">+(tv)</span></button>
 
 
       <div class="container">
 
           <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="addNewSchedularModal" tabindex="-1" role="dialog" aria-labelledby="addNewSchedularModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h4 class="modal-title" id="exampleModalLabel" style="font-weight: bold; float: left;">Add new schedular</h4>
+                  <h4 class="modal-title" id="addNewSchedularModalLabel" style="font-weight: bold; float: left;">Add new schedular</h4>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
