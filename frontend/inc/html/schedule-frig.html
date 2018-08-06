@@ -1,0 +1,183 @@
+<div style="float:left; width: 33%; padding-left: 5px;">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <strong><a href="#" data-toggle="tooltip" title="Bosch Model 1234 Extra" style="color:white;">Refrigerator</a></strong>
+    </div>
+    <div class="panel-body">
+
+      <!-- Button trigger modal -->
+      <button data-button="3" value="frig-button-value" id="frig-modal-btn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNewSchedularModal" style="float: right;"><span style="font-weight: bold; font-size: 12pt;">+</span></button>
+
+       <br/><br/><br/>
+      <div class="row">
+          <div class="col-xs-12">
+              <div class="panel panel-default">
+                  <!-- List group -->
+                  <ul class="list-group">
+
+                 <?php
+                    foreach ($scheduleList["frig"] as $key => $value) {
+
+                      $beginDate = $library->convertString($value->begin);
+                      $endDate = $library->convertString($value->end);
+                  ?>
+                      <li class="list-group-item">
+                          <span style="
+                          font-weight: 500;
+                          font-family: inherit;
+                          font-size: 16pt;
+                          color: #9d9d9d;
+                          font-stretch: ultra-condensed;
+                          "> <?=$beginDate;?> - <?=$endDate;?>
+                          <br>
+                          <span style="font-size: 9pt;">
+                          Repeat every: <?=str_replace("-", ", ", $value->repeat_every);?>
+                          </span>
+                          </span>
+
+                          <div class="material-switch pull-right">
+                              <input id="schedule-list-<?=$value->id;?>" name="schedule-list-<?=$value->id;?>" value="every-day" type="checkbox"/>
+                              <label for="schedule-list-<?=$value->id;?>" class="label-success"></label>
+                          </div>
+                      </li>
+
+                  <?php
+                    }
+                 ?>
+
+                  </ul>
+              </div>
+          </div>
+      </div>
+
+      <div class="container">
+
+          <!-- Modal -->
+          <div class="modal fade" id="addNewSchedularModal" tabindex="-1" role="dialog" aria-labelledby="addNewSchedularModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="addNewSchedularModalLabel" style="font-weight: bold; float: left;">Add new schedular</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+
+                  <div class="alert alert-success" role="alert" id="save-response-true" style="display: none;">Schedule saved correctly.</div>
+                  <div class="alert alert-danger" role="alert" id="save-response-false" style="display: none;">x</div>
+
+                  <form action="#" method="post" id="add-new-schedular-form" name="add-new-schedular-form ">
+                    <input type="hidden" name="createdBy" id="createdBy" value="Ahmed Adaileh">
+
+                    <div class="row">
+                      <div class="col-sm-6">
+
+                            <strong>From:</strong><div class="form-group">
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <input type='text' class="form-control" id='date-time-picker-field1'/>
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+
+                      </div>
+                      <div class="col-sm-6">
+                            <strong>To:</strong><div class="form-group">
+                                <div class='input-group date' id='datetimepicker2'>
+                                    <input type='text' class="form-control" id='date-time-picker-field2' />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div><small>Leave empty if unlimited</small>
+                            </div>
+                      </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="panel panel-default">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading" style="font-weight: bold;">When to repeat:</div>
+
+                                <!-- List group -->
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <strong>Every Day</strong>
+                                        <div class="material-switch pull-right">
+                                            <input id="switchOptionEveryDay" name="switchOptionEveryDay" value="every-day" type="checkbox"/>
+                                            <label for="switchOptionEveryDay" class="label-success"></label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Every Monday
+                                        <div class="material-switch pull-right">
+                                            <input id="switchOptionEveryMonday" name="switchOptionEveryMonday" value="monday" type="checkbox"/>
+                                            <label for="switchOptionEveryMonday" class="label-success"></label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Every Tuesday
+                                        <div class="material-switch pull-right">
+                                            <input id="switchOptionEveryTuesday" name="switchOptionEveryTuesday" value="tuesday" type="checkbox"/>
+                                            <label for="switchOptionEveryTuesday" class="label-success"></label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Every Wednesday
+                                        <div class="material-switch pull-right">
+                                            <input id="switchOptionEveryWednesday" name="switchOptionEveryWednesday" value="wednesday" type="checkbox"/>
+                                            <label for="switchOptionEveryWednesday" class="label-success"></label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Every Thursday
+                                        <div class="material-switch pull-right">
+                                            <input id="switchOptionEveryThursday" name="switchOptionEveryThursday" value="thursday" type="checkbox"/>
+                                            <label for="switchOptionEveryThursday" class="label-success"></label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Every Friday
+                                        <div class="material-switch pull-right">
+                                            <input id="switchOptionEveryFriday" name="switchOptionEveryFriday" value="friday" type="checkbox"/>
+                                            <label for="switchOptionEveryFriday" class="label-success"></label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Every Saturday
+                                        <div class="material-switch pull-right">
+                                            <input id="switchOptionEverySaturday" name="switchOptionEverySaturday" value="saturday" type="checkbox"/>
+                                            <label for="switchOptionEverySaturday" class="label-success"></label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Every Sunday
+                                        <div class="material-switch pull-right">
+                                            <input id="switchOptionEverySunday" name="switchOptionEverySunday" value="sunday" type="checkbox"/>
+                                            <label for="switchOptionEverySunday" class="label-success"></label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                  </form>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" id="save-changes-btn">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal End -->
+
+        </div>
+    </div>
+  </div>
+</div>

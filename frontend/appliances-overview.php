@@ -13,7 +13,7 @@ if(count($_SESSION["user"]) == 0) {
 
   $library = new Library();
 
-  $data = $library->makeCurl ("/appliances/", "GET");
+  $data = $library->makeCurl ("/appliances/", "GET", null);
 
   $refrigerator = Array();
   $tv = Array();

@@ -1,5 +1,6 @@
 package com.sec.rechs.Model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.OnDelete;
@@ -29,9 +30,14 @@ public class Schedule implements Serializable {
     @JsonIgnore
     private Appliance appliance;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy HH:mm", timezone = "Europe/Berlin")
     private Date begin;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy HH:mm", timezone = "Europe/Berlin")
     private Date end;
+
     private String repeat_every;
+    private Boolean active;
 
     @NotBlank
     private String createdBy;
@@ -108,5 +114,13 @@ public class Schedule implements Serializable {
 
     public void setUpdatedTimestamp(Date updatedTimestamp) {
         this.updatedTimestamp = updatedTimestamp;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 }

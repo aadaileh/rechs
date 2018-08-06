@@ -3,12 +3,22 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
 
+include("inc/cgi/library.php");
+
 //Already logged in?
 if(count($_SESSION["user"]) == 0) {
   echo "user is set in the session";
   header('Location: /login.php');
 }
 
+  $library = new Library();
+  $scheduleList["frig"] = $library->makeCurl ("/appliances/3/schedule/list", "GET", NULL);
+  $scheduleList["tv"] = $library->makeCurl ("/appliances/2/schedule/list", "GET", NULL);
+  $scheduleList["lamp"] = $library->makeCurl ("/appliances/1/schedule/list", "GET", NULL);
+
+  // echo "<pre>scheduleList:\n";
+  // print_r($scheduleList);
+  // echo "</pre>";
 
 ?>
 
@@ -25,305 +35,29 @@ if(count($_SESSION["user"]) == 0) {
   <script type="text/javascript" src="inc/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="inc/js/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
   <link rel="stylesheet" href="inc/js/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+  
+  <link rel="stylesheet" href="inc/css/checkboxes-style.css" />
+  <script type="text/javascript" src="inc/js/schedule.js"></script>
 
-
-  <style type="text/css">
-.material-switch > input[type="checkbox"] {
-    display: none;   
-}
-
-.material-switch > label {
-    cursor: pointer;
-    height: 0px;
-    position: relative; 
-    width: 40px;  
-}
-
-.material-switch > label::before {
-    background: rgb(0, 0, 0);
-    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
-    content: '';
-    height: 16px;
-    margin-top: -8px;
-    position:absolute;
-    opacity: 0.3;
-    transition: all 0.4s ease-in-out;
-    width: 40px;
-}
-.material-switch > label::after {
-    background: rgb(255, 255, 255);
-    border-radius: 16px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-    content: '';
-    height: 24px;
-    left: -4px;
-    margin-top: -8px;
-    position: absolute;
-    top: -4px;
-    transition: all 0.3s ease-in-out;
-    width: 24px;
-}
-.material-switch > input[type="checkbox"]:checked + label::before {
-    background: inherit;
-    opacity: 0.5;
-}
-.material-switch > input[type="checkbox"]:checked + label::after {
-    background: inherit;
-    left: 20px;
-}    
-  </style>
-
-  <script type="text/javascript">
-
-  //Tooltip
-  $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
-  });
-
-  //Remove all messages when modal button clicked
-  $(window).on('hide.bs.modal', function (e) {
-    $("#save-response-true").hide();
-    $("#save-response-false").hide(); 
-
-    $("#frig-modal-btn").click(function(){var clickedButtonValue = document.getElementById("frig-modal-btn").value;})
-  });
-
-
-  //Actions when hide modal
-  $(window).on('hide.bs.modal', function (e) {
-    $("#save-response-true").hide();
-    $("#save-response-false").hide(); 
-  });
-
-  var clickedButton = null;
-
-  //Actions when show modal 
-  $(window).on('show.bs.modal', function (e) {
-    var $activeElement = $(document.activeElement);
-    if ($activeElement.is('[data-toggle], [data-dismiss]')) {
-      $clickedButton = $(e.relatedTarget).data('button');
-    }
-  });
-
-  //Submit form
-  $(document).ready(function(){
-    $("#save-changes-btn").click(function(){
-      $.post("/inc/cgi/appliances-schedular-save.php",
-      {
-        clickedButton: $clickedButton,
-        dateTimeCal1: document.getElementById("date-time-picker-field1").value,
-        dateTimeCal2: document.getElementById("date-time-picker-field2").value, 
-        switchOptionEveryDay: document.getElementById("switchOptionEveryDay").checked,
-        switchOptionEveryMonday: document.getElementById("switchOptionEveryMonday").checked,
-        switchOptionEveryTuesday: document.getElementById("switchOptionEveryTuesday").checked,
-        switchOptionEveryWednesday: document.getElementById("switchOptionEveryWednesday").checked,
-        switchOptionEveryThursday: document.getElementById("switchOptionEveryThursday").checked,
-        switchOptionEveryFriday: document.getElementById("switchOptionEveryFriday").checked,
-        switchOptionEverySaturday: document.getElementById("switchOptionEverySaturday").checked,
-        switchOptionEverySunday: document.getElementById("switchOptionEverySunday").checked
-      },
-      function(data, status){
-      alert("Data: " + data + "\nStatus: " + status);
-      if (data == "true") {
-        $("#save-response-true").show();
-        $("#save-response-false").hide();
-      } else {
-        $("#save-response-false").show();
-        $("#save-response-true").hide();
-      }
-      
-      });
-    });
-  });
-
-  //Set all checked when "every day" is checked
-  $(document).ready(function(){
-    $("#switchOptionEveryDay").click(function(){
-      if ($('#switchOptionEveryDay').is(':checked')) {
-        $("#switchOptionEveryMonday").prop('checked', true);
-        $("#switchOptionEveryTuesday").prop('checked', true);
-        $("#switchOptionEveryWednesday").prop('checked', true);
-        $("#switchOptionEveryThursday").prop('checked', true);
-        $("#switchOptionEveryFriday").prop('checked', true);
-        $("#switchOptionEverySaturday").prop('checked', true);
-        $("#switchOptionEverySunday").prop('checked', true);
-      } else {
-        $("#switchOptionEveryMonday").prop('checked', false);
-        $("#switchOptionEveryTuesday").prop('checked', false);
-        $("#switchOptionEveryWednesday").prop('checked', false);
-        $("#switchOptionEveryThursday").prop('checked', false);
-        $("#switchOptionEveryFriday").prop('checked', false);
-        $("#switchOptionEverySaturday").prop('checked', false);
-        $("#switchOptionEverySunday").prop('checked', false);
-      }
-    });
-  });
-
-  //DateTime Picker
-  $(function () {
-    $('#datetimepicker1').datetimepicker();
-    $('#datetimepicker2').datetimepicker({
-      useCurrent: false //Important! See issue #1075
-    });
-    $("#datetimepicker1").on("dp.change", function (e) {
-      $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
-    });
-    $("#datetimepicker2").on("dp.change", function (e) {
-      $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
-    });
-  });
-  </script>
 
 </head>
 <body>
 
 <?php include("inc/cgi/top-nav.php");?>
 
-<div style="float:left; width: 33%; padding-left: 5px;">
+<div style="width: 100%; padding-left: 5px;">
   <div class="panel panel-primary">
-    <div class="panel-heading">
-      <strong>Node 1: <a href="#" data-toggle="tooltip" title="Bosch Model 1234 Extra" style="color:white;">Refrigerator</a></strong>
-    </div>
     <div class="panel-body">
-      
-      <!-- Button trigger modal -->
-      <button data-button="frig" value="frig-button-value" id="frig-modal-btn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNewSchedularModal" style="float: right;"><span style="font-weight: bold; font-size: 12pt;">+</span></button>
-
-
-       <button data-button="tv" value="tv-button-value" id="tv-modal-btn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNewSchedularModal" style="float: right;"><span style="font-weight: bold; font-size: 12pt;">+(tv)</span></button>
-
-
-      <div class="container">
-
-          <!-- Modal -->
-          <div class="modal fade" id="addNewSchedularModal" tabindex="-1" role="dialog" aria-labelledby="addNewSchedularModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title" id="addNewSchedularModalLabel" style="font-weight: bold; float: left;">Add new schedular</h4>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-
-                  <div class="alert alert-success" role="alert" id="save-response-true" style="display: none;">This is a success alert—check it out!</div>
-                  <div class="alert alert-danger" role="alert" id="save-response-false" style="display: none;">This is a danger alert—check it out!</div>
-
-                  <form action="#" method="post" id="add-new-schedular-form" name="add-new-schedular-form ">
-
-                    <div class="row">
-                      <div class="col-sm-6">
-                        
-                            <strong>From:</strong><div class="form-group">
-                                <div class='input-group date' id='datetimepicker1'>
-                                    <input type='text' class="form-control" id='date-time-picker-field1'/>
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
-                            </div>
-
-                      </div>
-                      <div class="col-sm-6">
-                            <strong>To:</strong><div class="form-group">
-                                <div class='input-group date' id='datetimepicker2'>
-                                    <input type='text' class="form-control" id='date-time-picker-field2' />
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div><small>Leave empty if unlimited</small>
-                            </div>
-                      </div>
-                    </div>
-
-
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="panel panel-default">
-                                <!-- Default panel contents -->
-                                <div class="panel-heading" style="font-weight: bold;">When to repeat:</div>
-                            
-                                <!-- List group -->
-                                <ul class="list-group">
-                                    <li class="list-group-item">
-                                        <strong>Every Day</strong>
-                                        <div class="material-switch pull-right">
-                                            <input id="switchOptionEveryDay" name="switchOptionEveryDay" value="every-day" type="checkbox"/>
-                                            <label for="switchOptionEveryDay" class="label-success"></label>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Every Monday
-                                        <div class="material-switch pull-right">
-                                            <input id="switchOptionEveryMonday" name="switchOptionEveryMonday" value="monday" type="checkbox"/>
-                                            <label for="switchOptionEveryMonday" class="label-success"></label>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Every Tuesday
-                                        <div class="material-switch pull-right">
-                                            <input id="switchOptionEveryTuesday" name="switchOptionEveryTuesday" value="tuesday" type="checkbox"/>
-                                            <label for="switchOptionEveryTuesday" class="label-success"></label>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Every Wednesday
-                                        <div class="material-switch pull-right">
-                                            <input id="switchOptionEveryWednesday" name="switchOptionEveryWednesday" value="wednesday" type="checkbox"/>
-                                            <label for="switchOptionEveryWednesday" class="label-success"></label>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Every Thursday
-                                        <div class="material-switch pull-right">
-                                            <input id="switchOptionEveryThursday" name="switchOptionEveryThursday" value="thursday" type="checkbox"/>
-                                            <label for="switchOptionEveryThursday" class="label-success"></label>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Every Friday
-                                        <div class="material-switch pull-right">
-                                            <input id="switchOptionEveryFriday" name="switchOptionEveryFriday" value="friday" type="checkbox"/>
-                                            <label for="switchOptionEveryFriday" class="label-success"></label>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Every Saturday
-                                        <div class="material-switch pull-right">
-                                            <input id="switchOptionEverySaturday" name="switchOptionEverySaturday" value="saturday" type="checkbox"/>
-                                            <label for="switchOptionEverySaturday" class="label-success"></label>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Every Sunday
-                                        <div class="material-switch pull-right">
-                                            <input id="switchOptionEverySunday" name="switchOptionEverySunday" value="sunday" type="checkbox"/>
-                                            <label for="switchOptionEverySunday" class="label-success"></label>
-                                        </div>
-                                    </li>                    
-                                </ul>
-                            </div>            
-                        </div>
-                    </div>   
-
-                  </form>
-
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" id="save-changes-btn">Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Modal End -->
-
-        </div>
+      <h4 style="font-weight: bold;">Applainces Schedular Management</h4>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non ligula eget nulla malesuada dignissim eget ut eros. Vivamus fermentum lectus vitae orci hendrerit vehicula. Suspendisse felis ligula, viverra in suscipit et, mattis et augue. Duis accumsan at erat a pulvinar. Mauris venenatis auctor tellus a finibus. Fusce facilisis mi eu libero fermentum rhoncus. Donec elementum lacus quis vestibulum scelerisque. Donec non consectetur nibh, ac consectetur nibh. Morbi at venenatis dui. Donec tincidunt maximus purus, eget mollis mauris suscipit a. Pellentesque porta vehicula nisi fringilla porta. Donec quis felis et nisl vestibulum mattis nec non augue. Donec orci dolor, eleifend at tortor eget, ultrices varius mauris. Suspendisse potenti. Cras hendrerit tellus neque, id sagittis mauris congue commodo.
     </div>
   </div>
 </div>
+
+
+<?php include("inc/html/schedule-frig.html");?>
+<?php include("inc/html/schedule-tv.html");?>
+<?php include("inc/html/schedule-lamp.html");?>
 
 </body>
 </html>
