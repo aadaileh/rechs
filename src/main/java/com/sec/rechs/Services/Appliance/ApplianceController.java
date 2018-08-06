@@ -143,6 +143,7 @@ public class ApplianceController {
                 .orElseThrow(() -> new ResourceNotFoundException("ApplianceController", "id", applianceId));
 
         schedule.setAppliance(appliance);
+        schedule.setActive(true);
         return scheduleRepository.save(schedule);
     }
 
