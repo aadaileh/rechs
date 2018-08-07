@@ -1,4 +1,4 @@
-package com.sec.rechs.Services.Schedular;
+package com.sec.rechs.Services.HeartBeat;
 
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;

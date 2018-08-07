@@ -156,7 +156,7 @@ public class ApplianceController {
     }
 
     // Activate a schedule based on the given schedule-Id
-    @GetMapping("/{schedule-id}/activate")
+    @GetMapping("/schedule/{schedule-id}/activate")
     @ApiOperation("Activate a schedule based on the given schedule-Id")
     public void activateSchedule(@PathVariable(value = "schedule-id") Long scheduleId) {
 
@@ -167,7 +167,7 @@ public class ApplianceController {
     }
 
     // Deactivate a schedule based on the given schedule-Id
-    @GetMapping("/{schedule-id}/deactivate")
+    @GetMapping("/schedule/{schedule-id}/deactivate")
     @ApiOperation("Deactivate a schedule based on the given schedule-Id")
     public void deactivateSchedule(@PathVariable(value = "schedule-id") Long scheduleId) {
 

@@ -20,13 +20,15 @@
 
                       $beginDate = $library->convertString($value->begin);
                       $endDate = $library->convertString($value->end);
+                      $checked = $value->active == true ? " checked" : "";
+                      $color = $value->active == true ? "#080808" : "#9d9d9d";
                   ?>
                       <li class="list-group-item">
-                          <span style="
+                          <span id="li-id-<?=$value->id;?>" style="
                           font-weight: 500;
                           font-family: inherit;
                           font-size: 16pt;
-                          color: #9d9d9d;
+                          color: <?=$color;?>;
                           font-stretch: ultra-condensed;
                           "> <?=$beginDate;?> - <?=$endDate;?>
                           <br>
@@ -36,7 +38,7 @@
                           </span>
 
                           <div class="material-switch pull-right">
-                              <input id="schedule-list-<?=$value->id;?>" name="schedule-list-<?=$value->id;?>" value="every-day" type="checkbox"/>
+                              <input id="schedule-list-<?=$value->id;?>" name="schedule-list-<?=$value->id;?>" value="<?=$value->id;?>" type="checkbox" <?=$checked;?>/>
                               <label for="schedule-list-<?=$value->id;?>" class="label-success"></label>
                           </div>
                       </li>

@@ -1,4 +1,4 @@
-package com.sec.rechs.Services.Schedular;
+package com.sec.rechs.Services.HeartBeat;
 
 /*
  * All content copyright Terracotta, Inc., unless otherwise indicated. All rights reserved.

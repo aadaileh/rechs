@@ -1,7 +1,7 @@
-package com.sec.rechs.Services.Schedular;
+package com.sec.rechs.Services.HeartBeat;
 
 import com.sec.rechs.Repository.SchedularRepository;
-import com.sec.rechs.Services.Schedular.impl.SchedularImplentations;
+import com.sec.rechs.Services.HeartBeat.impl.SchedularImplentations;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +26,9 @@ import static org.slf4j.LoggerFactory.getLogger;
  */
 @RestController
 @RequestMapping("/api/schedular")
-public class SchedularController {
+public class HeartBeatController {
 
-    private static final Logger LOG = getLogger(SchedularController.class);
+    private static final Logger LOG = getLogger(HeartBeatController.class);
 
     @Autowired
     SchedularRepository schedularRepository;

@@ -1,4 +1,4 @@
-package com.sec.rechs.Services.Schedular.impl;
+package com.sec.rechs.Services.HeartBeat.impl;
 
 
 import com.sec.rechs.Repository.SchedularRepository;

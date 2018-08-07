@@ -1,4 +1,4 @@
-package com.sec.rechs.Services.Schedular;
+package com.sec.rechs.Services.HeartBeat;
 
 
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
  * @since   26.01.2018
  */
 @Service
-public interface SchedularInterface {
+public interface HeartBeatInterface {
 
 //    /**
 //     * Method to retrieve all transactions related to account based on the client-id. All

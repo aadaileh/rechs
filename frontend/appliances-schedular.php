@@ -39,13 +39,43 @@ if(count($_SESSION["user"]) == 0) {
   <link rel="stylesheet" href="inc/css/checkboxes-style.css" />
   <script type="text/javascript" src="inc/js/schedule.js"></script>
 
+  <script type="text/javascript">
+    $(document).ready(function(){
+
+<?php
+  foreach ($scheduleList as $key1 => $value1) {
+    foreach ($value1 as $key2 => $value2) {
+      $id = $value2->id;
+?>
+    $('#schedule-list-<?=$id;?>').on('change', function(){
+      id = document.getElementById("schedule-list-<?=$id;?>").value;      
+      if ($('#schedule-list-<?=$id;?>').is(':checked')) {
+        $.get("/inc/cgi/appliances-schedular-save.php?action=activate&id=" + <?=$id;?>, function(data, status){
+          $("#li-id-<?=$id;?>").css("color", "#080808"); //change the text color to gray
+        });
+
+      } else {       
+        $.get("/inc/cgi/appliances-schedular-save.php?action=deactivate&id=" + <?=$id;?>, function(data, status){
+          $("#li-id-<?=$id;?>").css("color", "#9d9d9d"); //change the text color to black
+        });        
+      }
+      });
+<?php
+    }
+  } 
+?>
+
+
+    });
+  </script>
+
 
 </head>
 <body>
 
 <?php include("inc/cgi/top-nav.php");?>
 
-<div style="width: 100%; padding-left: 5px;">
+<div style="width: 100%; padding: 0 15px 0 7px; ">
   <div class="panel panel-primary">
     <div class="panel-body">
       <h4 style="font-weight: bold;">Applainces Schedular Management</h4>

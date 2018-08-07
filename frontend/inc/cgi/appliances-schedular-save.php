@@ -11,6 +11,25 @@ if(count($_SESSION["user"]) == 0) {
   header('Location: /login.php');
 }
 
+
+//when GET is set
+if(isset($_GET) && count($_GET)>0) {
+
+  $library = new Library();
+  $data = $library->makeCurl ("/appliances/schedule/" . $_GET["id"] . "/" . $_GET["action"], "GET", NULL);
+
+  echo "<pre>data:\n";
+  print_r($data);
+  echo "</pre>";
+
+  if(isset($data->error) && !empty($data->error)) {
+  	echo "Something went wrong while activating the schedule id [".$_GET["id"]."]. <br/><small>Error: [" . $data->message . "]</small>";
+  } else {
+  	echo "true";
+  }
+	exit();
+}
+
 $switchOptionEvery = Array();
 foreach ($_POST as $key => $value) {
 	if(strpos($key, "switchOptionEvery") !== false && strpos($key, "switchOptionEveryDay") === false) {
