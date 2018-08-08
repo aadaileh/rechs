@@ -6,7 +6,14 @@
     <div class="panel-body">
 
       <!-- Button trigger modal -->
-      <button data-button="3" value="frig-button-value" id="frig-modal-btn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNewSchedularModal" style="float: right;"><span style="font-weight: bold; font-size: 12pt;">+</span></button>
+      <button data-button="3" value="frig-button-value" id="frig-modal-btn" type="button"
+      class="btn btn-primary" data-toggle="modal" data-target="#addNewSchedularModal" style="float: right;">
+      <span style="font-weight: bold; font-size: 12pt;">+</span></button>
+
+      <!-- Button trigger edit -->
+      <button data-button="3" value="frig-edit-button-value" id="frig-edit-modal-btn" type="button"
+      class="btn btn-primary" data-toggle="modal" data-target="#editFrigSchedularModal" style="float: left;">
+      <span style="font-weight: normal; font-size: 12pt;">Manage</span></button>
 
        <br/><br/><br/>
       <div class="row">
@@ -23,7 +30,10 @@
                       $checked = $value->active == true ? " checked" : "";
                       $color = $value->active == true ? "#080808" : "#9d9d9d";
                   ?>
-                      <li class="list-group-item">
+                      <li class="list-group-item frig">
+                        <div class="material-switch pull-left frig-edit-minus-icon" style="display: none; padding:5px 5px 5px 0px;vertical-align:middle;">
+                            <a href="#" title="Click to edit/delete"> <img src="inc/img/edit.svg" height="20px" width="20px"> </a>
+                        </div>
                           <span id="li-id-<?=$value->id;?>" style="
                           font-weight: 500;
                           font-family: inherit;
@@ -96,7 +106,6 @@
                             </div>
                       </div>
                     </div>
-
 
                     <div class="row">
                         <div class="col-xs-12">

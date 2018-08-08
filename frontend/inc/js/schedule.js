@@ -42,6 +42,27 @@ $(window).on('show.bs.modal', function (e) {
   }
 });
 
+//Handle editing schedules
+$(document).ready(function(){
+  $("#frig-edit-modal-btn").click(function(){
+    //alert("frig edit button is clicked");
+    //$(".list-group-item.frig").css('padding-left', '4px');
+    $(".material-switch.pull-left.frig-edit-minus-icon").fadeToggle();
+  });
+
+  $("#tv-edit-modal-btn").click(function(){
+    //alert("frig edit button is clicked");
+    //$(".list-group-item.frig").css('padding-left', '4px');
+    $(".material-switch.pull-left.tv-edit-minus-icon").fadeToggle();
+  });
+
+  $("#lamp-edit-modal-btn").click(function(){
+    //alert("frig edit button is clicked");
+    //$(".list-group-item.frig").css('padding-left', '4px');
+    $(".material-switch.pull-left.lamp-edit-minus-icon").fadeToggle();
+  });
+});
+
 //Submit form
 $(document).ready(function(){
   $("#save-changes-btn").click(function(){
