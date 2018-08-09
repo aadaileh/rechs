@@ -12,9 +12,9 @@ if(count($_SESSION["user"]) == 0) {
 }
 
   $library = new Library();
-  $scheduleList["frig"] = $library->makeCurl ("/appliances/3/schedule/list", "GET", NULL);
-  $scheduleList["tv"] = $library->makeCurl ("/appliances/2/schedule/list", "GET", NULL);
-  $scheduleList["lamp"] = $library->makeCurl ("/appliances/1/schedule/list", "GET", NULL);
+  $scheduleList["frig"] = $library->makeCurl ("/appliances/3/schedule/list", "GET");
+  $scheduleList["tv"] = $library->makeCurl ("/appliances/2/schedule/list", "GET");
+  $scheduleList["lamp"] = $library->makeCurl ("/appliances/1/schedule/list", "GET");
 
   // echo "<pre>scheduleList:\n";
   // print_r($scheduleList);
@@ -28,7 +28,7 @@ if(count($_SESSION["user"]) == 0) {
   <title>Appliances Schedular</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="inc/css/bootstrap.min.css">
 
   <script type="text/javascript" src="inc/js/bower_components/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="inc/js/bower_components/moment/min/moment.min.js"></script>
@@ -68,6 +68,9 @@ if(count($_SESSION["user"]) == 0) {
 
     });
   </script>
+
+  <!-- bootbox code -->
+  <script src="inc/js/bower_components/bootbox.js/bootbox.js"></script>
 
 
 </head>

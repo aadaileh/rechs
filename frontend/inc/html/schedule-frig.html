@@ -6,14 +6,15 @@
     <div class="panel-body">
 
       <!-- Button trigger modal -->
-      <button data-button="3" value="frig-button-value" id="frig-modal-btn" type="button"
+      <button data-button="3" value="frig-button-value" id="frig-modal-btn-3" type="button"
       class="btn btn-primary" data-toggle="modal" data-target="#addNewSchedularModal" style="float: right;">
       <span style="font-weight: bold; font-size: 12pt;">+</span></button>
 
       <!-- Button trigger edit -->
       <button data-button="3" value="frig-edit-button-value" id="frig-edit-modal-btn" type="button"
-      class="btn btn-primary" data-toggle="modal" data-target="#editFrigSchedularModal" style="float: left;">
-      <span style="font-weight: normal; font-size: 12pt;">Manage</span></button>
+      class="btn btn-primary" style="float: left;">
+        <span style="font-weight: normal; font-size: 12pt;">Manage</span>
+      </button>
 
        <br/><br/><br/>
       <div class="row">
@@ -32,7 +33,10 @@
                   ?>
                       <li class="list-group-item frig">
                         <div class="material-switch pull-left frig-edit-minus-icon" style="display: none; padding:5px 5px 5px 0px;vertical-align:middle;">
-                            <a href="#" title="Click to edit/delete"> <img src="inc/img/edit.svg" height="20px" width="20px"> </a>
+                            <a href="#" title="Click to edit/delete" data-dismiss="modal" data-button="<?=$value->id;?>" id="frig-edit-link-<?=$value->id;?>"
+                              data-href="/inc/cgi/appliances-schedular-save.php?action=delete&id=<?=$value->id;?>" data-toggle="modal" data-target="#confirm-delete" class="alert-confirm">
+                              <img src="inc/img/delete.svg" height="20px" width="20px">
+                            </a>
                         </div>
                           <span id="li-id-<?=$value->id;?>" style="
                           font-weight: 500;
@@ -64,8 +68,8 @@
 
       <div class="container">
 
-          <!-- Modal -->
-          <div class="modal fade" id="addNewSchedularModal" tabindex="-1" role="dialog" aria-labelledby="addNewSchedularModalLabel" aria-hidden="true">
+          <!-- Modal Create new -->
+            <div class="modal fade" id="addNewSchedularModal" tabindex="-1" role="dialog" aria-labelledby="addNewSchedularModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -186,6 +190,28 @@
               </div>
             </div>
           </div>
+          <!-- Modal End -->
+
+          <!-- Modal delete -->
+          <!--
+          <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                        Confirm Delete
+                      </div>
+                      <div class="modal-body">
+                          Do you really want to delete the scheulde: <br/>
+                          xxxx-xx-xx xx:xx - xxxx-xx-xx xx:xx
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                          <a class="btn btn-danger btn-ok">Delete</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        -->
           <!-- Modal End -->
 
         </div>

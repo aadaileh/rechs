@@ -176,4 +176,12 @@ public class ApplianceController {
         schedule.setActive(false);
         scheduleRepository.save(schedule);
     }
+
+    // Delete a schedule based on the given schedule-Id
+    @GetMapping("/schedule/{schedule-id}/delete")
+    @ApiOperation("Delete a schedule based on the given schedule-Id")
+    public void deleteSchedule(@PathVariable(value = "schedule-id") Long scheduleId) {
+
+        scheduleRepository.deleteById(scheduleId);
+    }
 }

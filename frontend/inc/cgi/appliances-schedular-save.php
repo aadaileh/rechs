@@ -16,7 +16,7 @@ if(count($_SESSION["user"]) == 0) {
 if(isset($_GET) && count($_GET)>0) {
 
   $library = new Library();
-  $data = $library->makeCurl ("/appliances/schedule/" . $_GET["id"] . "/" . $_GET["action"], "GET", NULL);
+  $data = $library->makeCurl ("/appliances/schedule/" . $_GET["id"] . "/" . $_GET["action"], "GET");
 
   echo "<pre>data:\n";
   print_r($data);

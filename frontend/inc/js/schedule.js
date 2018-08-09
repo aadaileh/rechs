@@ -38,8 +38,13 @@ var id = null;
 $(window).on('show.bs.modal', function (e) {
   var $activeElement = $(document.activeElement);
   if ($activeElement.is('[data-toggle], [data-dismiss]')) {
-    id = $(e.relatedTarget).data('button');
+    initial_id = document.activeElement.id;
+    //alert("initial_id: " + initial_id);
+    var idArray = initial_id.split("-");
+    id = idArray[idArray.length - 1];
+    //alert("id: " + id);
   }
+
 });
 
 //Handle editing schedules
@@ -142,3 +147,53 @@ $(function () {
     $('#datetimepicker1').data("DateTimePicker").locale("DE_de");
   });
 });
+
+<!-- bootbox code -->
+$(document).on("click", ".alert-confirm", function(e) {
+
+  bootbox.confirm({
+      title: "Confirm delete",
+      message: "<strong>Do you really want to delete this entry?</strong>",
+      buttons: {
+          confirm: {
+              label: 'Yes',
+              className: 'btn-success'
+          },
+          cancel: {
+              label: 'No',
+              className: 'btn-danger'
+          }
+      },
+      callback: function (result) {
+        //alert(result);
+        if(result == true) {
+          success(id);
+        }
+      }
+  });
+});
+
+
+function success(schedule_id) {
+  //alert("schedule_id: " + schedule_id);
+  schedule_id_final = schedule_id.replace("frig-edit-link-", "");
+  //alert("schedule_id(final): " + schedule_id_final);
+
+  $.ajax({
+    url: "/inc/cgi/appliances-schedular-save.php",
+    type: "GET",
+    data: {
+      id: schedule_id_final,
+      action: 'delete'
+    },
+    success: function(response) {
+      //alert("response: " + response);
+      //Do Something
+      location.reload();
+    },
+    error: function(xhr) {
+      //Do Something to handle error
+      //alert("error: " + xhr);
+    }
+  });
+  }

@@ -7,7 +7,7 @@ class Library {
 
   var $basicUrl = "http://127.0.0.1:8282/api";
 
-  function makeCurl ($url, $request, $fields) {
+  function makeCurl ($url, $request, $fields = NULL) {
 
     // echo "<pre>fields:\n";
     // print_r($fields);

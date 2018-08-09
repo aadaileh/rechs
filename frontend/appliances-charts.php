@@ -194,7 +194,7 @@ if(count($_SESSION["user"]) == 0) {
   <title>Appliances Detailed Charts</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="inc/css/bootstrap.min.css">
   <script src="inc/js/jquery.min.js"></script>
   <script src="inc/js/bootstrap.min.js"></script>
 
@@ -218,6 +218,15 @@ if(count($_SESSION["user"]) == 0) {
 <body>
 
 <?php include("inc/cgi/top-nav.php");?>
+
+<div style="width: 100%; padding: 0 15px 0 7px; ">
+  <div class="panel panel-primary">
+    <div class="panel-body">
+      <h4 style="font-weight: bold;">Applainces Schedular Management</h4>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non ligula eget nulla malesuada dignissim eget ut eros. Vivamus fermentum lectus vitae orci hendrerit vehicula. Suspendisse felis ligula, viverra in suscipit et, mattis et augue. Duis accumsan at erat a pulvinar. Mauris venenatis auctor tellus a finibus. Fusce facilisis mi eu libero fermentum rhoncus. Donec elementum lacus quis vestibulum scelerisque. Donec non consectetur nibh, ac consectetur nibh. Morbi at venenatis dui. Donec tincidunt maximus purus, eget mollis mauris suscipit a. Pellentesque porta vehicula nisi fringilla porta. Donec quis felis et nisl vestibulum mattis nec non augue. Donec orci dolor, eleifend at tortor eget, ultrices varius mauris. Suspendisse potenti. Cras hendrerit tellus neque, id sagittis mauris congue commodo.
+    </div>
+  </div>
+</div>
 
 <div style="float:left; width: 33%; padding-left: 5px;">
   <div class="panel panel-primary">

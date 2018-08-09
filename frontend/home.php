@@ -26,7 +26,7 @@ if(count($_SESSION["user"]) == 0) {
   // $kwh_allTogetherArray["dates"] = $kwh_datesArray;
   // $kwh_Arrays = $kwh_allTogetherArray;
 
-  $watts_data = $library->makeCurl ("/measurments/watts/appliance/3/group-by/all", "GET", NULL);
+  $watts_data = $library->makeCurl ("/measurments/watts/appliance/3/group-by/all", "GET");
   $watts_measurmentArray = Array();
   $watts_datesArray = Array();
   $watts_allTogetherArray = Array();
@@ -40,7 +40,7 @@ if(count($_SESSION["user"]) == 0) {
 
 
   //TV
-  // $tv_kwh_data = $library->makeCurl ("/measurments/kwh/appliance/2/group-by/hour", "GET", NULL);
+  // $tv_kwh_data = $library->makeCurl ("/measurments/kwh/appliance/2/group-by/hour", "GET");
   // $tv_kwh_measurmentArray = Array();
   // $tv_kwh_datesArray = Array();
   // $tv_kwh_allTogetherArray = Array();
@@ -52,7 +52,7 @@ if(count($_SESSION["user"]) == 0) {
   // $tv_kwh_allTogetherArray["dates"] = $tv_kwh_datesArray;
   // $tv_kwh_Arrays = $tv_kwh_allTogetherArray;
 
-  $tv_watts_data = $library->makeCurl ("/measurments/watts/appliance/2/group-by/hour", "GET", NULL);
+  $tv_watts_data = $library->makeCurl ("/measurments/watts/appliance/2/group-by/hour", "GET");
   $tv_watts_measurmentArray = Array();
   $tv_watts_datesArray = Array();
   $tv_watts_allTogetherArray = Array();
@@ -65,8 +65,8 @@ if(count($_SESSION["user"]) == 0) {
   $tv_watts_Arrays = $tv_watts_allTogetherArray;
 
 
-  //LAMP
-  // $lamp_kwh_data = $library->makeCurl ("/measurments/kwh/appliance/1/group-by/hour", "GET", NULL);
+  //
+  // $lamp_kwh_data = $library->makeCurl ("/measurments/kwh/appliance/1/group-by/hour", "GET");
   // $lamp_kwh_measurmentArray = Array();
   // $lamp_kwh_datesArray = Array();
   // $lamp_kwh_allTogetherArray = Array();
@@ -78,7 +78,7 @@ if(count($_SESSION["user"]) == 0) {
   // $lamp_kwh_allTogetherArray["dates"] = $lamp_kwh_datesArray;
   // $lamp_kwh_Arrays = $lamp_kwh_allTogetherArray;
 
-  $lamp_watts_data = $library->makeCurl ("/measurments/watts/appliance/1/group-by/hour", "GET", NULL);
+  $lamp_watts_data = $library->makeCurl ("/measurments/watts/appliance/1/group-by/hour", "GET");
   $lamp_watts_measurmentArray = Array();
   $lamp_watts_datesArray = Array();
   $lamp_watts_allTogetherArray = Array();
@@ -127,7 +127,7 @@ if(count($_SESSION["user"]) == 0) {
   <title>RECHS - Home</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="inc/css/bootstrap.min.css">
   <script src="inc/js/jquery.min.js"></script>
   <script src="inc/js/bootstrap.min.js"></script>
 
@@ -159,6 +159,14 @@ if(count($_SESSION["user"]) == 0) {
 
 <?php include("inc/cgi/top-nav.php");?>
 
+<div style="width: 100%; padding: 0 20px 0 20px; ">
+  <div class="panel panel-primary">
+    <div class="panel-body">
+      <h4 style="font-weight: bold;">Applainces Schedular Management</h4>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non ligula eget nulla malesuada dignissim eget ut eros. Vivamus fermentum lectus vitae orci hendrerit vehicula. Suspendisse felis ligula, viverra in suscipit et, mattis et augue. Duis accumsan at erat a pulvinar. Mauris venenatis auctor tellus a finibus. Fusce facilisis mi eu libero fermentum rhoncus. Donec elementum lacus quis vestibulum scelerisque. Donec non consectetur nibh, ac consectetur nibh. Morbi at venenatis dui. Donec tincidunt maximus purus, eget mollis mauris suscipit a. Pellentesque porta vehicula nisi fringilla porta. Donec quis felis et nisl vestibulum mattis nec non augue. Donec orci dolor, eleifend at tortor eget, ultrices varius mauris. Suspendisse potenti. Cras hendrerit tellus neque, id sagittis mauris congue commodo.
+    </div>
+  </div>
+</div>
 
   <div class="row">
     <div class="col-sm-6">
