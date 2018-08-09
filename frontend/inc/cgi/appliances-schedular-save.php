@@ -15,19 +15,26 @@ if(count($_SESSION["user"]) == 0) {
 //when GET is set
 if(isset($_GET) && count($_GET)>0) {
 
-  $library = new Library();
-  $data = $library->makeCurl ("/appliances/schedule/" . $_GET["id"] . "/" . $_GET["action"], "GET");
+	if($_GET["action"] == "delete") {
+		$verb = "DELETE";
+	} else {
+		$verb = "PUT";
+	}
 
-  echo "<pre>data:\n";
-  print_r($data);
-  echo "</pre>";
+	$library = new Library();
+	$data = $library->makeCurl ("/appliances/schedule/" . $_GET["id"] . "/" . $_GET["action"], $verb);
 
-  if(isset($data->error) && !empty($data->error)) {
-  	echo "Something went wrong while activating the schedule id [".$_GET["id"]."]. <br/><small>Error: [" . $data->message . "]</small>";
-  } else {
-  	echo "true";
-  }
+	echo "<pre>data:\n";
+	print_r($data);
+	echo "</pre>";
+
+	if(isset($data->error) && !empty($data->error)) {
+		echo "Something went wrong while activating the schedule id [".$_GET["id"]."]. <br/><small>Error: [" . $data->message . "]</small>";
+	} else {
+		echo "true";
+	}
 	exit();
+
 }
 
 $switchOptionEvery = Array();
