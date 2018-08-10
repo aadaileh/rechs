@@ -162,8 +162,9 @@ if(count($_SESSION["user"]) == 0) {
 <div style="width: 100%; padding: 0 20px 0 20px; ">
   <div class="panel panel-primary">
     <div class="panel-body">
-      <h4 style="font-weight: bold;">Applainces Schedular Management</h4>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non ligula eget nulla malesuada dignissim eget ut eros. Vivamus fermentum lectus vitae orci hendrerit vehicula. Suspendisse felis ligula, viverra in suscipit et, mattis et augue. Duis accumsan at erat a pulvinar. Mauris venenatis auctor tellus a finibus. Fusce facilisis mi eu libero fermentum rhoncus. Donec elementum lacus quis vestibulum scelerisque. Donec non consectetur nibh, ac consectetur nibh. Morbi at venenatis dui. Donec tincidunt maximus purus, eget mollis mauris suscipit a. Pellentesque porta vehicula nisi fringilla porta. Donec quis felis et nisl vestibulum mattis nec non augue. Donec orci dolor, eleifend at tortor eget, ultrices varius mauris. Suspendisse potenti. Cras hendrerit tellus neque, id sagittis mauris congue commodo.
+      <h4 style="font-weight: bold;">Welcome to RECHS - Reduction of Electricity Consumption in Household Sector</h4>
+      Project <strong>RECHS</strong> aims to reduce the household's electricity consumption by suggesting more energy efficient appliances, cut-off electricity consumption based on a defined schedule or based on the measured stand-by status, and switching the energy provider.<br/>
+      This page offers a general and summerized statistics of measured appliances, also it does offer a general status overview of all running modules; <strong>EPO</strong> (<strong>E</strong>nergy <strong>P</strong>rovider <strong>O</strong>ptimizer), <strong>ARR</strong> (<strong>A</strong>ppliance <strong>R</strong>eplacement <strong>R</strong>ecommender), <strong>SDA</strong> (<strong>S</strong>tandby <strong>D</strong>etector & <strong>O</strong>ptimizer) and <strong>Schedular detailes</strong>. It also offers some general information about registered <strong>users</strong> and <strong>nodes</strong>.
     </div>
   </div>
 </div>
@@ -203,26 +204,7 @@ if(count($_SESSION["user"]) == 0) {
 
       <div id="customized-home-panel-right">
         <div class="panel panel-primary">
-          <div class="panel-heading"><a href="energy-provider-optimizer.php" data-toggle="tooltip" title="Energy Provider Optimizer" style="color:white;">
-            <strong>EPO</strong> (<strong>E</strong>nergy <strong>P</strong>rovider <strong>O</strong>ptimizer)</a>
-          </div>
-          <div class="panel-body">
-            First time visited:<br>
-            Click <a href="/energy-provider-optimizer.php">here</a> to activate the Energy Provider Optimizer.<br><br>
-
-            View shown after activating the EPO (Energy Provider Optimizer):<br>
-            Searching for proper Energy Provider has revelaed the following result(s):<br>
-            1. XYZ Energy Provider<br>
-
-            Your current annual Electricity costs are XXX€. Once you switch to the suggested XYZ Energy Provider, you can save up to XX% of your costs. This means XX€ less annualy.
-            <br>
-          </div>
-        </div>
-      </div>
-
-      <div id="customized-home-panel-right">
-        <div class="panel panel-primary">
-          <div class="panel-heading"><span data-toggle="tooltip" title="Appliance Exchange Suggester">
+          <div class="panel-heading"><span data-toggle="tooltip" title="Appliance Replacement Recommender. It tells when to replace an appliance.">
             <strong>ARR</strong> (<strong>A</strong>ppliance <strong>R</strong>eplacement <strong>R</strong>ecommender)</span>
           </div>
           <div class="panel-body">
@@ -265,7 +247,7 @@ if(count($_SESSION["user"]) == 0) {
 
       <div id="customized-home-panel-right">
         <div class="panel panel-primary">
-          <div class="panel-heading"><span data-toggle="tooltip" title="A module defines the standby values and completely switch off the appliance when not needed"><strong>Schedular Details</strong></span></div>
+          <div class="panel-heading"><span data-toggle="tooltip" title="A module where a schedule is predefined to switch off/on appliances"><strong>Schedular Details</strong></span></div>
           <div class="panel-body">
             
             First time visited:<br>
@@ -282,12 +264,30 @@ if(count($_SESSION["user"]) == 0) {
         </div>
       </div>
 
+
       <div id="customized-home-panel-right">
         <div class="panel panel-primary">
-          <div class="panel-heading"><span data-toggle="tooltip" title="A module defines the standby values and completely switch off the appliance when not needed"><strong>Users Overview</strong></span></div>
+          <div class="panel-heading"><a href="energy-provider-optimizer.php" data-toggle="tooltip" title="Energy Provider Optimizer. Helps owners to switch their energy provider to reduce costs." style="color:white;">
+            <strong>EPO</strong> (<strong>E</strong>nergy <strong>P</strong>rovider <strong>O</strong>ptimizer)</a>
+          </div>
           <div class="panel-body">
-            
-           
+            First time visited:<br>
+            Click <a href="/energy-provider-optimizer.php">here</a> to activate the Energy Provider Optimizer.<br><br>
+
+            View shown after activating the EPO (Energy Provider Optimizer):<br>
+            Searching for proper Energy Provider has revelaed the following result(s):<br>
+            1. XYZ Energy Provider<br>
+
+            Your current annual Electricity costs are XXX€. Once you switch to the suggested XYZ Energy Provider, you can save up to XX% of your costs. This means XX€ less annualy.
+            <br>
+          </div>
+        </div>
+      </div>
+      
+      <div id="customized-home-panel-right">
+        <div class="panel panel-primary">
+          <div class="panel-heading"><span data-toggle="tooltip" title="Brief users overview details"><strong>Users Overview</strong></span></div>
+          <div class="panel-body">
             X Users are created.<br>
             X Admins are created.<br>
             X of them are active (logged in last 3 days).<br>
@@ -297,6 +297,18 @@ if(count($_SESSION["user"]) == 0) {
           </div>
         </div>
       </div>
+
+      <div id="customized-home-panel-right">
+        <div class="panel panel-primary">
+          <div class="panel-heading"><span data-toggle="tooltip" title="Brief nodes overview details"><strong>Nodes Overview</strong></span></div>
+          <div class="panel-body">
+            X Nodes are created.<br>
+            X of them are active (logged in last 3 days).<br>
+            Last successful data sent done on MM/dd/YYYY at HH:mm:ss<br>
+            ...
+          </div>
+        </div>
+      </div>      
 
     </div>
   </div>
