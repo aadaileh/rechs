@@ -12,13 +12,11 @@ if(count($_SESSION["user"]) == 0) {
 }
 
   $library = new Library();
-  $scheduleList["frig"] = $library->makeCurl ("/appliances/3/schedule/list", "GET");
-  $scheduleList["tv"] = $library->makeCurl ("/appliances/2/schedule/list", "GET");
-  $scheduleList["lamp"] = $library->makeCurl ("/appliances/1/schedule/list", "GET");
+  $appliances = $library->makeCurl ("/appliances/", "GET");
 
-  // echo "<pre>scheduleList:\n";
-  // print_r($scheduleList);
-  // echo "</pre>";
+  echo "<pre>appliances:\n";
+  print_r($appliances);
+  echo "</pre>";
 
 ?>
 
@@ -37,15 +35,13 @@ if(count($_SESSION["user"]) == 0) {
   <link rel="stylesheet" href="inc/js/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
   
   <link rel="stylesheet" href="inc/css/checkboxes-style.css" />
-  <script type="text/javascript" src="inc/js/schedule.js"></script>
+  <script type="text/javascript" src="inc/js/node-management.js"></script>
 
   <script type="text/javascript">
     $(document).ready(function(){
 
 <?php
-  foreach ($scheduleList as $key1 => $value1) {
-    foreach ($value1 as $key2 => $value2) {
-      $id = $value2->id;
+  foreach ($appliances as $key => $value) {
 ?>
     $('#schedule-list-<?=$id;?>').on('change', function(){
       id = document.getElementById("schedule-list-<?=$id;?>").value;      
@@ -61,7 +57,6 @@ if(count($_SESSION["user"]) == 0) {
       }
       });
 <?php
-    }
   } 
 ?>
 
@@ -114,11 +109,20 @@ if(count($_SESSION["user"]) == 0) {
                   <ul class="list-group">
 
                  <?php
-                    foreach ($scheduleList["frig"] as $key => $value) {
-
-                      $beginDate = $library->convertString($value->begin);
-                      $endDate = $library->convertString($value->end);
-                      $checked = $value->active == true ? " checked" : "";
+                    foreach ($appliances as $key => $value) {
+                      $id = $value->id;
+                      $label = $value->label;
+                      $status = $value->status; 
+                      $annualEnergyConsumption = $value->annualEnergyConsumption;
+                      $hourlyEnergyConsumption = $value->hourlyEnergyConsumption;
+                      $size = $value->size;
+                      $sizeUnit = $value->sizeUnit;
+                      $standByStatus = $value->standByStatus;
+                      $systemName = $value->systemName;
+                      $type = $value->type;
+                      $createdBy = $value->createdBy;
+                      $energyEfficientClass = $value->energyEfficientClass;
+                      $externalLink = $value->externalLink;
                       $color = $value->active == true ? "#080808" : "#9d9d9d";
                   ?>
                       <li class="list-group-item frig">
@@ -134,7 +138,7 @@ if(count($_SESSION["user"]) == 0) {
                           font-size: 16pt;
                           color: <?=$color;?>;
                           font-stretch: ultra-condensed;
-                          "> <?=$beginDate;?> - <?=$endDate;?>
+                          "> <?=$label;?>
                           <br>
                           <span style="font-size: 9pt;">
                           Repeat every: <?=str_replace("-", ", ", $value->repeat_every);?>
@@ -176,95 +180,62 @@ if(count($_SESSION["user"]) == 0) {
                   <form action="#" method="post" id="add-new-node-form" name="add-new-node-form ">
                     <input type="hidden" name="createdBy" id="createdBy" value="Ahmed Adaileh">
 
-                    <div class="row">
-                      <div class="col-sm-6">
-
-                            <strong>Appliance Label:</strong><div class="form-group">
-                                <div class='input-group date' id='datetimepicker1'>
-                                    <input type='text' class="form-control" id='appliance-label'/>
-                                </div>
-                            </div>
-
-                      </div>
-                      <div class="col-sm-6">
-                            <strong>To:</strong><div class="form-group">
-                                <div class='input-group date' id='datetimepicker2'>
-                                    <input type='text' class="form-control" id='date-time-picker-field2' />
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div><small>Leave empty if unlimited</small>
-                            </div>
-                      </div>
+<!--
+Icon: Suggest a default icon and allow adding own icon (DO IT IF YOU HAVE TIME)
+-->
+                    <!-- Appliance type -->
+                    <div class="form-group">
+                      <label for="appliance_type">Connected Appliance Type</label>
+                      <select class="form-control" id="appliance_type" aria-describedby="appliance_type_help">
+                        <option value="frig">Refrigerator</option>
+                        <option value="tv">TV</option>
+                        <option value="lamp">Stand Lamp</option>
+                      </select>
+                      <small id="appliance_type_help" class="form-text text-muted">Lorem ipsum dolor amet ...</small>
                     </div>
 
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="panel panel-default">
-                                <!-- Default panel contents -->
-                                <div class="panel-heading" style="font-weight: bold;">When to repeat:</div>
+                    <!-- Appliance label -->
+                    <div class="form-group">
+                      <label for="appliance_label">Appliance Label</label>
+                      <input type="text" class="form-control" id="appliance_label" aria-describedby="appliance_label_help" placeholder="Enter Appliance Name, Label, ..">
+                      <small id="appliance_label_help" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
 
-                                <!-- List group -->
-                                <ul class="list-group">
-                                    <li class="list-group-item">
-                                        <strong>Every Day</strong>
-                                        <div class="material-switch pull-right">
-                                            <input id="switchOptionEveryDay" name="switchOptionEveryDay" value="every-day" type="checkbox"/>
-                                            <label for="switchOptionEveryDay" class="label-success"></label>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Every Monday
-                                        <div class="material-switch pull-right">
-                                            <input id="switchOptionEveryMonday" name="switchOptionEveryMonday" value="monday" type="checkbox"/>
-                                            <label for="switchOptionEveryMonday" class="label-success"></label>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Every Tuesday
-                                        <div class="material-switch pull-right">
-                                            <input id="switchOptionEveryTuesday" name="switchOptionEveryTuesday" value="tuesday" type="checkbox"/>
-                                            <label for="switchOptionEveryTuesday" class="label-success"></label>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Every Wednesday
-                                        <div class="material-switch pull-right">
-                                            <input id="switchOptionEveryWednesday" name="switchOptionEveryWednesday" value="wednesday" type="checkbox"/>
-                                            <label for="switchOptionEveryWednesday" class="label-success"></label>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Every Thursday
-                                        <div class="material-switch pull-right">
-                                            <input id="switchOptionEveryThursday" name="switchOptionEveryThursday" value="thursday" type="checkbox"/>
-                                            <label for="switchOptionEveryThursday" class="label-success"></label>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Every Friday
-                                        <div class="material-switch pull-right">
-                                            <input id="switchOptionEveryFriday" name="switchOptionEveryFriday" value="friday" type="checkbox"/>
-                                            <label for="switchOptionEveryFriday" class="label-success"></label>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Every Saturday
-                                        <div class="material-switch pull-right">
-                                            <input id="switchOptionEverySaturday" name="switchOptionEverySaturday" value="saturday" type="checkbox"/>
-                                            <label for="switchOptionEverySaturday" class="label-success"></label>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Every Sunday
-                                        <div class="material-switch pull-right">
-                                            <input id="switchOptionEverySunday" name="switchOptionEverySunday" value="sunday" type="checkbox"/>
-                                            <label for="switchOptionEverySunday" class="label-success"></label>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                    <!-- Annual Energy consumption (kwh) -->
+                    <div class="form-group">
+                      <label for="appliance_energy_consumption_kwh">Annual Energy consumption (kwh)</label>
+                      <input type="number" class="form-control" id="appliance_energy_consumption_kwh" aria-describedby="appliance_energy_consumption_kwh_help" placeholder="Enter the Annual Energy consumption in kwh">
+                      <small id="appliance_energy_consumption_kwh_help" class="form-text text-muted">Lorem ipsum dolor amet ...</small>
+                    </div>
+
+                    <!-- Energy consumption (Watts) -->
+                    <div class="form-group">
+                      <label for="appliance_energy_consumption_watts">Energy consumption (Watts)</label>
+                      <input type="number" class="form-control" id="appliance_energy_consumption_watts" aria-describedby="appliance_energy_consumption_watts_help" placeholder="Enter the energy consumption in watts">
+                      <small id="appliance_energy_consumption_watts_help" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+
+                    <!-- Energy Efficient Class -->
+                    <div class="form-group">
+                      <label for="energy_efficient_class">Energy Efficient Class</label>
+                      <select class="form-control" id="energy_efficient_class" aria-describedby="energy_efficient_class_help">
+                        <option value="A+++">A+++</option>
+                        <option value="A++">A++</option>
+                        <option value="A+">A+</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                      </select>
+                      <small id="energy_efficient_class_help" class="form-text text-muted">Lorem ipsum dolor amet ...</small>
+                    </div>
+
+                    <!-- Size -->
+                    <div class="form-group">
+                      <label for="size">Size <span id="size_unit_span">(in Liter, Inch, Watt depends on the appliancde)</span></label>
+                      <input type="number" class="form-control" id="size" aria-describedby="size_help" placeholder="Enter the size of the appliance">
+                      <input type="hidden" id="size_unit" value="something" name="size_unit">
+                      <small id="size_help" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
 
                   </form>

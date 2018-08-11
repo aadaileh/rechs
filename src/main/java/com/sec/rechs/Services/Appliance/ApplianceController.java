@@ -1,5 +1,6 @@
 package com.sec.rechs.Services.Appliance;
 
+import com.google.common.base.Strings;
 import com.sec.rechs.Exception.ResourceNotFoundException;
 import com.sec.rechs.Model.Appliance;
 import com.sec.rechs.Model.Schedule;
@@ -17,6 +18,7 @@ import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Objects;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
@@ -58,7 +60,11 @@ public class ApplianceController {
         applianceImplentations.setMeasurmentRepository(measurmentRepository);
         applianceImplentations.recordNodeMeasurments(applianceId);
 
-        return "Recording job started on: " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd.MM.YYYY HH:mm:SS:SSS")).toString();
+        return "Recording job started on: "
+                + LocalDateTime.now()
+                .format(DateTimeFormatter
+                        .ofPattern("dd.MM.YYYY HH:mm:SS:SSS"))
+                .toString();
     }
 
     // Get All appliances
@@ -92,8 +98,61 @@ public class ApplianceController {
         com.sec.rechs.Model.Appliance appliance = applianceRepository.findById(applianceId)
                 .orElseThrow(() -> new ResourceNotFoundException("ApplianceController", "id", applianceId));
 
-        appliance.setSystemName(applianceDetails.getSystemName());
-        appliance.setLabel(applianceDetails.getLabel());
+        if(!Strings.isNullOrEmpty(applianceDetails.getSystemName())) {
+            appliance.setSystemName(applianceDetails.getSystemName());
+        }
+
+        if(!Strings.isNullOrEmpty(applianceDetails.getLabel())) {
+            appliance.setLabel(applianceDetails.getLabel());
+        }
+
+        if(!Strings.isNullOrEmpty(applianceDetails.getCreatedBy())) {
+            appliance.setCreatedBy(applianceDetails.getCreatedBy());
+        }
+
+        if(!Strings.isNullOrEmpty(applianceDetails.getEnergyEfficientClass())) {
+            appliance.setEnergyEfficientClass(applianceDetails.getEnergyEfficientClass());
+        }
+
+        if(!Strings.isNullOrEmpty(applianceDetails.getExternalLink())) {
+            appliance.setExternalLink(applianceDetails.getExternalLink());
+        }
+
+        if(!Strings.isNullOrEmpty(applianceDetails.getSize())) {
+            appliance.setSize(applianceDetails.getSize());
+        }
+
+        if(!Strings.isNullOrEmpty(applianceDetails.getSizeUnit())) {
+            appliance.setSizeUnit(applianceDetails.getSizeUnit());
+        }
+
+        if(!Strings.isNullOrEmpty(applianceDetails.getType())) {
+            appliance.setType(applianceDetails.getType());
+        }
+
+        if(!Objects.isNull(applianceDetails.getAnnualEnergyConsumption())) {
+            appliance.setAnnualEnergyConsumption(applianceDetails.getAnnualEnergyConsumption());
+        }
+
+        if(!Objects.isNull(applianceDetails.getHourlyEnergyConsumption())) {
+            appliance.setHourlyEnergyConsumption(applianceDetails.getHourlyEnergyConsumption());
+        }
+
+        if(!Objects.isNull(applianceDetails.getLowestEnergyConsumption())) {
+            appliance.setLowestEnergyConsumption(applianceDetails.getLowestEnergyConsumption());
+        }
+
+        if(!Objects.isNull(applianceDetails.getStandbyDurationSpan()) && applianceDetails.getStandbyDurationSpan() != 0) {
+            appliance.setStandbyDurationSpan(applianceDetails.getStandbyDurationSpan());
+        }
+
+        if(applianceDetails.getStandByStatus() != null) {
+            appliance.setStandByStatus(applianceDetails.getStandByStatus());
+        }
+
+        if(applianceDetails.getStatus() != null) {
+            appliance.setStatus(applianceDetails.getStatus());
+        }
 
         com.sec.rechs.Model.Appliance updatedAppliance = applianceRepository.save(appliance);
         return updatedAppliance;

@@ -61,18 +61,39 @@ if(count($_SESSION["user"]) == 0) {
   </script>
 <script>
 $(document).ready(function(){
-    $("#stand-by-button").click(function(){
-
-
+    $("#stand-by-button-frig").click(function(){
         $.post("/inc/cgi/appliances-save.php",
           {
-            standBy: document.getElementById("stand-by-button").checked,
-            city: "Duckburg"
+            id: document.getElementById("stand-by-button-frig").value,
+            standByStatus: document.getElementById("stand-by-button-frig").checked
           },
-        
         function(data, status){
-          alert("Data: " + data + "\nStatus: " + status);
-          $("#stand-by-button-response").text(data);
+          //alert("Data(frig): " + data + "\nStatus: " + status);
+          //$("#stand-by-button-frig-response").text(data);
+        });
+    });
+
+    $("#stand-by-button-tv").click(function(){
+        $.post("/inc/cgi/appliances-save.php",
+          {
+            id: document.getElementById("stand-by-button-tv").value,
+            standByStatus: document.getElementById("stand-by-button-tv").checked
+          },
+        function(data, status){
+          //alert("Data(tv): " + data + "\nStatus: " + status);
+          //$("#stand-by-button-tv-response").text(data);
+        });
+    });
+
+    $("#stand-by-button-lamp").click(function(){
+        $.post("/inc/cgi/appliances-save.php",
+          {
+            id: document.getElementById("stand-by-button-lamp").value,
+            standByStatus: document.getElementById("stand-by-button-lamp").checked
+          },
+        function(data, status){
+          //alert("Data(lamp): " + data + "\nStatus: " + status);
+          //$("#stand-by-button-lamp-response").text(data);
         });
     });
 });
@@ -108,6 +129,7 @@ $(document).ready(function(){
   </div>
 </div>
 
+<!-- frig -->
 <div id="appliance">
   <div class="panel panel-primary">
     <div class="panel-heading" style="background-color: #dff0d8;text-align: center;">
@@ -140,15 +162,15 @@ $(document).ready(function(){
               <td><?php echo $refrigerator->label; ?></td>
             </tr> 
             <tr>
-              <td>Annual Energy consumption:</td>
+              <td>Annual&nbsp;Energy&nbsp;consumption:</td>
               <td><?php echo $refrigerator->annualEnergyConsumption; ?> Kwh</td>
             </tr>
             <tr>
-              <td>Energy consumption (in Watts):</td>
+              <td>Energy&nbsp;consumption&nbsp;(in&nbsp;Watts):</td>
               <td><?php echo $refrigerator->hourlyEnergyConsumption; ?> Watt</td>
             </tr> 
             <tr>
-              <td>Energy Efficient Class:</td>
+              <td>Energy&nbsp;Efficient&nbsp;Class:</td>
               <td><?php echo $refrigerator->energyEfficientClass; ?></td>
             </tr>            
             <tr>
@@ -178,7 +200,7 @@ $(document).ready(function(){
             <tr>
               <td>
                 <label class="switch">
-                  <input id="stand-by-button" type="checkbox"
+                  <input id="stand-by-button-frig" type="checkbox" value="3" 
                     <?php 
                       if ($refrigerator->standByStatus == 1) {
                         echo "checked";
@@ -189,13 +211,13 @@ $(document).ready(function(){
                 </label>
               </td>
               <td>
-                <div id="stand-by-button-response">Stand-by Mode is turned OFF</div>
+                <div id="stand-by-button-frig-response">Standby Mode</div>
               </td>
             </tr>
             <tr>
               <td>
                 <label class="switch">
-                  <input id="stand-by-button" type="checkbox">
+                  <input id="stand-by-button-onoff-frig" type="checkbox" value="onoff-frig">
                   <span class="slider round"></span>
                 </label>
               </td>
@@ -208,6 +230,7 @@ $(document).ready(function(){
   </div>
 </div>
 
+<!-- tv -->
 <div id="appliance">
   <div class="panel panel-primary">
     <div class="panel-heading" style="background-color: #dff0d8; text-align: center;">
@@ -281,7 +304,7 @@ $(document).ready(function(){
             <tr>
               <td>
                 <label class="switch">
-                  <input id="stand-by-button" type="checkbox"
+                  <input id="stand-by-button-tv" type="checkbox" value="2"
                     <?php 
                       if ($tv->standByStatus == 1) {
                         echo "checked";
@@ -292,13 +315,13 @@ $(document).ready(function(){
                 </label>
               </td>
               <td>
-                <div id="stand-by-button-response">Stand-by Mode is turned OFF</div>
+                <div id="stand-by-button-tv-response">Standby Mode</div>
               </td>
             </tr>
             <tr>
               <td>
                 <label class="switch">
-                  <input id="stand-by-button" type="checkbox">
+                  <input id="stand-by-button-onoff-tv" type="checkbox">
                   <span class="slider round"></span>
                 </label>
               </td>
@@ -312,6 +335,7 @@ $(document).ready(function(){
   </div>
 </div>
 
+<!-- lamp -->
 <div id="appliance">
   <div class="panel panel-primary">
     <div class="panel-heading" style="background-color: #dff0d8;text-align: center;">
@@ -384,9 +408,9 @@ $(document).ready(function(){
             <tr>
               <td>
                 <label class="switch">
-                  <input id="stand-by-button" type="checkbox"
+                  <input id="stand-by-button-lamp" type="checkbox" value="1"
                     <?php 
-                      if ($tv->standByStatus == 1) {
+                      if ($lamp->standByStatus == 1) {
                         echo "checked";
                       }
                     ?>
@@ -395,13 +419,13 @@ $(document).ready(function(){
                 </label>
               </td>
               <td>
-                <div id="stand-by-button-response">Stand-by Mode is turned OFF</div>
+                <div id="stand-by-button-lamp-response">Standby Mode</div>
               </td>
             </tr>
             <tr>
               <td>
                 <label class="switch">
-                  <input id="stand-by-button" type="checkbox"
+                  <input id="stand-by-button-onoff-lamp" type="checkbox"
                     <?php 
                       if ($lamp->standByStatus == 1) {
                         echo "checked";

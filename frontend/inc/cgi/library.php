@@ -5,7 +5,7 @@ ini_set('display_errors', 0);
 
 class Library {
 
-  var $basicUrl = "http://127.0.0.1:8282/api";
+  var $basicUrl = "http://localhost:8282/api";
 
   function makeCurl ($url, $request, $fields = NULL) {
 
