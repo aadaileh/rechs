@@ -149,18 +149,18 @@ function adjustValue($value, $kwh_watt, $to) {
         return $date;
     }
 
-    function sortArray ($oldArray) {
-      foreach ($oldArray as $key => $value) {
-        $object = new stdClass();
-        $object->concatedDateTimeWithoutdashes = str_replace("-", "", $value->concatedDateTime);
-        $object->concatedDateTime = $value->concatedDateTime;
-        $object->avgmeasurment = $value->avgmeasurment;
-        $object->counter = $value->counter;
-        $newArray[] = $object;  
-      }
-      sort($newArray);
-      return $newArray;
-    }    
+function sortArray ($oldArray) {
+  foreach ($oldArray as $key => $value) {
+    $object = new stdClass();
+    $object->concatedDateTimeWithoutdashes = str_replace("-", "", $value->concatedDateTime);
+    $object->concatedDateTime = $value->concatedDateTime;
+    $object->avgmeasurment = $value->avgmeasurment;
+    $object->counter = $value->counter;
+    $newArray[] = $object;  
+  }
+  sort($newArray);
+  return $newArray;
+}    
      
 
 

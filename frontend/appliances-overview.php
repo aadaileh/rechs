@@ -61,58 +61,136 @@ if(count($_SESSION["user"]) == 0) {
   </script>
 <script>
 $(document).ready(function(){
-    $("#stand-by-button-frig").click(function(){
+    $("#stand-by-button-frig").add("#stand-by-duration-button-frig").click(function(){
       if (document.getElementById("stand-by-button-frig").checked) {
         $("#stand-by-duration-frig").fadeIn(700);
+        $standbyDurationSpan = document.getElementById("standby_duration_frig").value;
       } else {
         $("#stand-by-duration-frig").fadeOut(700);
+        $standbyDurationSpan = document.getElementById("standby_duration_frig").value = 0;
       }
         $.post("/inc/cgi/appliances-save.php",
           {
             id: document.getElementById("stand-by-button-frig").value,
+            standbyDurationSpan: $standbyDurationSpan,
             standByStatus: document.getElementById("stand-by-button-frig").checked
           },
         function(data, status){
           //alert("Data(frig): " + data + "\nStatus: " + status);
           //$("#stand-by-button-frig-response").text(data);
+          $("#alert-success-frig").fadeIn();
+          setTimeout(function() {$("#alert-success-frig").fadeOut('blind');}, 2000);
         });
     });
 
-    $("#stand-by-button-tv").click(function(){
+    $("#stand-by-button-tv").add("#stand-by-duration-button-tv").click(function(){
         if (document.getElementById("stand-by-button-tv").checked) {
           $("#stand-by-duration-tv").fadeIn(700);
+          $standbyDurationSpan = document.getElementById("standby_duration_tv").value;
         } else {
           $("#stand-by-duration-tv").fadeOut(700);
+          $standbyDurationSpan = document.getElementById("standby_duration_tv").value = 0;
         }
         $.post("/inc/cgi/appliances-save.php",
           {
             id: document.getElementById("stand-by-button-tv").value,
+            standbyDurationSpan: $standbyDurationSpan,
             standByStatus: document.getElementById("stand-by-button-tv").checked
           },
         function(data, status){
           //alert("Data(tv): " + data + "\nStatus: " + status);
           //$("#stand-by-button-tv-response").text(data);
+          $("#alert-success-tv").fadeIn();
+          setTimeout(function() {$("#alert-success-tv").fadeOut('blind');}, 2000);
         });
     });
 
-    $("#stand-by-button-lamp").click(function(){
+    $("#stand-by-button-lamp").add("#stand-by-duration-button-lamp").click(function(){
         if (document.getElementById("stand-by-button-lamp").checked) {
           $("#stand-by-duration-lamp").fadeIn(700);
+          $standbyDurationSpan = document.getElementById("standby_duration_lamp").value;
         } else {
           $("#stand-by-duration-lamp").fadeOut(700);
+          $standbyDurationSpan = document.getElementById("standby_duration_lamp").value = 0;
         }
         $.post("/inc/cgi/appliances-save.php",
           {
             id: document.getElementById("stand-by-button-lamp").value,
+            standbyDurationSpan: $standbyDurationSpan,
             standByStatus: document.getElementById("stand-by-button-lamp").checked
           },
         function(data, status){
           //alert("Data(lamp): " + data + "\nStatus: " + status);
           //$("#stand-by-button-lamp-response").text(data);
+          $("#alert-success-lamp").fadeIn();
+          setTimeout(function() {$("#alert-success-lamp").fadeOut('blind');}, 2000);
         });
     });
 });
+
+//<!-- bootbox code -->
+$(document).on("click", ".alert-confirm", function(e) {
+
+  //var $activeElement = $(document.activeElement);
+  var initial_id = this.id;
+  var idArray = initial_id.split("-");
+  var id = idArray[idArray.length - 1];
+
+  var checked = this.checked;
+  var action = "";
+  if(checked == true) {
+    action = "turnon";
+  } else {
+    action = "turnoff";
+  }
+
+  //alert("action: " + action);
+
+  bootbox.confirm({
+      title: "Confirm Switch Appliance ON/OFF",
+      message: "<strong>Do you really want to switch this appliance ON/OFF?</strong>",
+      buttons: {
+          confirm: {
+              label: 'Yes',
+              className: 'btn-success'
+          },
+          cancel: {
+              label: 'No',
+              className: 'btn-danger'
+          }
+      },
+      callback: function (result) {
+        //alert(result);
+        switchAppliance(action, id);
+      }
+  });
+});
+
+function switchAppliance(action, appliance_id) {
+  //alert("action: " + action + ", " + "appliance_id: " + appliance_id);
+
+  $.ajax({
+    url: "/inc/cgi/appliances-save.php",
+    type: "GET",
+    data: {
+      id: appliance_id,
+      action: action
+    },
+    success: function(response) {
+      //alert("response: " + response);
+      //Do Something
+      //location.reload();
+    },
+    error: function(xhr) {
+      //Do Something to handle error
+      alert("error: " + xhr);
+    }
+  });
+  }
 </script>
+
+  <!-- bootbox code -->
+  <script src="inc/js/bower_components/bootbox.js/bootbox.js"></script>
 
 <style type="text/css">
   #theTable td {
@@ -214,7 +292,7 @@ $(document).ready(function(){
             <tr>
               <td>
                 <label class="switch">
-                  <input id="stand-by-button-onoff-frig" type="checkbox" value="onoff-frig">
+                  <input id="stand-by-button-onoff-frig-3" type="checkbox" value="onoff-frig" class="alert-confirm">
                   <span class="slider round"></span>
                 </label>
               </td>
@@ -240,13 +318,22 @@ $(document).ready(function(){
           </tbody>
         </table>
 
-        <div class="panel panel-default" id="stand-by-duration-frig" style="display: none;">
+        <div class="panel panel-default" id="stand-by-duration-frig" 
+        <?php
+          if($refrigerator->standByStatus != 1) {
+            echo 'style="display: none;"';
+          }
+        ?>
+        >
           <div class="panel-body">
+            <div class="alert alert-success" id="alert-success-frig" style="display: none;">
+              <strong>Success!</strong> Standby duration saved correctlly.
+            </div>
             <div class="form-group" style="margin-bottom: 0px;">
               <form class="form-inline">
                 <label for="focusedInput">Standby duration (seconds):</label>
-                <input class="form-control" id="focusedInput" type="text" name="standby_duration" style="width: 80px;">
-                <button type="button" class="btn btn-primary">Save</button>
+                <input class="form-control" id="standby_duration_frig" type="number" name="standby_duration_frig" style="width: 80px;"value="<?=$refrigerator->standbyDurationSpan;?>">
+                <button type="button" class="btn btn-primary" id="stand-by-duration-button-frig">Save</button>
                 <br><small id="appliance_type_help" class="form-text text-muted"><strong>SDO</strong> (<strong>S</strong>tandby <strong>D</strong>etector and <strong>O</strong>ptimizer) will shut down the appliance when it keeps sending the detected standby energy consumption level for seconds defined in this field.</small>
               </form>
             </div>
@@ -331,7 +418,7 @@ $(document).ready(function(){
             <tr>
               <td>
                 <label class="switch">
-                  <input id="stand-by-button-onoff-tv" type="checkbox">
+                  <input id="stand-by-button-onoff-tv-2" type="checkbox" class="alert-confirm">
                   <span class="slider round"></span>
                 </label>
               </td>
@@ -357,12 +444,22 @@ $(document).ready(function(){
           </tbody>
         </table>
 
-        <div class="panel panel-default" id="stand-by-duration-tv" style="display: none;">
+        <div class="panel panel-default" id="stand-by-duration-tv"
+        <?php
+          if($tv->standByStatus != 1) {
+            echo 'style="display: none;"';
+          }
+        ?>
+        >
           <div class="panel-body">
+            <div class="alert alert-success" id="alert-success-tv" style="display: none;">
+              <strong>Success!</strong> Standby duration saved correctlly.
+            </div>            
             <div class="form-group" style="margin-bottom: 0px;">
               <form class="form-inline">
                 <label for="focusedInput">Standby duration (seconds):</label>
-                <input class="form-control" id="focusedInput" type="text" name="standby_duration" style="width: 80px;">
+                <input class="form-control" id="standby_duration_tv" type="number" name="standby_duration_tv" style="width: 80px;" value="<?=$tv->standbyDurationSpan;?>">
+                <button type="button" class="btn btn-primary" id="stand-by-duration-button-tv">Save</button>
                 <br><small id="appliance_type_help" class="form-text text-muted"><strong>SDO</strong> (<strong>S</strong>tandby <strong>D</strong>etector and <strong>O</strong>ptimizer) will shut down the appliance when it keeps sending the detected standby energy consumption level for seconds defined in this field.</small>
               </form>
             </div>
@@ -446,13 +543,7 @@ $(document).ready(function(){
             <tr>
               <td>
                 <label class="switch">
-                  <input id="stand-by-button-onoff-lamp" type="checkbox"
-                    <?php 
-                      if ($lamp->standByStatus == 1) {
-                        echo "checked";
-                      }
-                    ?>
-                  >
+                  <input id="stand-by-button-onoff-lamp-1" type="checkbox" class="alert-confirm">
                   <span class="slider round"></span>
                 </label>
               </td>
@@ -478,12 +569,22 @@ $(document).ready(function(){
           </tbody>
         </table>   
 
-        <div class="panel panel-default" id="stand-by-duration-lamp" style="display: none;">
+        <div class="panel panel-default" id="stand-by-duration-lamp"
+        <?php
+          if($lamp->standByStatus != 1) {
+            echo 'style="display: none;"';
+          }
+        ?>
+        >
           <div class="panel-body">
+            <div class="alert alert-success" id="alert-success-lamp" style="display: none;">
+              <strong>Success!</strong> Standby duration saved correctlly.
+            </div>            
             <div class="form-group" style="margin-bottom: 0px;">
               <form class="form-inline">
                 <label for="focusedInput">Standby duration (seconds):</label>
-                <input class="form-control" id="focusedInput" type="text" name="standby_duration" style="width: 80px;">
+                <input class="form-control" id="standby_duration_lamp" type="number" name="standby_duration_lamp" style="width: 80px;" value="<?=$lamp->standbyDurationSpan;?>">
+                <button type="button" class="btn btn-primary" id="stand-by-duration-button-lamp">Save</button>
                 <br><small id="appliance_type_help" class="form-text text-muted"><strong>SDO</strong> (<strong>S</strong>tandby <strong>D</strong>etector and <strong>O</strong>ptimizer) will shut down the appliance when it keeps sending the detected standby energy consumption level for seconds defined in this field.</small>
               </form>
             </div>

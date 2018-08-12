@@ -142,7 +142,7 @@ public class ApplianceController {
             appliance.setLowestEnergyConsumption(applianceDetails.getLowestEnergyConsumption());
         }
 
-        if(!Objects.isNull(applianceDetails.getStandbyDurationSpan()) && applianceDetails.getStandbyDurationSpan() != 0) {
+        if(!Objects.isNull(applianceDetails.getStandbyDurationSpan())) {
             appliance.setStandbyDurationSpan(applianceDetails.getStandbyDurationSpan());
         }
 

@@ -11,6 +11,25 @@ if(count($_SESSION["user"]) == 0) {
   header('Location: /login.php');
 }
 
+//when GET is set
+if(isset($_GET) && count($_GET)>0) {
+
+	$library = new Library();
+	$data = $library->makeCurl ("/appliances/" . $_GET["id"] . "/" . $_GET["action"], "PATCH");
+
+	echo "<pre>data:\n";
+	print_r($data);
+	echo "</pre>";
+
+	if(isset($data->error) && !empty($data->error)) {
+		echo "Something went wrong while activating the schedule id [".$_GET["id"]."]. <br/><small>Error: [" . $data->message . "]</small>";
+	} else {
+		echo "true";
+	}
+	exit();
+
+}
+
 $library = new Library();
 $data = $library->makeCurl ("/appliances/" . $_POST["id"], "PUT", $_POST);
 
@@ -21,7 +40,7 @@ $data = $library->makeCurl ("/appliances/" . $_POST["id"], "PUT", $_POST);
 if(isset($data->error) && !empty($data->error)) {
 	echo "Something went wrong while saving data. <br/><small>Error: [" . $data->message . "]</small>";
 } else {
-	echo "true";
+	echo "true".serialize($_POST);
 }
 
 exit();
