@@ -1,4 +1,4 @@
-SELECT * from rechs.measurments order by id desc LIMIT 10000;
+SELECT * from rechs.measurments where appliance_id=3 order by id desc LIMIT 10000;
 
 SELECT id, amps, created_timestamp from rechs.measurments where created_timestamp between '2018-07-22 00:00:00' AND '2018-07-22 23:59:59' order by amps desc LIMIT 1000000000;
 
@@ -33,14 +33,13 @@ GROUP BY WEEK(created_timestamp);
 
 SELECT 
 COUNT(*) as counter,
-CONCAT( YEAR(created_timestamp), '-', MONTH(created_timestamp), '-', DAY(created_timestamp), ' ', HOUR(created_timestamp), ':', MINUTE(created_timestamp) ) as concatedDateTime, 
+CONCAT( YEAR(created_timestamp), '-', MONTH(created_timestamp), '-', DAY(created_timestamp) ) as concatedDateTime, 
 ROUND(AVG(watts),4) as AVGMeasurment
 FROM rechs.measurments 
-WHERE appliance_id = 2 
-AND watts != 0
+WHERE appliance_id = 3 
 GROUP BY 
-MINUTE(created_timestamp),
-HOUR(created_timestamp),
 DAY(created_timestamp),
 MONTH(created_timestamp),
 YEAR(created_timestamp);
+
+SELECT * from rechs.measurments where appliance_id=3 order by id desc LIMIT 10000;

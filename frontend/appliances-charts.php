@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(E_ALL);
-ini_set('display_errors', 0);
+ini_set('display_errors', 1);
 
 include("inc/cgi/library.php");
 
@@ -14,7 +14,7 @@ if(count($_SESSION["user"]) == 0) {
   $library = new Library();
 
   //Refrigerator
-  $kwh_data = $library->makeCurl ("/measurments/kwh/appliance/3/group-by/all", "GET");
+  $kwh_data = $library->sortArray($library->makeCurl ("/measurments/kwh/appliance/3/group-by/all", "GET"));
   $kwh_measurmentArray = Array();
   $kwh_datesArray = Array();
   $kwh_allTogetherArray = Array();
@@ -26,7 +26,7 @@ if(count($_SESSION["user"]) == 0) {
   $kwh_allTogetherArray["dates"] = $kwh_datesArray;
   $kwh_Arrays = $kwh_allTogetherArray;
 
-  $watts_data = $library->makeCurl ("/measurments/watts/appliance/3/group-by/all", "GET");
+  $watts_data = $library->sortArray($library->makeCurl ("/measurments/watts/appliance/3/group-by/all", "GET"));
   $watts_measurmentArray = Array();
   $watts_datesArray = Array();
   $watts_allTogetherArray = Array();
@@ -38,7 +38,7 @@ if(count($_SESSION["user"]) == 0) {
   $watts_allTogetherArray["dates"] = $watts_datesArray;
   $watts_Arrays = $watts_allTogetherArray;
 
-  $amps_data = $library->makeCurl ("/measurments/amps/appliance/3/group-by/all", "GET");
+  $amps_data = $library->sortArray($library->makeCurl ("/measurments/amps/appliance/3/group-by/all", "GET"));
   $amps_measurmentArray = Array();
   $amps_datesArray = Array();
   $amps_allTogetherArray = Array();
@@ -52,7 +52,7 @@ if(count($_SESSION["user"]) == 0) {
 
 
   //TV
-  $tv_kwh_data = $library->makeCurl ("/measurments/kwh/appliance/2/group-by/hour", "GET");
+  $tv_kwh_data = $library->sortArray($library->makeCurl ("/measurments/kwh/appliance/2/group-by/hour", "GET"));
   $tv_kwh_measurmentArray = Array();
   $tv_kwh_datesArray = Array();
   $tv_kwh_allTogetherArray = Array();
@@ -64,7 +64,7 @@ if(count($_SESSION["user"]) == 0) {
   $tv_kwh_allTogetherArray["dates"] = $tv_kwh_datesArray;
   $tv_kwh_Arrays = $tv_kwh_allTogetherArray;
 
-  $tv_watts_data = $library->makeCurl ("/measurments/watts/appliance/2/group-by/hour", "GET");
+  $tv_watts_data = $library->sortArray($library->makeCurl ("/measurments/watts/appliance/2/group-by/hour", "GET"));
   $tv_watts_measurmentArray = Array();
   $tv_watts_datesArray = Array();
   $tv_watts_allTogetherArray = Array();
@@ -76,7 +76,7 @@ if(count($_SESSION["user"]) == 0) {
   $tv_watts_allTogetherArray["dates"] = $tv_watts_datesArray;
   $tv_watts_Arrays = $tv_watts_allTogetherArray;
 
-  $tv_amps_data = $library->makeCurl ("/measurments/amps/appliance/2/group-by/hour", "GET");
+  $tv_amps_data = $library->sortArray($library->makeCurl ("/measurments/amps/appliance/2/group-by/hour", "GET"));
   $tv_amps_measurmentArray = Array();
   $tv_amps_datesArray = Array();
   $tv_amps_allTogetherArray = Array();
@@ -90,7 +90,7 @@ if(count($_SESSION["user"]) == 0) {
 
 
     //LAMP
-  $lamp_kwh_data = $library->makeCurl ("/measurments/kwh/appliance/1/group-by/hour", "GET");
+  $lamp_kwh_data = $library->sortArray($library->makeCurl ("/measurments/kwh/appliance/1/group-by/hour", "GET"));
   $lamp_kwh_measurmentArray = Array();
   $lamp_kwh_datesArray = Array();
   $lamp_kwh_allTogetherArray = Array();
@@ -102,7 +102,7 @@ if(count($_SESSION["user"]) == 0) {
   $lamp_kwh_allTogetherArray["dates"] = $lamp_kwh_datesArray;
   $lamp_kwh_Arrays = $lamp_kwh_allTogetherArray;
 
-  $lamp_watts_data = $library->makeCurl ("/measurments/watts/appliance/1/group-by/hour", "GET");
+  $lamp_watts_data = $library->sortArray($library->makeCurl ("/measurments/watts/appliance/1/group-by/hour", "GET"));
   $lamp_watts_measurmentArray = Array();
   $lamp_watts_datesArray = Array();
   $lamp_watts_allTogetherArray = Array();
@@ -114,7 +114,7 @@ if(count($_SESSION["user"]) == 0) {
   $lamp_watts_allTogetherArray["dates"] = $lamp_watts_datesArray;
   $lamp_watts_Arrays = $lamp_watts_allTogetherArray;
 
-  $lamp_amps_data = $library->makeCurl ("/measurments/amps/appliance/1/group-by/hour", "GET");
+  $lamp_amps_data = $library->sortArray($library->makeCurl ("/measurments/amps/appliance/1/group-by/hour", "GET"));
   $lamp_amps_measurmentArray = Array();
   $lamp_amps_datesArray = Array();
   $lamp_amps_allTogetherArray = Array();
@@ -155,7 +155,6 @@ if(count($_SESSION["user"]) == 0) {
   // }
   // $tv_amps_Arrays["dates"] = $amps_Arrays["dates"];
   // $lamp_amps_Arrays["dates"] = $amps_Arrays["dates"];
-
 
   // echo "<pre>kwh_Arrays:";
   // print_r($kwh_Arrays);
