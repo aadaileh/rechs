@@ -179,14 +179,11 @@ if(count($_SESSION["user"]) == 0) {
 
                   <form action="#" method="post" id="add-new-node-form" name="add-new-node-form ">
                     <input type="hidden" name="createdBy" id="createdBy" value="Ahmed Adaileh">
-
-<!--
-Icon: Suggest a default icon and allow adding own icon (DO IT IF YOU HAVE TIME)
--->
+                    
                     <!-- Appliance type -->
                     <div class="form-group">
                       <label for="appliance_type">Connected Appliance Type</label>
-                      <select class="form-control" id="appliance_type" aria-describedby="appliance_type_help">
+                      <select class="form-control" id="appliance_type" aria-describedby="appliance_type_help" style="width: 200px;">
                         <option value="frig">Refrigerator</option>
                         <option value="tv">TV</option>
                         <option value="lamp">Stand Lamp</option>
@@ -197,28 +194,28 @@ Icon: Suggest a default icon and allow adding own icon (DO IT IF YOU HAVE TIME)
                     <!-- Appliance label -->
                     <div class="form-group">
                       <label for="appliance_label">Appliance Label</label>
-                      <input type="text" class="form-control" id="appliance_label" aria-describedby="appliance_label_help" placeholder="Enter Appliance Name, Label, ..">
+                      <input type="text" class="form-control" id="appliance_label" aria-describedby="appliance_label_help" placeholder="Enter Appliance Name, Label, .." style="width: 400px;">
                       <small id="appliance_label_help" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
 
                     <!-- Annual Energy consumption (kwh) -->
                     <div class="form-group">
                       <label for="appliance_energy_consumption_kwh">Annual Energy consumption (kwh)</label>
-                      <input type="number" class="form-control" id="appliance_energy_consumption_kwh" aria-describedby="appliance_energy_consumption_kwh_help" placeholder="Enter the Annual Energy consumption in kwh">
+                      <input type="number" class="form-control" id="appliance_energy_consumption_kwh" aria-describedby="appliance_energy_consumption_kwh_help" placeholder="Enter the Annual Energy consumption in kwh" style="width: 400px;">
                       <small id="appliance_energy_consumption_kwh_help" class="form-text text-muted">Lorem ipsum dolor amet ...</small>
                     </div>
 
                     <!-- Energy consumption (Watts) -->
                     <div class="form-group">
                       <label for="appliance_energy_consumption_watts">Energy consumption (Watts)</label>
-                      <input type="number" class="form-control" id="appliance_energy_consumption_watts" aria-describedby="appliance_energy_consumption_watts_help" placeholder="Enter the energy consumption in watts">
+                      <input type="number" class="form-control" id="appliance_energy_consumption_watts" aria-describedby="appliance_energy_consumption_watts_help" placeholder="Enter the energy consumption in watts" style="width: 400px;">
                       <small id="appliance_energy_consumption_watts_help" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
 
                     <!-- Energy Efficient Class -->
                     <div class="form-group">
                       <label for="energy_efficient_class">Energy Efficient Class</label>
-                      <select class="form-control" id="energy_efficient_class" aria-describedby="energy_efficient_class_help">
+                      <select class="form-control" id="energy_efficient_class" aria-describedby="energy_efficient_class_help" style="width: 200px;">
                         <option value="A+++">A+++</option>
                         <option value="A++">A++</option>
                         <option value="A+">A+</option>
@@ -233,7 +230,7 @@ Icon: Suggest a default icon and allow adding own icon (DO IT IF YOU HAVE TIME)
                     <!-- Size -->
                     <div class="form-group">
                       <label for="size">Size <span id="size_unit_span">(in Liter, Inch, Watt depends on the appliancde)</span></label>
-                      <input type="number" class="form-control" id="size" aria-describedby="size_help" placeholder="Enter the size of the appliance">
+                      <input type="number" class="form-control" id="size" aria-describedby="size_help" placeholder="Enter the size of the appliance" style="width: 400px;">
                       <input type="hidden" id="size_unit" value="something" name="size_unit">
                       <small id="size_help" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>

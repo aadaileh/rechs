@@ -62,6 +62,11 @@ if(count($_SESSION["user"]) == 0) {
 <script>
 $(document).ready(function(){
     $("#stand-by-button-frig").click(function(){
+      if (document.getElementById("stand-by-button-frig").checked) {
+        $("#stand-by-duration-frig").fadeIn(700);
+      } else {
+        $("#stand-by-duration-frig").fadeOut(700);
+      }
         $.post("/inc/cgi/appliances-save.php",
           {
             id: document.getElementById("stand-by-button-frig").value,
@@ -74,6 +79,11 @@ $(document).ready(function(){
     });
 
     $("#stand-by-button-tv").click(function(){
+        if (document.getElementById("stand-by-button-tv").checked) {
+          $("#stand-by-duration-tv").fadeIn(700);
+        } else {
+          $("#stand-by-duration-tv").fadeOut(700);
+        }
         $.post("/inc/cgi/appliances-save.php",
           {
             id: document.getElementById("stand-by-button-tv").value,
@@ -86,6 +96,11 @@ $(document).ready(function(){
     });
 
     $("#stand-by-button-lamp").click(function(){
+        if (document.getElementById("stand-by-button-lamp").checked) {
+          $("#stand-by-duration-lamp").fadeIn(700);
+        } else {
+          $("#stand-by-duration-lamp").fadeOut(700);
+        }
         $.post("/inc/cgi/appliances-save.php",
           {
             id: document.getElementById("stand-by-button-lamp").value,
@@ -188,15 +203,23 @@ $(document).ready(function(){
           </tbody>
         </table>
 
-        <br/>
 
-        <table class="table table-striped" id="theTable">
+        <table class="table table-striped" id="theTable" style="margin-bottom: 0px;">
           <thead>
             <th colspan="2">
               Appliance commands:
             </th>
           </thead>
-          <tbody>         
+          <tbody>
+            <tr>
+              <td>
+                <label class="switch">
+                  <input id="stand-by-button-onoff-frig" type="checkbox" value="onoff-frig">
+                  <span class="slider round"></span>
+                </label>
+              </td>
+              <td>On/off Function</td>
+            </tr>             
             <tr>
               <td>
                 <label class="switch">
@@ -213,18 +236,22 @@ $(document).ready(function(){
               <td>
                 <div id="stand-by-button-frig-response">Standby Mode</div>
               </td>
-            </tr>
-            <tr>
-              <td>
-                <label class="switch">
-                  <input id="stand-by-button-onoff-frig" type="checkbox" value="onoff-frig">
-                  <span class="slider round"></span>
-                </label>
-              </td>
-              <td>On/off Function</td>
-            </tr>           
+            </tr>         
           </tbody>
         </table>
+
+        <div class="panel panel-default" id="stand-by-duration-frig" style="display: none;">
+          <div class="panel-body">
+            <div class="form-group" style="margin-bottom: 0px;">
+              <form class="form-inline">
+                <label for="focusedInput">Standby duration (seconds):</label>
+                <input class="form-control" id="focusedInput" type="text" name="standby_duration" style="width: 80px;">
+                <button type="button" class="btn btn-primary">Save</button>
+                <br><small id="appliance_type_help" class="form-text text-muted"><strong>SDO</strong> (<strong>S</strong>tandby <strong>D</strong>etector and <strong>O</strong>ptimizer) will shut down the appliance when it keeps sending the detected standby energy consumption level for seconds defined in this field.</small>
+              </form>
+            </div>
+          </div>
+        </div>
 
     </div>
   </div>
@@ -240,7 +267,7 @@ $(document).ready(function(){
 
       <!-- BODY -->
 
-        <table class="table table-striped" id="theTable">
+        <table class="table table-striped" id="theTable" style="margin-bottom: 0px;">
           <thead>
             <th colspan="2">
               Appliance Details:
@@ -294,13 +321,22 @@ $(document).ready(function(){
 
         <br/>
 
-        <table class="table table-striped" id="theTable">
+        <table class="table table-striped" id="theTable" style="margin-bottom: 0px;">
           <thead>
             <th colspan="2">
               Appliance commands:
             </th>
           </thead>
-          <tbody>            
+          <tbody>
+            <tr>
+              <td>
+                <label class="switch">
+                  <input id="stand-by-button-onoff-tv" type="checkbox">
+                  <span class="slider round"></span>
+                </label>
+              </td>
+              <td>On/off Function</td>
+            </tr> 
             <tr>
               <td>
                 <label class="switch">
@@ -317,19 +353,21 @@ $(document).ready(function(){
               <td>
                 <div id="stand-by-button-tv-response">Standby Mode</div>
               </td>
-            </tr>
-            <tr>
-              <td>
-                <label class="switch">
-                  <input id="stand-by-button-onoff-tv" type="checkbox">
-                  <span class="slider round"></span>
-                </label>
-              </td>
-              <td>On/off Function</td>
-            </tr>           
+            </tr>          
           </tbody>
         </table>
 
+        <div class="panel panel-default" id="stand-by-duration-tv" style="display: none;">
+          <div class="panel-body">
+            <div class="form-group" style="margin-bottom: 0px;">
+              <form class="form-inline">
+                <label for="focusedInput">Standby duration (seconds):</label>
+                <input class="form-control" id="focusedInput" type="text" name="standby_duration" style="width: 80px;">
+                <br><small id="appliance_type_help" class="form-text text-muted"><strong>SDO</strong> (<strong>S</strong>tandby <strong>D</strong>etector and <strong>O</strong>ptimizer) will shut down the appliance when it keeps sending the detected standby energy consumption level for seconds defined in this field.</small>
+              </form>
+            </div>
+          </div>
+        </div>
 
     </div>
   </div>
@@ -344,7 +382,7 @@ $(document).ready(function(){
     <div class="panel-body" id="panel-body">
 
       <!-- BODY -->
-        <table class="table table-striped" id="theTable">
+        <table class="table table-striped" id="theTable" style="margin-bottom: 0px;">
           <thead>
             <th colspan="2">
               Appliance Details:
@@ -398,13 +436,28 @@ $(document).ready(function(){
 
         <br/>
 
-        <table class="table table-striped" id="theTable">
+        <table class="table table-striped" id="theTable" style="margin-bottom: 0px;">
           <thead>
             <th colspan="2">
               Appliance commands:
             </th>
           </thead>
-          <tbody>            
+          <tbody>  
+            <tr>
+              <td>
+                <label class="switch">
+                  <input id="stand-by-button-onoff-lamp" type="checkbox"
+                    <?php 
+                      if ($lamp->standByStatus == 1) {
+                        echo "checked";
+                      }
+                    ?>
+                  >
+                  <span class="slider round"></span>
+                </label>
+              </td>
+              <td>On/off Function</td>
+            </tr>
             <tr>
               <td>
                 <label class="switch">
@@ -421,24 +474,21 @@ $(document).ready(function(){
               <td>
                 <div id="stand-by-button-lamp-response">Standby Mode</div>
               </td>
-            </tr>
-            <tr>
-              <td>
-                <label class="switch">
-                  <input id="stand-by-button-onoff-lamp" type="checkbox"
-                    <?php 
-                      if ($lamp->standByStatus == 1) {
-                        echo "checked";
-                      }
-                    ?>
-                  >
-                  <span class="slider round"></span>
-                </label>
-              </td>
-              <td>On/off Function</td>
             </tr>           
           </tbody>
         </table>   
+
+        <div class="panel panel-default" id="stand-by-duration-lamp" style="display: none;">
+          <div class="panel-body">
+            <div class="form-group" style="margin-bottom: 0px;">
+              <form class="form-inline">
+                <label for="focusedInput">Standby duration (seconds):</label>
+                <input class="form-control" id="focusedInput" type="text" name="standby_duration" style="width: 80px;">
+                <br><small id="appliance_type_help" class="form-text text-muted"><strong>SDO</strong> (<strong>S</strong>tandby <strong>D</strong>etector and <strong>O</strong>ptimizer) will shut down the appliance when it keeps sending the detected standby energy consumption level for seconds defined in this field.</small>
+              </form>
+            </div>
+          </div>
+        </div>
 
     </div>
   </div>

@@ -164,7 +164,7 @@ if(count($_SESSION["user"]) == 0) {
     <div class="panel-body">
       <h4 style="font-weight: bold;">Welcome to RECHS - Reduction of Electricity Consumption in Household Sector</h4>
       Project <strong>RECHS</strong> aims to reduce the household's electricity consumption by suggesting more energy efficient appliances, cut-off electricity consumption based on a defined schedule or based on the measured stand-by status, and switching the energy provider.<br/>
-      This page offers a general and summerized statistics of measured appliances, also it does offer a general status overview of all running modules; <strong>EPO</strong> (<strong>E</strong>nergy <strong>P</strong>rovider <strong>O</strong>ptimizer), <strong>ARR</strong> (<strong>A</strong>ppliance <strong>R</strong>eplacement <strong>R</strong>ecommender), <strong>SDA</strong> (<strong>S</strong>tandby <strong>D</strong>etector & <strong>O</strong>ptimizer) and <strong>Schedular detailes</strong>. It also offers some general information about registered <strong>users</strong> and <strong>nodes</strong>.
+      This page offers a general and summerized statistics of measured appliances, also it does offer a general status overview of all running modules; <strong>EPO</strong> (<strong>E</strong>nergy <strong>P</strong>rovider <strong>O</strong>ptimizer), <strong>ARR</strong> (<strong>A</strong>ppliance <strong>R</strong>eplacement <strong>R</strong>ecommender), <strong>SDO</strong> (<strong>S</strong>tandby <strong>D</strong>etector & <strong>O</strong>ptimizer) and <strong>Schedular detailes</strong>. It also offers some general information about registered <strong>users</strong> and <strong>nodes</strong>.
     </div>
   </div>
 </div>
@@ -226,7 +226,7 @@ if(count($_SESSION["user"]) == 0) {
 
       <div id="customized-home-panel-right">
         <div class="panel panel-primary">
-          <div class="panel-heading"><span data-toggle="tooltip" title="A module defines the standby values and completely switch off the appliance when not needed"><strong>SDA</strong> (<strong>S</strong>tandby <strong>D</strong>etector & <strong>O</strong>ptimizer)</span></div>
+          <div class="panel-heading"><span data-toggle="tooltip" title="A module defines the standby values and completely switch off the appliance when not needed"><strong>SDO</strong> (<strong>S</strong>tandby <strong>D</strong>etector & <strong>O</strong>ptimizer)</span></div>
           <div class="panel-body">
             
             Based on the calculated standby energy consumption and behaviour, RECHS has ascertained the following facts:<br/><br/>
