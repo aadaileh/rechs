@@ -28,25 +28,20 @@ import java.util.Date;
 
 /**
  * <p>
- * This is just a simple job that says "Hello" to the world.
+ * This is just a simple job that gets fired off many times by example 1
  * </p>
  *
  * @author Bill Kratzer
  */
-public class HelloJob implements Job {
+public class SimpleJob implements Job {
 
-    private static Logger LOG = LoggerFactory.getLogger(HelloJob.class);
+    private static Logger _log = LoggerFactory.getLogger(SimpleJob.class);
 
     /**
-     * <p>
-     * Empty constructor for job initilization
-     * </p>
-     * <p>
      * Quartz requires a public empty constructor so that the
      * scheduler can instantiate the class whenever it needs.
-     * </p>
      */
-    public HelloJob() {
+    public SimpleJob() {
     }
 
     /**
@@ -62,9 +57,11 @@ public class HelloJob implements Job {
     public void execute(JobExecutionContext context)
             throws JobExecutionException {
 
+        // This job simply prints out its job name and the
+        // date and time that it is running
         JobKey jobKey = context.getJobDetail().getKey();
-        // Say Hello to the World and display the date/time
-        LOG.info("SimpleJob says: " + jobKey + " executing at " + new Date());
+        _log.info("SimpleJob says: " + jobKey + " executing at " + new Date());
     }
 
 }
+

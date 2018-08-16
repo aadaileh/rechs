@@ -1,7 +1,7 @@
 package com.sec.rechs.Services.HeartBeat.impl;
 
 
-import com.sec.rechs.Repository.SchedularRepository;
+import com.sec.rechs.Repository.ScheduleRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -23,9 +23,13 @@ public class SchedularImplentations {
 
     private static final Logger LOG = LoggerFactory.getLogger(SchedularImplentations.class);
 
-    SchedularRepository schedularRepository;
+    ScheduleRepository scheduleRepository;
 
-    public void setSchedularRepository(SchedularRepository schedularRepository) {
-        this.schedularRepository = schedularRepository;
+    public ScheduleRepository getScheduleRepository() {
+        return scheduleRepository;
+    }
+
+    public void setScheduleRepository(ScheduleRepository scheduleRepository) {
+        this.scheduleRepository = scheduleRepository;
     }
 }

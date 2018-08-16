@@ -1,6 +1,6 @@
 package com.sec.rechs.Services.HeartBeat;
 
-import com.sec.rechs.Repository.SchedularRepository;
+import com.sec.rechs.Repository.ScheduleRepository;
 import com.sec.rechs.Services.HeartBeat.impl.SchedularImplentations;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -31,7 +31,7 @@ public class HeartBeatController {
     private static final Logger LOG = getLogger(HeartBeatController.class);
 
     @Autowired
-    SchedularRepository schedularRepository;
+    ScheduleRepository scheduleRepository;
 
     SchedularImplentations schedularImplentations = new SchedularImplentations();
 
@@ -39,7 +39,8 @@ public class HeartBeatController {
     @PutMapping("/{applianceId}/data")
     @ApiOperation("xxxx")
     public void saveSchedular() {
-        schedularImplentations.setSchedularRepository(schedularRepository);
+
+        schedularImplentations.setScheduleRepository(scheduleRepository);
     }
 
 
