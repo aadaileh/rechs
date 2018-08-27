@@ -65,8 +65,8 @@ public class SimpleJob implements Job {
 
         String message = (String) context.getJobDetail().getJobDataMap().get(MESSAGE);
 
-        _log.info("SimpleJob: " + jobKey + " executing at " + new Date());
-        _log.info("SimpleJob: msg: " + message);
+        _log.info("ScheduleExecuter: " + jobKey + " executing at " + new Date());
+        _log.info("ScheduleExecuter: msg: " + message);
     }
 
     

@@ -1,24 +1,6 @@
 package com.sec.rechs.Services.HeartBeat;
 
-
-/*
- * All content copyright Terracotta, Inc., unless otherwise indicated. All rights reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy
- * of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations
- * under the License.
- *
- */
-
-
+import com.sec.rechs.Services.HeartBeat.impl.ScheduleExecuter;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 import org.slf4j.Logger;
@@ -53,7 +35,7 @@ public class SimpleExample {
         // jobs can be scheduled before sched.start() has been called
 
         // job 1 will run every 20 seconds
-        JobDetail job = newJob(SimpleJob.class)
+        JobDetail job = newJob(ScheduleExecuter.class)
                 .withIdentity("job1", "group1")
                 .build();
 
@@ -67,7 +49,7 @@ public class SimpleExample {
                 + trigger.getCronExpression());
 
         // job 2 will run every other minute (at 15 seconds past the minute)
-        job = newJob(SimpleJob.class)
+        job = newJob(ScheduleExecuter.class)
                 .withIdentity("job2", "group1")
                 .build();
 
@@ -81,7 +63,7 @@ public class SimpleExample {
                 + trigger.getCronExpression());
 
         // job 3 will run every other minute but only between 8am and 5pm
-        job = newJob(SimpleJob.class)
+        job = newJob(ScheduleExecuter.class)
                 .withIdentity("job3", "group1")
                 .build();
 
@@ -95,7 +77,7 @@ public class SimpleExample {
                 + trigger.getCronExpression());
 
         // job 4 will run every three minutes but only between 5pm and 11pm
-        job = newJob(SimpleJob.class)
+        job = newJob(ScheduleExecuter.class)
                 .withIdentity("job4", "group1")
                 .build();
 
@@ -109,7 +91,7 @@ public class SimpleExample {
                 + trigger.getCronExpression());
 
         // job 5 will run at 10am on the 1st and 15th days of the month
-        job = newJob(SimpleJob.class).withIdentity("job5", "group1").build();
+        job = newJob(ScheduleExecuter.class).withIdentity("job5", "group1").build();
 
         trigger = newTrigger()
                 .withIdentity("trigger5", "group1")
@@ -121,7 +103,7 @@ public class SimpleExample {
                 + trigger.getCronExpression());
 
         // job 6 will run every 30 seconds but only on Weekdays (Monday through Friday)
-        job = newJob(SimpleJob.class)
+        job = newJob(ScheduleExecuter.class)
                 .withIdentity("job6", "group1")
                 .build();
 
@@ -135,7 +117,7 @@ public class SimpleExample {
                 + trigger.getCronExpression());
 
         // job 7 will run every 30 seconds but only on Weekends (Saturday and Sunday)
-        job = newJob(SimpleJob.class)
+        job = newJob(ScheduleExecuter.class)
                 .withIdentity("job7", "group1")
                 .build();
 

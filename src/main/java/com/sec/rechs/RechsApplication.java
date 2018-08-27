@@ -1,6 +1,5 @@
 package com.sec.rechs;
 
-import com.sec.rechs.Services.HeartBeat.SimpleExample;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.orm.jpa.EntityScan;
@@ -17,7 +16,7 @@ public class RechsApplication {
 
 		SpringApplication.run(RechsApplication.class, args);
 
-		SimpleExample simpleExample = new SimpleExample();
-		simpleExample.run();
+//		SimpleExample simpleExample = new SimpleExample();
+//		simpleExample.run();
 	}
 }

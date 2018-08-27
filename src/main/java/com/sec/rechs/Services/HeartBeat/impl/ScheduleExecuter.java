@@ -1,4 +1,4 @@
-package com.sec.rechs.Services.HeartBeat;
+package com.sec.rechs.Services.HeartBeat.impl;
 
 /*
  * All content copyright Terracotta, Inc., unless otherwise indicated. All rights reserved.
@@ -17,14 +17,16 @@ package com.sec.rechs.Services.HeartBeat;
  *
  */
 
+import com.sec.rechs.Model.Schedule;
+import com.sec.rechs.Repository.ScheduleRepository;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
-import org.quartz.JobKey;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -33,16 +35,20 @@ import java.util.Date;
  *
  * @author Bill Kratzer
  */
-public class SimpleJob implements Job {
+public class ScheduleExecuter implements Job {
 
-    private static Logger _log = LoggerFactory.getLogger(SimpleJob.class);
+    private static Logger LOG = LoggerFactory.getLogger(ScheduleExecuter.class);
+
+    @Autowired
+    ScheduleRepository scheduleRepository;
+
+    HeartBeatImplentations heartBeatImplentations = new HeartBeatImplentations();
 
     /**
      * Quartz requires a public empty constructor so that the
      * scheduler can instantiate the class whenever it needs.
      */
-    public SimpleJob() {
-    }
+    public ScheduleExecuter() {}
 
     /**
      * <p>
@@ -57,10 +63,13 @@ public class SimpleJob implements Job {
     public void execute(JobExecutionContext context)
             throws JobExecutionException {
 
-        // This job simply prints out its job name and the
-        // date and time that it is running
-        JobKey jobKey = context.getJobDetail().getKey();
-        _log.info("SimpleJob says: " + jobKey + " executing at " + new Date());
+        //JobKey jobKey = context.getJobDetail().getKey();
+        //LOG.info("ScheduleExecuter says: " + jobKey + " executing at " + new Date());
+
+        List<Schedule> scheduleList = scheduleRepository.findAll();
+        LOG.info(scheduleList.toString());
+
+        int x = 0;
     }
 
 }

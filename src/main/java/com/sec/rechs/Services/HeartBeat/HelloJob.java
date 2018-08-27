@@ -64,7 +64,7 @@ public class HelloJob implements Job {
 
         JobKey jobKey = context.getJobDetail().getKey();
         // Say Hello to the World and display the date/time
-        LOG.info("SimpleJob says: " + jobKey + " executing at " + new Date());
+        LOG.info("ScheduleExecuter says: " + jobKey + " executing at " + new Date());
     }
 
 }
