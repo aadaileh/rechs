@@ -7,6 +7,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 
 /**
  * <h1>ApplianceController service implementations</h1>
@@ -36,6 +40,8 @@ public class HeartBeatImplentations {
 
     public boolean validateSchedule (Schedule schedule) {
 
+        Long id = schedule.getId();
+
         // 1. check if end-date before start-date
         if(schedule.getBegin().after(schedule.getEnd())) {
             return false;
@@ -43,11 +49,7 @@ public class HeartBeatImplentations {
 
         // 2. check if the field repeat_every contains at least one day
         String repeatEvery = schedule.getRepeat_every();
-
-        // 3. check if the schedule is active
-        if (!schedule.getActive().equals(Boolean.TRUE)) {
-            return false;
-        }
+        List<String> repeatEveryList = new ArrayList<String>(Arrays.asList(repeatEvery.split("-")));
 
         return true;
     }
