@@ -1,13 +1,14 @@
 package com.sec.rechs.Services.HeartBeat;
 
+import com.sec.rechs.Model.Schedule;
 import com.sec.rechs.Repository.ScheduleRepository;
 import com.sec.rechs.Services.HeartBeat.impl.HeartBeatImplentations;
-import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
@@ -25,7 +26,6 @@ import static org.slf4j.LoggerFactory.getLogger;
  * @since   26.06.2018
  */
 @RestController
-@RequestMapping("/api/heart-beat")
 public class HeartBeatController {
 
     private static final Logger LOG = getLogger(HeartBeatController.class);
@@ -36,14 +36,14 @@ public class HeartBeatController {
     HeartBeatImplentations heartBeatImplentations = new HeartBeatImplentations();
 
     // Run Heart Beat
-    @PostMapping("/run")
-    @ApiOperation("Run Heart Beat")
-    public void runHeartBeat(
-//            @PathVariable(value = "appliance-id") Long applianceId,
-//            @RequestBody Schedule schedule
-    ) throws Exception {
+    @Scheduled(fixedRate = 9000)
+    public void run() throws Exception {
 
         heartBeatImplentations.setScheduleRepository(scheduleRepository);
-        heartBeatImplentations.run();
+        List<Schedule> scheduleList = scheduleRepository.findAll();
+
+            scheduleList.stream()
+                    .filter(s->s.getActive().equals(Boolean.TRUE))
+                    .forEach(item->heartBeatImplentations.validateSchedule(item));
     }
 }
