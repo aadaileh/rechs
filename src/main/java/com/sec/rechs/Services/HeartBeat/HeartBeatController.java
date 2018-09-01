@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
@@ -37,13 +40,36 @@ public class HeartBeatController {
 
     // Run Heart Beat
     @Scheduled(fixedRate = 9000)
-    public void run() throws Exception {
+    public void run() {
 
         heartBeatImplentations.setScheduleRepository(scheduleRepository);
         List<Schedule> scheduleList = scheduleRepository.findAll();
+        List<Schedule> schedulesFiltered = new ArrayList<>();
 
-            scheduleList.stream()
-                    .filter(s->s.getActive().equals(Boolean.TRUE))
-                    .forEach(item->heartBeatImplentations.validateSchedule(item));
+        Stream<Schedule> scheduleStream = scheduleList.stream()
+                .filter(s -> s.getActive().equals(Boolean.TRUE))
+                .filter(s1 -> s1.getBegin().before(s1.getEnd()))
+                .filter(s2 -> Arrays.asList(s2.getRepeat_every().split("-")).size() > 0)
+                .filter(s3 -> !s3.getRepeat_every().isEmpty())
+                .filter(s4 -> {
+                    List<String> repeatEveryList = Arrays.asList(s4.getRepeat_every().split("-"));
+                    boolean monday = repeatEveryList.contains("Monday");
+                    boolean tuesday = repeatEveryList.contains("Tuesday");
+                    boolean wednesday = repeatEveryList.contains("Wednesday");
+                    boolean thursday = repeatEveryList.contains("Thursday");
+                    boolean friday = repeatEveryList.contains("Friday");
+                    boolean saturday = repeatEveryList.contains("Saturday");
+                    boolean sunday = repeatEveryList.contains("Sunday");
+
+                    return monday || tuesday || wednesday || thursday || friday || saturday || sunday;
+                });
+
+//                .map(s5 -> {
+//                    schedulesFiltered.add(s5);
+//                    return schedulesFiltered;
+//                });
+        //.forEach(item->heartBeatImplentations.out(item));
+
+        int x = 0;
     }
 }

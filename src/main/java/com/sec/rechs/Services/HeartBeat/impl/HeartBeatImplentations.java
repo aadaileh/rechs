@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -38,19 +37,27 @@ public class HeartBeatImplentations {
         this.scheduleRepository = scheduleRepository;
     }
 
-    public boolean validateSchedule (Schedule schedule) {
-
-        Long id = schedule.getId();
-
-        // 1. check if end-date before start-date
-        if(schedule.getBegin().after(schedule.getEnd())) {
-            return false;
-        }
+    public void out (Schedule schedule) {
 
         // 2. check if the field repeat_every contains at least one day
-        String repeatEvery = schedule.getRepeat_every();
-        List<String> repeatEveryList = new ArrayList<String>(Arrays.asList(repeatEvery.split("-")));
+        //String repeatEvery = schedule.getRepeat_every();
+        //List<String> repeatEveryList = new ArrayList<String>(Arrays.asList(repeatEvery.split("-")));
+
+
+        String[] split = "".split("-");
+
+        Long id = schedule.getId();
+        Boolean active = schedule.getActive();
+
+        int x=0;
+    }
+
+    public boolean checkRepeatedDays (Schedule schedule) {
+
+        List<String> repeatEveryList = Arrays.asList(schedule.getRepeat_every().split("-"));
+        boolean b = repeatEveryList.containsAll(Arrays.asList("Monday", "Tuesday"));
 
         return true;
     }
+
 }
