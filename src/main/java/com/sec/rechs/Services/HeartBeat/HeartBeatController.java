@@ -1,5 +1,7 @@
 package com.sec.rechs.Services.HeartBeat;
 
+import com.sec.rechs.Client.FeignClient;
+import com.sec.rechs.Factory.CommonFactoryAbstract;
 import com.sec.rechs.Model.Schedule;
 import com.sec.rechs.Repository.ScheduleRepository;
 import com.sec.rechs.Services.HeartBeat.impl.HeartBeatImplentations;
@@ -30,7 +32,7 @@ import static org.slf4j.LoggerFactory.getLogger;
  */
 @RestController
 @RequestMapping("/api/heart-beat")
-public class HeartBeatController {
+public class HeartBeatController extends CommonFactoryAbstract {
 
     private static final Logger LOG = getLogger(HeartBeatController.class);
 
@@ -48,6 +50,19 @@ public class HeartBeatController {
         heartBeatImplentations.setScheduleRepository(scheduleRepository);
         List<Schedule> scheduleList = scheduleRepository.findAll();
         List<Schedule> schedulesFiltered = heartBeatImplentations.getFilteredList(scheduleList);
+
+        /*
+        TODO:
+        1. Loop through the schedulesFiltered list
+        2. Switch it on/off
+        3. Test if it works fine
+         */
+
+//        FeignClient feignClientOn = getFeignClient("/api/appliances/3/turnon");
+//        feignClientOn.turnOn(3);
+
+        FeignClient feignClientOff = getFeignClient("/api/appliances/3/turnoff");
+        feignClientOff.turnOff(3);
 
         int x=0;
     }
