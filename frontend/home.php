@@ -204,6 +204,28 @@ if(count($_SESSION["user"]) == 0) {
 
       <div id="customized-home-panel-right">
         <div class="panel panel-primary">
+          <div class="panel-heading"><span data-toggle="tooltip" title="Tracks and records electrictity consumption including Ampers, kwh and Watts">
+            <strong>ECTR</strong> (<strong>E</strong>lectricity <strong>C</strong>onsumption <strong>T</strong>racker & <strong>R</strong>ecorder)</span>
+          </div>
+          <div class="panel-body">
+            Based on the calculated energy consumption, RECHS can make following suggestions:<br/><br/>
+            <strong>Node #1: (Refrigerator):</strong><br/>
+            Lorem ipsum dolor amet
+            <br><br>
+
+            <strong>Node #2: (TV):</strong><br/>
+            Lorem ipsum dolor amet
+            <br><br>
+
+            <strong>Node #3: (Lamp):</strong><br/>
+            Lorem ipsum dolor amet
+            <br>
+          </div>
+        </div>
+      </div>
+
+      <div id="customized-home-panel-right">
+        <div class="panel panel-primary">
           <div class="panel-heading"><span data-toggle="tooltip" title="Appliance Replacement Recommender. It tells when to replace an appliance.">
             <strong>ARR</strong> (<strong>A</strong>ppliance <strong>R</strong>eplacement <strong>R</strong>ecommender)</span>
           </div>
@@ -245,25 +267,6 @@ if(count($_SESSION["user"]) == 0) {
         </div>
       </div>
 
-      <div id="customized-home-panel-right">
-        <div class="panel panel-primary">
-          <div class="panel-heading"><span data-toggle="tooltip" title="A module where a schedule is predefined to switch off/on appliances"><strong>Schedular Details</strong></span></div>
-          <div class="panel-body">
-            
-            First time visited:<br>
-            Click <a href="/energy-provider-optimizer.php">here</a> to schedule new job.<br><br>
-
-            View shown after activating the EPO (Energy Provider Optimizer):<br>
-            Searching for proper Energy Provider has revelaed the following result(s):<br>
-            1. XYZ Energy Provider<br>
-
-            Your current annual Electricity costs are XXX€. Once you switch to the suggested XYZ Energy Provider, you can save up to XX% of your costs. This means XX€ less annualy.
-
-            <br>
-          </div>
-        </div>
-      </div>
-
 
       <div id="customized-home-panel-right">
         <div class="panel panel-primary">
@@ -283,6 +286,25 @@ if(count($_SESSION["user"]) == 0) {
           </div>
         </div>
       </div>
+
+      <div id="customized-home-panel-right">
+        <div class="panel panel-primary">
+          <div class="panel-heading"><span data-toggle="tooltip" title="A module where a schedule is predefined to switch off/on appliances"><strong>Schedular Details</strong></span></div>
+          <div class="panel-body">
+            
+            First time visited:<br>
+            Click <a href="/energy-provider-optimizer.php">here</a> to schedule new job.<br><br>
+
+            View shown after activating the EPO (Energy Provider Optimizer):<br>
+            Searching for proper Energy Provider has revelaed the following result(s):<br>
+            1. XYZ Energy Provider<br>
+
+            Your current annual Electricity costs are XXX€. Once you switch to the suggested XYZ Energy Provider, you can save up to XX% of your costs. This means XX€ less annualy.
+
+            <br>
+          </div>
+        </div>
+      </div>      
       
       <div id="customized-home-panel-right">
         <div class="panel panel-primary">

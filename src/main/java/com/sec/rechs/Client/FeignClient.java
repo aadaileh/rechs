@@ -10,5 +10,4 @@ public interface FeignClient {
 
     @RequestLine("PATCH")
     void turnOff(int id);
-
 }

@@ -55,14 +55,14 @@ public class HeartBeatController extends CommonFactoryAbstract {
         TODO:
         1. Loop through the schedulesFiltered list
         2. Switch it on/off
-        3. Test if it works fine
+        3. Test if it works fine extensively!!
          */
 
-//        FeignClient feignClientOn = getFeignClient("/api/appliances/3/turnon");
-//        feignClientOn.turnOn(3);
+        FeignClient feignClientOn = getFeignClient("/api/appliances/3/turnon");
+        feignClientOn.turnOn(3);
 
-        FeignClient feignClientOff = getFeignClient("/api/appliances/3/turnoff");
-        feignClientOff.turnOff(3);
+//        FeignClient feignClientOff = getFeignClient("/api/appliances/3/turnoff");
+//        feignClientOff.turnOff(3);
 
         int x=0;
     }
