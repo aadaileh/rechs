@@ -8,7 +8,6 @@ import com.sec.rechs.Services.HeartBeat.impl.HeartBeatImplentations;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,7 +41,7 @@ public class HeartBeatController extends CommonFactoryAbstract {
     HeartBeatImplentations heartBeatImplentations = new HeartBeatImplentations();
 
     // Run Heart Beat
-    @Scheduled(fixedRate = 10000)
+    //@Scheduled(fixedRate = 10000)
     @GetMapping("/schedules")
     @ApiOperation("Repeatedly check & run scheduled jobs")
     public void schedules() {

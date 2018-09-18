@@ -127,7 +127,7 @@ if(count($_SESSION["user"]) == 0) {
   <title>RECHS - Home</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="inc/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <script src="inc/js/jquery.min.js"></script>
   <script src="inc/js/bootstrap.min.js"></script>
 
@@ -164,7 +164,7 @@ if(count($_SESSION["user"]) == 0) {
     <div class="panel-body">
       <h4 style="font-weight: bold;">Welcome to RECHS - Reduction of Electricity Consumption in Household Sector</h4>
       Project <strong>RECHS</strong> aims to reduce the household's electricity consumption by suggesting more energy efficient appliances, cut-off electricity consumption based on a defined schedule or based on the measured stand-by status, and switching the energy provider.<br/>
-      This page offers a general and summerized statistics of measured appliances, also it does offer a general status overview of all running modules; <strong>EPO</strong> (<strong>E</strong>nergy <strong>P</strong>rovider <strong>O</strong>ptimizer), <strong>ARR</strong> (<strong>A</strong>ppliance <strong>R</strong>eplacement <strong>R</strong>ecommender), <strong>SDO</strong> (<strong>S</strong>tandby <strong>D</strong>etector & <strong>O</strong>ptimizer) and <strong>Schedular detailes</strong>. It also offers some general information about registered <strong>users</strong> and <strong>nodes</strong>.
+      This page offers a general and summerized statistics of measured appliances, also it does offer a general status overview of all running modules; <strong>ECTR</strong> (<strong>E</strong>lectricity <strong>C</strong>onsumption <strong>T</strong>racker & <strong>R</strong>ecorder), <strong>EPO</strong> (<strong>E</strong>nergy <strong>P</strong>rovider <strong>O</strong>ptimizer), <strong>ARR</strong> (<strong>A</strong>ppliance <strong>R</strong>eplacement <strong>R</strong>ecommender), <strong>SDO</strong> (<strong>S</strong>tandby <strong>D</strong>etector & <strong>O</strong>ptimizer) and <strong>Schedular detailes</strong>. It also offers some general information about registered <strong>users</strong> and <strong>nodes</strong>.
     </div>
   </div>
 </div>
@@ -291,6 +291,8 @@ if(count($_SESSION["user"]) == 0) {
         <div class="panel panel-primary">
           <div class="panel-heading"><span data-toggle="tooltip" title="A module where a schedule is predefined to switch off/on appliances"><strong>Schedular Details</strong></span></div>
           <div class="panel-body">
+
+            Control whatever is plugged into a Smart Switch 6 via a schedule and ensure that gaming systems and computers aren’t used when they’re not meant to be.<br><br>
             
             First time visited:<br>
             Click <a href="/energy-provider-optimizer.php">here</a> to schedule new job.<br><br>
