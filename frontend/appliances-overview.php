@@ -34,9 +34,9 @@ if(count($_SESSION["user"]) == 0) {
     }    
   }
 
-  // echo "<pre>data:\n";
-  // print_r($data);
-  // echo "</pre>";
+//  echo "<pre>data:\n";
+//  print_r($data);
+//  echo "</pre>";
 
 ?>
 
@@ -219,7 +219,13 @@ function switchAppliance(action, appliance_id) {
   <div class="panel panel-primary">
     <div class="panel-body">
       <h4 style="font-weight: bold;">Applainces Overview</h4>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non ligula eget nulla malesuada dignissim eget ut eros. Vivamus fermentum lectus vitae orci hendrerit vehicula. Suspendisse felis ligula, viverra in suscipit et, mattis et augue. Duis accumsan at erat a pulvinar. Mauris venenatis auctor tellus a finibus. Fusce facilisis mi eu libero fermentum rhoncus. Donec elementum lacus quis vestibulum scelerisque. Donec non consectetur nibh, ac consectetur nibh. Morbi at venenatis dui. Donec tincidunt maximus purus, eget mollis mauris suscipit a. Pellentesque porta vehicula nisi fringilla porta. Donec quis felis et nisl vestibulum mattis nec non augue. Donec orci dolor, eleifend at tortor eget, ultrices varius mauris. Suspendisse potenti. Cras hendrerit tellus neque, id sagittis mauris congue commodo.
+      <ul>
+        <li>View all available appliances' data</li>
+        <li>See the status of the collected energy consumption data, with date</li>
+        <li>Edit appliances</li>
+        <li>Manage the standby modus, including the "standby duration (in seconds)"</li>
+        <li>Switch nodes/appliances ON/OFF</li>
+      </ul>
     </div>
   </div>
 </div>
@@ -228,20 +234,18 @@ function switchAppliance(action, appliance_id) {
 <div id="appliance">
   <div class="panel panel-primary">
     <div class="panel-heading" style="background-color: #dff0d8;text-align: center;">
-      <a href="#" data-toggle="tooltip" title="Refrigerator: <?php echo $refrigerator->label; ?>"><img src="inc/img/fridge.svg" width="50%"></a>
+      <a href="#" title="TV: <?php echo $tv->label; ?>" data-button="3" id="frig-modal-3" data-toggle="modal" data-target="#editFrigModal"><img src="inc/img/fridge.svg" width="50%"></a>
     </div>
     <div class="panel-body" id="panel-body">
       <!-- BODY -->
 
         <table class="table table-striped" id="theTable">
           <thead>
-            <th colspan="2">
-              Appliance Details:
-            </th>
+            <th colspan="2">Appliance Details:</th>
           </thead>
           <tbody>
             <tr>
-              <td>Status:</td>
+              <td>Retrieving data status:</td>
               <td>
                 <?php
                   if($refrigerator->status == 1) {
@@ -253,9 +257,13 @@ function switchAppliance(action, appliance_id) {
                 </td>
             </tr>
             <tr>
-              <td>Label:</td>
-              <td><?php echo $refrigerator->label; ?></td>
-            </tr> 
+              <td>Last retrieving data's date:</td>
+              <td><?php echo "must come from measurements table"; ?></td>
+            </tr>
+            <tr>
+              <td>Label::</td>
+              <td><?=trim($refrigerator->externalLink) != '' ? '<a href="' . $refrigerator->externalLink . '">' . $refrigerator->label . '</a>' : $refrigerator->label; ?></td>
+            </tr>             
             <tr>
               <td>Annual&nbsp;Energy&nbsp;consumption:</td>
               <td><?php echo $refrigerator->annualEnergyConsumption; ?> Kwh</td>
@@ -272,6 +280,10 @@ function switchAppliance(action, appliance_id) {
               <td>Size:</td>
               <td><?php echo $refrigerator->size . ' ' . $refrigerator->sizeUnit;; ?></td>
             </tr>
+            <tr style="background-color: red;">
+              <td>lowest watts detected:</td>
+              <td>get from db</td>
+            </tr>
             <tr>
               <td>Added on:</td>
               <td><?php echo date('M/d/Y H:m:s', strtotime($refrigerator->createdTimestamp)); ?></td>
@@ -282,8 +294,7 @@ function switchAppliance(action, appliance_id) {
             </tr>            
           </tbody>
         </table>
-
-
+        
         <table class="table table-striped" id="theTable" style="margin-bottom: 0px;">
           <thead>
             <th colspan="2">
@@ -344,7 +355,89 @@ function switchAppliance(action, appliance_id) {
 
     </div>
   </div>
+
+
+  <div class="container">
+
+    <!-- Modal Create new -->
+      <div class="modal fade" id="editFrigModal" tabindex="-1" role="dialog" aria-labelledby="editFrigModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="editFrigModalLabel" style="font-weight: bold; float: left;">Edit Appliance Data</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <div class="alert alert-success" role="alert" id="save-response-true" style="display: none;">Schedule saved correctly.</div>
+            <div class="alert alert-danger" role="alert" id="save-response-false" style="display: none;">x</div>
+
+                  <form action="#" method="post" id="edit-frig-form" name="edit-frig-form">
+                    <input type="hidden" name="createdBy" id="createdBy" value="Ahmed Adaileh">
+
+                    <!-- Appliance label -->
+                    <div class="form-group">
+                      <label for="appliance_label">Appliance Label</label>
+                      <input type="text" class="form-control" id="appliance_label" aria-describedby="appliance_label_help" placeholder="Enter Appliance Name, Label, .." style="width: 400px;">
+                      <small id="appliance_label_help" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+
+                    <!-- Annual Energy consumption (kwh) -->
+                    <div class="form-group">
+                      <label for="appliance_energy_consumption_kwh">Annual Energy consumption (kwh)</label>
+                      <input type="number" class="form-control" id="appliance_energy_consumption_kwh" aria-describedby="appliance_energy_consumption_kwh_help" placeholder="Enter the Annual Energy consumption in kwh" style="width: 400px;">
+                      <small id="appliance_energy_consumption_kwh_help" class="form-text text-muted">Lorem ipsum dolor amet ...</small>
+                    </div>
+
+                    <!-- Energy consumption (Watts) -->
+                    <div class="form-group">
+                      <label for="appliance_energy_consumption_watts">Energy consumption (Watts)</label>
+                      <input type="number" class="form-control" id="appliance_energy_consumption_watts" aria-describedby="appliance_energy_consumption_watts_help" placeholder="Enter the energy consumption in watts" style="width: 400px;">
+                      <small id="appliance_energy_consumption_watts_help" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+
+                    <!-- Energy Efficient Class -->
+                    <div class="form-group">
+                      <label for="energy_efficient_class">Energy Efficient Class</label>
+                      <select class="form-control" id="energy_efficient_class" aria-describedby="energy_efficient_class_help" style="width: 200px;">
+                        <option value="A+++">A+++</option>
+                        <option value="A++">A++</option>
+                        <option value="A+">A+</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                      </select>
+                      <small id="energy_efficient_class_help" class="form-text text-muted">Lorem ipsum dolor amet ...</small>
+                    </div>
+
+                    <!-- Size -->
+                    <div class="form-group">
+                      <label for="size">Size <span id="size_unit_span">(in Liter, Inch, Watt depends on the appliancde)</span></label>
+                      <input type="number" class="form-control" id="size" aria-describedby="size_help" placeholder="Enter the size of the appliance" style="width: 400px;">
+                      <input type="hidden" id="size_unit" value="something" name="size_unit">
+                      <small id="size_help" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+
+                  </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="save-changes-btn">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal End -->
+  </div>
+
+
 </div>
+
+
 
 <!-- tv -->
 <div id="appliance">
@@ -364,9 +457,7 @@ function switchAppliance(action, appliance_id) {
           </thead>
           <tbody>
             <tr>
-              <td>
-                Status:
-              </td>
+              <td>Retrieving data status:</td>
               <td>
                 <?php
                   if($tv->status == 1) {
@@ -375,12 +466,16 @@ function switchAppliance(action, appliance_id) {
                     echo '<img src="inc/img/unchecked.svg" height="20%">';
                   }
                 ?>
-              </td>
-            </tr>  
+                </td>
+            </tr>
+            <tr>
+              <td>Last retrieving data's date:</td>
+              <td><?php echo "must come from measurements table"; ?></td>
+            </tr>
             <tr>
               <td>Label:</td>
-              <td><?php echo $tv->label; ?></td>
-            </tr> 
+              <td><?=trim($tv->externalLink) != '' ? '<a href="' . $tv->externalLink . '">' . $tv->label . '</a>' : $tv->label; ?></td>
+            </tr>  
             <tr>
               <td>Annual Energy consumption:</td>
               <td><?php echo $tv->annualEnergyConsumption; ?> Kwh</td>
@@ -489,9 +584,7 @@ function switchAppliance(action, appliance_id) {
           </thead>
           <tbody>
             <tr>
-              <td>
-                Status:
-              </td>
+              <td>Retrieving data status:</td>
               <td>
                 <?php
                   if($lamp->status == 1) {
@@ -500,12 +593,16 @@ function switchAppliance(action, appliance_id) {
                     echo '<img src="inc/img/unchecked.svg" height="20%">';
                   }
                 ?>
-              </td>
-            </tr>             
+                </td>
+            </tr>
+            <tr>
+              <td>Last retrieving data's date:</td>
+              <td><?php echo "must come from measurements table"; ?></td>
+            </tr>            
             <tr>
               <td>Label:</td>
-              <td><?php echo $lamp->label; ?></td>
-            </tr> 
+              <td><?=trim($lamp->externalLink) != '' ? '<a href="' . $lamp->externalLink . '">' . $lamp->label . '</a>' : $lamp->label; ?></td>
+            </tr>           
             <tr>
               <td>Annual Energy consumption:</td>
               <td><?php echo $lamp->annualEnergyConsumption; ?> Kwh</td>

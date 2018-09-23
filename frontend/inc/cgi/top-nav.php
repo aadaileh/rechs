@@ -14,29 +14,27 @@ $scriptName = end($urlpath);
 
 switch ($scriptName) {
   case 'home.php':
-    //echo "homeClass";
     $homeClass = 'active ';
     break;
  
    case 'appliances-overview.php':
    case 'appliances-charts.php':
-   case 'appliances-schedular.php':
-    //echo 'appliancesClass';
     $appliancesClass = 'active ';
     break;
   
+    case 'appliances-schedular.php':
+    $schedularManagementClass = 'active ';
+    break;
+  
     case 'node-management.php':
-    //echo 'nodeManagementClass';
     $nodeManagementClass = 'active ';
     break;
   
     case 'user-management.php':
-    //echo 'userManagementClass';
     $userManagementClass = 'active ';
     break;
 
     case 'energy-provider-optimizer.php':
-    //echo 'energyProviderOptimizerClass';
     $energyProviderOptimizerClass = 'active ';
     break;   
 }
@@ -61,12 +59,12 @@ switch ($scriptName) {
           <ul class="dropdown-menu">
             <li><a href="appliances-overview.php">Overview</a></li>
             <li><a href="appliances-charts.php">Detailed Charts</a></li>
-            <li><a href="appliances-schedular.php">Schedular</a></li>
           </ul>
         </li>
-        <li class="<?php echo $nodeManagementClass;?>"><a href="node-management.php">Node Management</a></li>
-        <li class="<?php echo $userManagementClass;?>"><a href="user-management.php">User Management</a></li>
+        <li class="<?php echo $schedularManagementClass;?>"><a href="appliances-schedular.php">Schedular Management</a></li>
+        <!-- <li class="<?php echo $nodeManagementClass;?>"><a href="node-management.php">Node/Appliances Management</a></li> -->
         <li class="<?php echo $energyProviderOptimizerClass;?>"><a href="energy-provider-optimizer.php">Energy Provider Optimizer</a></li>
+        <li class="<?php echo $userManagementClass;?>"><a href="user-management.php">User Management</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="profile.php"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION["user"]->fullName;?></a></li>

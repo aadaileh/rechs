@@ -82,7 +82,13 @@ if(count($_SESSION["user"]) == 0) {
   <div class="panel panel-primary">
     <div class="panel-body">
       <h4 style="font-weight: bold;">Applainces Schedular Management</h4>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non ligula eget nulla malesuada dignissim eget ut eros. Vivamus fermentum lectus vitae orci hendrerit vehicula. Suspendisse felis ligula, viverra in suscipit et, mattis et augue. Duis accumsan at erat a pulvinar. Mauris venenatis auctor tellus a finibus. Fusce facilisis mi eu libero fermentum rhoncus. Donec elementum lacus quis vestibulum scelerisque. Donec non consectetur nibh, ac consectetur nibh. Morbi at venenatis dui. Donec tincidunt maximus purus, eget mollis mauris suscipit a. Pellentesque porta vehicula nisi fringilla porta. Donec quis felis et nisl vestibulum mattis nec non augue. Donec orci dolor, eleifend at tortor eget, ultrices varius mauris. Suspendisse potenti. Cras hendrerit tellus neque, id sagittis mauris congue commodo.
+      It is important to allow scheduling the working times of devices. Following are some examples of real-life conditions:
+      <ul>
+        <li>Teenagers or kids continuesly play games using gaming servers, desktops, laptops. Using the schedule you can control the time when to start/stop running these devices</li>
+        <li>All parental control software does not work properly? This module jsut let you shutdown the Internet completely.</li>
+        <li>Going in a vacation. When setting the system to go for a vacation mode, all previousley marked devices will be shut down.</li>
+        <li>Disable the unnecessary standby mode in some applinaces.</li>
+      </ul>
     </div>
   </div>
 </div>

@@ -62,8 +62,14 @@ public class MeasurmentController {
 
         if (groupBy.equals("hour")) {
             watts = measurmentRepository.findWattsByApplianceIdGroupByHour(applianceId);
-        } else {
+        } else if (groupBy.equals("day")) {
             watts = measurmentRepository.findWattsByApplianceIdGroupByYearAndMonthAndDay(applianceId);
+        } else if (groupBy.equals("week")) {
+            watts = measurmentRepository.findWattsByApplianceIdGroupByYearAndWeek(applianceId);
+        } else if (groupBy.equals("month")) {
+            watts = measurmentRepository.findWattsByApplianceIdGroupByYearAndMonth(applianceId);
+        } else if (groupBy.equals("year")) {
+            watts = measurmentRepository.findWattsByApplianceIdGroupByYear(applianceId);
         }
 
         return watts;
@@ -97,9 +103,16 @@ public class MeasurmentController {
 
         if (groupBy.equals("hour")) {
             kwh = measurmentRepository.findKwhByApplianceIdGroupByHour(applianceId);
-        } else {
+        } else if (groupBy.equals("day")) {
             kwh = measurmentRepository.findKwhByApplianceIdGroupByYearAndMonthAndDay(applianceId);
+        } else if (groupBy.equals("week")) {
+            kwh = measurmentRepository.findKwhByApplianceIdGroupByYearAndWeek(applianceId);
+        } else if (groupBy.equals("month")) {
+            kwh = measurmentRepository.findKwhByApplianceIdGroupByYearAndMonth(applianceId);
+        } else if (groupBy.equals("year")) {
+            kwh = measurmentRepository.findKwhByApplianceIdGroupByYear(applianceId);
         }
+
         return kwh;
     }
 
