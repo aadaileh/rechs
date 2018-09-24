@@ -11,15 +11,26 @@ if(count($_SESSION["user"]) == 0) {
   header('Location: /login.php');
 }
 
+echo "<pre>_POST:\n";
+print_r($_POST);
+echo "</pre>";
+
+echo "<pre>_GET:\n";
+print_r($_GET);
+echo "</pre>";
+
+exit();
+
+
 //when GET is set
 if(isset($_GET) && count($_GET)>0) {
 
 	$library = new Library();
 	$data = $library->makeCurl ("/appliances/" . $_GET["id"] . "/" . $_GET["action"], "PATCH");
 
-	// echo "<pre>data(1):\n";
-	// print_r($data);
-	// echo "</pre>";
+	echo "<pre>data(1):\n";
+	print_r($data);
+	echo "</pre>";
 
 	if(isset($data->error) && !empty($data->error)) {
 		echo "Something went wrong while activating the schedule id [".$_GET["id"]."]. <br/><small>Error: [" . $data->message . "]</small>";
@@ -31,9 +42,7 @@ if(isset($_GET) && count($_GET)>0) {
 }
 
 
-// echo "<pre>_POST:\n";
-// print_r($_POST);
-// echo "</pre>";
+
 
 if($_POST["flag"] != "standby") {
 	// Check if appliance's data are set and correct
@@ -57,9 +66,9 @@ if($_POST["flag"] != "standby") {
 $library = new Library();
 $data = $library->makeCurl ("/appliances/" . $_POST["id"], "PUT", $_POST);
 
-// echo "<pre>data:\n";
-// print_r($data);
-// echo "</pre>";
+echo "<pre>data:\n";
+print_r($data);
+echo "</pre>";
 
 if(isset($data->error) && !empty($data->error)) {
 	echo "Something went wrong while saving data. <br/><small>Error: [" . $data->message . "]</small>";

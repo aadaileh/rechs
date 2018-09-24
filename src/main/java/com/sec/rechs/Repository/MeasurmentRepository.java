@@ -124,6 +124,29 @@ public interface MeasurmentRepository extends JpaRepository<Measurment, Long> {
             "GROUP BY " +
             "YEAR(created_timestamp)")
     List<WattsAndDate> findWattsByApplianceIdGroupByYear(@Param("applianceId") Long ApplianceId);
+
+    // MIN(Watts)
+    @Query("SELECT m, MIN(watts) AS lowest_watts, appliance " +
+            "FROM Measurment m " +
+            "WHERE m.createdBy = 'automatic' " +
+            "AND m.watts is not NULL " +
+            "AND m.watts != 0 " +
+            "GROUP BY m.appliance")
+    List<Measurment> findLowestWatts();
+
+    // MIN(created_timestamp), MAX(created_timestamp)
+    @Query("SELECT " +
+            "   m, " +
+            "   MIN(createdTimestamp) AS latest_created_timestamp, " +
+            "   MAX(createdTimestamp) AS oldest_created_timestamp, " +
+            "   appliance " +
+            "FROM Measurment m " +
+            "WHERE m.createdBy = 'automatic' " +
+            "AND m.watts is not NULL " +
+            "AND m.watts != 0 " +
+            "GROUP BY m.appliance")
+    List<Measurment> findLatestAndOldestCreatedTimestamp();
+
     // Amps(hour)
     @Query("SELECT " +
             "CONCAT( HOUR(created_timestamp) ) as concatedDateTime, " +
@@ -146,4 +169,6 @@ public interface MeasurmentRepository extends JpaRepository<Measurment, Long> {
             "MONTH(created_timestamp)," +
             "YEAR(created_timestamp)")
     List<AmpsAndDate> findAmpsByApplianceIdGroupByYearAndMonthAndDay(@Param("applianceId") Long ApplianceId);
+
+
 }

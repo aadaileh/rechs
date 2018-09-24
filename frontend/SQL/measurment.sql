@@ -1,4 +1,4 @@
-SELECT * from rechs.measurments where appliance_id=3 order by id desc LIMIT 10000;
+SELECT * from rechs.measurments where appliance_id=1 order by id desc LIMIT 10000;
 
 SELECT id, amps, created_timestamp from rechs.measurments where created_timestamp between '2018-07-22 00:00:00' AND '2018-07-22 23:59:59' order by amps desc LIMIT 1000000000;
 
@@ -42,4 +42,4 @@ DAY(created_timestamp),
 MONTH(created_timestamp),
 YEAR(created_timestamp);
 
-SELECT * from rechs.measurments where appliance_id=3 order by id desc LIMIT 10000;
+SELECT *,MIN(watts) as lowest_watts from rechs.measurments where appliance_id=2 and created_by="automatic" and watts is not NULL and watts != 0;

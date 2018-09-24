@@ -116,6 +116,27 @@ public class MeasurmentController {
         return kwh;
     }
 
+    // Get lowest watts for an appliance
+    @GetMapping("/watts/lowest")
+    @ApiOperation("Retrieve lowest Watts measurments from all appliances")
+    public List<Measurment> getLowestWatts() {
+
+        List<Measurment> lowestWattsList = measurmentRepository.findLowestWatts();
+
+        return lowestWattsList;
+    }
+
+
+    // Get Oldest and Latest Timestamp for all applinaces
+    @GetMapping("/created-timestamp/latest-oldest")
+    @ApiOperation("Retrieve latest and oldest created_timestamp from all appliances")
+    public List<Measurment> getLatestAndOldestCreatedTimestamp() {
+
+        List<Measurment> latestAndOldestCreatedTimestamp = measurmentRepository.findLatestAndOldestCreatedTimestamp();
+
+        return latestAndOldestCreatedTimestamp;
+    }
+
     /*
     * Following code should be adjusted if update-measurment and delete measurment are needed
     * */

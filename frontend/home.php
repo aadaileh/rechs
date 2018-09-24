@@ -322,6 +322,7 @@ if(count($_SESSION["user"]) == 0) {
         </div>
       </div>
 
+      <!--
       <div id="customized-home-panel-right">
         <div class="panel panel-primary">
           <div class="panel-heading"><span data-toggle="tooltip" title="Brief nodes overview details"><strong>Nodes Overview</strong></span></div>
@@ -333,7 +334,8 @@ if(count($_SESSION["user"]) == 0) {
           </div>
         </div>
       </div>      
-
+      -->
+      
     </div>
   </div>
 

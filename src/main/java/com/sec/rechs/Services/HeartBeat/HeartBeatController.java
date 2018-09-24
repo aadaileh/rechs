@@ -3,6 +3,7 @@ package com.sec.rechs.Services.HeartBeat;
 import com.sec.rechs.Client.FeignClient;
 import com.sec.rechs.Factory.CommonFactoryAbstract;
 import com.sec.rechs.Model.Schedule;
+import com.sec.rechs.Repository.ApplianceRepository;
 import com.sec.rechs.Repository.ScheduleRepository;
 import com.sec.rechs.Services.HeartBeat.impl.HeartBeatImplentations;
 import io.swagger.annotations.ApiOperation;
@@ -37,6 +38,9 @@ public class HeartBeatController extends CommonFactoryAbstract {
 
     @Autowired
     ScheduleRepository scheduleRepository;
+
+    @Autowired
+    ApplianceRepository applianceRepository;
 
     HeartBeatImplentations heartBeatImplentations = new HeartBeatImplentations();
 

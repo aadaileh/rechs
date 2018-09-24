@@ -14,7 +14,19 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "measurments")
+@Table(
+        name = "measurments",
+        indexes = {
+                @Index(name = "index_measurments_watts", columnList = "watts"),
+                @Index(name = "index_measurments_watts", columnList = "amps"),
+                @Index(name = "index_measurments_volts", columnList = "volts"),
+                @Index(name = "index_measurments_kwh", columnList = "kwh"),
+                @Index(name = "index_measurments_appliance_id", columnList = "appliance_id"),
+                @Index(name = "index_measurments_created_by", columnList = "createdBy"),
+                @Index(name = "index_measurments_lowest_watts", columnList = "createdBy,watts,appliance_id"),
+                @Index(name = "index_measurments_created_timestamp", columnList = "createdTimestamp")
+        }
+        )
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"createdTimestamp", "updatedTimestamp"},
         allowGetters = true)
@@ -30,11 +42,8 @@ public class Measurment implements Serializable {
     private Appliance appliance;
 
     private Double watts;
-
     private Double amps;
-
     private Double volts;
-
     private Double kwh;
 
     @NotBlank
