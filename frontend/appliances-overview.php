@@ -105,32 +105,57 @@ if(count($_SESSION["user"]) == 0) {
     $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip(); 
     });
-  
-    // $(document).ready(function(){
-    //   $("#search-appliance-button-frig")
-    //   .add("#search-appliance-button-tv")
-    //   .add("#search-appliance-button-lamp").click(function(){
 
 
-    //   $('#searchFrigModal').on('show.bs.modal', function(e) {
-        
-    //   });
 
-    //     alert("call search.php");
-    //     $.post("/inc/cgi/appliances-search.php",
-    //       {
-    //         flag: "standby",
-    //         id: document.getElementById("stand-by-button-frig").value,
-    //         standbyDurationSpan: $standbyDurationSpan,
-    //         standByStatus: document.getElementById("stand-by-button-frig").checked
-    //       },
-    //     function(data, status){
-    //       alert("Data(frig): " + data + "\nStatus: " + status);
-    //       $("#alert-success-frig").fadeIn();
-    //       setTimeout(function() {$("#alert-success-frig").fadeOut('blind');}, 2000);
-    //     });
-    //   });
-    // });
+    $(document).ready(function(){
+      $("#search-appliance-button-frig")
+      .add("#search-appliance-button-tv")
+      .add("#search-appliance-button-lamp").click(function(){
+
+        $.ajax({
+          url: "/inc/cgi/appliances-search.php",
+          type: "POST",
+          data: {
+            flag: "frig",
+            type: "kühlschrank",
+            label: "<?php echo $refrigerator->label; ?>" 
+          },
+          beforeSend: function() {
+            $("#frig-search-results").html("");
+            $('#loader').show();
+          },
+          complete: function(){
+            $('#loader').hide();
+            $("#search-response-true-3").hide();
+            $("#search-response-false-3").hide();            
+          },
+          success: function(response) {
+            //alert("response: " + response);
+            //$("#search-response-true-3").append(response).fadeIn();
+
+            var results = JSON.parse(response);
+
+            //alert("results: " + results);
+
+            $.each( results, function(key, value) {
+                var title = value["title"];
+                $("#frig-search-results").append('<a href="' + value["viewItemURL"] + '" class="list-group-item list-group-item-action" target="_blank"><img src="' + value["galleryURL"] + '" height="80" width="80" style="padding:5px; border-radius:20%;"><span style="width:500px; display:inline-block;">' + title + '</span><span class="badge badge-warning badge-pill">' + value["sellingStatus"]["currentPrice"] + '€</span>' + '<span class="badge badge-warning badge-pill">' + value["eekStatus"] + '</span>' + '<span class="badge badge-warning badge-pill" style="background-color:#ff7f00;">ROI: ' + value["roi"] + '</span>' + '</a>');
+
+            });
+
+            //$("#frig-search-results").html(response);
+            //Do Something
+            //location.reload();
+          },
+          error: function(xhr) {
+            //Do Something to handle error
+            //alert("error: " + xhr);
+            $("#search-response-false-3").append(xhr).fadeIn();
+          }
+        });
+    });
+    });
 
     $(document).ready(function(){
         $("#stand-by-button-frig").add("#stand-by-duration-button-frig").click(function(){
@@ -336,9 +361,9 @@ if(count($_SESSION["user"]) == 0) {
       });
     });
 
-    function hide_popup(){
-      $("#editFrigModal").modal('hide');
-    };
+    // function hide_popup(){
+    //   $("#editFrigModal").modal('hide');
+    // };
 
 
 </script>
@@ -347,6 +372,26 @@ if(count($_SESSION["user"]) == 0) {
   <script src="inc/js/bower_components/bootbox.js/bootbox.js"></script>
 
 <style type="text/css">
+  .modal-dialog-large {
+     width: 65%;
+     margin: auto;
+     margin-top: 50px;
+  }
+
+  .loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
   #theTable td {
      vertical-align: middle;
   }
@@ -386,7 +431,7 @@ if(count($_SESSION["user"]) == 0) {
 <div id="appliance">
   <div class="panel panel-primary">
     <div class="panel-heading" style="background-color: #dff0d8;text-align: center;">
-      <a href="#" title="Frig: <?php echo $refrigerator->label; ?>" data-button="3" id="frig-modal-3" data-toggle="modal" data-target="#FrigModal"><img src="inc/img/fridge.svg" width="50%"></a>
+      <a href="#" title="Frig: <?php echo $refrigerator->label; ?>" data-button="3" id="frig-modal-3" data-toggle="modal" data-target="#editFrigModal"><img src="inc/img/fridge.svg" width="50%"></a>
     </div>
     <div class="panel-body" id="panel-body">
       <!-- BODY -->
@@ -511,7 +556,7 @@ if(count($_SESSION["user"]) == 0) {
           <div class="panel-body">
             <div class="form-group" style="margin-bottom: 0px;">
                 <center>
-<button type="button" class="btn btn-danger" id="search-appliance-button-frig" data-toggle="modal" data-target="#searchFrigModal">Search For Alternative Products in eBay</button>
+                  <button type="button" class="btn btn-danger" id="search-appliance-button-frig" data-toggle="modal" data-target="#searchFrigModal">Search For Alternative Products in eBay</button>
                 </center>
                 <br><small class="form-text text-muted">Clicking this search button takes the enetered appliance's data and search in the external <img src="inc/img/1280px-EBay_logo.svg.png" height="22px" width="40px"> Product Search API for alternatives appliances. Results will be shown in a modal.</small>
             </div>
@@ -600,10 +645,10 @@ if(count($_SESSION["user"]) == 0) {
     <!-- Modal End -->
   </div>
 
-  <!-- Modal edit Frig -->
+  <!-- Modal Search Frig -->
   <div class="container">
     <div class="modal fade" id="searchFrigModal" tabindex="-1" role="dialog" aria-labelledby="searchFrigModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog modal-dialog-large" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title" id="searchFrigModalLabel" style="font-weight: bold; float: left;">Search Alternative Appliance</h4>
@@ -613,29 +658,18 @@ if(count($_SESSION["user"]) == 0) {
           </div>
           <div class="modal-body">
 
-            <div class="alert alert-success" role="alert" id="save-response-true-3" style="display: none;">Schedule saved correctly.</div>
-            <div class="alert alert-danger" role="alert" id="save-response-false-3" style="display: none;">x</div>
+            <div class="alert alert-success" role="alert" id="search-response-true-3" style="display: none;"></div>
+            <div class="alert alert-danger" role="alert" id="search-response-false-3" style="display: none;"></div>
 
-            <div class="list-group">
-              <h4>Results:</h4>
-              <a href="#" class="list-group-item list-group-item-action">1. Cras justo odio</a>
-              <a href="#" class="list-group-item list-group-item-action">2. Dapibus ac facilisis in</a>
-              <a href="#" class="list-group-item list-group-item-action">3. Morbi leo risus</a>
-              <a href="#" class="list-group-item list-group-item-action">4. Porta ac consectetur ac</a>
-              <a href="#" class="list-group-item list-group-item-action">5. Vestibulum at eros</a>
-              <a href="#" class="list-group-item list-group-item-action">6. Dapibus ac facilisis in</a>
-              <a href="#" class="list-group-item list-group-item-action">7. Morbi leo risus</a>
-              <a href="#" class="list-group-item list-group-item-action">8. Porta ac consectetur ac</a>
-              <a href="#" class="list-group-item list-group-item-action">9. Dapibus ac facilisis in</a>
-              <a href="#" class="list-group-item list-group-item-action">10. Morbi leo risus</a>
-              <a href="#" class="list-group-item list-group-item-action">11. Porta ac consectetur ac</a>
-            </div>
+            <center><div class="loader" id="loader" style="display: none;"></div></center>
+
+            <div class="list-group" id="frig-search-results"></div>
 
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" id="edit-appliance-close" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary" id="edit-appliance-save-3" name="3">Save changes</button>
-            <br><br><span>Powered By <img src="inc/img/1280px-EBay_logo.svg.png" height="22px" width="40px"> Product Search API</span>
+            <br><br><span style="float: left;">Powered By <img src="inc/img/1280px-EBay_logo.svg.png" height="22px" width="40px"> Product Search API</span>
           </div>
         </div>
       </div>

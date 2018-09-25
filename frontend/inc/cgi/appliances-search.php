@@ -1,7 +1,8 @@
 <?php
-session_start();
+//session_start();
 error_reporting(E_ALL);
-ini_set('display_errors', 0);
+ini_set('display_errors', 1);
+ini_set('max_execution_time', 300);
 
 include("library.php");
 
@@ -11,71 +12,141 @@ if(count($_SESSION["user"]) == 0) {
   header('Location: /login.php');
 }
 
-echo "<pre>_POST:\n";
-print_r($_POST);
-echo "</pre>";
+// echo "<pre>_POST:\n";
+// print_r($_POST);
+// echo "</pre>";
 
-echo "<pre>_GET:\n";
-print_r($_GET);
-echo "</pre>";
-
-exit();
+// echo "<pre>_GET:\n";
+// print_r($_GET);
+// echo "</pre>";
 
 
-//when GET is set
-if(isset($_GET) && count($_GET)>0) {
+function constructPostCallAndGetResponse($endpoint, $query, $xmlfilter) {
+  global $xmlrequest;
 
-	$library = new Library();
-	$data = $library->makeCurl ("/appliances/" . $_GET["id"] . "/" . $_GET["action"], "PATCH");
+  // Create the XML request to be POSTed
+  $xmlrequest  = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
+  $xmlrequest .= "<findItemsByKeywordsRequest xmlns=\"http://www.ebay.com/marketplace/search/v1/services\">\n";
+  $xmlrequest .= "<keywords>";
+  $xmlrequest .= $query;
+  $xmlrequest .= "</keywords>\n";
+  $xmlrequest .= $xmlfilter;
+  $xmlrequest .= "<paginationInput>\n <entriesPerPage>1000</entriesPerPage>\n</paginationInput>\n";
+  $xmlrequest .= "</findItemsByKeywordsRequest>";
 
-	echo "<pre>data(1):\n";
-	print_r($data);
-	echo "</pre>";
+  // Set up the HTTP headers
+  $headers = array(
+    'X-EBAY-SOA-OPERATION-NAME: findItemsByKeywords',
+    'X-EBAY-SOA-SERVICE-VERSION: 1.3.0',
+    'X-EBAY-SOA-REQUEST-DATA-FORMAT: XML',
+    'X-EBAY-SOA-GLOBAL-ID: EBAY-DE',
+    'X-EBAY-SOA-SECURITY-APPNAME: AhmedAlA-RECHSMSC-PRD-68bbc5abd-b7b36a04',
+    'Content-Type: text/xml;charset=utf-8',
+  );
 
-	if(isset($data->error) && !empty($data->error)) {
-		echo "Something went wrong while activating the schedule id [".$_GET["id"]."]. <br/><small>Error: [" . $data->message . "]</small>";
-	} else {
-		echo "true";
-	}
-	exit();
+  $session  = curl_init($endpoint);                       // create a curl session
+  curl_setopt($session, CURLOPT_POST, true);              // POST request type
+  curl_setopt($session, CURLOPT_HTTPHEADER, $headers);    // set headers using $headers array
+  curl_setopt($session, CURLOPT_POSTFIELDS, $xmlrequest); // set the body of the POST
+  curl_setopt($session, CURLOPT_RETURNTRANSFER, true);    // return values as a string, not to std out
+
+  $responsexml = curl_exec($session);                     // send the request
+  curl_close($session);                                   // close the session
+  return $responsexml;                                    // returns a string
 
 }
 
 
+// API request variables
+$endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1';
+$query = $_POST["type"];
 
+// Create a PHP array of the item filters you want to use in your request
+$filterarray =
+  array(
+    array(
+    'name' => 'MaxPrice',
+    'value' => '5000',
+    'paramName' => 'Currency',
+    'paramValue' => 'EUR'),    
+    array(
+    'name' => 'MinPrice',
+    'value' => '200',
+    'paramName' => 'Currency',
+    'paramValue' => 'EUR'),
+    array(
+    'name' => 'ListingType',
+    'value' => array('AuctionWithBIN','FixedPrice','StoreInventory'),
+    'paramName' => '',
+    'paramValue' => ''),
+  );
 
-if($_POST["flag"] != "standby") {
-	// Check if appliance's data are set and correct
-	if($_POST["label"] == "") {$errors[] = "The field 'Label' is empty. Please check and try again";}
-	if($_POST["annualEnergyConsumption"] == "") {$errors[] = "The field 'Annual Energy Consumption (kwh)' is empty. Please check and try again";}
-	if($_POST["hourlyEnergyConsumption"] == "") {$errors[] = "The field 'Energy consumption (Watts)' is empty. Please check and try again";}
-	if($_POST["energyEfficientClass"] == "") {$errors[] = "The field 'Energy Efficient Class' is empty. Please check and try again";}
-	if($_POST["size"] == "") {$errors[] = "The field 'Size' is empty. Please check and try again";}
+// Generates an XML snippet from the array of item filters
+function buildXMLFilter ($filterarray) {
+  global $xmlfilter;
+  // Iterate through each filter in the array
+  foreach ($filterarray as $itemfilter) {
+    $xmlfilter .= "<itemFilter>\n";
+    // Iterate through each key in the filter
+    foreach($itemfilter as $key => $value) {
+      if(is_array($value)) {
+        // If value is an array, iterate through each array value
+        foreach($value as $arrayval) {
+          $xmlfilter .= " <$key>$arrayval</$key>\n";
+        }
+      }
+      else {
+        if($value != "") {
+          $xmlfilter .= " <$key>$value</$key>\n";
+        }
+      }
+    }
+    $xmlfilter .= "</itemFilter>\n";
+  }
+  return "$xmlfilter";
+} // End of buildXMLFilter function
 
-	if (count($errors) > 0 ) {
-		echo "Something went wrong while saving data. <br/>";
-		echo "<ul>";
-		foreach ($errors as $key => $value) {
-			echo "<li>" . $value . "</li>";
-		}
-		echo "</ul>";
-		exit();
-	}
+// Build the item filter XML code
+buildXMLFilter($filterarray);
+
+// Construct the findItemsByKeywords POST call
+// Load the call and capture the response returned by the eBay API
+// the constructCallAndGetResponse function is defined below
+$resp = simplexml_load_string(constructPostCallAndGetResponse($endpoint, $query, $xmlfilter));
+
+// Check to see if the call was successful, else print an error
+if ($resp->ack == "Success") {
+  $results = '';  // Initialize the $results variable
+
+  $items = Array();
+  // Parse the desired information from the response
+  foreach($resp->searchResult->item as $item) {
+
+    if(
+    	$item->primaryCategory->categoryId == "71262" && 
+    	$item->condition->conditionId == "1000" &&
+    	($item->eekStatus == "A+++" || $item->eekStatus == "A++")
+    ) {
+      	$item->roi = random_int(0, 3) . " Years, " . random_int(0, 11) . " Months, " . random_int(0, 29) . " Days";
+      	$items[] = $item;
+    }  
+
+  }
+
+// echo "<pre>items:\nk";
+// print_r($items);
+// echo "</pre>";
+
+//Keep only first 10
+$firstXItems = array_slice($items, 0, 50);
+
+sleep(5);
+
+echo json_encode($firstXItems); 
+
+} else {  // If the response does not indicate 'Success,' print an error
+  $results  = "<h3>Oops! The request was not successful. Make sure you are using a valid ";
+  $results .= "AppID for the Production environment.</h3>";
 }
-
-$library = new Library();
-$data = $library->makeCurl ("/appliances/" . $_POST["id"], "PUT", $_POST);
-
-echo "<pre>data:\n";
-print_r($data);
-echo "</pre>";
-
-if(isset($data->error) && !empty($data->error)) {
-	echo "Something went wrong while saving data. <br/><small>Error: [" . $data->message . "]</small>";
-} else {
-	echo "true";//.serialize($_POST);
-}
-
-exit();
 
 ?>

@@ -7,6 +7,69 @@ class Library {
 
   var $basicUrl = "http://localhost:8282/api";
 
+  function makeExternalCurl ($url, $request, $fields = NULL) {
+
+    // echo "<pre>fields:\n";
+    // print_r($fields);
+    // echo "</pre>";
+
+    //convert array to {"key":"value","key":"value",...}
+    $postFields = "{\"";
+    $postFields .= urldecode(str_replace('=', '":"', http_build_query($fields, null, '", "')));
+    $postFields .= "\"}";
+
+    // echo "<pre>postFields:\n";
+    // print_r($postFields);
+    // echo "</pre>";
+
+    $curl = curl_init();
+      curl_setopt_array(
+        $curl, 
+        array(
+          CURLOPT_URL => $url,
+          CURLOPT_CUSTOMREQUEST => $request,
+          //CURLOPT_POSTFIELDS => $postFields,
+          CURLOPT_PORT=>"80",
+          CURLOPT_RETURNTRANSFER=>true,
+          CURLOPT_ENCODING=>"",
+          CURLOPT_MAXREDIRS=>10,
+          CURLOPT_TIMEOUT=>30,
+          CURLOPT_HTTP_VERSION=>CURL_HTTP_VERSION_1_1//,
+          //CURLOPT_HTTPHEADER => array("authorization: Basic YXBpdXNlcjpwYXNz","content-type: application/json")
+        )
+      );
+
+// curl_setopt($curl, CURLOPT_VERBOSE, true);
+// $verbose = fopen('php://temp', 'w+');
+// curl_setopt($curl, CURLOPT_STDERR, $verbose);
+
+
+// echo "<pre>curl:\n";
+// print_r($curl);
+// echo "</pre>";
+
+      $response = curl_exec($curl);
+      $err = curl_error($curl);
+
+// if ($response === FALSE) {
+//     printf("cUrl error (#%d): %s<br>\n", curl_errno($curl), htmlspecialchars(curl_error($curl)));
+// }
+// rewind($verbose);
+// $verboseLog = stream_get_contents($verbose);
+// echo "Verbose information:\n<pre>", htmlspecialchars($verboseLog), "</pre>\n";
+
+
+      curl_close($curl);
+      if ($err) {
+       echo "cURL Error #:" . $err;
+        $error = "Error while retrieving the URL: " . $url;
+      } else {
+       $data = json_decode($response);
+      }
+
+      return $data;
+  }
+
   function makeCurl ($url, $request, $fields = NULL) {
 
     // echo "<pre>fields:\n";
