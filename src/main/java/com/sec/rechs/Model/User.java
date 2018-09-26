@@ -6,7 +6,6 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -20,20 +19,12 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     private String username;
-
-    @NotBlank
     private String password;
-
-    @NotBlank
     private String fullName;
-
-    @NotBlank
     private String email;
-
-    @NotBlank
     private String createdBy;
+    private Boolean active;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -107,5 +98,13 @@ public class User implements Serializable {
 
     public void setUpdatedTimestamp(Date updatedTimestamp) {
         this.updatedTimestamp = updatedTimestamp;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 }

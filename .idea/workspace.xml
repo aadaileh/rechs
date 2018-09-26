@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d8941bbd-1646-470d-be8d-b43dcf7611da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/UsersManagementRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/UsersManagement/UsersManagementController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/UsersManagement/UsersManagementInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/UsersManagement/impl/UsersManagementImplentations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/inc/cgi/appliances-search.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inc/cgi/appliances-search.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/inc/js/ebay_search.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inc/js/ebay_search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/user-management.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/user-management.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/UsersManagement/UsersManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/UsersManagement/UsersManagementController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,14 +43,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="130" />
-          <entry key="java" value="7419" />
+          <entry key="java" value="7580" />
           <entry key="properties" value="3" />
           <entry key="xml" value="32" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="7419" />
+          <entry key="JAVA" value="7580" />
           <entry key="PLAIN_TEXT" value="130" />
           <entry key="Properties" value="3" />
           <entry key="XML" value="32" />
@@ -65,7 +59,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="4" />
-          <entry key="java" value="100" />
+          <entry key="java" value="103" />
           <entry key="properties" value="3" />
           <entry key="xml" value="4" />
         </counts>
@@ -73,7 +67,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="4" />
-          <entry key="JAVA" value="100" />
+          <entry key="JAVA" value="103" />
           <entry key="Properties" value="3" />
           <entry key="XML" value="4" />
         </counts>
@@ -86,8 +80,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/UsersManagement/UsersManagementController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+            <state relative-caret-position="487">
+              <caret line="57" column="28" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="28" />
               <folding>
                 <element signature="e#1104#1105#0" expanded="true" />
                 <element signature="e#1163#1164#0" expanded="true" />
@@ -97,10 +91,43 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
+              <folding>
+                <element signature="e#2551#2552#0" expanded="true" />
+                <element signature="e#2580#2581#0" expanded="true" />
+                <element signature="e#2625#2626#0" expanded="true" />
+                <element signature="e#2661#2662#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/UsersManagementRepository.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
               <caret line="9" selection-start-line="9" selection-end-line="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/ScheduleRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Schedule/ScheduleController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="47" selection-start-line="47" selection-end-line="67" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -158,7 +185,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/Appliance.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/KwhAndDate.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Schedule/Measurment/impl/MeasurmentImplentations.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Schedule/impl/MeasurmentImplentations.java" />
@@ -207,8 +233,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/UsersManagement/Measurment/UsersManagementInterface.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/UsersManagement/Measurment/UsersManagementController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/UsersManagement/impl/UsersManagementImplentations.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/UsersManagement/UsersManagementController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/UsersManagementRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/UsersManagement/UsersManagementController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/User.java" />
       </list>
     </option>
   </component>
@@ -291,7 +318,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="rechs" type="462c0819:PsiDirectoryNode" />
-              <item name="Repository" type="462c0819:PsiDirectoryNode" />
+              <item name="Services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="rechs" type="b2602c69:ProjectViewProjectNode" />
@@ -301,6 +328,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="rechs" type="462c0819:PsiDirectoryNode" />
               <item name="Services" type="462c0819:PsiDirectoryNode" />
+              <item name="Schedule" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="rechs" type="b2602c69:ProjectViewProjectNode" />
@@ -329,7 +357,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537994219463" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537996095451" />
     <property name="extract.method.default.visibility" value="packageLocal" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../library/obera_zwave.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -487,7 +515,7 @@
       <window_info id="Capture Tool" order="9" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.57872343" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.17872341" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.19148937" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.28652483" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -682,13 +710,6 @@ ZWaveDriver zWaveDriver = new ZWaveDriver();</expression-string>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Schedule/impl/ScheduleImplentations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="14" column="61" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/quartz-scheduler/quartz/2.2.1/quartz-2.2.1.jar!/org/quartz/core/JobRunShell.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -716,13 +737,6 @@ ZWaveDriver zWaveDriver = new ZWaveDriver();</expression-string>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
           <caret line="183" selection-start-line="183" selection-end-line="183" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Schedule/ScheduleController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="29" column="45" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -1060,13 +1074,6 @@ ZWaveDriver zWaveDriver = new ZWaveDriver();</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/ScheduleRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/UsersManagement/impl/UsersManagementImplentations.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-30">
@@ -1088,10 +1095,31 @@ ZWaveDriver zWaveDriver = new ZWaveDriver();</expression-string>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/UsersManagementRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/ScheduleRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Schedule/ScheduleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="47" selection-start-line="47" selection-end-line="67" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/UsersManagement/UsersManagementController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+        <state relative-caret-position="487">
+          <caret line="57" column="28" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="28" />
           <folding>
             <element signature="e#1104#1105#0" expanded="true" />
             <element signature="e#1163#1164#0" expanded="true" />
@@ -1099,10 +1127,16 @@ ZWaveDriver zWaveDriver = new ZWaveDriver();</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/UsersManagementRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="323">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="e#2551#2552#0" expanded="true" />
+            <element signature="e#2580#2581#0" expanded="true" />
+            <element signature="e#2625#2626#0" expanded="true" />
+            <element signature="e#2661#2662#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
