@@ -1,7 +1,7 @@
 <?php
 //session_start();
 error_reporting(E_ALL);
-ini_set('display_errors', 1);
+ini_set('display_errors', 0);
 ini_set('max_execution_time', 300);
 
 include("library.php");
@@ -15,7 +15,7 @@ if(count($_SESSION["user"]) == 0) {
 // echo "<pre>_POST:\n";
 // print_r($_POST);
 // echo "</pre>";
-
+// 
 // echo "<pre>_GET:\n";
 // print_r($_GET);
 // echo "</pre>";
@@ -66,14 +66,15 @@ $filterarray =
   array(
     array(
     'name' => 'MaxPrice',
-    'value' => '5000',
+    'value' => $_POST["MaxPrice"],
     'paramName' => 'Currency',
     'paramValue' => 'EUR'),    
     array(
     'name' => 'MinPrice',
-    'value' => '200',
+    'value' => $_POST["MinPrice"],
     'paramName' => 'Currency',
-    'paramValue' => 'EUR'),
+    'paramValue' => 'EUR')
+    ,
     array(
     'name' => 'ListingType',
     'value' => array('AuctionWithBIN','FixedPrice','StoreInventory'),
@@ -112,7 +113,19 @@ buildXMLFilter($filterarray);
 // Construct the findItemsByKeywords POST call
 // Load the call and capture the response returned by the eBay API
 // the constructCallAndGetResponse function is defined below
-$resp = simplexml_load_string(constructPostCallAndGetResponse($endpoint, $query, $xmlfilter));
+$constructedCall = constructPostCallAndGetResponse($endpoint, $query, $xmlfilter);
+$resp = simplexml_load_string($constructedCall);
+
+
+// echo "endpoint: [" . $endpoint . "]";
+// echo "query: [" . $query . "]";
+// echo "xmlfilter: [" . $xmlfilter . "]";
+// echo "constructedCall: [" . $constructedCall . "]";
+// echo "resp: ["; print_r($resp); echo "]";
+
+// echo "<pre>resp:\nk";
+// print_r($resp);
+// echo "</pre>";
 
 // Check to see if the call was successful, else print an error
 if ($resp->ack == "Success") {
@@ -122,16 +135,26 @@ if ($resp->ack == "Success") {
   // Parse the desired information from the response
   foreach($resp->searchResult->item as $item) {
 
-    if(
-    	$item->primaryCategory->categoryId == "71262" && 
-    	$item->condition->conditionId == "1000" &&
-    	($item->eekStatus == "A+++" || $item->eekStatus == "A++")
-    ) {
-      	$item->roi = random_int(0, 3) . " Years, " . random_int(0, 11) . " Months, " . random_int(0, 29) . " Days";
-      	$items[] = $item;
-    }  
-
-  }
+    if (isset($item->eekStatus)) {
+	    if(
+	    	//($item->primaryCategory->categoryId == $_POST["categoryId"] || $item->primaryCategory->categoryId == $_POST["categoryId_2"]) 
+	    	//&& $item->condition->conditionId == "1000"
+	    	//&& 
+	    	($item->eekStatus == "A+++" || $item->eekStatus == "A++")
+	    ) {
+	      	$item->roi = random_int(0, 3) . " Years, " . random_int(0, 11) . " Months, " . random_int(0, 29) . " Days";
+	      	$items[] = $item;
+	    }
+    } else {
+	    //if(
+	    	//($item->primaryCategory->categoryId == $_POST["categoryId"] || $item->primaryCategory->categoryId == $_POST["categoryId_2"])
+	    	//&& $item->condition->conditionId == "1000"
+	    	//&& ($item->eekStatus == "A+++" || $item->eekStatus == "A++")
+	    //) {
+	      	$item->roi = random_int(0, 3) . " Years, " . random_int(0, 11) . " Months, " . random_int(0, 29) . " Days";
+	      	$items[] = $item;
+	    }
+    }
 
 // echo "<pre>items:\nk";
 // print_r($items);
@@ -140,7 +163,7 @@ if ($resp->ack == "Success") {
 //Keep only first 10
 $firstXItems = array_slice($items, 0, 50);
 
-sleep(5);
+//sleep(5);
 
 echo json_encode($firstXItems); 
 

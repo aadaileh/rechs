@@ -104,58 +104,8 @@ if(count($_SESSION["user"]) == 0) {
 
     $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip(); 
-    });
+    });   
 
-
-
-    $(document).ready(function(){
-      $("#search-appliance-button-frig")
-      .add("#search-appliance-button-tv")
-      .add("#search-appliance-button-lamp").click(function(){
-
-        $.ajax({
-          url: "/inc/cgi/appliances-search.php",
-          type: "POST",
-          data: {
-            flag: "frig",
-            type: "kühlschrank",
-            label: "<?php echo $refrigerator->label; ?>" 
-          },
-          beforeSend: function() {
-            $("#frig-search-results").html("");
-            $('#loader').show();
-          },
-          complete: function(){
-            $('#loader').hide();
-            $("#search-response-true-3").hide();
-            $("#search-response-false-3").hide();            
-          },
-          success: function(response) {
-            //alert("response: " + response);
-            //$("#search-response-true-3").append(response).fadeIn();
-
-            var results = JSON.parse(response);
-
-            //alert("results: " + results);
-
-            $.each( results, function(key, value) {
-                var title = value["title"];
-                $("#frig-search-results").append('<a href="' + value["viewItemURL"] + '" class="list-group-item list-group-item-action" target="_blank"><img src="' + value["galleryURL"] + '" height="80" width="80" style="padding:5px; border-radius:20%;"><span style="width:500px; display:inline-block;">' + title + '</span><span class="badge badge-warning badge-pill">' + value["sellingStatus"]["currentPrice"] + '€</span>' + '<span class="badge badge-warning badge-pill">' + value["eekStatus"] + '</span>' + '<span class="badge badge-warning badge-pill" style="background-color:#ff7f00;">ROI: ' + value["roi"] + '</span>' + '</a>');
-
-            });
-
-            //$("#frig-search-results").html(response);
-            //Do Something
-            //location.reload();
-          },
-          error: function(xhr) {
-            //Do Something to handle error
-            //alert("error: " + xhr);
-            $("#search-response-false-3").append(xhr).fadeIn();
-          }
-        });
-    });
-    });
 
     $(document).ready(function(){
         $("#stand-by-button-frig").add("#stand-by-duration-button-frig").click(function(){
@@ -361,15 +311,18 @@ if(count($_SESSION["user"]) == 0) {
       });
     });
 
-    // function hide_popup(){
-    //   $("#editFrigModal").modal('hide');
-    // };
+    function hide_popup(){
+       $("#editFrigModal").modal('hide');
+    };
 
 
 </script>
 
   <!-- bootbox code -->
   <script src="inc/js/bower_components/bootbox.js/bootbox.js"></script>
+
+  <!-- eBay Search Scripts -->
+  <script src="inc/js/ebay_search.js"></script>  
 
 <style type="text/css">
   .modal-dialog-large {
@@ -378,7 +331,7 @@ if(count($_SESSION["user"]) == 0) {
      margin-top: 50px;
   }
 
-  .loader {
+  .loader-frig,.loader-tv,.loader-lamp,.loader{
     border: 16px solid #f3f3f3; /* Light grey */
     border-top: 16px solid #3498db; /* Blue */
     border-radius: 50%;
@@ -399,7 +352,7 @@ if(count($_SESSION["user"]) == 0) {
   #appliance {
     float:left; 
     width: 33%; 
-    padding: 0px 50px 0px 50px;
+    padding: 0px 10px 0px 10px;
   }
 
   #panel-body {
@@ -412,7 +365,7 @@ if(count($_SESSION["user"]) == 0) {
 
 <?php include("inc/cgi/top-nav.php");?>
 
-<div style="width: 100%; padding: 0 67px 0 50px; ">
+<div style="width: 100%; padding: 0 22px 0 11px; ">
   <div class="panel panel-primary">
     <div class="panel-body">
       <h4 style="font-weight: bold;">Applainces Overview</h4>
@@ -566,7 +519,7 @@ if(count($_SESSION["user"]) == 0) {
     </div>
   </div>
 
-    <!-- Modal edit Frig -->
+  <!-- Modal edit Frig -->
   <div class="container">
     <div class="modal fade" id="editFrigModal" tabindex="-1" role="dialog" aria-labelledby="editFrigModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -579,7 +532,7 @@ if(count($_SESSION["user"]) == 0) {
           </div>
           <div class="modal-body">
 
-            <div class="alert alert-success" role="alert" id="save-response-true-3" style="display: none;">Schedule saved correctly.</div>
+            <div class="alert alert-success" role="alert" id="save-response-true-3" style="display: none;">Appliance data saved correctly.</div>
             <div class="alert alert-danger" role="alert" id="save-response-false-3" style="display: none;">x</div>
 
             <form action="#" method="post" id="edit-frig-form" name="edit-frig-form">
@@ -661,7 +614,7 @@ if(count($_SESSION["user"]) == 0) {
             <div class="alert alert-success" role="alert" id="search-response-true-3" style="display: none;"></div>
             <div class="alert alert-danger" role="alert" id="search-response-false-3" style="display: none;"></div>
 
-            <center><div class="loader" id="loader" style="display: none;"></div></center>
+            <center><div class="loader" id="loader-frig" style="display: none;"></div></center>
 
             <div class="list-group" id="frig-search-results"></div>
 
@@ -811,14 +764,17 @@ if(count($_SESSION["user"]) == 0) {
           </div>
         </div>
 
+
         <div class="panel panel-default" id="search-tv">
           <div class="panel-body">
             <div class="form-group" style="margin-bottom: 0px;">
-                <center><button type="button" class="btn btn-danger" id="search-appliance-button-tv">Search For Alternative Products in eBay</button></center>
+                <center>
+                  <button type="button" class="btn btn-danger" id="search-appliance-button-tv" data-toggle="modal" data-target="#searchTvModal">Search For Alternative Products in eBay</button>
+                </center>
                 <br><small class="form-text text-muted">Clicking this search button takes the enetered appliance's data and search in the external <img src="inc/img/1280px-EBay_logo.svg.png" height="22px" width="40px"> Product Search API for alternatives appliances. Results will be shown in a modal.</small>
             </div>
           </div>
-        </div>        
+        </div>
 
     </div>
   </div>
@@ -836,7 +792,7 @@ if(count($_SESSION["user"]) == 0) {
           </div>
           <div class="modal-body">
 
-            <div class="alert alert-success" role="alert" id="save-response-true-2" style="display: none;">Schedule saved correctly.</div>
+            <div class="alert alert-success" role="alert" id="save-response-true-2" style="display: none;">Appliance data saved correctly.</div>
             <div class="alert alert-danger" role="alert" id="save-response-false-2" style="display: none;">x</div>
 
             <form action="#" method="post" id="edit-tv-form" name="edit-tv-form">
@@ -901,6 +857,38 @@ if(count($_SESSION["user"]) == 0) {
     </div>
     <!-- Modal End -->
   </div>
+
+  <!-- Modal Search TV -->
+  <div class="container">
+    <div class="modal fade" id="searchTvModal" tabindex="-1" role="dialog" aria-labelledby="searchTvModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-large" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="searchTvModalLabel" style="font-weight: bold; float: left;">Search Alternative Appliance</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <div class="alert alert-success" role="alert" id="search-response-true-2" style="display: none;"></div>
+            <div class="alert alert-danger" role="alert" id="search-response-false-2" style="display: none;"></div>
+
+            <center><div class="loader" id="loader-tv" style="display: none;"></div></center>
+
+            <div class="list-group" id="tv-search-results"></div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="edit-appliance-close" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="edit-appliance-save-2" name="3">Save changes</button>
+            <br><br><span style="float: left;">Powered By <img src="inc/img/1280px-EBay_logo.svg.png" height="22px" width="40px"> Product Search API</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+  <!-- Modal End -->
 
 </div>
 
@@ -1036,11 +1024,13 @@ if(count($_SESSION["user"]) == 0) {
         <div class="panel panel-default" id="search-lamp">
           <div class="panel-body">
             <div class="form-group" style="margin-bottom: 0px;">
-                <center><button type="button" class="btn btn-danger" id="search-appliance-button-lamp">Search For Alternative Products in eBay</button></center>
+                <center>
+                  <button type="button" class="btn btn-danger" id="search-appliance-button-lamp" data-toggle="modal" data-target="#searchLampModal">Search For Alternative Products in eBay</button>
+                </center>
                 <br><small class="form-text text-muted">Clicking this search button takes the enetered appliance's data and search in the external <img src="inc/img/1280px-EBay_logo.svg.png" height="22px" width="40px"> Product Search API for alternatives appliances. Results will be shown in a modal.</small>
             </div>
           </div>
-        </div>         
+        </div>        
 
     </div>
   </div>
@@ -1059,7 +1049,7 @@ if(count($_SESSION["user"]) == 0) {
           </div>
           <div class="modal-body">
 
-            <div class="alert alert-success" role="alert" id="save-response-true-1" style="display: none;">Schedule saved correctly.</div>
+            <div class="alert alert-success" role="alert" id="save-response-true-1" style="display: none;">Appliance data saved correctly.</div>
             <div class="alert alert-danger" role="alert" id="save-response-false-1" style="display: none;">x</div>
 
             <form action="#" method="post" id="edit-lamp-form" name="edit-lamp-form">
@@ -1095,6 +1085,7 @@ if(count($_SESSION["user"]) == 0) {
               <div class="form-group">
                 <label for="energy_efficient_class">Energy Efficient Class *</label>
                 <select class="form-control" id="energy_efficient_class" aria-describedby="energy_efficient_class_help" style="width: 200px;">
+                  <option value="unrelevant" <?php echo $lamp->energyEfficientClass == "unrelevant"?"selected":"";?>>Not Available</option>
                   <option value="A+++" <?php echo $lamp->energyEfficientClass == "A+++"?"selected":"";?>>A+++</option>
                   <option value="A++" <?php echo $lamp->energyEfficientClass == "A++"?"selected":"";?>>A++</option>
                   <option value="A+" <?php echo $lamp->energyEfficientClass == "A+"?"selected":"";?>>A+</option>
@@ -1124,6 +1115,39 @@ if(count($_SESSION["user"]) == 0) {
     </div>
     <!-- Modal End -->
   </div>
+
+  <!-- Modal Search Lamp -->
+  <div class="container">
+    <div class="modal fade" id="searchLampModal" tabindex="-1" role="dialog" aria-labelledby="searchLampModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-large" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="searchLampModalLabel" style="font-weight: bold; float: left;">Search Alternative Appliance</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <div class="alert alert-success" role="alert" id="search-response-true-1" style="display: none;"></div>
+            <div class="alert alert-danger" role="alert" id="search-response-false-1" style="display: none;"></div>
+
+            <center><div class="loader" id="loader-lamp" style="display: none;"></div></center>
+
+            <div class="list-group" id="lamp-search-results"></div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="edit-appliance-close" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="edit-appliance-save-1" name="3">Save changes</button>
+            <br><br><span style="float: left;">Powered By <img src="inc/img/1280px-EBay_logo.svg.png" height="22px" width="40px"> Product Search API</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+  <!-- Modal End -->
+
 
 </div>
 
