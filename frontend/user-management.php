@@ -35,7 +35,7 @@ if(count($_SESSION["user"]) == 0) {
   <link rel="stylesheet" href="inc/js/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
   
   <link rel="stylesheet" href="inc/css/checkboxes-style.css" />
-  <script type="text/javascript" src="inc/js/node-management.js"></script>
+  <script type="text/javascript" src="inc/js/user-management.js"></script>
 
   <script type="text/javascript">
     $(document).ready(function(){

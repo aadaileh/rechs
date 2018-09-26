@@ -142,7 +142,8 @@ if ($resp->ack == "Success") {
 	    	//&& 
 	    	($item->eekStatus == "A+++" || $item->eekStatus == "A++")
 	    ) {
-	      	$item->roi = random_int(0, 3) . " Years, " . random_int(0, 11) . " Months, " . random_int(0, 29) . " Days";
+	      	$item->roi = random_int(1, 4) . " Year(s)";
+	      	$item->saving = random_int(8, 33);
 	      	$items[] = $item;
 	    }
     } else {
@@ -151,7 +152,8 @@ if ($resp->ack == "Success") {
 	    	//&& $item->condition->conditionId == "1000"
 	    	//&& ($item->eekStatus == "A+++" || $item->eekStatus == "A++")
 	    //) {
-	      	$item->roi = random_int(0, 3) . " Years, " . random_int(0, 11) . " Months, " . random_int(0, 29) . " Days";
+	      	$item->roi = random_int(1, 4) . " Year(s)";
+	      	$item->saving = random_int(8, 33);
 	      	$items[] = $item;
 	    }
     }

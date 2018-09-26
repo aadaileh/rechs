@@ -34,22 +34,25 @@ $(document).ready(function(){
         $.each( results, function(key, value) {
             var title = value["title"];
             $("#frig-search-results").append(
-              '<a href="' + 
-              value["viewItemURL"] + 
-              '" class="list-group-item list-group-item-action" target="_blank"><img src="' + 
-              value["galleryURL"] + 
-              '" height="80" width="80" style="padding:5px; border-radius:20%;"><span style="width:500px; display:inline-block;">' + 
-              title + 
-              '</span><span class="badge badge-warning badge-pill">' + 
-              value["sellingStatus"]["currentPrice"] + 
-              '€</span>' + 
-              '<span class="badge badge-warning badge-pill">' + 
-              value["eekStatus"] + 
-              '</span>' + 
-              '<span class="badge badge-warning badge-pill" style="background-color:#ff7f00;">ROI: ' + 
-              value["roi"] + 
-              '</span>' + 
-              '</a>');
+              '<a href="'
+              + value["viewItemURL"]
+              + '" class="list-group-item list-group-item-action" target="_blank"><img src="'
+              + value["galleryURL"]
+              + '" height="80" width="80" style="padding:5px; border-radius:20%;"><span style="width:450px; display:inline-block;">'
+              + title
+              + '</span><span class="badge badge-warning badge-pill">'
+              + value["sellingStatus"]["currentPrice"]
+              + '€</span>'
+              + '<span class="badge badge-warning badge-pill">'
+              + value["eekStatus"]
+              + '</span>'
+              + '<span class="badge badge-warning badge-pill">ROI: '
+              + value["roi"]
+              + '</span>'
+              + '<span class="badge badge-warning badge-pill" style="background-color:#ff7f00;">Saving: '
+              + value["saving"]
+              + ' %</span>'              
+              + '</a>');
 
         });
 
@@ -103,22 +106,25 @@ $(document).ready(function(){
         $.each( results, function(key, value) {
             var title = value["title"];
             $("#tv-search-results").append(
-              '<a href="' + 
-              value["viewItemURL"] + 
-              '" class="list-group-item list-group-item-action" target="_blank"><img src="' + 
-              value["galleryURL"] + 
-              '" height="80" width="80" style="padding:5px; border-radius:20%;"><span style="width:500px; display:inline-block;">' + 
-              title + 
-              '</span><span class="badge badge-warning badge-pill">' + 
-              value["sellingStatus"]["currentPrice"] + 
-              '€</span>' + 
-              '<span class="badge badge-warning badge-pill">' + 
-              value["eekStatus"] + 
-              '</span>' + 
-              '<span class="badge badge-warning badge-pill" style="background-color:#ff7f00;">ROI: ' + 
-              value["roi"] + 
-              '</span>' + 
-              '</a>');
+              '<a href="'
+              + value["viewItemURL"]
+              + '" class="list-group-item list-group-item-action" target="_blank"><img src="'
+              + value["galleryURL"]
+              + '" height="80" width="80" style="padding:5px; border-radius:20%;"><span style="width:450px; display:inline-block;">'
+              + title
+              + '</span><span class="badge badge-warning badge-pill">'
+              + value["sellingStatus"]["currentPrice"]
+              + '€</span>'
+              + '<span class="badge badge-warning badge-pill">'
+              + value["eekStatus"]
+              + '</span>'
+              + '<span class="badge badge-warning badge-pill">ROI: '
+              + value["roi"]
+              + '</span>'
+              + '<span class="badge badge-warning badge-pill" style="background-color:#ff7f00;">Saving: ' 
+              + value["saving"] 
+              + ' %</span>'
+              + '</a>');
 
         });
 
@@ -176,7 +182,7 @@ $(document).ready(function(){
               + value["viewItemURL"] 
               + '" class="list-group-item list-group-item-action" target="_blank"><img src="' 
               + value["galleryURL"] 
-              + '" height="80" width="80" style="padding:5px; border-radius:20%;"><span style="width:500px; display:inline-block;">' 
+              + '" height="80" width="80" style="padding:5px; border-radius:20%;"><span style="width:450px; display:inline-block;">' 
               + title 
               + '</span><span class="badge badge-warning badge-pill">' 
               + value["sellingStatus"]["currentPrice"] 
@@ -184,9 +190,12 @@ $(document).ready(function(){
               + '<span class="badge badge-warning badge-pill">' 
               + value["eekStatus"] 
               + '</span>' 
-              + '<span class="badge badge-warning badge-pill" style="background-color:#ff7f00;">ROI: ' 
+              + '<span class="badge badge-warning badge-pill">ROI: ' 
               + value["roi"] 
               + '</span>' 
+              + '<span class="badge badge-warning badge-pill" style="background-color:#ff7f00;">Saving: ' 
+              + value["saving"] 
+              + ' %</span>'              
               + '</a>'
             );
 
