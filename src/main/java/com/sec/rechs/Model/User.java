@@ -25,6 +25,7 @@ public class User implements Serializable {
     private String email;
     private String createdBy;
     private Boolean active;
+    private String type;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -106,5 +107,13 @@ public class User implements Serializable {
 
     public void setActive(Boolean active) {
         this.active = active;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

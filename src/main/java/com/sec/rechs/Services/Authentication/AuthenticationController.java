@@ -8,10 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 /**
@@ -42,5 +39,19 @@ public class AuthenticationController extends AuthenticationImplentations implem
     public User verifyCredentials(@RequestBody Credentials credentials) {
         authenticationImplentations.setAuthenticationRepository(authenticationRepository);
         return authenticationImplentations.verifyCredentials(credentials);
+    }
+
+    @PostMapping("/encrypt")
+    @ApiOperation("Encrypt plain text to encrypted form")
+    public String encrypt(@RequestBody String string) {
+        authenticationImplentations.setAuthenticationRepository(authenticationRepository);
+        return authenticationImplentations.encrypt(string);
+    }
+
+    @PostMapping("/decrypt")
+    @ApiOperation("Decrypt plain text to encrypted form")
+    public String decrypt(@RequestBody String string) {
+        authenticationImplentations.setAuthenticationRepository(authenticationRepository);
+        return authenticationImplentations.decrypt(string);
     }
 }
