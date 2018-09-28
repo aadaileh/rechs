@@ -1,4 +1,4 @@
-package com.sec.rechs.Services.Shop;
+package com.sec.rechs.Services.ExternalAPIs;
 
 import com.sec.rechs.DTOs.EbaySearchResult;
 import io.swagger.annotations.ApiOperation;

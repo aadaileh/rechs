@@ -21,9 +21,10 @@ public class EnergyProvider implements Serializable {
 
     private String name;
     private String contract_duration;
-    private Date contract_begin;
-    private Date contract_end;
-    private Float unit_price;
+    private String contract_begin;
+    private String contract_end;
+    private String unit_price;
+    private String total_annual_consumption;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -59,28 +60,36 @@ public class EnergyProvider implements Serializable {
         this.contract_duration = contract_duration;
     }
 
-    public Date getContract_begin() {
+    public String getContract_begin() {
         return contract_begin;
     }
 
-    public void setContract_begin(Date contract_begin) {
+    public void setContract_begin(String contract_begin) {
         this.contract_begin = contract_begin;
     }
 
-    public Date getContract_end() {
+    public String getContract_end() {
         return contract_end;
     }
 
-    public void setContract_end(Date contract_end) {
+    public void setContract_end(String contract_end) {
         this.contract_end = contract_end;
     }
 
-    public Float getUnit_price() {
+    public String getUnit_price() {
         return unit_price;
     }
 
-    public void setUnit_price(Float unit_price) {
+    public void setUnit_price(String unit_price) {
         this.unit_price = unit_price;
+    }
+
+    public String getTotal_annual_consumption() {
+        return total_annual_consumption;
+    }
+
+    public void setTotal_annual_consumption(String total_annual_consumption) {
+        this.total_annual_consumption = total_annual_consumption;
     }
 
     public Date getCreatedTimestamp() {

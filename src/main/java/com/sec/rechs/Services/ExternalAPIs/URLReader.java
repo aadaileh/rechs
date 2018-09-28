@@ -1,4 +1,4 @@
-package com.sec.rechs.Services.Shop;
+package com.sec.rechs.Services.ExternalAPIs;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

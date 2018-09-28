@@ -70,7 +70,7 @@ if(count($_SESSION["user"]) == 0) {
 
 <?php include("inc/cgi/top-nav.php");?>
 
-<div style="width: 70%; padding: 0px 15px 0px 7px; ">
+<div style="width: 75%; padding: 0px 15px 0px 7px; ">
   <div class="panel panel-primary">
     <div class="panel-body">
       <h4 style="font-weight: bold;">Users Management</h4>
@@ -80,7 +80,7 @@ if(count($_SESSION["user"]) == 0) {
 </div>
 
 
-<div style="width: 70%; padding:0px 15px 0px 7px; ">
+<div style="width: 75%; padding:0px 15px 0px 7px; ">
   <div class="panel panel-primary">
     <div class="panel-heading">
       <strong><a href="#" data-toggle="tooltip" title="List of all available users (admins and householders)" style="color:white;">Users List</a></strong>
