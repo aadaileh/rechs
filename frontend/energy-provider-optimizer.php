@@ -17,6 +17,12 @@ $energyProvider = $library->makeCurl ("/energy-provider/", "GET");
   // echo "<pre>energyProvider:\n";
   // print_r($energyProvider);
   // echo "</pre>";
+
+$energyProviderList = $library->makeExternalCurl ("https://developer.nrel.gov/api/alt-fuel-stations/v1.json?fuel_type=E85,ELEC&state=CA&limit=2&api_key=M5Q82v8PbrimvyJ4uSfJclvn50ajRpZCzIXMwGzi&format=JSON", "GET");
+
+  echo "<pre>energyProviderList:";
+  print_r($energyProviderList);
+  echo "</pre>";
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +54,7 @@ $energyProvider = $library->makeCurl ("/energy-provider/", "GET");
       $('#name').editable({ 
         value: '<?=$energyProvider->name;?>',
         pk: 1,
-        url:'/inc/cgi/save-energy-provider.php',
+        url:'/inc/cgi/energy-provider.php',
         success: function(response, newValue) {
           if(response.status == 'error') return response.msg;
         }
@@ -58,7 +64,7 @@ $energyProvider = $library->makeCurl ("/energy-provider/", "GET");
       $('#contract_begin').editable({ 
         value: '<?=$energyProvider->contract_begin;?>',
         pk: 2,
-        url:'/inc/cgi/save-energy-provider.php',
+        url:'/inc/cgi/energy-provider.php',
         success: function(response, newValue) {
           if(response.status == 'error') return response.msg;
         }
@@ -68,7 +74,7 @@ $energyProvider = $library->makeCurl ("/energy-provider/", "GET");
       $('#contract_end').editable({ 
         value: '<?=$energyProvider->contract_end;?>',
         pk: 3,
-        url:'/inc/cgi/save-energy-provider.php',
+        url:'/inc/cgi/energy-provider.php',
         success: function(response, newValue) {
           if(response.status == 'error') return response.msg;
         }
@@ -78,7 +84,7 @@ $energyProvider = $library->makeCurl ("/energy-provider/", "GET");
       $('#unit_price').editable({ 
         value: '<?=$energyProvider->unit_price;?>',
         pk: 4,
-        url:'/inc/cgi/save-energy-provider.php',
+        url:'/inc/cgi/energy-provider.php',
         success: function(response, newValue) {
           if(response.status == 'error') return response.msg;
         }
@@ -88,30 +94,75 @@ $energyProvider = $library->makeCurl ("/energy-provider/", "GET");
       $('#total_annual_consumption').editable({ 
         value: '<?=$energyProvider->total_annual_consumption;?>',
         pk: 5,
-        url:'/inc/cgi/save-energy-provider.php',
+        url:'/inc/cgi/energy-provider.php',
         success: function(response, newValue) {
           if(response.status == 'error') return response.msg;
         }
       });
-
     });
 
+      // Search for energy provider
+      $(document).on("click", "#search-energy-provider", function(e) {
+        $.ajax({
+          url: "/inc/cgi/energy-provider.php",
+          type: "GET",
+          data: {
+            search: true
+          },
+          success: function(response) {
+            //alert("response: " + response);
+            //Do Something
+            //location.reload();
+          },
+          error: function(xhr) {
+            //Do Something to handle error
+            //alert("error: " + xhr);
+          }
+        });
+      });
+
+      $(document).ajaxStart(function(){
+        $("#search-results").css("display", "none");
+        $("#loader").css("display", "block");
+        $('html,body').animate({scrollTop: '+=' + $('#loader').offset().top + 'px'}, 'slow');
+      });
+
+      $(document).ajaxComplete(function(){
+        $("#search-results").css("display", "block");
+        $("#loader").css("display", "none");
+        $('html,body').animate({scrollTop: '+=' + $('#search-results').offset().top + 'px'}, 'slow');
+      });
 
   </script>
 
-  <style>
-  canvas{
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-  }
+<style type="text/css">
+    .modal-dialog-large {
+       width: 65%;
+       margin: auto;
+       margin-top: 50px;
+    }
+
+    .loader-frig,.loader-tv,.loader-lamp,.loader{
+      border: 16px solid #f3f3f3; /* Light grey */
+      border-top: 16px solid #3498db; /* Blue */
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
   </style>
+
 </head>
-<body>
+<body><center>
 
 <?php include("inc/cgi/top-nav.php");?>
 
-<div style="width: 75%; padding: 0px 15px 0px 7px; ">
+<div style="width: 50%; padding: 0px 15px 0px 7px; ">
   <div class="panel panel-primary">
     <div class="panel-body">
       <h4 style="font-weight: bold;">Energy Provider Optimizer</h4>
@@ -121,7 +172,7 @@ $energyProvider = $library->makeCurl ("/energy-provider/", "GET");
 </div>
 
 
-<div style="width: 75%; padding:0px 15px 0px 7px; ">
+<div style="width: 50%; padding:0px 15px 0px 7px; ">
   <div class="panel panel-primary">
     <div class="panel-heading">
       <strong><a href="#" data-toggle="tooltip" title="Bosch Model 1234 Extra" style="color:white;">Current Energy Provider Details</a></strong>
@@ -168,84 +219,68 @@ $energyProvider = $library->makeCurl ("/energy-provider/", "GET");
   </div>
 </div>
 
-<div style="width: 75%; padding:0px 15px 0px 7px; ">
+<div style="width: 50%; padding:0px 15px 0px 7px; ">
   <div class="panel panel-primary">
     <div class="panel-heading">
       <strong><a href="#" data-toggle="tooltip" title="Bosch Model 1234 Extra" style="color:white;">Search for Energy Providers</a></strong>
     </div>
     <div class="panel-body">
 
-
-      <!-- Button trigger edit -->
-      <button data-button="3" value="frig-edit-button-value" id="frig-edit-modal-btn" type="button"
-      class="btn btn-primary" style="float: left;">
-        <span style="font-weight: normal; font-size: 12pt;">Search for efficient Energy Providers</span>
-      </button>
-
-       <br/><br/><br/>
-      <div class="row">
-          <div class="col-xs-12">
-              <div class="panel panel-default">
-                  <!-- List group -->
-                  <ul class="list-group">
-
-                 <?php
-                    foreach ($appliances as $key => $value) {
-                      $id = $value->id;
-                      $label = $value->label;
-                      $status = $value->status; 
-                      $annualEnergyConsumption = $value->annualEnergyConsumption;
-                      $hourlyEnergyConsumption = $value->hourlyEnergyConsumption;
-                      $size = $value->size;
-                      $sizeUnit = $value->sizeUnit;
-                      $standByStatus = $value->standByStatus;
-                      $systemName = $value->systemName;
-                      $type = $value->type;
-                      $createdBy = $value->createdBy;
-                      $energyEfficientClass = $value->energyEfficientClass;
-                      $externalLink = $value->externalLink;
-                      $color = $value->active == true ? "#080808" : "#9d9d9d";
-                  ?>
-                      <li class="list-group-item frig">
-                        <div class="material-switch pull-left frig-edit-minus-icon" style="display: none; padding:5px 5px 5px 0px;vertical-align:middle;">
-                            <a href="#" title="Click to delete" data-dismiss="modal" data-button="<?=$value->id;?>" id="frig-edit-link-<?=$value->id;?>"
-                              data-href="/inc/cgi/appliances-node-save.php?action=delete&id=<?=$value->id;?>" data-toggle="modal" data-target="#confirm-delete" class="alert-confirm">
-                              <img src="inc/img/delete.svg" height="20px" width="20px">
-                            </a>
-                        </div>
-                          <span id="li-id-<?=$value->id;?>" style="
-                          font-weight: 500;
-                          font-family: inherit;
-                          font-size: 16pt;
-                          color: <?=$color;?>;
-                          font-stretch: ultra-condensed;
-                          "> <?=$label;?>
-                          <br>
-                          <span style="font-size: 9pt;">
-                          Repeat every: <?=str_replace("-", ", ", $value->repeat_every);?>
-                          </span>
-                          </span>
-
-                          <div class="material-switch pull-right">
-                              <input data-toggle="<?=$value->id;?>" data-button="<?=$value->id;?>" id="schedule-list-<?=$value->id;?>" name="schedule-list-<?=$value->id;?>" value="<?=$value->id;?>" type="checkbox" <?=$checked;?>/>
-                              <label for="schedule-list-<?=$value->id;?>" class="label-success"></label>
-                          </div>
-                      </li>
-
-                  <?php
-                    }
-                 ?>
-
-                  </ul>
-              </div>
+      <div class="panel panel-default" id="search-frig">
+        <div class="panel-body">
+          <div class="form-group" style="margin-bottom: 0px;">
+              <center>
+                <button type="button" class="btn btn-danger" id="search-energy-provider" data-target="">Search For Alternative Energy Provider in NREL Developer Network</button>
+              </center>
+              <br><small class="form-text text-muted">Clicking this search button takes the enetered current energy provider's data and search in the external <img src="inc/img/nrel-logo.jpg" height="25px"> NREL Developer Network API for alternatives.</small>
           </div>
+        </div>
       </div>
 
+    <div class="list-group" id="search-results" style="display: none;">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-        </div>
+
+      <div class="alert alert-success" role="alert" id="search-response-true" style="display: none;"></div>
+      <div class="alert alert-danger" role="alert" id="search-response-false" style="display: none;"></div>
+
+      <center><div class="loader" id="loader" style="display: none;"></div></center>
+
+            
+
     </div>
   </div>
 </div>
-
+</center>
 </body>
 </html>

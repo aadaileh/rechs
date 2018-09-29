@@ -100,223 +100,8 @@ if(count($_SESSION["user"]) == 0) {
   <script src="/Chart.js-master/dist/Chart.bundle.js"></script>
   <script src="/Chart.js-master/samples/utils.js"></script>
 
-  <script>
-
-    $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
-    });   
-
-
-    $(document).ready(function(){
-        $("#stand-by-button-frig").add("#stand-by-duration-button-frig").click(function(){
-
-          if (document.getElementById("stand-by-button-frig").checked) {
-            $("#stand-by-duration-frig").fadeIn(700);
-            $standbyDurationSpan = document.getElementById("standby_duration_frig").value;
-          } else {
-            $("#stand-by-duration-frig").fadeOut(700);
-            $standbyDurationSpan = document.getElementById("standby_duration_frig").value = 0;
-          }
-            alert("call save.php");
-            $.post("/inc/cgi/appliances-save.php",
-              {
-                flag: "standby",
-                id: document.getElementById("stand-by-button-frig").value,
-                standbyDurationSpan: $standbyDurationSpan,
-                standByStatus: document.getElementById("stand-by-button-frig").checked
-              },
-            function(data, status){
-              //alert("Data(frig): " + data + "\nStatus: " + status);
-              //$("#stand-by-button-frig-response").text(data);
-              $("#alert-success-frig").fadeIn();
-              setTimeout(function() {$("#alert-success-frig").fadeOut('blind');}, 2000);
-            });
-        });
-
-        $("#stand-by-button-tv").add("#stand-by-duration-button-tv").click(function(){
-            if (document.getElementById("stand-by-button-tv").checked) {
-              $("#stand-by-duration-tv").fadeIn(700);
-              $standbyDurationSpan = document.getElementById("standby_duration_tv").value;
-            } else {
-              $("#stand-by-duration-tv").fadeOut(700);
-              $standbyDurationSpan = document.getElementById("standby_duration_tv").value = 0;
-            }
-            $.post("/inc/cgi/appliances-save.php",
-              {
-                flag: "standby",
-                id: document.getElementById("stand-by-button-tv").value,
-                standbyDurationSpan: $standbyDurationSpan,
-                standByStatus: document.getElementById("stand-by-button-tv").checked
-              },
-            function(data, status){
-              //alert("Data(tv): " + data + "\nStatus: " + status);
-              //$("#stand-by-button-tv-response").text(data);
-              $("#alert-success-tv").fadeIn();
-              setTimeout(function() {$("#alert-success-tv").fadeOut('blind');}, 2000);
-            });
-        });
-
-        $("#stand-by-button-lamp").add("#stand-by-duration-button-lamp").click(function(){
-            if (document.getElementById("stand-by-button-lamp").checked) {
-              $("#stand-by-duration-lamp").fadeIn(700);
-              $standbyDurationSpan = document.getElementById("standby_duration_lamp").value;
-            } else {
-              $("#stand-by-duration-lamp").fadeOut(700);
-              $standbyDurationSpan = document.getElementById("standby_duration_lamp").value = 0;
-            }
-            $.post("/inc/cgi/appliances-save.php",
-              {
-                flag: "standby",
-                id: document.getElementById("stand-by-button-lamp").value,
-                standbyDurationSpan: $standbyDurationSpan,
-                standByStatus: document.getElementById("stand-by-button-lamp").checked
-              },
-            function(data, status){
-              //alert("Data(lamp): " + data + "\nStatus: " + status);
-              //$("#stand-by-button-lamp-response").text(data);
-              $("#alert-success-lamp").fadeIn();
-              setTimeout(function() {$("#alert-success-lamp").fadeOut('blind');}, 2000);
-            });
-        });
-    });
-
-    //<!-- bootbox code -->
-    $(document).on("click", ".alert-confirm", function(e) {
-
-      //var $activeElement = $(document.activeElement);
-      var initial_id = this.id;
-      var idArray = initial_id.split("-");
-      var id = idArray[idArray.length - 1];
-
-      var checked = this.checked;
-      var action = "";
-      if(checked == true) {
-        action = "turnon";
-      } else {
-        action = "turnoff";
-      }
-
-      //alert("action: " + action);
-
-      bootbox.confirm({
-          title: "Confirm Switch Appliance ON/OFF",
-          message: "<strong>Do you really want to switch this appliance ON/OFF?</strong>",
-          buttons: {
-              confirm: {
-                  label: 'Yes',
-                  className: 'btn-success'
-              },
-              cancel: {
-                  label: 'No',
-                  className: 'btn-danger'
-              }
-          },
-          callback: function (result) {
-            //alert(result);
-            switchAppliance(action, id);
-          }
-      });
-    });
-
-    function switchAppliance(action, appliance_id) {
-      //alert("action: " + action + ", " + "appliance_id: " + appliance_id);
-
-      $.ajax({
-        url: "/inc/cgi/appliances-save.php",
-        type: "GET",
-        data: {
-          id: appliance_id,
-          action: action
-        },
-        success: function(response) {
-          //alert("response: " + response);
-          //Do Something
-          //location.reload();
-        },
-        error: function(xhr) {
-          //Do Something to handle error
-          alert("error: " + xhr);
-        }
-      });
-      }
-
-    //Do something when opening a Modal
-    $(document).ready(function(){
-
-      $('#editFrigModal').on('hidden.bs.modal', function(e) {
-        $(this).find('#edit-frig-form')[0].reset();
-        $('#save-response-true-1').hide();
-        $('#save-response-false-1').hide();
-
-        $('#save-response-true-2').hide();
-        $('#save-response-false-2').hide();
-
-        $('#save-response-true-3').hide();
-        $('#save-response-false-3').hide();        
-      });
-
-    }); 
-
-    //<!-- Update Applinace's Date -->
-    $(document).ready(function(){
-      $("#edit-appliance-save-1, #edit-appliance-save-2, #edit-appliance-save-3").click(function(){
-
-        //alert("this.name:" + this.name);
-
-        var form_name = "";
-        if(this.name == "1") {form_name = "edit-lamp-form";} 
-        else if (this.name == "2") {form_name = "edit-tv-form";} 
-        else if (this.name == "3") {form_name = "edit-frig-form";}
-
-        $.post("/inc/cgi/appliances-save.php",
-        {
-          id: this.name,
-          createdBy: document.getElementById("createdBy").value,
-          label: document.getElementById(form_name).elements.namedItem("appliance_label").value,
-          annualEnergyConsumption: document.getElementById(form_name).elements.namedItem("appliance_energy_consumption_kwh").value,
-          hourlyEnergyConsumption: document.getElementById(form_name).elements.namedItem("appliance_energy_consumption_watts").value,
-          energyEfficientClass: document.getElementById(form_name).elements.namedItem("energy_efficient_class").value,
-          size: document.getElementById(form_name).elements.namedItem("size").value,
-          externalLink: document.getElementById(form_name).elements.namedItem("external_link").value
-        },
-        function(data, status){
-          //alert("Data: " + data + "\nStatus: " + status);
-          if (data == "true") {
-            $("#save-response-true-1").show();
-            $("#save-response-false-1").hide();
-
-            $("#save-response-true-2").show();
-            $("#save-response-false-2").hide();
-            
-            $("#save-response-true-3").show();
-            $("#save-response-false-3").hide();
-            window.setTimeout(hide_popup, 9000);
-            setTimeout(function(){location.reload();}, 2000);
-            
-          } else {
-            $("#save-response-false-1").html(data);
-            $("#save-response-false-1").show();
-            $("#save-response-true-1").hide();
-
-            $("#save-response-false-2").html(data);
-            $("#save-response-false-2").show();
-            $("#save-response-true-2").hide();
-
-            $("#save-response-false-3").html(data);
-            $("#save-response-false-3").show();
-            $("#save-response-true-3").hide();
-          }
-        });
-      
-      });
-    });
-
-    function hide_popup(){
-       $("#editFrigModal").modal('hide');
-    };
-
-
-</script>
+  <!-- special JS -->
+  <script src="/inc/js/appliances-overview.js"></script>
 
   <!-- bootbox code -->
   <script src="inc/js/bower_components/bootbox.js/bootbox.js"></script>
@@ -324,41 +109,41 @@ if(count($_SESSION["user"]) == 0) {
   <!-- eBay Search Scripts -->
   <script src="inc/js/ebay_search.js"></script>  
 
-<style type="text/css">
-  .modal-dialog-large {
-     width: 65%;
-     margin: auto;
-     margin-top: 50px;
-  }
+  <style type="text/css">
+    .modal-dialog-large {
+       width: 65%;
+       margin: auto;
+       margin-top: 50px;
+    }
 
-  .loader-frig,.loader-tv,.loader-lamp,.loader{
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #3498db; /* Blue */
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
-  }
+    .loader-frig,.loader-tv,.loader-lamp,.loader{
+      border: 16px solid #f3f3f3; /* Light grey */
+      border-top: 16px solid #3498db; /* Blue */
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+    }
 
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
 
-  #theTable td {
-     vertical-align: middle;
-  }
+    #theTable td {
+       vertical-align: middle;
+    }
 
-  #appliance {
-    float:left; 
-    width: 33%; 
-    padding: 0px 10px 0px 10px;
-  }
+    #appliance {
+      float:left; 
+      width: 33%; 
+      padding: 0px 10px 0px 10px;
+    }
 
-  #panel-body {
-    #padding: 5px;
-  }
-</style>
+    #panel-body {
+      #padding: 5px;
+    }
+  </style>
 
 </head>
 <body>
@@ -483,7 +268,7 @@ if(count($_SESSION["user"]) == 0) {
           </tbody>
         </table>
 
-        <div class="panel panel-default" id="stand-by-duration-frig" 
+      <div class="panel panel-default" id="stand-by-duration-frig" 
         <?php
           if($refrigerator->standByStatus != 1) {
             echo 'style="display: none;"';
@@ -503,18 +288,18 @@ if(count($_SESSION["user"]) == 0) {
               </form>
             </div>
           </div>
-        </div>
+      </div>
 
-        <div class="panel panel-default" id="search-frig">
-          <div class="panel-body">
-            <div class="form-group" style="margin-bottom: 0px;">
-                <center>
-                  <button type="button" class="btn btn-danger" id="search-appliance-button-frig" data-toggle="modal" data-target="#searchFrigModal">Search For Alternative Products in eBay</button>
-                </center>
-                <br><small class="form-text text-muted">Clicking this search button takes the enetered appliance's data and search in the external <img src="inc/img/1280px-EBay_logo.svg.png" height="22px" width="40px"> Product Search API for alternatives appliances. Results will be shown in a modal.</small>
-            </div>
+      <div class="panel panel-default" id="search-frig">
+        <div class="panel-body">
+          <div class="form-group" style="margin-bottom: 0px;">
+              <center>
+                <button type="button" class="btn btn-danger" id="search-appliance-button-frig" data-toggle="modal" data-target="#searchFrigModal">Search For Alternative Products in eBay</button>
+              </center>
+              <br><small class="form-text text-muted">Clicking this search button takes the enetered appliance's data and search in the external <img src="inc/img/1280px-EBay_logo.svg.png" height="22px" width="40px"> Product Search API for alternatives appliances. Results will be shown in a modal.</small>
           </div>
         </div>
+      </div>
 
     </div>
   </div>

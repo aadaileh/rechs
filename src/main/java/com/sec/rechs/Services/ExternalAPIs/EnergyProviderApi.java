@@ -29,6 +29,14 @@ public class EnergyProviderApi {
         return energyProvider;
     }
 
+    @GetMapping("/search")
+    @ApiOperation("Search for new energy providers")
+    public EnergyProvider searchEnergyProviders() {
+        Optional<EnergyProvider> energyProviderOptional = energyProviderRepository.findById(1L);
+        EnergyProvider energyProvider = energyProviderOptional.get();
+        return energyProvider;
+    }
+
     @PutMapping("/")
     @ApiOperation("Update current energy provider data")
     public EnergyProvider updateCurrentEnergyProvider(@RequestBody EnergyProviderInput energyProviderInput) {

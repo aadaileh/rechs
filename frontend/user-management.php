@@ -67,10 +67,11 @@ if(count($_SESSION["user"]) == 0) {
 
 </head>
 <body>
+  <center>
 
 <?php include("inc/cgi/top-nav.php");?>
 
-<div style="width: 75%; padding: 0px 15px 0px 7px; ">
+<div style="width: 50%; padding: 0px 15px 0px 7px; ">
   <div class="panel panel-primary">
     <div class="panel-body">
       <h4 style="font-weight: bold;">Users Management</h4>
@@ -80,7 +81,7 @@ if(count($_SESSION["user"]) == 0) {
 </div>
 
 
-<div style="width: 75%; padding:0px 15px 0px 7px; ">
+<div style="width: 50%; padding:0px 15px 0px 7px; ">
   <div class="panel panel-primary">
     <div class="panel-heading">
       <strong><a href="#" data-toggle="tooltip" title="List of all available users (admins and householders)" style="color:white;">Users List</a></strong>
@@ -100,7 +101,7 @@ if(count($_SESSION["user"]) == 0) {
 
        <br/><br/><br/>
       <div class="row">
-          <div class="col-xs-12">
+          <div class="col-xs-12" style="text-align: left;">
               <div class="panel panel-default">
                   <!-- List group -->
                   <ul class="list-group">
@@ -165,7 +166,7 @@ if(count($_SESSION["user"]) == 0) {
       </div>
 
       <!-- Modal Create new user-->      
-      <div class="container">
+      <div class="container" style="text-align: left;">
         <div class="modal fade" id="addNewNodeModal" tabindex="-1" role="dialog" aria-labelledby="addNewNodeModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -229,6 +230,6 @@ if(count($_SESSION["user"]) == 0) {
   </div>
 </div>
 
-
+</center>
 </body>
 </html>
