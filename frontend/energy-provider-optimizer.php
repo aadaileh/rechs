@@ -17,29 +17,23 @@ $energyProvider = $library->makeCurl ("/energy-provider/", "GET");
   // echo "<pre>energyProvider:\n";
   // print_r($energyProvider);
   // echo "</pre>";
-
-$energyProviderList = $library->makeExternalCurl ("https://developer.nrel.gov/api/alt-fuel-stations/v1.json?fuel_type=E85,ELEC&state=CA&limit=2&api_key=M5Q82v8PbrimvyJ4uSfJclvn50ajRpZCzIXMwGzi&format=JSON", "GET");
-
-  echo "<pre>energyProviderList:";
-  print_r($energyProviderList);
-  echo "</pre>";
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>EOP (Energy Provider Optimizer)</title>
+  <title>ESO (Energy Supplier Optimizer)</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="inc/js/jquery.min.js"></script>
   <script src="inc/js/bootstrap.min.js"></script>
 
-  <script src="/Chart.js-master/dist/Chart.bundle.js"></script>
   <script src="/Chart.js-master/samples/utils.js"></script>
 
   <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
   <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+
 
   <script>
 
@@ -158,7 +152,8 @@ $energyProviderList = $library->makeExternalCurl ("https://developer.nrel.gov/ap
   </style>
 
 </head>
-<body><center>
+<body>
+  <center>
 
 <?php include("inc/cgi/top-nav.php");?>
 
@@ -237,38 +232,77 @@ $energyProviderList = $library->makeExternalCurl ("https://developer.nrel.gov/ap
         </div>
       </div>
 
-    <div class="list-group" id="search-results" style="display: none;">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </table>
+
+
+
+
+<div class="list-group" id="search-results" style="display: none; text-align: left;">
+  <a href="https://www.bev-energie.com/" class="list-group-item list-group-item-action flex-column align-items-start" target="_blank">
+    <img src="/inc/img/bev-energie-strom.png" height="70px;" style="display: block; float: left; padding: 10px 10px 10px 10px;">
+    <div class="d-flex w-100 justify-content-between">
+      <h3 class="mb-1">BEV Energie Strom</h3>
+      <br>
+      <ul class="list-group list-group">
+        <li class="list-group-item">Unit price: 0.2471 € pro kWh</li>        
+        <li class="list-group-item">Consumer price: 1.235,50 € for 5.000 kWh per year</li>
+        <li class="list-group-item">Grundpreis:  303,98 € pro Jahr 25,33 € pro Monat</li>
+        <li class="list-group-item">Gesamtpreis ohne Bonus:  1.539,48 € pro Jahr, 139,95 € pro Monat</li>
+        <li class="list-group-item">Jubiläumsbonus:  20,00 € </li>
+        <li class="list-group-item">Sofortbonus: 220,00 €  </li>
+        <li class="list-group-item">Neukundenbonus:  230,92 €  (15% auf Gesamtkosten)</li>
+      </ul>
     </div>
+  </a>
+
+  <a href="https://www.immergruen-energie.de/" class="list-group-item list-group-item-action flex-column align-items-start" target="_blank">
+    <img src="/inc/img/immer-gruen.png" height="70px;" style="display: block; float: left; padding: 10px 10px 10px 10px;">
+    <div class="d-flex w-100 justify-content-between">
+      <h3 class="mb-1">&nbsp;</h3>
+      <br>
+      <ul class="list-group list-group">
+        <li class="list-group-item">Unit price: 0.2753 € pro kWh</li>        
+        <li class="list-group-item">Consumer price: 1.376,50 € for 5.000 kWh per year</li>
+        <li class="list-group-item">Grundpreis: 102,18 € pro Jahr 8,51 € pro Monat</li>
+        <li class="list-group-item">Gesamtpreis ohne Bonus:  1.478,68 € pro Jahr, 134,43 € pro Monat</li>
+        <li class="list-group-item">Sofortbonus: 180,00 €  </li>
+        <li class="list-group-item">Neukundenbonus:  221,80 €</li>
+      </ul>
+    </div>
+  </a>
+  <a href="https://www.shellprivatenergie.de/" class="list-group-item list-group-item-action flex-column align-items-start" target="_blank">
+    <img src="/inc/img/shell.png" height="80px;" style="display: block; float: left; padding: 10px 10px 10px 10px;">
+    <div class="d-flex w-100 justify-content-between">
+      <h3 class="mb-1">SHELL PrivatEnergie</h3>
+      <br>
+      <ul class="list-group list-group">
+        <li class="list-group-item">Unit price: 0.2826 € pro kWh</li>        
+        <li class="list-group-item">Consumer price: 1.413,00 € for 5.000 kWh per year</li>
+        <li class="list-group-item">Grundpreis:  105,35 € pro Jahr 25,33 € pro Monat</li>
+        <li class="list-group-item">Gesamtpreis ohne Bonus:  1.518,35 € pro Jahr, 126,53€ pro Monat</li>
+        <li class="list-group-item">Sofortbonus: 148,00 €  </li>
+        <li class="list-group-item">Neukundenbonus:  227,75 €  (15% auf Gesamtkosten)</li>
+      </ul>
+    </div>
+  </a>
+  <a href="https://www.vattenfall.de" class="list-group-item list-group-item-action flex-column align-items-start" target="_blank">
+    <img src="/inc/img/vattenfall.png" height="80px;" style="display: block; float: left; padding: 10px 10px 10px 10px;">
+    <div class="d-flex w-100 justify-content-between">
+      <h3 class="mb-1">VATTENFALL Europe</h3>
+      <br>
+      <ul class="list-group list-group">
+        <li class="list-group-item">Unit price: 0.2471 € pro kWh</li>        
+        <li class="list-group-item">Consumer price: 1.235,50 € for 5.000 kWh per year</li>
+        <li class="list-group-item">Grundpreis:  303,98 € pro Jahr 25,33 € pro Monat</li>
+        <li class="list-group-item">Gesamtpreis ohne Bonus:  1.539,48 € pro Jahr, 139,95 € pro Monat</li>
+        <li class="list-group-item">Jubiläumsbonus:  20,00 € </li>
+        <li class="list-group-item">Sofortbonus: 220,00 €  </li>
+        <li class="list-group-item">Neukundenbonus:  230,92 €  (15% auf Gesamtkosten)</li>
+      </ul>
+    </div>
+  </a>
+</div>
+
+
 
 
       <div class="alert alert-success" role="alert" id="search-response-true" style="display: none;"></div>
@@ -281,6 +315,7 @@ $energyProviderList = $library->makeExternalCurl ("https://developer.nrel.gov/ap
     </div>
   </div>
 </div>
+
 </center>
 </body>
 </html>

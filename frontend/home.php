@@ -271,13 +271,13 @@ if(count($_SESSION["user"]) == 0) {
       <div id="customized-home-panel-right">
         <div class="panel panel-primary">
           <div class="panel-heading"><a href="energy-provider-optimizer.php" data-toggle="tooltip" title="Energy Provider Optimizer. Helps owners to switch their energy provider to reduce costs." style="color:white;">
-            <strong>EPO</strong> (<strong>E</strong>nergy <strong>P</strong>rovider <strong>O</strong>ptimizer)</a>
+            <strong>ESO</strong> (<strong>E</strong>nergy <strong>S</strong>upplier <strong>O</strong>ptimizer)</a>
           </div>
           <div class="panel-body">
             First time visited:<br>
             Click <a href="/energy-provider-optimizer.php">here</a> to activate the Energy Provider Optimizer.<br><br>
 
-            View shown after activating the EPO (Energy Provider Optimizer):<br>
+            View shown after activating the ESO (Energy Supplier Optimizer):<br>
             Searching for proper Energy Provider has revelaed the following result(s):<br>
             1. XYZ Energy Provider<br>
 

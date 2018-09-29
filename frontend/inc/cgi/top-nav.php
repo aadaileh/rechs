@@ -63,7 +63,7 @@ switch ($scriptName) {
         </li>
         <li class="<?php echo $schedularManagementClass;?>"><a href="appliances-schedular.php">Schedular Management</a></li>
         <!-- <li class="<?php echo $nodeManagementClass;?>"><a href="node-management.php">Node/Appliances Management</a></li> -->
-        <li class="<?php echo $energyProviderOptimizerClass;?>"><a href="energy-provider-optimizer.php">Energy Provider Optimizer</a></li>
+        <li class="<?php echo $energyProviderOptimizerClass;?>"><a href="energy-provider-optimizer.php">Energy Supplier Optimizer</a></li>
         <li class="<?php echo $userManagementClass;?>"><a href="user-management.php">User Management</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

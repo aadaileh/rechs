@@ -36,7 +36,7 @@ if(count($_SESSION["user"]) == 0) {
     }
   }
 
-sleep(5);
+sleep(2);
 exit();
 
   if(isset($_GET) && count($_GET)>0) {

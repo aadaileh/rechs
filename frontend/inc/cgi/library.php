@@ -44,9 +44,9 @@ $verbose = fopen('php://temp', 'w+');
 curl_setopt($curl, CURLOPT_STDERR, $verbose);
 
 
-echo "<pre>curl:\n";
-print_r($curl);
-echo "</pre>";
+// echo "<pre>curl:\n";
+// print_r($curl);
+// echo "</pre>";
 
       $response = curl_exec($curl);
       $err = curl_error($curl);
@@ -54,9 +54,9 @@ echo "</pre>";
 if ($response === FALSE) {
     printf("cUrl error (#%d): %s<br>\n", curl_errno($curl), htmlspecialchars(curl_error($curl)));
 }
-rewind($verbose);
-$verboseLog = stream_get_contents($verbose);
-echo "Verbose information:\n<pre>", htmlspecialchars($verboseLog), "</pre>\n";
+// rewind($verbose);
+// $verboseLog = stream_get_contents($verbose);
+// echo "Verbose information:\n<pre>", htmlspecialchars($verboseLog), "</pre>\n";
 
 
       curl_close($curl);
