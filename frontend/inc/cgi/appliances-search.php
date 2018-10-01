@@ -165,13 +165,40 @@ if ($resp->ack == "Success") {
 //Keep only first 10
 $firstXItems = array_slice($items, 0, 50);
 
-//sleep(5);
-
 echo json_encode($firstXItems); 
+
+$errors = 0;
+$results = "";
 
 } else {  // If the response does not indicate 'Success,' print an error
   $results  = "<h3>Oops! The request was not successful. Make sure you are using a valid ";
   $results .= "AppID for the Production environment.</h3>";
+  $errors = 1;
 }
+
+
+// send an entry to the statistics table
+$fields = Array();
+$fields["createdBy"] = $_SESSION["user"]->fullName;
+$fields["errorsMessage"] = $results;
+$fields["runningIntervals"] = 1;
+$fields["runningMode"] = "active";
+
+$fields["amountOfResults"] = count($items);
+$fields["applianceType"] = $_POST["flag"];
+$fields["status"] = $errors == 1 ? "fail" : "success";
+
+$library = new Library();
+$data = $library->makeCurl ("/statistics/appliance-replacement", "POST", $fields);
+
+// echo "<pre>fields:\n";
+// print_r($fields);
+// echo "</pre>";
+
+// echo "<pre>data:\n";
+// print_r($data);
+// echo "</pre>";
+
+
 
 ?>

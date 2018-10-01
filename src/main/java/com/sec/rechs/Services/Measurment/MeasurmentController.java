@@ -1,8 +1,6 @@
 package com.sec.rechs.Services.Measurment;
 
 
-import com.sec.rechs.DTOs.AmpsAndDate;
-import com.sec.rechs.DTOs.KwhAndDate;
 import com.sec.rechs.DTOs.WattsAndDate;
 import com.sec.rechs.Exception.ResourceNotFoundException;
 import com.sec.rechs.Model.Measurment;
@@ -64,8 +62,6 @@ public class MeasurmentController {
             watts = measurmentRepository.findWattsByApplianceIdGroupByHour(applianceId);
         } else if (groupBy.equals("day")) {
             watts = measurmentRepository.findWattsByApplianceIdGroupByYearAndMonthAndDay(applianceId);
-        } else if (groupBy.equals("week")) {
-            watts = measurmentRepository.findWattsByApplianceIdGroupByYearAndWeek(applianceId);
         } else if (groupBy.equals("month")) {
             watts = measurmentRepository.findWattsByApplianceIdGroupByYearAndMonth(applianceId);
         } else if (groupBy.equals("year")) {
@@ -73,68 +69,6 @@ public class MeasurmentController {
         }
 
         return watts;
-    }
-
-    // Get an Appliance Measurments (Amps)
-    @GetMapping("/amps/appliance/{applianceId}/group-by/{groupBy}")
-    @ApiOperation("Retrieve measurments (Ampers) from an appliance by id")
-    public List<AmpsAndDate> getAmpsByApplianceId(
-            @PathVariable (value = "applianceId") Long applianceId,
-            @PathVariable (value = "groupBy") String groupBy) {
-
-        List<AmpsAndDate> amps = null;
-
-        if (groupBy.equals("hour")) {
-            amps = measurmentRepository.findAmpsByApplianceIdGroupByHour(applianceId);
-        } else {
-            amps = measurmentRepository.findAmpsByApplianceIdGroupByYearAndMonthAndDay(applianceId);
-        }
-        return amps;
-    }
-
-    // Get an Appliance Measurments (Kwh)
-    @GetMapping("/kwh/appliance/{applianceId}/group-by/{groupBy}")
-    @ApiOperation("Retrieve measurments (Kwh) from an appliance by id")
-    public List<KwhAndDate> getKwhByApplianceId(
-            @PathVariable (value = "applianceId") Long applianceId,
-            @PathVariable (value = "groupBy") String groupBy) {
-
-        List<KwhAndDate> kwh = null;
-
-        if (groupBy.equals("hour")) {
-            kwh = measurmentRepository.findKwhByApplianceIdGroupByHour(applianceId);
-        } else if (groupBy.equals("day")) {
-            kwh = measurmentRepository.findKwhByApplianceIdGroupByYearAndMonthAndDay(applianceId);
-        } else if (groupBy.equals("week")) {
-            kwh = measurmentRepository.findKwhByApplianceIdGroupByYearAndWeek(applianceId);
-        } else if (groupBy.equals("month")) {
-            kwh = measurmentRepository.findKwhByApplianceIdGroupByYearAndMonth(applianceId);
-        } else if (groupBy.equals("year")) {
-            kwh = measurmentRepository.findKwhByApplianceIdGroupByYear(applianceId);
-        }
-
-        return kwh;
-    }
-
-    // Get lowest watts for an appliance
-    @GetMapping("/watts/lowest")
-    @ApiOperation("Retrieve lowest Watts measurments from all appliances")
-    public List<Measurment> getLowestWatts() {
-
-        List<Measurment> lowestWattsList = measurmentRepository.findLowestWatts();
-
-        return lowestWattsList;
-    }
-
-
-    // Get Oldest and Latest Timestamp for all applinaces
-    @GetMapping("/created-timestamp/latest-oldest")
-    @ApiOperation("Retrieve latest and oldest created_timestamp from all appliances")
-    public List<Measurment> getLatestAndOldestCreatedTimestamp() {
-
-        List<Measurment> latestAndOldestCreatedTimestamp = measurmentRepository.findLatestAndOldestCreatedTimestamp();
-
-        return latestAndOldestCreatedTimestamp;
     }
 
     /*

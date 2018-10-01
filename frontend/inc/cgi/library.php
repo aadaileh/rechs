@@ -1,4 +1,5 @@
 <?php
+ini_set('max_execution_time', 300); // 5minutes
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
@@ -210,61 +211,64 @@ function adjustValue($value, $kwh_watt, $to) {
         $date = date($pattern, $sec);
         $date = $date;
         return $date;
-    }
+    }   
 
-function sortArray ($oldArray) {
-  foreach ($oldArray as $key => $value) {
-    $object = new stdClass();
-    $object->concatedDateTimeWithoutdashes = str_replace("-", "", $value->concatedDateTime);
-    $object->concatedDateTime = $value->concatedDateTime;
-    $object->avgmeasurment = $value->avgmeasurment;
-    $object->counter = $value->counter;
-    $newArray[] = $object;  
+function getStats ($nodeId) {
+
+  //watts - hourly
+  $watts_data = self::makeCurl ("/measurments/watts/appliance/" . $nodeId . "/group-by/hour", "GET");
+  $watts_measurmentArray = Array();
+  $watts_datesArray = Array();
+  $watts_allTogetherArray = Array();
+  foreach ($watts_data as $watts_key => $watts_value) {
+    array_push($watts_measurmentArray, $watts_value->avgmeasurment);
+    array_push($watts_datesArray, $watts_value->concatedDateTime);
   }
-  sort($newArray);
-  return $newArray;
-}    
-     
-  // function encryptData ($string) {
+  $watts_allTogetherArray["measurment"] = $watts_measurmentArray;
+  $watts_allTogetherArray["dates"] = $watts_datesArray;
+  $watts_Arrays["hourly"] = $watts_allTogetherArray;
 
-  //   $key = 'password to (en/de)crypt';
-  //   //$string = ' string to be encrypted ';
+  //watts -daily
+  $watts_data = self::makeCurl ("/measurments/watts/appliance/" . $nodeId . "/group-by/day", "GET");
+  $watts_measurmentArray = Array();
+  $watts_datesArray = Array();
+  $watts_allTogetherArray = Array();
+  foreach ($watts_data as $watts_key => $watts_value) {
+    array_push($watts_measurmentArray, $watts_value->avgmeasurment);
+    array_push($watts_datesArray, $watts_value->concatedDateTime);
+  }
+  $watts_allTogetherArray["measurment"] = $watts_measurmentArray;
+  $watts_allTogetherArray["dates"] = $watts_datesArray;
+  $watts_Arrays["daily"] = $watts_allTogetherArray; 
 
-  //   $iv = mcrypt_create_iv(
-  //     mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC),
-  //     MCRYPT_DEV_URANDOM
-  //   );
+  //watts -monthly
+  $watts_data = self::makeCurl ("/measurments/watts/appliance/" . $nodeId . "/group-by/month", "GET");
+  $watts_measurmentArray = Array();
+  $watts_datesArray = Array();
+  $watts_allTogetherArray = Array();
+  foreach ($watts_data as $watts_key => $watts_value) {
+    array_push($watts_measurmentArray, $watts_value->avgmeasurment);
+    array_push($watts_datesArray, $watts_value->concatedDateTime);
+  }
+  $watts_allTogetherArray["measurment"] = $watts_measurmentArray;
+  $watts_allTogetherArray["dates"] = $watts_datesArray;
+  $watts_Arrays["monthly"] = $watts_allTogetherArray; 
 
-  //   return $encrypted = base64_encode(
-  //     $iv .
-  //     mcrypt_encrypt(
-  //       MCRYPT_RIJNDAEL_128,
-  //       hash('sha256', $key, true),
-  //       $string,
-  //       MCRYPT_MODE_CBC,
-  //       $iv
-  //     )
-  //   );
-  // }
+  //watts -yearly
+  $watts_data = self::makeCurl ("/measurments/watts/appliance/" . $nodeId . "/group-by/year", "GET");
+  $watts_measurmentArray = Array();
+  $watts_datesArray = Array();
+  $watts_allTogetherArray = Array();
+  foreach ($watts_data as $watts_key => $watts_value) {
+    array_push($watts_measurmentArray, $watts_value->avgmeasurment);
+    array_push($watts_datesArray, $watts_value->concatedDateTime);
+  }
+  $watts_allTogetherArray["measurment"] = $watts_measurmentArray;
+  $watts_allTogetherArray["dates"] = $watts_datesArray;
+  $watts_Arrays["yearly"] = $watts_allTogetherArray;
 
-
-  // function decryptData ($encrypted) {
-
-  //   $data = base64_decode($encrypted);
-  //   $iv = substr($data, 0, mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC));
-
-  //   return $decrypted = rtrim(
-  //       mcrypt_decrypt(
-  //           MCRYPT_RIJNDAEL_128,
-  //           hash('sha256', $key, true),
-  //           substr($data, mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC)),
-  //           MCRYPT_MODE_CBC,
-  //           $iv
-  //       ),
-  //       "\0"
-  //   );
-  // }
-
+  return $watts_Arrays;
+}
 
 
 }

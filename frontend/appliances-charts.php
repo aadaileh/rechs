@@ -4,213 +4,32 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
 
-include("inc/cgi/library.php");
-
 //Already logged in?
 if(count($_SESSION["user"]) == 0) {
   echo "user is set in the session";
   header('Location: /login.php');
 }
 
-  $library = new Library();
-
-  //Refrigerator - kwh - hourly
-  $kwh_data = $library->sortArray($library->makeCurl ("/measurments/kwh/appliance/3/group-by/hour", "GET"));
-  $kwh_measurmentArray = Array();
-  $kwh_datesArray = Array();
-  $kwh_allTogetherArray = Array();
-  foreach ($kwh_data as $kwh_key => $kwh_value) {
-    array_push($kwh_measurmentArray, $kwh_value->avgmeasurment);
-    array_push($kwh_datesArray, $kwh_value->concatedDateTime);
-  }
-  $kwh_allTogetherArray["measurment"] = $kwh_measurmentArray;
-  $kwh_allTogetherArray["dates"] = $kwh_datesArray;
-  $kwh_Arrays["hourly"] = $kwh_allTogetherArray;
-
-  //Refrigerator - kwh - daily
-  $kwh_data = $library->sortArray($library->makeCurl ("/measurments/kwh/appliance/3/group-by/day", "GET"));
-  $kwh_measurmentArray = Array();
-  $kwh_datesArray = Array();
-  $kwh_allTogetherArray = Array();
-  foreach ($kwh_data as $kwh_key => $kwh_value) {
-    array_push($kwh_measurmentArray, $kwh_value->avgmeasurment);
-    array_push($kwh_datesArray, $kwh_value->concatedDateTime);
-  }
-  $kwh_allTogetherArray["measurment"] = $kwh_measurmentArray;
-  $kwh_allTogetherArray["dates"] = $kwh_datesArray;
-  $kwh_Arrays["daily"] = $kwh_allTogetherArray;
-
-  //Refrigerator - kwh - weekly
-  $kwh_data = $library->sortArray($library->makeCurl ("/measurments/kwh/appliance/3/group-by/week", "GET"));
-  $kwh_measurmentArray = Array();
-  $kwh_datesArray = Array();
-  $kwh_allTogetherArray = Array();
-  foreach ($kwh_data as $kwh_key => $kwh_value) {
-    array_push($kwh_measurmentArray, $kwh_value->avgmeasurment);
-    array_push($kwh_datesArray, $kwh_value->concatedDateTime);
-  }
-  $kwh_allTogetherArray["measurment"] = $kwh_measurmentArray;
-  $kwh_allTogetherArray["dates"] = $kwh_datesArray;
-  $kwh_Arrays["weekly"] = $kwh_allTogetherArray;  
-
-  //Refrigerator - kwh - monthly
-  $kwh_data = $library->sortArray($library->makeCurl ("/measurments/kwh/appliance/3/group-by/month", "GET"));
-  $kwh_measurmentArray = Array();
-  $kwh_datesArray = Array();
-  $kwh_allTogetherArray = Array();
-  foreach ($kwh_data as $kwh_key => $kwh_value) {
-    array_push($kwh_measurmentArray, $kwh_value->avgmeasurment);
-    array_push($kwh_datesArray, $kwh_value->concatedDateTime);
-  }
-  $kwh_allTogetherArray["measurment"] = $kwh_measurmentArray;
-  $kwh_allTogetherArray["dates"] = $kwh_datesArray;
-  $kwh_Arrays["monthly"] = $kwh_allTogetherArray; 
-
-  //Refrigerator - kwh - yearly
-  $kwh_data = $library->sortArray($library->makeCurl ("/measurments/kwh/appliance/3/group-by/year", "GET"));
-  $kwh_measurmentArray = Array();
-  $kwh_datesArray = Array();
-  $kwh_allTogetherArray = Array();
-  foreach ($kwh_data as $kwh_key => $kwh_value) {
-    array_push($kwh_measurmentArray, $kwh_value->avgmeasurment);
-    array_push($kwh_datesArray, $kwh_value->concatedDateTime);
-  }
-  $kwh_allTogetherArray["measurment"] = $kwh_measurmentArray;
-  $kwh_allTogetherArray["dates"] = $kwh_datesArray;
-  $kwh_Arrays["yearly"] = $kwh_allTogetherArray; 
+include("inc/cgi/library.php");
 
 
+$library = new Library();
+$watts_Arrays_Frig = $library->getStats (3);
+$watts_Arrays_Lamp = $library->getStats (1);
+$watts_Arrays_Tv = $library->getStats (2);
 
-  //Refrigerator - watts - hourly
-  $watts_data = $library->sortArray($library->makeCurl ("/measurments/watts/appliance/3/group-by/hour", "GET"));
-  $watts_measurmentArray = Array();
-  $watts_datesArray = Array();
-  $watts_allTogetherArray = Array();
-  foreach ($watts_data as $watts_key => $watts_value) {
-    array_push($watts_measurmentArray, $watts_value->avgmeasurment);
-    array_push($watts_datesArray, $watts_value->concatedDateTime);
-  }
-  $watts_allTogetherArray["measurment"] = $watts_measurmentArray;
-  $watts_allTogetherArray["dates"] = $watts_datesArray;
-  $watts_Arrays["hourly"] = $watts_allTogetherArray;
+// echo "<pre>watts_Arrays_Frig:";
+// print_r($watts_Arrays_Frig);
+// echo "</pre>";
 
-  //Refrigerator - watts -daily
-  $watts_data = $library->sortArray($library->makeCurl ("/measurments/watts/appliance/3/group-by/day", "GET"));
-  $watts_measurmentArray = Array();
-  $watts_datesArray = Array();
-  $watts_allTogetherArray = Array();
-  foreach ($watts_data as $watts_key => $watts_value) {
-    array_push($watts_measurmentArray, $watts_value->avgmeasurment);
-    array_push($watts_datesArray, $watts_value->concatedDateTime);
-  }
-  $watts_allTogetherArray["measurment"] = $watts_measurmentArray;
-  $watts_allTogetherArray["dates"] = $watts_datesArray;
-  $watts_Arrays["daily"] = $watts_allTogetherArray;
+// echo "<pre>watts_Arrays_Tv:";
+// print_r($watts_Arrays_Tv);
+// echo "</pre>";
 
-  //Refrigerator - watts -weekly
-  $watts_data = $library->sortArray($library->makeCurl ("/measurments/watts/appliance/3/group-by/week", "GET"));
-  $watts_measurmentArray = Array();
-  $watts_datesArray = Array();
-  $watts_allTogetherArray = Array();
-  foreach ($watts_data as $watts_key => $watts_value) {
-    array_push($watts_measurmentArray, $watts_value->avgmeasurment);
-    array_push($watts_datesArray, $watts_value->concatedDateTime);
-  }
-  $watts_allTogetherArray["measurment"] = $watts_measurmentArray;
-  $watts_allTogetherArray["dates"] = $watts_datesArray;
-  $watts_Arrays["weekly"] = $watts_allTogetherArray;  
+// echo "<pre>watts_Arrays_Lamp:";
+// print_r($watts_Arrays_Lamp);
+// echo "</pre>";
 
-  //Refrigerator - watts -monthly
-  $watts_data = $library->sortArray($library->makeCurl ("/measurments/watts/appliance/3/group-by/month", "GET"));
-  $watts_measurmentArray = Array();
-  $watts_datesArray = Array();
-  $watts_allTogetherArray = Array();
-  foreach ($watts_data as $watts_key => $watts_value) {
-    array_push($watts_measurmentArray, $watts_value->avgmeasurment);
-    array_push($watts_datesArray, $watts_value->concatedDateTime);
-  }
-  $watts_allTogetherArray["measurment"] = $watts_measurmentArray;
-  $watts_allTogetherArray["dates"] = $watts_datesArray;
-  $watts_Arrays["monthly"] = $watts_allTogetherArray; 
-
-  //Refrigerator - watts -yearly
-  $watts_data = $library->sortArray($library->makeCurl ("/measurments/watts/appliance/3/group-by/year", "GET"));
-  $watts_measurmentArray = Array();
-  $watts_datesArray = Array();
-  $watts_allTogetherArray = Array();
-  foreach ($watts_data as $watts_key => $watts_value) {
-    array_push($watts_measurmentArray, $watts_value->avgmeasurment);
-    array_push($watts_datesArray, $watts_value->concatedDateTime);
-  }
-  $watts_allTogetherArray["measurment"] = $watts_measurmentArray;
-  $watts_allTogetherArray["dates"] = $watts_datesArray;
-  $watts_Arrays["yearly"] = $watts_allTogetherArray;
-
-
-
-
-
-
-
-  // //convert kwh_array to tv_kwh_array
-  // //convert kwh_array to lamp_kwh_array
-  // foreach ($kwh_Arrays["measurment"] as $key => $value) {
-  //   $tv_kwh_Arrays["measurment"][] = $library->adjustValue($value, "kwh", "tv");
-  //   $lamp_kwh_Arrays["measurment"][] = $library->adjustValue($value, "kwh", "lamp");
-  // }
-  // $tv_kwh_Arrays["dates"] = $kwh_Arrays["dates"];
-  // $lamp_kwh_Arrays["dates"] = $kwh_Arrays["dates"];
-
-  
-  // //convert watts_array to tv_watts_array
-  // //convert watts_array to lamp_watts_array
-  // foreach ($watts_Arrays["measurment"] as $key => $value) {
-  //   $tv_watts_Arrays["measurment"][] = $library->adjustValue($value, "watts", "tv");
-  //   $lamp_watts_Arrays["measurment"][] = $library->adjustValue($value, "watts", "lamp");
-  // }
-  // $tv_watts_Arrays["dates"] = $watts_Arrays["dates"];
-  // $lamp_watts_Arrays["dates"] = $watts_Arrays["dates"];
-
-
-  // //convert amps_array to tv_amps_array
-  // //convert amps_array to lamp_watts_array
-  // foreach ($amps_Arrays["measurment"] as $key => $value) {
-  //   $tv_amps_Arrays["measurment"][] = $library->adjustValue($value, "amps", "tv");
-  //   $lamp_amps_Arrays["measurment"][] = $library->adjustValue($value, "amps", "lamp");
-  // }
-  // $tv_amps_Arrays["dates"] = $amps_Arrays["dates"];
-  // $lamp_amps_Arrays["dates"] = $amps_Arrays["dates"];
-
-  // echo "<pre>kwh_Arrays:";
-  // print_r($kwh_Arrays);
-  // echo "</pre>";
-
-  // echo "<pre>watts_Arrays:";
-  // print_r($watts_Arrays);
-  // echo "</pre>";
-  // echo "<pre>amps_Arrays:";
-  // print_r($amps_Arrays);
-  // echo "</pre>";
-
-  // echo "<pre>tv_kwh_Arrays:";
-  // print_r($tv_kwh_Arrays);
-  // echo "</pre>";
-  // echo "<pre>tv_watts_Arrays:";
-  // print_r($tv_watts_Arrays);
-  // echo "</pre>";
-  // echo "<pre>tv_amps_Arrays:";
-  // print_r($tv_amps_Arrays);
-  // echo "</pre>";
-
-  // echo "<pre>lamp_kwh_Arrays:";
-  // print_r($lamp_kwh_Arrays);
-  // echo "</pre>";
-  // echo "<pre>lamp_watts_Arrays:";
-  // print_r($lamp_watts_Arrays);
-  // echo "</pre>";
-  // echo "<pre>lamp_amps_Arrays:";
-  // print_r($lamp_amps_Arrays);
-  // echo "</pre>";
 ?>
 
 <!DOCTYPE html>
@@ -225,28 +44,325 @@ if(count($_SESSION["user"]) == 0) {
 
   <script src="/Chart.js-master/dist/Chart.bundle.js"></script>
   <script src="/Chart.js-master/samples/utils.js"></script>
+  <script type="text/javascript">
+// Refrigerator
+    var configWattsHourlyFrig = {
+      type: 'line',
+      data: {
+        labels: [<?php echo "'" . implode("', '", $watts_Arrays_Frig["hourly"]["dates"]) . "'";?>],
+        datasets: [{
+          label: 'Watts',
+          backgroundColor: window.chartColors.yellow,
+          borderColor: window.chartColors.yellow,
+          data: [<?php echo implode(",",$watts_Arrays_Frig["hourly"]["measurment"]);?>],
+          fill: false,
+        }]
+      },
+      options: {
+        responsive: true,
+        title: {display: true, text: ''},
+        tooltips: {mode: 'index', intersect: false},
+        hover: {mode: 'nearest', intersect: true},
+        scales: {
+          xAxes: [{display: true, scaleLabel: {display: true, labelString: ''}}],
+          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Hourly'}}]
+        }
+      }
+    };
+    var configWattsDailyFrig = {
+      type: 'line',
+      data: {
+        labels: [<?php echo "'" . implode("', '", $watts_Arrays_Frig["daily"]["dates"]) . "'";?>],
+        datasets: [{
+          label: 'Watts',
+          backgroundColor: window.chartColors.purple,
+          borderColor: window.chartColors.purple,
+          data: [<?php echo implode(",",$watts_Arrays_Frig["daily"]["measurment"]);?>],
+          fill: false,
+        }]
+      },
+      options: {
+        responsive: true,
+        title: {display: true, text: ''},
+        tooltips: {mode: 'index', intersect: false},
+        hover: {mode: 'nearest', intersect: true},
+        scales: {
+          xAxes: [{display: true, scaleLabel: {display: true, labelString: ''}}],
+          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Daily'}}]
+        }
+      }
+    };
+    var configWattsMonthlyFrig = {
+      type: 'line',
+      data: {
+        labels: [<?php echo "'" . implode("', '", $watts_Arrays_Frig["monthly"]["dates"]) . "'";?>],
+        datasets: [{
+          label: 'Watts',
+          backgroundColor: window.chartColors.red,
+          borderColor: window.chartColors.red,
+          data: [<?php echo implode(",",$watts_Arrays_Frig["monthly"]["measurment"]);?>],
+          fill: false,
+        }]
+      },
+      options: {
+        responsive: true,
+        title: {display: true, text: ''},
+        tooltips: {mode: 'index', intersect: false},
+        hover: {mode: 'nearest', intersect: true},
+        scales: {
+          xAxes: [{display: true, scaleLabel: {display: true, labelString: ''}}],
+          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Monthly'}}]
+        }
+      }
+    };
+    var configWattsYearlyFrig = {
+      type: 'line',
+      data: {
+        labels: [<?php echo "'" . implode("', '", $watts_Arrays_Frig["yearly"]["dates"]) . "'";?>],
+        datasets: [{
+          label: 'Watts',
+          backgroundColor: window.chartColors.blue,
+          borderColor: window.chartColors.blue,
+          data: [<?php echo implode(",",$watts_Arrays_Frig["yearly"]["measurment"]);?>],
+          fill: false,
+        }]
+      },
+      options: {
+        responsive: true,
+        title: {display: true, text: ''},
+        tooltips: {mode: 'index', intersect: false},
+        hover: {mode: 'nearest', intersect: true},
+        scales: {
+          xAxes: [{display: true, scaleLabel: {display: true, labelString: ''}}],
+          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Yearly'}}]
+        }
+      }
+    };
+ 
 
-  <script>
-    $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
-    });
+// TV
+    var configWattsHourlyTv = {
+      type: 'line',
+      data: {
+        labels: [<?php echo "'" . implode("', '", $watts_Arrays_Tv["hourly"]["dates"]) . "'";?>],
+        datasets: [{
+          label: 'Watts',
+          backgroundColor: window.chartColors.yellow,
+          borderColor: window.chartColors.yellow,
+          data: [<?php echo implode(",",$watts_Arrays_Tv["hourly"]["measurment"]);?>],
+          fill: false,
+        }]
+      },
+      options: {
+        responsive: true,
+        title: {display: true, text: ''},
+        tooltips: {mode: 'index', intersect: false},
+        hover: {mode: 'nearest', intersect: true},
+        scales: {
+          xAxes: [{display: true, scaleLabel: {display: true, labelString: ''}}],
+          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Hourly'}}]
+        }
+      }
+    };
+    var configWattsDailyTv = {
+      type: 'line',
+      data: {
+        labels: [<?php echo "'" . implode("', '", $watts_Arrays_Tv["daily"]["dates"]) . "'";?>],
+        datasets: [{
+          label: 'Watts',
+          backgroundColor: window.chartColors.purple,
+          borderColor: window.chartColors.purple,
+          data: [<?php echo implode(",",$watts_Arrays_Tv["daily"]["measurment"]);?>],
+          fill: false,
+        }]
+      },
+      options: {
+        responsive: true,
+        title: {display: true, text: ''},
+        tooltips: {mode: 'index', intersect: false},
+        hover: {mode: 'nearest', intersect: true},
+        scales: {
+          xAxes: [{display: true, scaleLabel: {display: true, labelString: ''}}],
+          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Daily'}}]
+        }
+      }
+    };
+    var configWattsMonthlyTv = {
+      type: 'line',
+      data: {
+        labels: [<?php echo "'" . implode("', '", $watts_Arrays_Tv["monthly"]["dates"]) . "'";?>],
+        datasets: [{
+          label: 'Watts',
+          backgroundColor: window.chartColors.red,
+          borderColor: window.chartColors.red,
+          data: [<?php echo implode(",",$watts_Arrays_Tv["monthly"]["measurment"]);?>],
+          fill: false,
+        }]
+      },
+      options: {
+        responsive: true,
+        title: {display: true, text: ''},
+        tooltips: {mode: 'index', intersect: false},
+        hover: {mode: 'nearest', intersect: true},
+        scales: {
+          xAxes: [{display: true, scaleLabel: {display: true, labelString: ''}}],
+          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Monthly'}}]
+        }
+      }
+    };
+    var configWattsYearlyTv = {
+      type: 'line',
+      data: {
+        labels: [<?php echo "'" . implode("', '", $watts_Arrays_Tv["yearly"]["dates"]) . "'";?>],
+        datasets: [{
+          label: 'Watts',
+          backgroundColor: window.chartColors.blue,
+          borderColor: window.chartColors.blue,
+          data: [<?php echo implode(",",$watts_Arrays_Tv["yearly"]["measurment"]);?>],
+          fill: false,
+        }]
+      },
+      options: {
+        responsive: true,
+        title: {display: true, text: ''},
+        tooltips: {mode: 'index', intersect: false},
+        hover: {mode: 'nearest', intersect: true},
+        scales: {
+          xAxes: [{display: true, scaleLabel: {display: true, labelString: ''}}],
+          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Yearly'}}]
+        }
+      }
+    };
 
-    $(document).ready(function(){
-      $('.second a').click(function (e) {
-        alert("1");
-        e.preventDefault()
-        $(this).tab('show')
-      })  
+ 
 
-      $('.second a').on('click', function (e) {
-        alert("2");
-        var href = $(this).attr('href');
-        $('html, body').animate({
-        scrollTop: $(href).offset().top
-        }, 'slow');
-        e.preventDefault();
-      });
-    });
+// Lamp
+    var configWattsHourlyLamp = {
+      type: 'line',
+      data: {
+        labels: [<?php echo "'" . implode("', '", $watts_Arrays_Lamp["hourly"]["dates"]) . "'";?>],
+        datasets: [{
+          label: 'Watts',
+          backgroundColor: window.chartColors.yellow,
+          borderColor: window.chartColors.yellow,
+          data: [<?php echo implode(",",$watts_Arrays_Lamp["hourly"]["measurment"]);?>],
+          fill: false,
+        }]
+      },
+      options: {
+        responsive: true,
+        title: {display: true, text: ''},
+        tooltips: {mode: 'index', intersect: false},
+        hover: {mode: 'nearest', intersect: true},
+        scales: {
+          xAxes: [{display: true, scaleLabel: {display: true, labelString: ''}}],
+          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Hourly'}}]
+        }
+      }
+    };
+    var configWattsDailyLamp = {
+      type: 'line',
+      data: {
+        labels: [<?php echo "'" . implode("', '", $watts_Arrays_Lamp["daily"]["dates"]) . "'";?>],
+        datasets: [{
+          label: 'Watts',
+          backgroundColor: window.chartColors.purple,
+          borderColor: window.chartColors.purple,
+          data: [<?php echo implode(",",$watts_Arrays_Lamp["daily"]["measurment"]);?>],
+          fill: false,
+        }]
+      },
+      options: {
+        responsive: true,
+        title: {display: true, text: ''},
+        tooltips: {mode: 'index', intersect: false},
+        hover: {mode: 'nearest', intersect: true},
+        scales: {
+          xAxes: [{display: true, scaleLabel: {display: true, labelString: ''}}],
+          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Daily'}}]
+        }
+      }
+    };
+    var configWattsMonthlyLamp = {
+      type: 'line',
+      data: {
+        labels: [<?php echo "'" . implode("', '", $watts_Arrays_Lamp["monthly"]["dates"]) . "'";?>],
+        datasets: [{
+          label: 'Watts',
+          backgroundColor: window.chartColors.red,
+          borderColor: window.chartColors.red,
+          data: [<?php echo implode(",",$watts_Arrays_Lamp["monthly"]["measurment"]);?>],
+          fill: false,
+        }]
+      },
+      options: {
+        responsive: true,
+        title: {display: true, text: ''},
+        tooltips: {mode: 'index', intersect: false},
+        hover: {mode: 'nearest', intersect: true},
+        scales: {
+          xAxes: [{display: true, scaleLabel: {display: true, labelString: ''}}],
+          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Monthly'}}]
+        }
+      }
+    };
+    var configWattsYearlyLamp = {
+      type: 'line',
+      data: {
+        labels: [<?php echo "'" . implode("', '", $watts_Arrays_Lamp["yearly"]["dates"]) . "'";?>],
+        datasets: [{
+          label: 'Watts',
+          backgroundColor: window.chartColors.blue,
+          borderColor: window.chartColors.blue,
+          data: [<?php echo implode(",",$watts_Arrays_Lamp["yearly"]["measurment"]);?>],
+          fill: false,
+        }]
+      },
+      options: {
+        responsive: true,
+        title: {display: true, text: ''},
+        tooltips: {mode: 'index', intersect: false},
+        hover: {mode: 'nearest', intersect: true},
+        scales: {
+          xAxes: [{display: true, scaleLabel: {display: true, labelString: ''}}],
+          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Yearly'}}]
+        }
+      }
+    };
+
+    window.onload = function() {
+
+      //Lamp
+      var ctxWattsHourlyLamp = document.getElementById('canvasWattsHourlyLamp').getContext('2d');
+      window.myLine = new Chart(ctxWattsHourlyLamp, configWattsHourlyLamp);
+      var ctxWattsDailyLamp = document.getElementById('canvasWattsDailyLamp').getContext('2d');
+      window.myLine = new Chart(ctxWattsDailyLamp, configWattsDailyLamp);
+      var ctxWattsMonthlyLamp = document.getElementById('canvasWattsMonthlyLamp').getContext('2d');
+      window.myLine = new Chart(ctxWattsMonthlyLamp, configWattsMonthlyLamp);
+      var ctxWattsYearlyLamp = document.getElementById('canvasWattsYearlyLamp').getContext('2d');
+      window.myLine = new Chart(ctxWattsYearlyLamp, configWattsYearlyLamp);
+      
+      //Tv
+      var ctxWattsHourlyTv = document.getElementById('canvasWattsHourlyTv').getContext('2d');
+      window.myLine = new Chart(ctxWattsHourlyTv, configWattsHourlyTv);
+      var ctxWattsDailyTv = document.getElementById('canvasWattsDailyTv').getContext('2d');
+      window.myLine = new Chart(ctxWattsDailyTv, configWattsDailyTv);
+      var ctxWattsMonthlyTv = document.getElementById('canvasWattsMonthlyTv').getContext('2d');
+      window.myLine = new Chart(ctxWattsMonthlyTv, configWattsMonthlyTv);
+      var ctxWattsYearlyTv = document.getElementById('canvasWattsYearlyTv').getContext('2d');
+      window.myLine = new Chart(ctxWattsYearlyTv, configWattsYearlyTv);
+
+      //Frig
+      var ctxWattsHourlyFrig = document.getElementById('canvasWattsHourlyFrig').getContext('2d');
+      window.myLine = new Chart(ctxWattsHourlyFrig, configWattsHourlyFrig);
+      var ctxWattsDailyFrig = document.getElementById('canvasWattsDailyFrig').getContext('2d');
+      window.myLine = new Chart(ctxWattsDailyFrig, configWattsDailyFrig);
+      var ctxWattsMonthlyFrig = document.getElementById('canvasWattsMonthlyFrig').getContext('2d');
+      window.myLine = new Chart(ctxWattsMonthlyFrig, configWattsMonthlyFrig);
+      var ctxWattsYearlyFrig = document.getElementById('canvasWattsYearlyFrig').getContext('2d');
+      window.myLine = new Chart(ctxWattsYearlyFrig, configWattsYearlyFrig);      
+
+    };    
   </script>
 
   <style>
@@ -265,80 +381,23 @@ if(count($_SESSION["user"]) == 0) {
   <div class="panel panel-primary">
     <div class="panel-body">
       <h4 style="font-weight: bold;">Applainces Charts Overview</h4>
-      Both Kwh and Watts are shown for all three appliances. Every parameter is divided into 5 groups: Hourly, Daily, Weekly, Monthly and Yearly.
+      Both Kwh and Watts are shown for all three appliances. Every parameter is divided into 4 groups: 
+      <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:orange;">Hourly</span>,
+      <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:purple;">Daily</span>,
+      <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:red">Monthly</span> and
+      <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:blue;">Yearly</span>
     </div>
   </div>
 </div>
 
 <div style="float:left; width: 33%; padding-left: 5px;">
   <div class="panel panel-primary">
-    <div class="panel-heading"><strong>Node 1: <a href="#" data-toggle="tooltip" title="Bosch Model 1234 Extra" style="color:white;">Refrigerator</a></strong></div>
+    <div class="panel-heading"><strong>Node 2: Refrigerator</strong></div>
     <div class="panel-body">
-
-      <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#frig-kwh-hours">Hourly</a></li>
-        <li><a data-toggle="tab" href="#frig-kwh-days">Daily</a></li>
-        <li><a data-toggle="tab" href="#frig-kwh-weeks">Weekly</a></li>
-        <li><a data-toggle="tab" href="#frig-kwh-months">Monthly</a></li>
-        <li><a data-toggle="tab" href="#frig-kwh-years">Yearly</a></li>
-      </ul>
-      <div class="tab-content">
-        <div id="frig-kwh-hours" class="tab-pane fade in active">
-          <h3>Grouping By Hours</h3>
-          <div><canvas id="canvasKwhHourlyFrigerator"></canvas></div>
-        </div>
-        <div id="frig-kwh-days" class="tab-pane fade">
-          <h3>Grouping By Days</h3>
-          <div><canvas id="canvasKwhDailyFrigerator"></canvas></div>
-        </div> 
-        <div id="frig-kwh-weeks" class="tab-pane fade">
-          <h3>Grouping By Weeks</h3>
-          <div><canvas id="canvasKwhWeeklyFrigerator"></canvas></div>
-        </div>
-        <div id="frig-kwh-months" class="tab-pane fade">
-          <h3>Grouping By Months</h3>
-          <div><canvas id="canvasKwhMonthlyFrigerator"></canvas></div>
-        </div>
-        <div id="frig-kwh-years" class="tab-pane fade">
-          <h3>Grouping By Years</h3>
-          <div><canvas id="canvasKwhYearlyFrigerator"></canvas></div>
-        </div> 
-      </div>
-
-      <br><br><br><br><br>
-
-
-      <ul class="nav nav-tabs second">
-        <li class="active"><a data-toggle="tab" href="#frig-watts-hours">Hourly</a></li>
-        <li><a data-toggle="tab" href="#frig-watts-days">Daily</a></li>
-        <li><a data-toggle="tab" href="#frig-watts-weeks">Weekly</a></li>
-        <li><a data-toggle="tab" href="#frig-watts-months">Monthly</a></li>
-        <li><a data-toggle="tab" href="#frig-watts-years">Yearly</a></li>
-      </ul>
-      <div class="tab-content">
-        <div id="frig-watts-hours" class="tab-pane fade in active">
-          <h3>Grouping By Hours</h3>
-          <div><canvas id="canvasWattsHourlyFrigerator"></canvas></div>
-        </div>
-        <div id="frig-watts-days" class="tab-pane fade">
-          <h3>Grouping By Days</h3>
-          <div><canvas id="canvasWattsDailyFrigerator"></canvas></div>
-        </div> 
-        <div id="frig-watts-weeks" class="tab-pane fade">
-          <h3>Grouping By Weeks</h3>
-          <div><canvas id="canvasWattsWeeklyFrigerator"></canvas></div>
-        </div>
-        <div id="frig-watts-months" class="tab-pane fade">
-          <h3>Grouping By Months</h3>
-          <div><canvas id="canvasWattsMonthlyFrigerator"></canvas></div>
-        </div>
-        <div id="frig-watts-years" class="tab-pane fade">
-          <h3>Grouping By Years</h3>
-          <div><canvas id="canvasWattsYearlyFrigerator"></canvas></div>
-        </div> 
-      </div>
-
-
+      <div><canvas id="canvasWattsHourlyFrig"></canvas></div>
+      <div><canvas id="canvasWattsDailyFrig"></canvas></div>
+      <div><canvas id="canvasWattsMonthlyFrig"></canvas></div>
+      <div><canvas id="canvasWattsYearlyFrig"></canvas></div>
     </div>
   </div>
 </div>
@@ -347,9 +406,10 @@ if(count($_SESSION["user"]) == 0) {
   <div class="panel panel-primary">
     <div class="panel-heading"><strong>Node 2: TV</strong></div>
     <div class="panel-body">
-      <div><canvas id="canvasKwhTv"></canvas></div>
-      <div><canvas id="canvasWattsTv"></canvas></div>
-      <div><canvas id="canvasAmperTv"></canvas></div>
+      <div><canvas id="canvasWattsHourlyTv"></canvas></div>
+      <div><canvas id="canvasWattsDailyTv"></canvas></div>
+      <div><canvas id="canvasWattsMonthlyTv"></canvas></div>
+      <div><canvas id="canvasWattsYearlyTv"></canvas></div>
     </div>
   </div>
 </div>
@@ -358,281 +418,13 @@ if(count($_SESSION["user"]) == 0) {
   <div class="panel panel-primary">
     <div class="panel-heading"><strong>Node 3: Lamp</strong></div>
     <div class="panel-body">
-      <div><canvas id="canvasKwhLamp"></canvas></div>
-      <div><canvas id="canvasWattsLamp"></canvas></div>
-      <div><canvas id="canvasAmperLamp"></canvas></div>
+      <div><canvas id="canvasWattsHourlyLamp"></canvas></div>
+      <div><canvas id="canvasWattsDailyLamp"></canvas></div>
+      <div><canvas id="canvasWattsMonthlyLamp"></canvas></div>
+      <div><canvas id="canvasWattsYearlyLamp"></canvas></div>
     </div>
   </div>
 </div>
-
-
-  <script>
-    var configKwhHourlyFrigerator = {
-      type: 'line',
-      data: {
-        labels: [<?php echo "'" . implode("', '", $kwh_Arrays["hourly"]["dates"]) . "'";?>],
-        datasets: [{
-          label: 'Kwh',
-          backgroundColor: window.chartColors.red,
-          borderColor: window.chartColors.red,
-          data: [<?php echo implode(",",$kwh_Arrays["hourly"]["measurment"]);?>],
-          fill: false,
-        }]
-      },
-      options: {
-        responsive: true,
-        title: {display: true, text: ''},
-        tooltips: {mode: 'index', intersect: false},
-        hover: {mode: 'nearest', intersect: true},
-        scales: {
-          xAxes: [{display: true, scaleLabel: {display: true, labelString: 'Hours'}}],
-          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Measurment'}}]
-        }
-      }
-    };
-    var configKwhDailyFrigerator = {
-      type: 'line',
-      data: {
-        labels: [<?php echo "'" . implode("', '", $kwh_Arrays["daily"]["dates"]) . "'";?>],
-        datasets: [{
-          label: 'Kwh',
-          backgroundColor: window.chartColors.red,
-          borderColor: window.chartColors.red,
-          data: [<?php echo implode(",",$kwh_Arrays["daily"]["measurment"]);?>],
-          fill: false,
-        }]
-      },
-      options: {
-        responsive: true,
-        title: {display: true, text: ''},
-        tooltips: {mode: 'index', intersect: false},
-        hover: {mode: 'nearest', intersect: true},
-        scales: {
-          xAxes: [{display: true, scaleLabel: {display: true, labelString: 'Days'}}],
-          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Measurment'}}]
-        }
-      }
-    };
-    var configKwhWeeklyFrigerator = {
-      type: 'line',
-      data: {
-        labels: [<?php echo "'" . implode("', '", $kwh_Arrays["weekly"]["dates"]) . "'";?>],
-        datasets: [{
-          label: 'Kwh',
-          backgroundColor: window.chartColors.red,
-          borderColor: window.chartColors.red,
-          data: [<?php echo implode(",",$kwh_Arrays["weekly"]["measurment"]);?>],
-          fill: false,
-        }]
-      },
-      options: {
-        responsive: true,
-        title: {display: true, text: ''},
-        tooltips: {mode: 'index', intersect: false},
-        hover: {mode: 'nearest', intersect: true},
-        scales: {
-          xAxes: [{display: true, scaleLabel: {display: true, labelString: 'Weeks'}}],
-          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Measurment'}}]
-        }
-      }
-    };
-    var configKwhMonthlyFrigerator = {
-      type: 'line',
-      data: {
-        labels: [<?php echo "'" . implode("', '", $kwh_Arrays["monthly"]["dates"]) . "'";?>],
-        datasets: [{
-          label: 'Kwh',
-          backgroundColor: window.chartColors.red,
-          borderColor: window.chartColors.red,
-          data: [<?php echo implode(",",$kwh_Arrays["monthly"]["measurment"]);?>],
-          fill: false,
-        }]
-      },
-      options: {
-        responsive: true,
-        title: {display: true, text: ''},
-        tooltips: {mode: 'index', intersect: false},
-        hover: {mode: 'nearest', intersect: true},
-        scales: {
-          xAxes: [{display: true, scaleLabel: {display: true, labelString: 'Months'}}],
-          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Measurment'}}]
-        }
-      }
-    };
-    var configKwhYearlyFrigerator = {
-      type: 'line',
-      data: {
-        labels: [<?php echo "'" . implode("', '", $kwh_Arrays["yearly"]["dates"]) . "'";?>],
-        datasets: [{
-          label: 'Kwh',
-          backgroundColor: window.chartColors.red,
-          borderColor: window.chartColors.red,
-          data: [<?php echo implode(",",$kwh_Arrays["yearly"]["measurment"]);?>],
-          fill: false,
-        }]
-      },
-      options: {
-        responsive: true,
-        title: {display: true, text: ''},
-        tooltips: {mode: 'index', intersect: false},
-        hover: {mode: 'nearest', intersect: true},
-        scales: {
-          xAxes: [{display: true, scaleLabel: {display: true, labelString: 'Years'}}],
-          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Measurment'}}]
-        }
-      }
-    };
-
-
-
-
-
-
-    var configWattsHourlyFrigerator = {
-      type: 'line',
-      data: {
-        labels: [<?php echo "'" . implode("', '", $watts_Arrays["hourly"]["dates"]) . "'";?>],
-        datasets: [{
-          label: 'Watts',
-          backgroundColor: window.chartColors.red,
-          borderColor: window.chartColors.red,
-          data: [<?php echo implode(",",$watts_Arrays["hourly"]["measurment"]);?>],
-          fill: false,
-        }]
-      },
-      options: {
-        responsive: true,
-        title: {display: true, text: ''},
-        tooltips: {mode: 'index', intersect: false},
-        hover: {mode: 'nearest', intersect: true},
-        scales: {
-          xAxes: [{display: true, scaleLabel: {display: true, labelString: 'Hours'}}],
-          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Measurment'}}]
-        }
-      }
-    };
-    var configWattsDailyFrigerator = {
-      type: 'line',
-      data: {
-        labels: [<?php echo "'" . implode("', '", $watts_Arrays["daily"]["dates"]) . "'";?>],
-        datasets: [{
-          label: 'Watts',
-          backgroundColor: window.chartColors.red,
-          borderColor: window.chartColors.red,
-          data: [<?php echo implode(",",$watts_Arrays["daily"]["measurment"]);?>],
-          fill: false,
-        }]
-      },
-      options: {
-        responsive: true,
-        title: {display: true, text: ''},
-        tooltips: {mode: 'index', intersect: false},
-        hover: {mode: 'nearest', intersect: true},
-        scales: {
-          xAxes: [{display: true, scaleLabel: {display: true, labelString: 'Days'}}],
-          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Measurment'}}]
-        }
-      }
-    };
-    var configWattsWeeklyFrigerator = {
-      type: 'line',
-      data: {
-        labels: [<?php echo "'" . implode("', '", $watts_Arrays["weekly"]["dates"]) . "'";?>],
-        datasets: [{
-          label: 'Watts',
-          backgroundColor: window.chartColors.red,
-          borderColor: window.chartColors.red,
-          data: [<?php echo implode(",",$watts_Arrays["weekly"]["measurment"]);?>],
-          fill: false,
-        }]
-      },
-      options: {
-        responsive: true,
-        title: {display: true, text: ''},
-        tooltips: {mode: 'index', intersect: false},
-        hover: {mode: 'nearest', intersect: true},
-        scales: {
-          xAxes: [{display: true, scaleLabel: {display: true, labelString: 'Weeks'}}],
-          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Measurment'}}]
-        }
-      }
-    };
-    var configWattsMonthlyFrigerator = {
-      type: 'line',
-      data: {
-        labels: [<?php echo "'" . implode("', '", $watts_Arrays["monthly"]["dates"]) . "'";?>],
-        datasets: [{
-          label: 'Watts',
-          backgroundColor: window.chartColors.red,
-          borderColor: window.chartColors.red,
-          data: [<?php echo implode(",",$watts_Arrays["monthly"]["measurment"]);?>],
-          fill: false,
-        }]
-      },
-      options: {
-        responsive: true,
-        title: {display: true, text: ''},
-        tooltips: {mode: 'index', intersect: false},
-        hover: {mode: 'nearest', intersect: true},
-        scales: {
-          xAxes: [{display: true, scaleLabel: {display: true, labelString: 'Months'}}],
-          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Measurment'}}]
-        }
-      }
-    };
-    var configWattsYearlyFrigerator = {
-      type: 'line',
-      data: {
-        labels: [<?php echo "'" . implode("', '", $watts_Arrays["yearly"]["dates"]) . "'";?>],
-        datasets: [{
-          label: 'Watts',
-          backgroundColor: window.chartColors.red,
-          borderColor: window.chartColors.red,
-          data: [<?php echo implode(",",$watts_Arrays["yearly"]["measurment"]);?>],
-          fill: false,
-        }]
-      },
-      options: {
-        responsive: true,
-        title: {display: true, text: ''},
-        tooltips: {mode: 'index', intersect: false},
-        hover: {mode: 'nearest', intersect: true},
-        scales: {
-          xAxes: [{display: true, scaleLabel: {display: true, labelString: 'Years'}}],
-          yAxes: [{display: true, scaleLabel: {display: true, labelString: 'Measurment'}}]
-        }
-      }
-    };
- 
-
-    window.onload = function() {
-
-      var ctxKwhHourlyFrigerator = document.getElementById('canvasKwhHourlyFrigerator').getContext('2d');
-      window.myLine = new Chart(ctxKwhHourlyFrigerator, configKwhHourlyFrigerator);
-      var ctxKwhDailyFrigerator = document.getElementById('canvasKwhDailyFrigerator').getContext('2d');
-      window.myLine = new Chart(ctxKwhDailyFrigerator, configKwhDailyFrigerator);
-      var ctxKwhWeeklyFrigerator = document.getElementById('canvasKwhWeeklyFrigerator').getContext('2d');
-      window.myLine = new Chart(ctxKwhWeeklyFrigerator, configKwhWeeklyFrigerator);
-      var ctxKwhMonthlyFrigerator = document.getElementById('canvasKwhMonthlyFrigerator').getContext('2d');
-      window.myLine = new Chart(ctxKwhMonthlyFrigerator, configKwhMonthlyFrigerator);
-      var ctxKwhYearlyFrigerator = document.getElementById('canvasKwhYearlyFrigerator').getContext('2d');
-      window.myLine = new Chart(ctxKwhYearlyFrigerator, configKwhYearlyFrigerator);
-
-
-      var ctxWattsHourlyFrigerator = document.getElementById('canvasWattsHourlyFrigerator').getContext('2d');
-      window.myLine = new Chart(ctxWattsHourlyFrigerator, configWattsHourlyFrigerator);
-      var ctxWattsDailyFrigerator = document.getElementById('canvasWattsDailyFrigerator').getContext('2d');
-      window.myLine = new Chart(ctxWattsDailyFrigerator, configWattsDailyFrigerator);
-      var ctxWattsWeeklyFrigerator = document.getElementById('canvasWattsWeeklyFrigerator').getContext('2d');
-      window.myLine = new Chart(ctxWattsWeeklyFrigerator, configWattsWeeklyFrigerator);
-      var ctxWattsMonthlyFrigerator = document.getElementById('canvasWattsMonthlyFrigerator').getContext('2d');
-      window.myLine = new Chart(ctxWattsMonthlyFrigerator, configWattsMonthlyFrigerator);
-      var ctxWattsYearlyFrigerator = document.getElementById('canvasWattsYearlyFrigerator').getContext('2d');
-      window.myLine = new Chart(ctxWattsYearlyFrigerator, configWattsYearlyFrigerator);
-
-
-    };
-  </script>
 
 </body>
 </html>

@@ -13,20 +13,61 @@ if(count($_SESSION["user"]) == 0) {
 
   $library = new Library();
 
-  //Refrigerator
-  // $kwh_data = $library->makeCurl ("/measurments/kwh/appliance/3/group-by/all", "GET");
-  // $kwh_measurmentArray = Array();
-  // $kwh_datesArray = Array();
-  // $kwh_allTogetherArray = Array();
-  // foreach ($kwh_data as $kwh_key => $kwh_value) {
-  //   array_push($kwh_measurmentArray, $kwh_value->avgmeasurment);
-  //   array_push($kwh_datesArray, $kwh_value->concatedDateTime);
-  // }
-  // $kwh_allTogetherArray["measurment"] = $kwh_measurmentArray;
-  // $kwh_allTogetherArray["dates"] = $kwh_datesArray;
-  // $kwh_Arrays = $kwh_allTogetherArray;
+  //Appliances Statistics
+  $stats = $library->makeCurl ("/statistics/appliances", "GET");
 
-  $watts_data = $library->makeCurl ("/measurments/watts/appliance/3/group-by/all", "GET");
+  $dates = Array();
+  $counter[] = Array();
+  foreach ($stats as $key => $value) {
+    $dates[] = $value[2];
+    $dates[] = $value[3];
+    $counter[$value[5]->id] = $value[1];
+  }
+
+  $max = max(array_map('strtotime', $dates));
+  $min = min(array_map('strtotime', $dates));  
+  $maxDate = date('Y-m-j H:i:s', $max);
+  $minDate = date('Y-m-j H:i:s', $min);  
+  $totalDataSet = number_format(array_sum($counter),0,",",".");;
+
+  //Frig 
+  $totalDataSet_frig = number_format($stats[2][1],0,",",".");
+  $minDate_frig = new DateTime($stats[2][2]);
+  $minDate_frig = $minDate_frig->format('Y-m-d H:i:s');
+  $maxDate_frig = new DateTime($stats[2][3]);
+  $maxDate_frig = $maxDate_frig->format('Y-m-d H:i:s');
+  $averageWatts_frig = number_format($stats[2][4],2,",",".");
+  
+  //TV
+  $totalDataSet_tv = number_format($stats[1][1],0,",",".");
+  $minDate_tv = new DateTime($stats[1][2]);
+  $minDate_tv = $minDate_tv->format('Y-m-d H:i:s');
+  $maxDate_tv = new DateTime($stats[1][3]);
+  $maxDate_tv = $maxDate_tv->format('Y-m-d H:i:s');
+  $averageWatts_tv = number_format($stats[1][4],2,",",".");
+
+  //Stand lamp 
+  $totalDataSet_lamp = number_format($stats[0][1],0,",",".");
+  $minDate_lamp = new DateTime($stats[0][2]);
+  $minDate_lamp = $minDate_lamp->format('Y-m-d H:i:s');
+  $maxDate_lamp = new DateTime($stats[0][3]);
+  $maxDate_lamp = $maxDate_lamp->format('Y-m-d H:i:s');
+  $averageWatts_lamp = number_format($stats[0][4],2,",",".");
+
+  // echo "<pre>stats:";
+  // print_r($stats);
+  // echo "</pre>";
+
+  // echo "<pre style='color:red;'>counter:";
+  // print_r($counter);
+  // echo "</pre>";  
+
+  // echo "<pre style='color:green;'>dates:";
+  // print_r($dates);
+  // echo "</pre>";
+
+  //Refrigerator (daily)
+  $watts_data = $library->makeCurl ("/measurments/watts/appliance/3/group-by/hour", "GET");
   $watts_measurmentArray = Array();
   $watts_datesArray = Array();
   $watts_allTogetherArray = Array();
@@ -38,20 +79,7 @@ if(count($_SESSION["user"]) == 0) {
   $watts_allTogetherArray["dates"] = $watts_datesArray;
   $watts_Arrays = $watts_allTogetherArray;
 
-
-  //TV
-  // $tv_kwh_data = $library->makeCurl ("/measurments/kwh/appliance/2/group-by/hour", "GET");
-  // $tv_kwh_measurmentArray = Array();
-  // $tv_kwh_datesArray = Array();
-  // $tv_kwh_allTogetherArray = Array();
-  // foreach ($tv_kwh_data as $tv_kwh_key => $tv_kwh_value) {
-  //   array_push($tv_kwh_measurmentArray, $tv_kwh_value->avgmeasurment);
-  //   array_push($tv_kwh_datesArray, $tv_kwh_value->concatedDateTime);
-  // }
-  // $tv_kwh_allTogetherArray["measurment"] = $tv_kwh_measurmentArray;
-  // $tv_kwh_allTogetherArray["dates"] = $tv_kwh_datesArray;
-  // $tv_kwh_Arrays = $tv_kwh_allTogetherArray;
-
+  // TV (hourly)
   $tv_watts_data = $library->makeCurl ("/measurments/watts/appliance/2/group-by/hour", "GET");
   $tv_watts_measurmentArray = Array();
   $tv_watts_datesArray = Array();
@@ -65,19 +93,7 @@ if(count($_SESSION["user"]) == 0) {
   $tv_watts_Arrays = $tv_watts_allTogetherArray;
 
 
-  //
-  // $lamp_kwh_data = $library->makeCurl ("/measurments/kwh/appliance/1/group-by/hour", "GET");
-  // $lamp_kwh_measurmentArray = Array();
-  // $lamp_kwh_datesArray = Array();
-  // $lamp_kwh_allTogetherArray = Array();
-  // foreach ($lamp_kwh_data as $lamp_kwh_key => $lamp_kwh_value) {
-  //   array_push($lamp_kwh_measurmentArray, $lamp_kwh_value->avgmeasurment);
-  //   array_push($lamp_kwh_datesArray, $lamp_kwh_value->concatedDateTime);
-  // }
-  // $lamp_kwh_allTogetherArray["measurment"] = $lamp_kwh_measurmentArray;
-  // $lamp_kwh_allTogetherArray["dates"] = $lamp_kwh_datesArray;
-  // $lamp_kwh_Arrays = $lamp_kwh_allTogetherArray;
-
+  // Lamp (Hourly)
   $lamp_watts_data = $library->makeCurl ("/measurments/watts/appliance/1/group-by/hour", "GET");
   $lamp_watts_measurmentArray = Array();
   $lamp_watts_datesArray = Array();
@@ -90,34 +106,13 @@ if(count($_SESSION["user"]) == 0) {
   $lamp_watts_allTogetherArray["dates"] = $lamp_watts_datesArray;
   $lamp_watts_Arrays = $lamp_watts_allTogetherArray;
 
-  // echo "<pre>kwh_Arrays:";
-  // print_r($kwh_Arrays);
-  // echo "</pre>";
-  // echo "<pre>watts_Arrays:";
-  // print_r($watts_Arrays);
-  // echo "</pre>";
-  // echo "<pre>amps_Arrays:";
-  // print_r($amps_Arrays);
-  // echo "</pre>";
+  //Appliances Statistics
+  $stats = $library->makeCurl ("/statistics/appliances", "GET");
 
-  // echo "<pre>tv_kwh_Arrays:";
-  // print_r($tv_kwh_Arrays);
-  // echo "</pre>";
-  // echo "<pre>tv_watts_Arrays:";
-  // print_r($tv_watts_Arrays);
-  // echo "</pre>";
-  // echo "<pre>tv_amps_Arrays:";
-  // print_r($tv_amps_Arrays);
-  // echo "</pre>";
-
-  // echo "<pre>lamp_kwh_Arrays:";
-  // print_r($lamp_kwh_Arrays);
-  // echo "</pre>";
-  // echo "<pre>lamp_watts_Arrays:";
-  // print_r($lamp_watts_Arrays);
-  // echo "</pre>";
-  // echo "<pre>lamp_amps_Arrays:";
-  // print_r($lamp_amps_Arrays);
+  //Appliances Replacement Recommender Statistics
+  $appliance_replacement_recommender_stats = $library->makeCurl ("/statistics/appliance-replacement-recommender", "GET");
+  // echo "<pre>appliance_replacement_recommender_stats:";
+  // print_r($appliance_replacement_recommender_stats);
   // echo "</pre>";
 ?>
 
@@ -207,19 +202,21 @@ if(count($_SESSION["user"]) == 0) {
           <div class="panel-heading"><span data-toggle="tooltip" title="Tracks and records electrictity consumption including Ampers, kwh and Watts">
             <strong>ECTR</strong> (<strong>E</strong>lectricity <strong>C</strong>onsumption <strong>T</strong>racker & <strong>R</strong>ecorder)</span>
           </div>
-          <div class="panel-body">
-            Based on the calculated energy consumption, RECHS can make following suggestions:<br/><br/>
-            <strong>Node #1: (Refrigerator):</strong><br/>
-            Lorem ipsum dolor amet
-            <br><br>
+          <div class="panel-body" style="line-height: 30px;">
 
-            <strong>Node #2: (TV):</strong><br/>
-            Lorem ipsum dolor amet
-            <br><br>
+            This module started running on <span class="badge badge-secondary" style="font-weight:bold;color:#fff; background-color:#337ab7"><?=$minDate;?></span>. The last record were saved on <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#337ab7"><?=$maxDate;?></span>. During these dates a total of <span class="badge badge-secondary" style="font-weight:bold; font-size: 19pt; color:#fff; background-color:orange"><?=$totalDataSet;?> datasets</span> were collected. 
 
-            <strong>Node #3: (Lamp):</strong><br/>
-            Lorem ipsum dolor amet
             <br>
+
+            The <strong>Refrigerator</strong>'s consumption data was tracked between <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#337ab7"><?=$minDate_frig;?></span> and  <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#337ab7"><?=$maxDate_frig;?></span>, a total of <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:orange; font-size: 13pt;"><?=$totalDataSet_frig;?> datasets</span> have been saved. The average electricity consumption was approximately <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#3ddb16;"><?=$averageWatts_frig;?> Watts</span>.
+
+            
+
+            The <strong>TV</strong>'s consumption data was tracked between <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#337ab7"><?=$minDate_tv;?></span> and  <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#337ab7"><?=$maxDate_tv;?></span>, a total of <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:orange; font-size: 13pt;"><?=$totalDataSet_tv;?> datasets</span> were detected and saved. The average electricity consumption was approximately <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#3ddb16;"><?=$averageWatts_tv;?> Watts</span>.
+
+            
+
+             Finally, the <strong>Stand lamp</strong>'s consumption data was tracked between <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#337ab7"><?=$minDate_lamp;?></span> and  <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#337ab7"><?=$maxDate_lamp;?></span>, a total of <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:orange; font-size: 13pt;"><?=$totalDataSet_lamp;?> datasets</span> were received. The average electricity consumption was approximately <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#3ddb16;"><?=$averageWatts_lamp;?> Watts</span>.
           </div>
         </div>
       </div>
@@ -230,18 +227,32 @@ if(count($_SESSION["user"]) == 0) {
             <strong>ARR</strong> (<strong>A</strong>ppliance <strong>R</strong>eplacement <strong>R</strong>ecommender)</span>
           </div>
           <div class="panel-body">
-            Based on the calculated energy consumption, RECHS can make following suggestions:<br/><br/>
-            <strong>Node #1: (Refrigerator):</strong><br/>
-            Lorem ipsum dolor amet
-            <br><br>
+          Replacing current appliances can be done by using the external <img src="inc/img/1280px-EBay_logo.svg.png" height="22px" width="40px"> Product Search API. It is designed to search for alternatives for the three sample appliances; Refrigerator, TV and a Stand Lamp. Here are details regarding the latest performed 5 replacement recommendations:
 
-            <strong>Node #2: (TV):</strong><br/>
-            Lorem ipsum dolor amet
-            <br><br>
+          <ul>
+            
+          <?php
+            
+            $items = array_slice($appliance_replacement_recommender_stats, 0, 5);
+            
+            foreach ($items as $key => $value) {
+              $date_creation = new DateTime($value->createdTimestamp);
+              $date_creation = $date_creation->format('Y-m-d H:i:s');
 
-            <strong>Node #3: (Lamp):</strong><br/>
-            Lorem ipsum dolor amet
-            <br>
+              if ($value->applianceType == 'frig') {$applianceType = "Refrigerator";}
+              if ($value->applianceType == 'tv') {$applianceType = "TV";}
+              if ($value->applianceType == 'lamp') {$applianceType = "Stand Lamp";}
+
+              if ($value->status == "success") {
+                echo '<li style="line-height:30px;">On <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#777">' . $date_creation . '</span> <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#337ab7">' . $value->createdBy .'</span> has performed a search to check possibility to replace his <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#8a6d3b">' . $applianceType . '</span>, <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#3ddb16">system run successfully</span> and showed him </span>, <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:orange">' . $value->amountOfResults . '</span> results.</li>';
+              } else {
+                echo '<li style="line-height:30px;">On <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#777">' . $date_creation . '</span> <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#337ab7">' . $value->createdBy .'</span> has performed a search to check possibility to replace his <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#8a6d3b">' . $applianceType . '</span>, <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:red">unfortunately the system returned an error :(</span></li>'; 
+              }
+            }
+          ?>
+          <li>...</li>
+          </ul>
+
           </div>
         </div>
       </div>
@@ -274,15 +285,31 @@ if(count($_SESSION["user"]) == 0) {
             <strong>ESO</strong> (<strong>E</strong>nergy <strong>S</strong>upplier <strong>O</strong>ptimizer)</a>
           </div>
           <div class="panel-body">
-            First time visited:<br>
-            Click <a href="/energy-provider-optimizer.php">here</a> to activate the Energy Provider Optimizer.<br><br>
+          Replacing current appliances can be done by using the external <img src="inc/img/1280px-EBay_logo.svg.png" height="22px" width="40px"> Product Search API. It is designed to search for alternatives for the three sample appliances; Refrigerator, TV and a Stand Lamp. Here are details regarding the latest performed 5 replacement recommendations:
 
-            View shown after activating the ESO (Energy Supplier Optimizer):<br>
-            Searching for proper Energy Provider has revelaed the following result(s):<br>
-            1. XYZ Energy Provider<br>
+          <ul>
+            
+          <?php
+            
+            $items = array_slice($appliance_replacement_recommender_stats, 0, 5);
+            
+            foreach ($items as $key => $value) {
+              $date_creation = new DateTime($value->createdTimestamp);
+              $date_creation = $date_creation->format('Y-m-d H:i:s');
 
-            Your current annual Electricity costs are XXX€. Once you switch to the suggested XYZ Energy Provider, you can save up to XX% of your costs. This means XX€ less annualy.
-            <br>
+              if ($value->applianceType == 'frig') {$applianceType = "Refrigerator";}
+              if ($value->applianceType == 'tv') {$applianceType = "TV";}
+              if ($value->applianceType == 'lamp') {$applianceType = "Stand Lamp";}
+
+              if ($value->status == "success") {
+                echo '<li style="line-height:30px;">On <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#777">' . $date_creation . '</span> <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#337ab7">' . $value->createdBy .'</span> has performed a search to check possibility to replace his <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#8a6d3b">' . $applianceType . '</span>, <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#3ddb16">system run successfully</span> and showed him </span>, <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:orange">' . $value->amountOfResults . '</span> results.</li>';
+              } else {
+                echo '<li style="line-height:30px;">On <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#777">' . $date_creation . '</span> <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#337ab7">' . $value->createdBy .'</span> has performed a search to check possibility to replace his <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#8a6d3b">' . $applianceType . '</span>, <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:red">unfortunately the system returned an error :(</span></li>'; 
+              }
+            }
+          ?>
+          <li>...</li>
+          </ul>
           </div>
         </div>
       </div>

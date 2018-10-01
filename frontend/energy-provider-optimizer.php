@@ -124,7 +124,7 @@ $energyProvider = $library->makeCurl ("/energy-provider/", "GET");
       $(document).ajaxComplete(function(){
         $("#search-results").css("display", "block");
         $("#loader").css("display", "none");
-        $('html,body').animate({scrollTop: '+=' + $('#search-results').offset().top + 'px'}, 'slow');
+        $('html,body').animate({scrollTop: '+=' + ($('#search-results').offset().top-65) + 'px'}, 'slow');
       });
 
   </script>
@@ -217,7 +217,7 @@ $energyProvider = $library->makeCurl ("/energy-provider/", "GET");
 <div style="width: 50%; padding:0px 15px 0px 7px; ">
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <strong><a href="#" data-toggle="tooltip" title="Bosch Model 1234 Extra" style="color:white;">Search for Energy Providers</a></strong>
+      <strong><a href="#" data-toggle="tooltip" title="Bosch Model 1234 Extra" style="color:white;">Search for Alternative Energy Suppliers</a></strong>
     </div>
     <div class="panel-body">
 
@@ -225,92 +225,83 @@ $energyProvider = $library->makeCurl ("/energy-provider/", "GET");
         <div class="panel-body">
           <div class="form-group" style="margin-bottom: 0px;">
               <center>
-                <button type="button" class="btn btn-danger" id="search-energy-provider" data-target="">Search For Alternative Energy Provider in NREL Developer Network</button>
+                <button type="button" class="btn btn-danger" id="search-energy-provider" data-target="">Search For Alternative Energy Suppliers</button>
               </center>
-              <br><small class="form-text text-muted">Clicking this search button takes the enetered current energy provider's data and search in the external <img src="inc/img/nrel-logo.jpg" height="25px"> NREL Developer Network API for alternatives.</small>
+              <br><small class="form-text text-muted">Clicking this search button takes the enetered current energy provider's data and search in the local simulator for alternatives.</small>
           </div>
         </div>
       </div>
 
+      <div class="list-group" id="search-results" style="display: none; text-align: left;">
+        <a href="https://www.bev-energie.com/" class="list-group-item list-group-item-action flex-column align-items-start" target="_blank">
+          <img src="/inc/img/bev-energie-strom.png" height="70px;" style="display: block; float: left; padding: 10px 10px 10px 10px;">
+          <div class="d-flex w-100 justify-content-between">
+            <h3 class="mb-1">BEV Energie Strom</h3>
+            <br>
+            <ul class="list-group list-group">
+              <li class="list-group-item">Unit price: 0.2471 € pro kWh</li>        
+              <li class="list-group-item">Consumer price: 1.235,50 € for 5.000 kWh per year</li>
+              <li class="list-group-item">Grundpreis:  303,98 € pro Jahr 25,33 € pro Monat</li>
+              <li class="list-group-item">Gesamtpreis ohne Bonus:  1.539,48 € pro Jahr, 139,95 € pro Monat</li>
+              <li class="list-group-item">Jubiläumsbonus:  20,00 € </li>
+              <li class="list-group-item">Sofortbonus: 220,00 €  </li>
+              <li class="list-group-item">Neukundenbonus:  230,92 €  (15% auf Gesamtkosten)</li>
+            </ul>
+          </div>
+        </a>
 
-
-
-
-<div class="list-group" id="search-results" style="display: none; text-align: left;">
-  <a href="https://www.bev-energie.com/" class="list-group-item list-group-item-action flex-column align-items-start" target="_blank">
-    <img src="/inc/img/bev-energie-strom.png" height="70px;" style="display: block; float: left; padding: 10px 10px 10px 10px;">
-    <div class="d-flex w-100 justify-content-between">
-      <h3 class="mb-1">BEV Energie Strom</h3>
-      <br>
-      <ul class="list-group list-group">
-        <li class="list-group-item">Unit price: 0.2471 € pro kWh</li>        
-        <li class="list-group-item">Consumer price: 1.235,50 € for 5.000 kWh per year</li>
-        <li class="list-group-item">Grundpreis:  303,98 € pro Jahr 25,33 € pro Monat</li>
-        <li class="list-group-item">Gesamtpreis ohne Bonus:  1.539,48 € pro Jahr, 139,95 € pro Monat</li>
-        <li class="list-group-item">Jubiläumsbonus:  20,00 € </li>
-        <li class="list-group-item">Sofortbonus: 220,00 €  </li>
-        <li class="list-group-item">Neukundenbonus:  230,92 €  (15% auf Gesamtkosten)</li>
-      </ul>
-    </div>
-  </a>
-
-  <a href="https://www.immergruen-energie.de/" class="list-group-item list-group-item-action flex-column align-items-start" target="_blank">
-    <img src="/inc/img/immer-gruen.png" height="70px;" style="display: block; float: left; padding: 10px 10px 10px 10px;">
-    <div class="d-flex w-100 justify-content-between">
-      <h3 class="mb-1">&nbsp;</h3>
-      <br>
-      <ul class="list-group list-group">
-        <li class="list-group-item">Unit price: 0.2753 € pro kWh</li>        
-        <li class="list-group-item">Consumer price: 1.376,50 € for 5.000 kWh per year</li>
-        <li class="list-group-item">Grundpreis: 102,18 € pro Jahr 8,51 € pro Monat</li>
-        <li class="list-group-item">Gesamtpreis ohne Bonus:  1.478,68 € pro Jahr, 134,43 € pro Monat</li>
-        <li class="list-group-item">Sofortbonus: 180,00 €  </li>
-        <li class="list-group-item">Neukundenbonus:  221,80 €</li>
-      </ul>
-    </div>
-  </a>
-  <a href="https://www.shellprivatenergie.de/" class="list-group-item list-group-item-action flex-column align-items-start" target="_blank">
-    <img src="/inc/img/shell.png" height="80px;" style="display: block; float: left; padding: 10px 10px 10px 10px;">
-    <div class="d-flex w-100 justify-content-between">
-      <h3 class="mb-1">SHELL PrivatEnergie</h3>
-      <br>
-      <ul class="list-group list-group">
-        <li class="list-group-item">Unit price: 0.2826 € pro kWh</li>        
-        <li class="list-group-item">Consumer price: 1.413,00 € for 5.000 kWh per year</li>
-        <li class="list-group-item">Grundpreis:  105,35 € pro Jahr 25,33 € pro Monat</li>
-        <li class="list-group-item">Gesamtpreis ohne Bonus:  1.518,35 € pro Jahr, 126,53€ pro Monat</li>
-        <li class="list-group-item">Sofortbonus: 148,00 €  </li>
-        <li class="list-group-item">Neukundenbonus:  227,75 €  (15% auf Gesamtkosten)</li>
-      </ul>
-    </div>
-  </a>
-  <a href="https://www.vattenfall.de" class="list-group-item list-group-item-action flex-column align-items-start" target="_blank">
-    <img src="/inc/img/vattenfall.png" height="80px;" style="display: block; float: left; padding: 10px 10px 10px 10px;">
-    <div class="d-flex w-100 justify-content-between">
-      <h3 class="mb-1">VATTENFALL Europe</h3>
-      <br>
-      <ul class="list-group list-group">
-        <li class="list-group-item">Unit price: 0.2471 € pro kWh</li>        
-        <li class="list-group-item">Consumer price: 1.235,50 € for 5.000 kWh per year</li>
-        <li class="list-group-item">Grundpreis:  303,98 € pro Jahr 25,33 € pro Monat</li>
-        <li class="list-group-item">Gesamtpreis ohne Bonus:  1.539,48 € pro Jahr, 139,95 € pro Monat</li>
-        <li class="list-group-item">Jubiläumsbonus:  20,00 € </li>
-        <li class="list-group-item">Sofortbonus: 220,00 €  </li>
-        <li class="list-group-item">Neukundenbonus:  230,92 €  (15% auf Gesamtkosten)</li>
-      </ul>
-    </div>
-  </a>
-</div>
-
-
-
+        <a href="https://www.immergruen-energie.de/" class="list-group-item list-group-item-action flex-column align-items-start" target="_blank">
+          <img src="/inc/img/immer-gruen.png" height="70px;" style="display: block; float: left; padding: 10px 10px 10px 10px;">
+          <div class="d-flex w-100 justify-content-between">
+            <h3 class="mb-1">&nbsp;</h3>
+            <br>
+            <ul class="list-group list-group">
+              <li class="list-group-item">Unit price: 0.2753 € pro kWh</li>        
+              <li class="list-group-item">Consumer price: 1.376,50 € for 5.000 kWh per year</li>
+              <li class="list-group-item">Grundpreis: 102,18 € pro Jahr 8,51 € pro Monat</li>
+              <li class="list-group-item">Gesamtpreis ohne Bonus:  1.478,68 € pro Jahr, 134,43 € pro Monat</li>
+              <li class="list-group-item">Sofortbonus: 180,00 €  </li>
+              <li class="list-group-item">Neukundenbonus:  221,80 €</li>
+            </ul>
+          </div>
+        </a>
+        <a href="https://www.shellprivatenergie.de/" class="list-group-item list-group-item-action flex-column align-items-start" target="_blank">
+          <img src="/inc/img/shell.png" height="80px;" style="display: block; float: left; padding: 10px 10px 10px 10px;">
+          <div class="d-flex w-100 justify-content-between">
+            <h3 class="mb-1">SHELL PrivatEnergie</h3>
+            <br>
+            <ul class="list-group list-group">
+              <li class="list-group-item">Unit price: 0.2826 € pro kWh</li>        
+              <li class="list-group-item">Consumer price: 1.413,00 € for 5.000 kWh per year</li>
+              <li class="list-group-item">Grundpreis:  105,35 € pro Jahr 25,33 € pro Monat</li>
+              <li class="list-group-item">Gesamtpreis ohne Bonus:  1.518,35 € pro Jahr, 126,53€ pro Monat</li>
+              <li class="list-group-item">Sofortbonus: 148,00 €  </li>
+              <li class="list-group-item">Neukundenbonus:  227,75 €  (15% auf Gesamtkosten)</li>
+            </ul>
+          </div>
+        </a>
+        <a href="https://www.vattenfall.de" class="list-group-item list-group-item-action flex-column align-items-start" target="_blank">
+          <img src="/inc/img/vattenfall.png" height="80px;" style="display: block; float: left; padding: 10px 10px 10px 10px;">
+          <div class="d-flex w-100 justify-content-between">
+            <h3 class="mb-1">VATTENFALL Europe</h3>
+            <br>
+            <ul class="list-group list-group">
+              <li class="list-group-item">Unit price: 0.2471 € pro kWh</li>        
+              <li class="list-group-item">Consumer price: 1.235,50 € for 5.000 kWh per year</li>
+              <li class="list-group-item">Grundpreis:  303,98 € pro Jahr 25,33 € pro Monat</li>
+              <li class="list-group-item">Gesamtpreis ohne Bonus:  1.539,48 € pro Jahr, 139,95 € pro Monat</li>
+              <li class="list-group-item">Jubiläumsbonus:  20,00 € </li>
+              <li class="list-group-item">Sofortbonus: 220,00 €  </li>
+              <li class="list-group-item">Neukundenbonus:  230,92 €  (15% auf Gesamtkosten)</li>
+            </ul>
+          </div>
+        </a>
+      </div>
 
       <div class="alert alert-success" role="alert" id="search-response-true" style="display: none;"></div>
       <div class="alert alert-danger" role="alert" id="search-response-false" style="display: none;"></div>
 
-      <center><div class="loader" id="loader" style="display: none;"></div></center>
-
-            
+      <center><div class="loader" id="loader" style="display: none;"></div></center>   
 
     </div>
   </div>

@@ -18,20 +18,29 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">10000</stringProp>
+        <stringProp name="ThreadGroup.num_threads">5</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
-        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable (something_to_distingiush_users)" enabled="true">
           <stringProp name="maximumValue">9000</stringProp>
           <stringProp name="minimumValue">1000</stringProp>
           <stringProp name="outputFormat">000</stringProp>
           <boolProp name="perThread">true</boolProp>
           <stringProp name="randomSeed"></stringProp>
           <stringProp name="variableName">something_to_distingiush_users</stringProp>
+        </RandomVariableConfig>
+        <hashTree/>
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable (random_watts_lamp)" enabled="true">
+          <stringProp name="maximumValue">1</stringProp>
+          <stringProp name="minimumValue">0</stringProp>
+          <stringProp name="outputFormat">0.0000</stringProp>
+          <boolProp name="perThread">true</boolProp>
+          <stringProp name="randomSeed"></stringProp>
+          <stringProp name="variableName">random_watts_lamp</stringProp>
         </RandomVariableConfig>
         <hashTree/>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
@@ -62,14 +71,9 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-  &quot;amps&quot;: 5,&#xd;
-  &quot;createdBy&quot;: &quot;JMeter&quot;,&#xd;
-  &quot;createdTimestamp&quot;: &quot;2018-09-18T18:31:03.106Z&quot;,&#xd;
-  &quot;id&quot;: 0,&#xd;
-  &quot;kwh&quot;: 12,&#xd;
-  &quot;updatedTimestamp&quot;: &quot;2018-09-18T18:31:03.106Z&quot;,&#xd;
-  &quot;volts&quot;: 220,&#xd;
-  &quot;watts&quot;: 5&#xd;
+  &quot;createdBy&quot;: &quot;automatic&quot;,&#xd;
+  &quot;watts&quot;: ${random_watts_lamp},&#xd;
+  &quot;created_timestamp&quot;: &quot;2018-08-15&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -79,7 +83,7 @@
           <stringProp name="HTTPSampler.port">8282</stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/measurments/3</stringProp>
+          <stringProp name="HTTPSampler.path">/api/measurments/1</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -101,7 +105,7 @@
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login Data" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login Data" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">

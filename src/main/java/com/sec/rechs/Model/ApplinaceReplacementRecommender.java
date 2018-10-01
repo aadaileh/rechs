@@ -1,9 +1,6 @@
 package com.sec.rechs.Model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 import org.joda.time.DateTime;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -24,12 +21,6 @@ public class ApplinaceReplacementRecommender implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "module_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    private ModulesManager modulesManager;
-
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
@@ -48,20 +39,40 @@ public class ApplinaceReplacementRecommender implements Serializable {
     private String errorsMessage;
     private DateTime nextRunningTime;
 
+    private String applianceType;
+    private int amountOfResults;
+    private String status; //success/fail
+
+    public String getApplianceType() {
+        return applianceType;
+    }
+
+    public void setApplianceType(String applianceType) {
+        this.applianceType = applianceType;
+    }
+
+    public int getAmountOfResults() {
+        return amountOfResults;
+    }
+
+    public void setAmountOfResults(int amountOfResults) {
+        this.amountOfResults = amountOfResults;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public ModulesManager getModulesManager() {
-        return modulesManager;
-    }
-
-    public void setModulesManager(ModulesManager modulesManager) {
-        this.modulesManager = modulesManager;
     }
 
     public Date getCreatedTimestamp() {
