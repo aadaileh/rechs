@@ -20,6 +20,7 @@ $energyProvider = $library->makeCurl ("/energy-provider/", "GET");
   // print_r($energyProvider);
   // echo "</pre>";
 
+
 // send an entry to the statistics table
 $fields = Array();
 $fields["createdBy"] = $_SESSION["user"]->fullName;
