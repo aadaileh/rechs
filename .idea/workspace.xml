@@ -2,22 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d8941bbd-1646-470d-be8d-b43dcf7611da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/ApplianceReplacementModuleRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Statistics/StatisticsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/EnergySupplierModuleRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JMeter/rechs.jmx" beforeDir="false" afterPath="$PROJECT_DIR$/JMeter/rechs.jmx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/appliances-charts.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/appliances-charts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/appliances-overview.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/appliances-overview.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/energy-provider-optimizer.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/energy-provider-optimizer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/inc/cgi/appliances-search.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inc/cgi/appliances-search.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/inc/cgi/library.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inc/cgi/library.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/ApplinaceReplacementRecommender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/ApplinaceReplacementRecommender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/EnergyProviderPortalSimulator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/ExternalAPIs/EbayDriverFindItemsByKeywords.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/ExternalAPIs/EbayShopGetSingleItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/EnergyProviderOptimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/EnergyProviderOptimizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Statistics/StatisticsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Statistics/StatisticsController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -58,14 +48,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="156" />
-          <entry key="java" value="9663" />
+          <entry key="java" value="9846" />
           <entry key="properties" value="50" />
           <entry key="xml" value="32" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="9663" />
+          <entry key="JAVA" value="9846" />
           <entry key="PLAIN_TEXT" value="156" />
           <entry key="Properties" value="50" />
           <entry key="XML" value="32" />
@@ -74,7 +64,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="5" />
-          <entry key="java" value="127" />
+          <entry key="java" value="130" />
           <entry key="properties" value="4" />
           <entry key="xml" value="4" />
         </counts>
@@ -82,7 +72,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="5" />
-          <entry key="JAVA" value="127" />
+          <entry key="JAVA" value="130" />
           <entry key="Properties" value="4" />
           <entry key="XML" value="4" />
         </counts>
@@ -92,32 +82,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/impl/ApplianceImplentations.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="37" column="16" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/ApplianceReplacementModuleRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="107" selection-start-line="7" selection-start-column="76" selection-end-line="7" selection-end-column="107" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Statistics/StatisticsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
+            <state relative-caret-position="283">
+              <caret line="66" column="33" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -210,7 +179,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/ScheduleRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/HeartBeat/impl/ScheduleExecuter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/RechsApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/HeartBeat/SimpleExample.java" />
@@ -220,7 +188,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/Standby.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/ElectricityConsumptionTrackerAndRecorder.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/ModulesManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/EnergyProviderOptimizer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/StandbyDetectorAndOptimizer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/Transaction.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/MEasurment.java" />
@@ -258,9 +225,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/StatisticsRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/ApplianceReplacementModuleRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/ApplinaceReplacementRecommender.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/ApplianceReplacementModuleRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/EnergySupplierModuleRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Statistics/StatisticsController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/EnergyProviderOptimizer.java" />
       </list>
     </option>
   </component>
@@ -337,6 +306,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="rechs" type="462c0819:PsiDirectoryNode" />
+              <item name="Repository" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rechs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rechs" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="rechs" type="462c0819:PsiDirectoryNode" />
               <item name="Services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -363,7 +341,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538418839804" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538422837777" />
     <property name="extract.method.default.visibility" value="packageLocal" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../library/obera_zwave.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -708,20 +686,6 @@ ZWaveDriver zWaveDriver = new ZWaveDriver();</expression-string>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2295">
-          <caret line="135" column="21" selection-start-line="135" selection-start-column="21" selection-end-line="135" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/EnergyProviderOptimizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="20" column="36" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/KwhAndDate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -1008,9 +972,54 @@ ZWaveDriver zWaveDriver = new ZWaveDriver();</expression-string>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/ApplianceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="59" column="46" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="65" column="53" lean-forward="true" selection-start-line="65" selection-start-column="53" selection-end-line="65" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="36" column="33" lean-forward="true" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="74" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/ApplinaceReplacementRecommender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="949">
+          <caret line="76" selection-start-line="76" selection-end-line="76" />
+          <folding>
+            <element signature="e#1714#1715#0" expanded="true" />
+            <element signature="e#1750#1751#0" expanded="true" />
+            <element signature="e#1808#1809#0" expanded="true" />
+            <element signature="e#1858#1859#0" expanded="true" />
+            <element signature="e#1897#1898#0" expanded="true" />
+            <element signature="e#1935#1936#0" expanded="true" />
+            <element signature="e#1994#1995#0" expanded="true" />
+            <element signature="e#2048#2049#0" expanded="true" />
+            <element signature="e#2081#2082#0" expanded="true" />
+            <element signature="e#2110#2111#0" expanded="true" />
+            <element signature="e#2154#2155#0" expanded="true" />
+            <element signature="e#2190#2191#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/EnergyProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
+        <state relative-caret-position="362">
           <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
           <folding>
             <element signature="e#1218#1219#0" expanded="true" />
@@ -1050,17 +1059,20 @@ ZWaveDriver zWaveDriver = new ZWaveDriver();</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/ApplianceController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/EnergySupplierModuleRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="59" column="46" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
+        <state relative-caret-position="85">
+          <caret line="7" column="93" selection-start-line="7" selection-start-column="93" selection-end-line="7" selection-end-column="93" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/ApplianceReplacementModuleRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="65" column="53" lean-forward="true" selection-start-line="65" selection-start-column="53" selection-end-line="65" selection-end-column="53" />
+        <state relative-caret-position="119">
+          <caret line="7" column="107" selection-start-line="7" selection-start-column="107" selection-end-line="7" selection-end-column="107" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1071,51 +1083,26 @@ ZWaveDriver zWaveDriver = new ZWaveDriver();</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/ApplianceReplacementModuleRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/EnergyProviderOptimizer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="107" selection-start-line="7" selection-start-column="76" selection-end-line="7" selection-end-column="107" />
+        <state relative-caret-position="323">
+          <caret line="50" column="34" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="34" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="36" column="33" lean-forward="true" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/ApplinaceReplacementRecommender.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="949">
-          <caret line="76" selection-start-line="76" selection-end-line="76" />
-          <folding>
-            <element signature="e#1714#1715#0" expanded="true" />
-            <element signature="e#1750#1751#0" expanded="true" />
-            <element signature="e#1808#1809#0" expanded="true" />
-            <element signature="e#1858#1859#0" expanded="true" />
-            <element signature="e#1897#1898#0" expanded="true" />
-            <element signature="e#1935#1936#0" expanded="true" />
-            <element signature="e#1994#1995#0" expanded="true" />
-            <element signature="e#2048#2049#0" expanded="true" />
-            <element signature="e#2081#2082#0" expanded="true" />
-            <element signature="e#2110#2111#0" expanded="true" />
-            <element signature="e#2154#2155#0" expanded="true" />
-            <element signature="e#2190#2191#0" expanded="true" />
+            <element signature="e#966#967#0" expanded="true" />
+            <element signature="e#1004#1005#0" expanded="true" />
+            <element signature="e#1066#1067#0" expanded="true" />
+            <element signature="e#1120#1121#0" expanded="true" />
+            <element signature="e#1506#1507#0" expanded="true" />
+            <element signature="e#1556#1557#0" expanded="true" />
+            <element signature="e#1598#1599#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Statistics/StatisticsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
+        <state relative-caret-position="283">
+          <caret line="66" column="33" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
         </state>
       </provider>
     </entry>

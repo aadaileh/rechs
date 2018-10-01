@@ -1,9 +1,6 @@
 package com.sec.rechs.Model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 import org.joda.time.DateTime;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -23,11 +20,15 @@ public class EnergyProviderOptimizer implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "module_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    private ModulesManager modulesManager;
+    private String amountOfResults;
+
+    public String getAmountOfResults() {
+        return amountOfResults;
+    }
+
+    public void setAmountOfResults(String amountOfResults) {
+        this.amountOfResults = amountOfResults;
+    }
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -45,20 +46,22 @@ public class EnergyProviderOptimizer implements Serializable {
     private String errorsMessage;
     private DateTime nextRunningTime;
 
+    private String createdBy;
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public ModulesManager getModulesManager() {
-        return modulesManager;
-    }
-
-    public void setModulesManager(ModulesManager modulesManager) {
-        this.modulesManager = modulesManager;
     }
 
     public Date getCreatedTimestamp() {

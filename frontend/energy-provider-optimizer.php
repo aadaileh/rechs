@@ -1,4 +1,6 @@
 <?php
+ini_set('max_execution_time', 300); // 5minutes
+
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
@@ -17,6 +19,27 @@ $energyProvider = $library->makeCurl ("/energy-provider/", "GET");
   // echo "<pre>energyProvider:\n";
   // print_r($energyProvider);
   // echo "</pre>";
+
+// send an entry to the statistics table
+$fields = Array();
+$fields["createdBy"] = $_SESSION["user"]->fullName;
+$fields["errorsMessage"] = "";
+$fields["runningIntervals"] = 1;
+$fields["runningMode"] = "active";
+
+$fields["amountOfResults"] = 3;
+$fields["status"] = "success";
+
+$library = new Library();
+$data = $library->makeCurl ("/statistics/energy-supplier", "POST", $fields);
+
+// echo "<pre>fields:\n";
+// print_r($fields);
+// echo "</pre>";
+
+// echo "<pre>data:\n";
+// print_r($data);
+// echo "</pre>";
 ?>
 
 <!DOCTYPE html>

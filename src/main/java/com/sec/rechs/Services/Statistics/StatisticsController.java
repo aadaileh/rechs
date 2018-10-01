@@ -1,8 +1,10 @@
 package com.sec.rechs.Services.Statistics;
 
 import com.sec.rechs.Model.ApplinaceReplacementRecommender;
+import com.sec.rechs.Model.EnergyProviderOptimizer;
 import com.sec.rechs.Model.Measurment;
 import com.sec.rechs.Repository.ApplianceReplacementModuleRepository;
+import com.sec.rechs.Repository.EnergySupplierModuleRepository;
 import com.sec.rechs.Repository.MeasurmentRepository;
 import com.sec.rechs.Services.Authentication.AuthenticationController;
 import io.swagger.annotations.ApiOperation;
@@ -26,6 +28,9 @@ public class StatisticsController {
     @Autowired
     ApplianceReplacementModuleRepository applianceReplacementModuleRepository;
 
+    @Autowired
+    EnergySupplierModuleRepository energySupplierModuleRepository;
+
     // Get some statistics related to the applinaces
     @GetMapping("/appliances")
     @ApiOperation("Retrieve statistics from all appliances")
@@ -48,6 +53,22 @@ public class StatisticsController {
     public List<ApplinaceReplacementRecommender> getApplinaceReplacementRecommender() {
 
         List<ApplinaceReplacementRecommender> all = applianceReplacementModuleRepository.findAll();
+        return all;
+    }
+
+    // Add new entry (statistics) related to the energy supplier
+    @PostMapping("/energy-supplier")
+    @ApiOperation("Save stats related to the energy supplier module")
+    public EnergyProviderOptimizer saveStatsEnergySupplier(@Valid @RequestBody EnergyProviderOptimizer energyProviderOptimizer) {
+        return energySupplierModuleRepository.save(energyProviderOptimizer);
+    }
+
+    // Get entries from EnergyProviderOptimizer
+    @GetMapping("/energy-supplier-optimizer")
+    @ApiOperation("Retrieve entries from EnergyProviderOptimizer")
+    public List<EnergyProviderOptimizer> getEnergySupplier() {
+
+        List<EnergyProviderOptimizer> all = energySupplierModuleRepository.findAll();
         return all;
     }
 }

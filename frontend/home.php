@@ -114,7 +114,14 @@ if(count($_SESSION["user"]) == 0) {
   // echo "<pre>appliance_replacement_recommender_stats:";
   // print_r($appliance_replacement_recommender_stats);
   // echo "</pre>";
-?>
+
+  //Appliances Replacement Recommender Statistics
+  $energy_supplier_stats = $library->makeCurl ("/statistics/energy-supplier-optimizer", "GET");
+  // echo "<pre>energy_supplier_stats:";
+  // print_r($energy_supplier_stats);
+  // echo "</pre>";
+
+  ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -285,27 +292,20 @@ if(count($_SESSION["user"]) == 0) {
             <strong>ESO</strong> (<strong>E</strong>nergy <strong>S</strong>upplier <strong>O</strong>ptimizer)</a>
           </div>
           <div class="panel-body">
-          Replacing current appliances can be done by using the external <img src="inc/img/1280px-EBay_logo.svg.png" height="22px" width="40px"> Product Search API. It is designed to search for alternatives for the three sample appliances; Refrigerator, TV and a Stand Lamp. Here are details regarding the latest performed 5 replacement recommendations:
+          As an additional feature that assists householders to save some money in their energy budget, this module gives oppurtunity to search for alternative energy supplier. Following is a list of the latest 3 searches performed for this purpose:
 
           <ul>
             
           <?php
             
-            $items = array_slice($appliance_replacement_recommender_stats, 0, 5);
+            $items = array_slice($energy_supplier_stats, 0, 3);
             
             foreach ($items as $key => $value) {
               $date_creation = new DateTime($value->createdTimestamp);
               $date_creation = $date_creation->format('Y-m-d H:i:s');
 
-              if ($value->applianceType == 'frig') {$applianceType = "Refrigerator";}
-              if ($value->applianceType == 'tv') {$applianceType = "TV";}
-              if ($value->applianceType == 'lamp') {$applianceType = "Stand Lamp";}
-
-              if ($value->status == "success") {
-                echo '<li style="line-height:30px;">On <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#777">' . $date_creation . '</span> <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#337ab7">' . $value->createdBy .'</span> has performed a search to check possibility to replace his <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#8a6d3b">' . $applianceType . '</span>, <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#3ddb16">system run successfully</span> and showed him </span>, <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:orange">' . $value->amountOfResults . '</span> results.</li>';
-              } else {
-                echo '<li style="line-height:30px;">On <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#777">' . $date_creation . '</span> <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#337ab7">' . $value->createdBy .'</span> has performed a search to check possibility to replace his <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#8a6d3b">' . $applianceType . '</span>, <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:red">unfortunately the system returned an error :(</span></li>'; 
-              }
+              
+              echo '<li style="line-height:30px;">On <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#777">' . $date_creation . '</span> <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#337ab7">' . $value->createdBy .'</span> has performed a search for a new energy supplier. System returned, <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:orange">' . $value->amountOfResults . '</span> results.</li>';
             }
           ?>
           <li>...</li>
