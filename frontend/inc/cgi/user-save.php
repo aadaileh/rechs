@@ -16,9 +16,9 @@ if(count($_SESSION["user"]) == 0) {
   // print_r($_GET);
   // echo "</pre>";
 
-  echo "<pre>_POST:\n";
-  print_r($_POST);
-  echo "</pre>";
+  // echo "<pre>_POST:\n";
+  // print_r($_POST);
+  // echo "</pre>";
 
 //exit();
 

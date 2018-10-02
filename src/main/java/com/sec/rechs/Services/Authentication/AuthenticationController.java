@@ -3,12 +3,18 @@ package com.sec.rechs.Services.Authentication;
 import com.sec.rechs.DTOs.Credentials;
 import com.sec.rechs.Model.User;
 import com.sec.rechs.Repository.AuthenticationRepository;
+import com.sec.rechs.Repository.UsersManagementRepository;
 import com.sec.rechs.Services.Authentication.impl.AuthenticationImplentations;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Date;
 
 
 /**
@@ -30,6 +36,9 @@ public class AuthenticationController extends AuthenticationImplentations implem
     private static final Logger LOG = LoggerFactory.getLogger(AuthenticationController.class);
 
     @Autowired
+    UsersManagementRepository usersManagementRepository;
+
+    @Autowired
     AuthenticationRepository authenticationRepository;
 
     AuthenticationImplentations authenticationImplentations = new AuthenticationImplentations();
@@ -38,7 +47,15 @@ public class AuthenticationController extends AuthenticationImplentations implem
     @ApiOperation("Verify given username and password")
     public User verifyCredentials(@RequestBody Credentials credentials) {
         authenticationImplentations.setAuthenticationRepository(authenticationRepository);
-        return authenticationImplentations.verifyCredentials(credentials);
+        User user = authenticationImplentations.verifyCredentials(credentials);
+
+        if (user != null) {
+            //Set the last logged in date
+            user.setLastLoggedInTimestamp(new Date());
+            usersManagementRepository.save(user);
+        }
+
+        return user;
     }
 
     @PostMapping("/encrypt")

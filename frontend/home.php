@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(E_ALL);
-ini_set('display_errors', 0);
+ini_set('display_errors', 1);
 
 include("inc/cgi/library.php");
 
@@ -14,7 +14,7 @@ if(count($_SESSION["user"]) == 0) {
   $library = new Library();
 
   //Appliances Statistics
-  $stats = $library->makeCurl ("/statistics/appliances", "GET");
+$stats = $library->makeCurl ("/statistics/appliances", "GET");
 
   $dates = Array();
   $counter[] = Array();
@@ -67,7 +67,7 @@ if(count($_SESSION["user"]) == 0) {
   // echo "</pre>";
 
   //Refrigerator (daily)
-  $watts_data = $library->makeCurl ("/measurments/watts/appliance/3/group-by/hour", "GET");
+$watts_data = $library->makeCurl ("/measurments/watts/appliance/3/group-by/hour", "GET");
   $watts_measurmentArray = Array();
   $watts_datesArray = Array();
   $watts_allTogetherArray = Array();
@@ -80,7 +80,7 @@ if(count($_SESSION["user"]) == 0) {
   $watts_Arrays = $watts_allTogetherArray;
 
   // TV (hourly)
-  $tv_watts_data = $library->makeCurl ("/measurments/watts/appliance/2/group-by/hour", "GET");
+$tv_watts_data = $library->makeCurl ("/measurments/watts/appliance/2/group-by/hour", "GET");
   $tv_watts_measurmentArray = Array();
   $tv_watts_datesArray = Array();
   $tv_watts_allTogetherArray = Array();
@@ -94,7 +94,7 @@ if(count($_SESSION["user"]) == 0) {
 
 
   // Lamp (Hourly)
-  $lamp_watts_data = $library->makeCurl ("/measurments/watts/appliance/1/group-by/hour", "GET");
+$lamp_watts_data = $library->makeCurl ("/measurments/watts/appliance/1/group-by/hour", "GET");
   $lamp_watts_measurmentArray = Array();
   $lamp_watts_datesArray = Array();
   $lamp_watts_allTogetherArray = Array();
@@ -110,15 +110,90 @@ if(count($_SESSION["user"]) == 0) {
   $stats = $library->makeCurl ("/statistics/appliances", "GET");
 
   //Appliances Replacement Recommender Statistics
-  $appliance_replacement_recommender_stats = $library->makeCurl ("/statistics/appliance-replacement-recommender", "GET");
+$appliance_replacement_recommender_stats = $library->makeCurl ("/statistics/appliance-replacement-recommender", "GET");
   // echo "<pre>appliance_replacement_recommender_stats:";
   // print_r($appliance_replacement_recommender_stats);
   // echo "</pre>";
 
   //Appliances Replacement Recommender Statistics
-  $energy_supplier_stats = $library->makeCurl ("/statistics/energy-supplier-optimizer", "GET");
+$energy_supplier_stats = $library->makeCurl ("/statistics/energy-supplier-optimizer", "GET");
   // echo "<pre>energy_supplier_stats:";
   // print_r($energy_supplier_stats);
+  // echo "</pre>";
+
+//Schedules Statistics
+$schedule_stats_lamp = $library->makeCurl ("/appliances/1/schedule/list", "GET");
+$schedule_stats_tv = $library->makeCurl ("/appliances/2/schedule/list", "GET");
+$schedule_stats_frig = $library->makeCurl ("/appliances/3/schedule/list", "GET");
+  // echo "<pre>schedule_stats:";
+  // print_r($schedule_stats_lamp);
+  // print_r($schedule_stats_tv);
+  // print_r($schedule_stats_frig);
+  // echo "</pre>";
+
+  $jobsEnd = Array();
+  $jobsBegin = Array();
+  foreach ($schedule_stats_lamp as $key => $value) {
+    
+    if ($value->active == 1) {
+      $totalActiveJobs = $totalActiveJobs + 1;
+      $activeJobs_lamp = $activeJobs_lamp + 1;
+      $jobsBegin[] = $value->begin;
+    } else {
+      $totalInactiveJobs = $totalInactiveJobs + 1;
+    }
+
+    $jobsEnd[] = $value->end;
+  }
+  foreach ($schedule_stats_tv as $key => $value) {
+    
+    if ($value->active == 1) {
+      $totalActiveJobs = $totalActiveJobs + 1;
+      $activeJobs_tv = $activeJobs_tv + 1;
+      $jobsBegin[] = $value->begin;
+    } else {
+      $totalInactiveJobs = $totalInactiveJobs + 1;
+    }
+    
+    $jobsEnd[] = $value->end;
+  }
+  foreach ($schedule_stats_frig as $key => $value) {
+  
+    if ($value->active == 1) {
+      $totalActiveJobs = $totalActiveJobs + 1;
+      $activeJobs_frig = $activeJobs_frig + 1;
+      $jobsBegin[] = $value->begin;
+    } else {
+      $totalInactiveJobs = $totalInactiveJobs + 1;
+    }
+
+    $jobsEnd[] = $value->end;
+  }  
+  $totalJobs = count($schedule_stats_lamp) + count($schedule_stats_tv) + count($schedule_stats_frig);
+  if ($totalActiveJobs == 0) {$totalActiveJobs = "None";}
+  if ($activeJobs_frig == 0) {$activeJobs_frig = "0";}
+  if ($activeJobs_tv == 0) {$activeJobs_tv = "0";}
+  if ($activeJobs_lamp == 0) {$activeJobs_lamp = "0";}
+  if ($totalInactiveJobs == 0) {$totalInactiveJobs = "None";}
+  if(count($jobsBegin) > 0) {
+    $maxBeginDate = max(array_map('strtotime', $jobsBegin));
+    $nextJobStartsOn = date('Y-m-j H:i:s', $maxBeginDate);
+  } else {
+    $nextJobStartsOn = "unavailable";
+  }
+  if(count($jobsEnd) > 0) {  
+    $maxEndDate = max(array_map('strtotime', $jobsEnd));
+    $latestJobendedOn = date('Y-m-j H:i:s', $maxEndDate);
+  } else {
+    $latestJobendedOn = "unavailable";
+  }
+
+
+
+//Users Statistics
+  $usersList = $library->makeCurl ("/users/", "GET");
+  // echo "<pre>usersList:";
+  // print_r($usersList);
   // echo "</pre>";
 
   ?>
@@ -231,7 +306,9 @@ if(count($_SESSION["user"]) == 0) {
       <div id="customized-home-panel-right">
         <div class="panel panel-primary">
           <div class="panel-heading"><span data-toggle="tooltip" title="Appliance Replacement Recommender. It tells when to replace an appliance.">
-            <strong>ARR</strong> (<strong>A</strong>ppliance <strong>R</strong>eplacement <strong>R</strong>ecommender)</span>
+            <a href="appliances-overview.php" data-toggle="tooltip" title="Replace an appliance." style="color:white;">
+              <strong>ARR</strong> (<strong>A</strong>ppliance <strong>R</strong>eplacement <strong>R</strong>ecommender)</span>
+            </a>
           </div>
           <div class="panel-body">
           Replacing current appliances can be done by using the external <img src="inc/img/1280px-EBay_logo.svg.png" height="22px" width="40px"> Product Search API. It is designed to search for alternatives for the three sample appliances; Refrigerator, TV and a Stand Lamp. Here are details regarding the latest performed 5 replacement recommendations:
@@ -288,8 +365,10 @@ if(count($_SESSION["user"]) == 0) {
 
       <div id="customized-home-panel-right">
         <div class="panel panel-primary">
-          <div class="panel-heading"><a href="energy-provider-optimizer.php" data-toggle="tooltip" title="Energy Provider Optimizer. Helps owners to switch their energy provider to reduce costs." style="color:white;">
-            <strong>ESO</strong> (<strong>E</strong>nergy <strong>S</strong>upplier <strong>O</strong>ptimizer)</a>
+          <div class="panel-heading">
+            <a href="energy-provider-optimizer.php" data-toggle="tooltip" title="Energy Provider Optimizer. Helps owners to switch their energy provider to reduce costs." style="color:white;">
+            <strong>ESO</strong> (<strong>E</strong>nergy <strong>S</strong>upplier <strong>O</strong>ptimizer)
+            </a>
           </div>
           <div class="panel-body">
           As an additional feature that assists householders to save some money in their energy budget, this module gives oppurtunity to search for alternative energy supplier. Following is a list of the latest 3 searches performed for this purpose:
@@ -303,9 +382,8 @@ if(count($_SESSION["user"]) == 0) {
             foreach ($items as $key => $value) {
               $date_creation = new DateTime($value->createdTimestamp);
               $date_creation = $date_creation->format('Y-m-d H:i:s');
-
               
-              echo '<li style="line-height:30px;">On <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#777">' . $date_creation . '</span> <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#337ab7">' . $value->createdBy .'</span> has performed a search for a new energy supplier. System returned, <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:orange">' . $value->amountOfResults . '</span> results.</li>';
+              echo '<li style="line-height:30px;">On <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#3ddb16">' . $date_creation . '</span> <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#337ab7">' . $value->createdBy .'</span> has performed a search for a new energy supplier. System returned, <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:orange">' . $value->amountOfResults . '</span> results.</li>';
             }
           ?>
           <li>...</li>
@@ -316,19 +394,25 @@ if(count($_SESSION["user"]) == 0) {
 
       <div id="customized-home-panel-right">
         <div class="panel panel-primary">
-          <div class="panel-heading"><span data-toggle="tooltip" title="A module where a schedule is predefined to switch off/on appliances"><strong>Schedular Details</strong></span></div>
+          <div class="panel-heading">
+            <a href="appliances-schedular.php" data-toggle="tooltip" title="Cutting off power based on a previous schedule." style="color:white;">
+            <span data-toggle="tooltip" title="A module where a schedule is predefined to switch off/on appliances"><strong>Schedular Details</strong></span>
+            </a>
+          </div>
           <div class="panel-body">
 
-            Control whatever is plugged into a Smart Switch 6 via a schedule and ensure that gaming systems and computers aren’t used when they’re not meant to be.<br><br>
-            
-            First time visited:<br>
-            Click <a href="/energy-provider-optimizer.php">here</a> to schedule new job.<br><br>
-
-            View shown after activating the EPO (Energy Provider Optimizer):<br>
-            Searching for proper Energy Provider has revelaed the following result(s):<br>
-            1. XYZ Energy Provider<br>
-
-            Your current annual Electricity costs are XXX€. Once you switch to the suggested XYZ Energy Provider, you can save up to XX% of your costs. This means XX€ less annualy.
+            It controls whatever is plugged into the node (Smart Switch 6) by cutting the power off via a schedule and ensure that gaming systems and computers aren’t used when they’re not meant to be, or prevent running devices when being in a vacation,... Currently there are 
+            <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#3ddb16; font-size: 15pt;"><?=$totalJobs;?></span> jobs,
+            <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#3ddb16; font-size: 13pt;"><?=$totalActiveJobs;?></span> of them are active, and
+            <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#777;"><?=$totalInactiveJobs;?></span> of them are inactive. 
+            <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#3ddb16;"><?=$activeJobs_frig;?></span> for the 
+            <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#337ab7">Refrigerator</span>, 
+            <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#3ddb16;"><?=$activeJobs_tv;?></span> done for the 
+            <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#337ab7">TV</span> and 
+            <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#3ddb16;"><?=$activeJobs_lamp;?></span> made for the 
+            <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#337ab7">Stand Lamp</span>. The latest job finished on 
+            <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#777"><?=$latestJobendedOn;?></span>. The next time a job starts will be on 
+            <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:orange"><?=$nextJobStartsOn;?></span>
 
             <br>
           </div>
@@ -339,43 +423,48 @@ if(count($_SESSION["user"]) == 0) {
         <div class="panel panel-primary">
           <div class="panel-heading"><span data-toggle="tooltip" title="Brief users overview details"><strong>Users Overview</strong></span></div>
           <div class="panel-body">
-            X Users are created.<br>
-            X Admins are created.<br>
-            X of them are active (logged in last 3 days).<br>
-            Last successful login done on MM/dd/YYYY at HH:mm:ss<br>
-            Last failed login done on MM/dd/YYYY at HH:mm:ss<br>
+
+            The admin 
+            <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#3ddb16; font-size: 15pt;"><?=$adminName;?></span> has created 
+            <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#3ddb16; font-size: 15pt;"><?=$totalUsers;?></span> additional users in this application. 
+            <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#3ddb16; font-size: 15pt;"><?=$totalActiveUsers;?></span> of them are active, and 
+            <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#3ddb16; font-size: 15pt;"><?=$totalInactiveUsers;?></span> are inactive. Following a list of these:
+
+          <ul>
+            
+          <?php
+                        
+            foreach ($usersList as $key => $value) {
+              $date_creation = new DateTime($value->createdTimestamp);
+              $date_creation = $date_creation->format('Y-m-d H:i:s');
+
+              $date_last_logged_in = new DateTime($value->lastLoggedInTimestamp);
+              $date_last_logged_in = $date_last_logged_in->format('Y-m-d H:i:s');
+
+              if($value->active == 1) {
+                $active = '<span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#3ddb16">Active</span>';
+              } else {
+                $active = '<span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:red">Inactive</span>';
+              }
+              
+              echo '<li style="line-height:30px;">
+              <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:orange">' . $value->fullName . '</span> is an  
+              <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#337ab7">' . $value->type .'</span>. Created by 
+              <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#337ab7">' . $value->createdBy .'</span> He is 
+              ' . $active . ' in the system since 
+              <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#777">' . $date_creation .'</span>. Last time successfully logged in was on
+              <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#337ab7">' . $date_last_logged_in . '</span></li>';
+            }
+          ?>
+          </ul>
 
           </div>
         </div>
       </div>
 
-      <!--
-      <div id="customized-home-panel-right">
-        <div class="panel panel-primary">
-          <div class="panel-heading"><span data-toggle="tooltip" title="Brief nodes overview details"><strong>Nodes Overview</strong></span></div>
-          <div class="panel-body">
-            X Nodes are created.<br>
-            X of them are active (logged in last 3 days).<br>
-            Last successful data sent done on MM/dd/YYYY at HH:mm:ss<br>
-            ...
-          </div>
-        </div>
-      </div>      
-      -->
-      
+     
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
 
 
 

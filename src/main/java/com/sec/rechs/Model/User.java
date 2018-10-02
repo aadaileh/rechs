@@ -26,6 +26,8 @@ public class User implements Serializable {
     private String createdBy;
     private Boolean active;
     private String type;
+    private Date lastLoggedInTimestamp;
+
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -115,5 +117,13 @@ public class User implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Date getLastLoggedInTimestamp() {
+        return lastLoggedInTimestamp;
+    }
+
+    public void setLastLoggedInTimestamp(Date lastLoggedInTimestamp) {
+        this.lastLoggedInTimestamp = lastLoggedInTimestamp;
     }
 }
