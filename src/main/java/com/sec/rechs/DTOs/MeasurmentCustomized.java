@@ -1,21 +1,34 @@
 package com.sec.rechs.DTOs;
 
+import com.sec.rechs.Model.Appliance;
+
 public class MeasurmentCustomized {
 
-    private Long id;
+    private Measurment measurment;
+    private Double watt;
+    private Appliance appliance;
 
-    private String concatedDateTime;
-
-    public MeasurmentCustomized(Number id, String title) {
-        this.id = id.longValue();
-        this.concatedDateTime = title;
+    public Measurment getMeasurment() {
+        return measurment;
     }
 
-    public Long getId() {
-        return id;
+    public void setMeasurment(Measurment measurment) {
+        this.measurment = measurment;
     }
 
-    public String getConcatedDateTime() {
-        return concatedDateTime;
+    public Double getWatt() {
+        return watt;
+    }
+
+    public void setWatt(Double watt) {
+        this.watt = watt;
+    }
+
+    public Appliance getAppliance() {
+        return appliance;
+    }
+
+    public void setAppliance(Appliance appliance) {
+        this.appliance = appliance;
     }
 }

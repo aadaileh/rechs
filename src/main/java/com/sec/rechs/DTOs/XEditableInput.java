@@ -11,10 +11,19 @@ package com.sec.rechs.DTOs;
  * @version 1.0
  * @since   26.01.2018
  */
-public class EnergyProviderInput {
+public class XEditableInput {
 
+    private Long id;
     private String name;
     private String value;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

@@ -8,6 +8,7 @@ import com.oberasoftware.home.zwave.local.LocalZwaveSession;
 import com.sec.rechs.Listener.RechsEventListener;
 import com.sec.rechs.Repository.ApplianceRepository;
 import com.sec.rechs.Repository.MeasurmentRepository;
+import com.sec.rechs.Repository.StandbyDetectorAndOptimizerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,7 @@ public class ApplianceImplentations {
 
     ApplianceRepository applianceRepository;
     MeasurmentRepository measurmentRepository;
+    StandbyDetectorAndOptimizerRepository standbyDetectorAndOptimizerRepository;
 
     public void recordNodeMeasurments(Long applianceId) {
 
@@ -44,6 +46,7 @@ public class ApplianceImplentations {
             RechsEventListener rechsEventListener = new RechsEventListener();
             rechsEventListener.setApplianceRepository(applianceRepository);
             rechsEventListener.setMeasurmentRepository(measurmentRepository);
+            rechsEventListener.setStandbyDetectorAndOptimizerRepository(standbyDetectorAndOptimizerRepository);
             rechsEventListener.setApplianceId(applianceId);
 
             zWaveSession.subscribe(rechsEventListener);
@@ -111,4 +114,11 @@ public class ApplianceImplentations {
         this.measurmentRepository = measurmentRepository;
     }
 
+    public StandbyDetectorAndOptimizerRepository getStandbyDetectorAndOptimizerRepository() {
+        return standbyDetectorAndOptimizerRepository;
+    }
+
+    public void setStandbyDetectorAndOptimizerRepository(StandbyDetectorAndOptimizerRepository standbyDetectorAndOptimizerRepository) {
+        this.standbyDetectorAndOptimizerRepository = standbyDetectorAndOptimizerRepository;
+    }
 }

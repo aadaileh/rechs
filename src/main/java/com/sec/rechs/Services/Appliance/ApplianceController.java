@@ -6,6 +6,7 @@ import com.sec.rechs.Model.Appliance;
 import com.sec.rechs.Repository.ApplianceRepository;
 import com.sec.rechs.Repository.MeasurmentRepository;
 import com.sec.rechs.Repository.ScheduleRepository;
+import com.sec.rechs.Repository.StandbyDetectorAndOptimizerRepository;
 import com.sec.rechs.Services.Appliance.impl.ApplianceImplentations;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -49,6 +50,9 @@ public class ApplianceController {
     @Autowired
     ScheduleRepository scheduleRepository;
 
+    @Autowired
+    StandbyDetectorAndOptimizerRepository standbyDetectorAndOptimizerRepository;
+
     ApplianceImplentations applianceImplentations = new ApplianceImplentations();
 
     // Record data from node
@@ -57,6 +61,7 @@ public class ApplianceController {
     public String recordNodesMeasurments(@PathVariable(value = "applianceId") Long applianceId) {
         applianceImplentations.setApplianceRepository(applianceRepository);
         applianceImplentations.setMeasurmentRepository(measurmentRepository);
+        applianceImplentations.setStandbyDetectorAndOptimizerRepository(standbyDetectorAndOptimizerRepository);
         applianceImplentations.recordNodeMeasurments(applianceId);
 
         return "Recording job started on: "

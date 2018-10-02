@@ -1,10 +1,6 @@
 package com.sec.rechs.Model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-import org.joda.time.DateTime;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -24,12 +20,6 @@ public class StandbyDetectorAndOptimizer implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "module_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
-    private ModulesManager modulesManager;
-
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
@@ -41,12 +31,10 @@ public class StandbyDetectorAndOptimizer implements Serializable {
     private Date updatedTimestamp;
 
 
-    private String lowestEnergyLevel;
-    private String runningMode;
-    private Double runningIntervals;
-    private boolean erros;
-    private String errorsMessage;
-    private DateTime nextRunningTime;
+    private String calculatedLowestEnergyLevel;
+    private String applianceLowestEnergyLevel;
+    private Long applianceId;
+    private boolean active;
 
     public Long getId() {
         return id;
@@ -54,14 +42,6 @@ public class StandbyDetectorAndOptimizer implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public ModulesManager getModulesManager() {
-        return modulesManager;
-    }
-
-    public void setModulesManager(ModulesManager modulesManager) {
-        this.modulesManager = modulesManager;
     }
 
     public Date getCreatedTimestamp() {
@@ -80,51 +60,35 @@ public class StandbyDetectorAndOptimizer implements Serializable {
         this.updatedTimestamp = updatedTimestamp;
     }
 
-    public String getLowestEnergyLevel() {
-        return lowestEnergyLevel;
+    public String getCalculatedLowestEnergyLevel() {
+        return calculatedLowestEnergyLevel;
     }
 
-    public void setLowestEnergyLevel(String lowestEnergyLevel) {
-        this.lowestEnergyLevel = lowestEnergyLevel;
+    public void setCalculatedLowestEnergyLevel(String calculatedLowestEnergyLevel) {
+        this.calculatedLowestEnergyLevel = calculatedLowestEnergyLevel;
     }
 
-    public String getRunningMode() {
-        return runningMode;
+    public String getApplianceLowestEnergyLevel() {
+        return applianceLowestEnergyLevel;
     }
 
-    public void setRunningMode(String runningMode) {
-        this.runningMode = runningMode;
+    public void setApplianceLowestEnergyLevel(String applianceLowestEnergyLevel) {
+        this.applianceLowestEnergyLevel = applianceLowestEnergyLevel;
     }
 
-    public Double getRunningIntervals() {
-        return runningIntervals;
+    public Long getApplianceId() {
+        return applianceId;
     }
 
-    public void setRunningIntervals(Double runningIntervals) {
-        this.runningIntervals = runningIntervals;
+    public void setApplianceId(Long applianceId) {
+        this.applianceId = applianceId;
     }
 
-    public boolean isErros() {
-        return erros;
+    public boolean isActive() {
+        return active;
     }
 
-    public void setErros(boolean erros) {
-        this.erros = erros;
-    }
-
-    public String getErrorsMessage() {
-        return errorsMessage;
-    }
-
-    public void setErrorsMessage(String errorsMessage) {
-        this.errorsMessage = errorsMessage;
-    }
-
-    public DateTime getNextRunningTime() {
-        return nextRunningTime;
-    }
-
-    public void setNextRunningTime(DateTime nextRunningTime) {
-        this.nextRunningTime = nextRunningTime;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

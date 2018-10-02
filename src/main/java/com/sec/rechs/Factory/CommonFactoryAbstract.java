@@ -54,7 +54,7 @@ public abstract class CommonFactoryAbstract {
                 .decoder(new GsonDecoder())
                 .logger(new Slf4jLogger(FeignClient.class))
                 .logLevel(feign.Logger.Level.FULL)
-                .target(FeignClient.class, feignUrl + path);
+                .target(FeignClient.class, "http://localhost:8282" + path);
 
         return feignClient;
     }

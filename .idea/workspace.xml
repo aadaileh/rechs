@@ -2,11 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d8941bbd-1646-470d-be8d-b43dcf7611da" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/StandbyDetectorAndOptimizerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/appliances-overview.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/appliances-overview.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/energy-provider-optimizer - Kopie.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/inc/cgi/user-save.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/inc/cgi/user-save.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Authentication/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Authentication/AuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/EnergyProviderInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/XEditableInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/MeasurmentCustomized.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/MeasurmentCustomized.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Factory/CommonFactoryAbstract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Factory/CommonFactoryAbstract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Listener/RechsEventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Listener/RechsEventListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/Appliance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/Appliance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/StandbyDetectorAndOptimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/StandbyDetectorAndOptimizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/ApplianceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/ApplianceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/impl/ApplianceImplentations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/impl/ApplianceImplentations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/ExternalAPIs/EnergyProviderApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/ExternalAPIs/EnergyProviderApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/HeartBeat/HeartBeatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/HeartBeat/HeartBeatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/UsersManagement/UsersManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/UsersManagement/UsersManagementController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,32 +61,32 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="156" />
-          <entry key="java" value="10038" />
+          <entry key="dummy" value="166" />
+          <entry key="java" value="13297" />
           <entry key="properties" value="50" />
           <entry key="xml" value="32" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="10038" />
-          <entry key="PLAIN_TEXT" value="156" />
+          <entry key="JAVA" value="13297" />
+          <entry key="PLAIN_TEXT" value="166" />
           <entry key="Properties" value="50" />
           <entry key="XML" value="32" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="6" />
-          <entry key="java" value="135" />
+          <entry key="class" value="17" />
+          <entry key="java" value="179" />
           <entry key="properties" value="4" />
           <entry key="xml" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="6" />
-          <entry key="JAVA" value="135" />
+          <entry key="CLASS" value="17" />
+          <entry key="JAVA" value="179" />
           <entry key="Properties" value="4" />
           <entry key="XML" value="4" />
         </counts>
@@ -82,59 +96,69 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Statistics/StatisticsController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="521">
-              <caret line="66" column="33" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Authentication/AuthenticationController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="49" column="57" selection-start-line="49" selection-start-column="57" selection-end-line="49" selection-end-column="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Authentication/impl/AuthenticationImplentations.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="36" column="56" lean-forward="true" selection-start-line="36" selection-start-column="56" selection-end-line="36" selection-end-column="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/UsersManagement/UsersManagementController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="20" selection-start-line="20" selection-end-line="21" selection-end-column="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/AuthenticationRepository.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/HeartBeat/HeartBeatController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+            <state relative-caret-position="115">
+              <caret line="75" column="4" selection-start-line="75" selection-start-column="4" selection-end-line="75" selection-end-column="4" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Listener/RechsEventListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="37" column="41" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="41" />
+            <state relative-caret-position="914">
+              <caret line="140" selection-start-line="140" selection-end-line="140" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#7272#7273#0" expanded="true" />
+                <element signature="e#7306#7307#0" expanded="true" />
+                <element signature="e#7358#7359#0" expanded="true" />
+                <element signature="e#7404#7405#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/StandbyDetectorAndOptimizer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="92" selection-start-line="92" selection-end-line="92" />
+              <folding>
+                <element signature="e#1162#1163#0" expanded="true" />
+                <element signature="e#1187#1188#0" expanded="true" />
+                <element signature="e#1221#1222#0" expanded="true" />
+                <element signature="e#1249#1250#0" expanded="true" />
+                <element signature="e#1290#1291#0" expanded="true" />
+                <element signature="e#1329#1330#0" expanded="true" />
+                <element signature="e#1391#1392#0" expanded="true" />
+                <element signature="e#1447#1448#0" expanded="true" />
+                <element signature="e#1488#1489#0" expanded="true" />
+                <element signature="e#1527#1528#0" expanded="true" />
+                <element signature="e#1589#1590#0" expanded="true" />
+                <element signature="e#1645#1646#0" expanded="true" />
+                <element signature="e#1699#1700#0" expanded="true" />
+                <element signature="e#1749#1750#0" expanded="true" />
+                <element signature="e#1966#1967#0" expanded="true" />
+                <element signature="e#2015#2016#0" expanded="true" />
+                <element signature="e#2211#2212#0" expanded="true" />
+                <element signature="e#2245#2246#0" expanded="true" />
+                <element signature="e#2297#2298#0" expanded="true" />
+                <element signature="e#2343#2344#0" expanded="true" />
+                <element signature="e#2376#2377#0" expanded="true" />
+                <element signature="e#2405#2406#0" expanded="true" />
+                <element signature="e#2450#2451#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/ApplianceController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="180" column="56" lean-forward="true" selection-start-line="180" selection-start-column="8" selection-end-line="180" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -151,14 +175,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>3</find>
-      <find>schedul</find>
-      <find>schedule</find>
-      <find>project</find>
-      <find>url</find>
-      <find>Post</find>
-      <find>record</find>
-      <find>Update appliance data by id</find>
       <find>hourlyEnergyConsumption</find>
       <find>spring</find>
       <find>spring-context-support</find>
@@ -175,12 +191,20 @@
       <find>watts</find>
       <find>EBAY_APP_ID</find>
       <find>OPERATION_NAME</find>
-      <find>spring.feign.url</find>
       <find>EnergyProvider</find>
       <find>/watts/appliance/</find>
       <find>automatic</find>
       <find>/created-timestamp/latest-oldest</find>
+      <find>/watts/</find>
+      <find>findLatestAndOldestCreatedTimestamp</find>
+      <find>SEPARATOR</find>
+      <find>findWattsByApplianceIdGroupByHour</find>
+      <find>FeignClient</find>
       <find>findLowestWatts</find>
+      <find>lowest</find>
+      <find>record</find>
+      <find>off</find>
+      <find>spring.feign.url</find>
     </findStrings>
     <replaceStrings>
       <replace>APPLICATION_JSON_VALUE</replace>
@@ -192,23 +216,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/HeartBeat/impl/ScheduleExecuter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/RechsApplication.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/HeartBeat/SimpleExample.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/HeartBeat/impl/HeartBeatImplentations.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Factory/CommonFactoryAbstract.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/Standby.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/ElectricityConsumptionTrackerAndRecorder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/ModulesManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/StandbyDetectorAndOptimizer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/Transaction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/MEasurment.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/Measurment.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/Measurment.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/MeasurmentsLowestWatts.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Client/FeignClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/HeartBeat/HeartBeatController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/Account.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/eBaySearchOutput.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/eBaySearchResult.java" />
@@ -224,17 +233,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Encryptor.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Authentication/impl/AuthenticationImplentations.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/UsersManagement/UsersManagementController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/Credentials.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/ExternalAPIs/EnergyProvider.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/EnergyProviderRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/EnergyProviderInput.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/EnergyProvider.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/ExternalAPIs/EnergyProviderApi.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/EnergyProviderPortalSimulator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/StatisticsRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/ApplinaceReplacementRecommender.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/ApplianceReplacementModuleRepository.java" />
@@ -243,6 +247,26 @@
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/EnergyProviderOptimizer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Authentication/AuthenticationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/xEditableInput.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/ExternalAPIs/EnergyProviderApi.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/XEditableInput.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/UsersManagement/UsersManagementController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/MeasurmentExtended.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Converters/MeasurementConverter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentExtendedRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/MeasurmentExtended.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/MeasurmentCustomized.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/Appliance.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/StandbyDetectorAndOptimizer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/impl/ApplianceImplentations.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/StandbyDetectorAndOptimizerRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/ApplianceController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Factory/CommonFactoryAbstract.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Listener/RechsEventListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/HeartBeat/HeartBeatController.java" />
       </list>
     </option>
   </component>
@@ -307,6 +331,24 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="rechs" type="462c0819:PsiDirectoryNode" />
+              <item name="Client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rechs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rechs" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="rechs" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rechs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rechs" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="rechs" type="462c0819:PsiDirectoryNode" />
               <item name="Services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -317,7 +359,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="rechs" type="462c0819:PsiDirectoryNode" />
               <item name="Services" type="462c0819:PsiDirectoryNode" />
-              <item name="UsersManagement" type="462c0819:PsiDirectoryNode" />
+              <item name="Appliance" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="rechs" type="b2602c69:ProjectViewProjectNode" />
@@ -336,7 +378,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538471236209" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538512301920" />
     <property name="extract.method.default.visibility" value="packageLocal" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../library/obera_zwave.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -348,8 +390,8 @@
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.sec.rechs.Repository" />
-      <recent name="com.sec.rechs.Services.Statistics" />
       <recent name="com.sec.rechs.Model" />
+      <recent name="com.sec.rechs.Services.Statistics" />
       <recent name="com.sec.rechs.DTOs" />
       <recent name="com.sec.rechs.Services.ExternalAPIs" />
     </key>
@@ -496,9 +538,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25637585" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23758389" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="DB Browser" order="3" />
@@ -510,8 +551,8 @@
       <window_info id="Capture Tool" order="9" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.57872343" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.2851064" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39432624" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.45531914" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.49078014" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -546,7 +587,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/impl/ApplianceImplentations.java</url>
-          <line>38</line>
+          <line>40</line>
           <properties />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
@@ -558,25 +599,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/impl/ApplianceImplentations.java</url>
-          <line>98</line>
+          <line>101</line>
           <properties />
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/ApplianceController.java</url>
-          <line>61</line>
-          <properties />
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/ApplianceController.java</url>
-          <line>155</line>
+          <line>160</line>
           <properties />
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/ApplianceController.java</url>
-          <line>143</line>
+          <line>148</line>
           <properties />
           <option name="timeStamp" value="38" />
         </line-breakpoint>
@@ -598,238 +633,164 @@
           <properties />
           <option name="timeStamp" value="91" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/HeartBeat/HeartBeatController.java</url>
+          <line>69</line>
+          <properties />
+          <option name="timeStamp" value="154" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
-        <expression-string>scheduleStream.forEach(LOG.info());</expression-string>
+        <expression-string>Object o1 = lowestWatts.get(0);
+MeasurmentCustomized measurmentCustomized = (MeasurmentCustomized) o1;
+Appliance appliance = measurmentCustomized.getAppliance();</expression-string>
         <language-id>JAVA</language-id>
+        <custom-info>com.sec.rechs.DTOs.MeasurmentCustomized,java.util.Collections,com.sec.rechs.Model.Appliance</custom-info>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>schedule.getActive().equals(Boolean.TRUE);</expression-string>
+        <expression-string>MeasurmentCustomized measurmentCustomized = (MeasurmentCustomized) lowestWatts.get(0);
+Appliance appliance = measurmentCustomized.getAppliance();</expression-string>
         <language-id>JAVA</language-id>
+        <custom-info>com.sec.rechs.DTOs.MeasurmentCustomized,java.util.Collections,com.sec.rechs.Model.Appliance</custom-info>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>if (!schedule.getActive().equals(Boolean.TRUE)) {
-            return false;
+        <expression-string>List&lt;MeasurmentCustomized&gt; measurmentCustomizedList = Collections.singletonList((MeasurmentCustomized) lowestWatts);</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>com.sec.rechs.DTOs.MeasurmentCustomized,java.util.Collections</custom-info>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>((ArrayList) lowestWatts.get(0)).forEach(item-&gt;{
+    if (item instanceof LinkedTreeMap) {
+        LinkedTreeMap item1 = (LinkedTreeMap) item;
+
+
+
+        System.out.println(item1);
+        
+        
+        
+    }
+});</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>java.util.ArrayList,com.sec.rechs.Model.Measurment,java.util.TreeMap,com.google.gson.internal.LinkedTreeMap,java.util.Collection</custom-info>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>((ArrayList) lowestWatts.get(0)).forEach(item-&gt;{
+    if (item instanceof LinkedTreeMap) {
+        TreeMap item1 = (TreeMap) item;
+
+
+
+        System.out.println(item1);
+        
+        
+        
+    }
+});</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>java.util.ArrayList,com.sec.rechs.Model.Measurment,java.util.TreeMap,com.google.gson.internal.LinkedTreeMap,java.util.Collection</custom-info>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>((ArrayList) lowestWatts.get(0)).forEach(item-&gt;{
+    System.out.print(item);
+});</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>java.util.ArrayList,com.sec.rechs.Model.Measurment,java.util.TreeMap</custom-info>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Object o1 = ((ArrayList) o).get(0);</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>java.util.ArrayList,com.sec.rechs.Model.Measurment</custom-info>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Object o1;
+o1 = ((TreeMap) o).get(0);</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>java.util.ArrayList,com.sec.rechs.Model.Measurment,java.util.Map,java.util.TreeMap</custom-info>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Iterator iter1 = lowestWatts.iterator();
+        while (iter1.hasNext()) {
+
+            Iterator iter2 = iter1.iterator();
+            while (iter1.hasNext()) {
+                System.out.println(iter2.next().);
+            }
         }</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>schedule.getActive();</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>SwitchAction switchAction = new SwitchAction(3,0);
-switchAction.getDesiredState();</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>HardwareManager hardwareManager = new HardwareManager();
-ZWaveDriver zWaveDriver = new ZWaveDriver();</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>nodes.item(0)</expression-string>
+        <expression-string>lowestWatts.get(0);</expression-string>
         <language-id>JAVA</language-id>
+        <custom-info>java.util.ArrayList,com.sec.rechs.Model.Measurment,java.util.TreeMap</custom-info>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>nodes.getLength()</expression-string>
+        <expression-string>((ArrayList) lowestWatts.get(0)).listIterator();</expression-string>
         <language-id>JAVA</language-id>
+        <custom-info>java.util.ArrayList,com.sec.rechs.Model.Measurment,java.util.TreeMap</custom-info>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>&quot;&quot;.split(&quot;-&quot;)</expression-string>
+        <expression-string>((ArrayList) lowestWatts.get(0)).size();</expression-string>
         <language-id>JAVA</language-id>
+        <custom-info>java.util.ArrayList,com.sec.rechs.Model.Measurment,java.util.TreeMap</custom-info>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>&quot;-&quot;.split(&quot;-&quot;)</expression-string>
+        <expression-string>TreeMap tree = (TreeMap) ((ArrayList) o).get(0);</expression-string>
         <language-id>JAVA</language-id>
+        <custom-info>java.util.ArrayList,com.sec.rechs.Model.Measurment,java.util.TreeMap</custom-info>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>&quot;xx-xx&quot;.split(&quot;-&quot;)</expression-string>
+        <expression-string>((ArrayList) o).get(0)</expression-string>
         <language-id>JAVA</language-id>
+        <custom-info>java.util.ArrayList,com.sec.rechs.Model.Measurment</custom-info>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>schedule.getActive().booleanValue()</expression-string>
+        <expression-string>((LinkedTreeMap) ((ArrayList) o).get(0)).values</expression-string>
         <language-id>JAVA</language-id>
+        <custom-info>java.util.ArrayList,com.sec.rechs.Model.Measurment,com.google.gson.internal.LinkedTreeMap</custom-info>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>scheduleRepository.findAll();</expression-string>
+        <expression-string>((ArrayList) o).get(0)-&gt;id</expression-string>
         <language-id>JAVA</language-id>
+        <custom-info>java.util.ArrayList,com.sec.rechs.Model.Measurment</custom-info>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>simpleExample.run();</expression-string>
+        <expression-string>((ArrayList) o).get(0)[&quot;id&quot;]</expression-string>
         <language-id>JAVA</language-id>
+        <custom-info>java.util.ArrayList,com.sec.rechs.Model.Measurment</custom-info>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>LocalDateTime.now().format(DateTimeFormatter.ofPattern(&quot;dd.MM.YYYY HH:mm:SS:SSS&quot;)).toString()</expression-string>
+        <expression-string>(Measurment)((ArrayList) o)</expression-string>
         <language-id>JAVA</language-id>
+        <custom-info>java.util.ArrayList,com.sec.rechs.Model.Measurment</custom-info>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/MeasurmentCustomized.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/WattsAndDate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/Transaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.0.7.RELEASE/spring-aop-5.0.7.RELEASE.jar!/org/springframework/aop/framework/JdkDynamicAopProxy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/AmpsAndDate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/Appliance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/MeasurmentsLowestWatts.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/Measurment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Client/FeignClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="16" column="15" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/Measurment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="26" column="33" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/ApplianceRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/HeartBeat/HeartBeatController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="70" column="5" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/EbaySearchResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/javax/xml/xpath/XPathConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="70" column="30" selection-start-line="70" selection-start-column="30" selection-end-line="70" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/ExternalAPIs/EbayShopGetSingleItem.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.31/tomcat-embed-core-8.5.31.jar!/org/apache/catalina/webresources/TomcatURLStreamHandlerFactory.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="97" selection-start-line="97" selection-end-line="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/org/xml/sax/helpers/DefaultHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="82" selection-start-line="82" selection-end-line="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/org/xml/sax/helpers/LocatorImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="87" selection-start-line="87" selection-end-line="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/ExternalAPIs/EbayDriverFindItemsByKeywords.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/UsersManagement/impl/UsersManagementImplentations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/ExternalAPIs/URLReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/UsersManagement/UsersManagementInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/UsersManagementRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -845,13 +806,6 @@ ZWaveDriver zWaveDriver = new ZWaveDriver();</expression-string>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Encryptor.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Factory/CommonFactoryAbstract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="35" column="14" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -888,38 +842,45 @@ ZWaveDriver zWaveDriver = new ZWaveDriver();</expression-string>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/EnergyProviderPortalSimulator.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/ExternalAPIs/EnergyProviderApi.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
-          <caret line="33" column="47" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/EnergyProviderInput.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="57" selection-start-line="3" selection-start-column="57" selection-end-line="3" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/ApplianceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="59" column="46" selection-start-line="59" selection-start-column="46" selection-end-line="59" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="65" column="53" lean-forward="true" selection-start-line="65" selection-start-column="53" selection-end-line="65" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/EnergyProvider.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="362">
           <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
+          <folding>
+            <element signature="e#1218#1219#0" expanded="true" />
+            <element signature="e#1252#1253#0" expanded="true" />
+            <element signature="e#1280#1281#0" expanded="true" />
+            <element signature="e#1311#1312#0" expanded="true" />
+            <element signature="e#1338#1339#0" expanded="true" />
+            <element signature="e#1378#1379#0" expanded="true" />
+            <element signature="e#1410#1411#0" expanded="true" />
+            <element signature="e#1454#1455#0" expanded="true" />
+            <element signature="e#1494#1495#0" expanded="true" />
+            <element signature="e#1560#1561#0" expanded="true" />
+            <element signature="e#1618#1619#0" expanded="true" />
+            <element signature="e#1659#1660#0" expanded="true" />
+            <element signature="e#1696#1697#0" expanded="true" />
+            <element signature="e#1756#1757#0" expanded="true" />
+            <element signature="e#1808#1809#0" expanded="true" />
+            <element signature="e#1847#1848#0" expanded="true" />
+            <element signature="e#1882#1883#0" expanded="true" />
+            <element signature="e#1938#1939#0" expanded="true" />
+            <element signature="e#1986#1987#0" expanded="true" />
+            <element signature="e#2023#2024#0" expanded="true" />
+            <element signature="e#2056#2057#0" expanded="true" />
+            <element signature="e#2108#2109#0" expanded="true" />
+            <element signature="e#2152#2153#0" expanded="true" />
+            <element signature="e#2203#2204#0" expanded="true" />
+            <element signature="e#2250#2251#0" expanded="true" />
+            <element signature="e#2443#2444#0" expanded="true" />
+            <element signature="e#2482#2483#0" expanded="true" />
+            <element signature="e#2544#2545#0" expanded="true" />
+            <element signature="e#2600#2601#0" expanded="true" />
+            <element signature="e#2641#2642#0" expanded="true" />
+            <element signature="e#2680#2681#0" expanded="true" />
+            <element signature="e#2742#2743#0" expanded="true" />
+            <element signature="e#2798#2799#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -930,31 +891,19 @@ ZWaveDriver zWaveDriver = new ZWaveDriver();</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/ApplianceReplacementModuleRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="107" selection-start-line="7" selection-start-column="107" selection-end-line="7" selection-end-column="107" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/impl/ApplianceImplentations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="37" column="16" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/EnergyProviderOptimizer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="50" column="34" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/ApplinaceReplacementRecommender.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="76" selection-start-line="76" selection-end-line="76" />
+          <folding>
+            <element signature="e#966#967#0" expanded="true" />
+            <element signature="e#1004#1005#0" expanded="true" />
+            <element signature="e#1066#1067#0" expanded="true" />
+            <element signature="e#1120#1121#0" expanded="true" />
+            <element signature="e#1506#1507#0" expanded="true" />
+            <element signature="e#1556#1557#0" expanded="true" />
+            <element signature="e#1598#1599#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -965,35 +914,55 @@ ZWaveDriver zWaveDriver = new ZWaveDriver();</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Authentication/AuthenticationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="37" column="41" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="41" />
+        <state relative-caret-position="167">
+          <caret line="49" column="57" selection-start-line="49" selection-start-column="57" selection-end-line="49" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#2764#2765#0" expanded="true" />
+            <element signature="e#2808#2809#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/ExternalAPIs/EnergyProviderApi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="45" column="45" lean-forward="true" selection-start-line="45" selection-start-column="45" selection-end-line="45" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Authentication/impl/AuthenticationImplentations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="42" column="25" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/XEditableInput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding>
+            <element signature="e#434#435#0" expanded="true" />
+            <element signature="e#459#460#0" expanded="true" />
+            <element signature="e#493#494#0" expanded="true" />
+            <element signature="e#521#522#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/UsersManagement/UsersManagementController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="20" selection-start-line="20" selection-end-line="21" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="126" selection-start-line="126" selection-end-line="126" />
-          <folding>
-            <element signature="e#2578#2579#0" expanded="true" />
-            <element signature="e#2605#2606#0" expanded="true" />
-            <element signature="e#2645#2646#0" expanded="true" />
-            <element signature="e#2677#2678#0" expanded="true" />
-            <element signature="e#2764#2765#0" expanded="true" />
-            <element signature="e#2808#2809#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="94">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
         </state>
       </provider>
     </entry>
@@ -1004,24 +973,284 @@ ZWaveDriver zWaveDriver = new ZWaveDriver();</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Authentication/AuthenticationController.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/5.0.7.RELEASE/spring-core-5.0.7.RELEASE.jar!/org/springframework/util/ReflectionUtils.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="49" column="57" selection-start-line="49" selection-start-column="57" selection-end-line="49" selection-end-column="57" />
+        <state relative-caret-position="100">
+          <caret line="173" selection-start-line="173" selection-end-line="173" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Authentication/impl/AuthenticationImplentations.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/ApplinaceReplacementRecommender.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="36" column="56" lean-forward="true" selection-start-line="36" selection-start-column="56" selection-end-line="36" selection-end-column="56" />
+        <state relative-caret-position="884">
+          <caret line="76" selection-start-line="76" selection-end-line="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/Measurment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-365">
+          <caret line="26" column="33" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/5.0.7.RELEASE/spring-context-5.0.7.RELEASE.jar!/org/springframework/scheduling/support/DelegatingErrorHandlingRunnable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentExtendedRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Converters/MeasurementConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/Measurment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+          <folding>
+            <element signature="e#2392#2393#0" expanded="true" />
+            <element signature="e#2424#2425#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/5.0.7.RELEASE/spring-context-5.0.7.RELEASE.jar!/org/springframework/scheduling/support/ScheduledMethodRunnable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/WattsAndDate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="30" lean-forward="true" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/MeasurmentExtended.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Client/FeignClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="30" lean-forward="true" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/MeasurmentCustomized.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
+          <folding>
+            <element signature="e#270#271#0" expanded="true" />
+            <element signature="e#326#327#0" expanded="true" />
+            <element signature="e#370#371#0" expanded="true" />
+            <element signature="e#401#402#0" expanded="true" />
+            <element signature="e#428#429#0" expanded="true" />
+            <element signature="e#468#469#0" expanded="true" />
+            <element signature="e#500#501#0" expanded="true" />
+            <element signature="e#539#540#0" expanded="true" />
+            <element signature="e#571#572#0" expanded="true" />
+            <element signature="e#624#625#0" expanded="true" />
+            <element signature="e#666#667#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="77" column="79" selection-start-line="77" selection-start-column="79" selection-end-line="77" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#876#877#0" expanded="true" />
+            <element signature="e#929#930#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/HeartBeat/impl/HeartBeatImplentations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1">
+          <caret line="42" column="26" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/oberasoftware/obera-base/1.2/obera-base-1.2.jar!/com/oberasoftware/base/event/impl/HandlerEntryImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/Appliance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="127" selection-start-line="127" selection-end-line="127" />
+          <folding>
+            <element signature="e#3350#3351#0" expanded="true" />
+            <element signature="e#4037#4038#0" expanded="true" />
+            <element signature="e#4073#4074#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1224">
+          <caret line="79" column="1" selection-start-line="79" selection-start-column="1" selection-end-line="79" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/ApplianceRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/ApplianceReplacementModuleRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="107" selection-start-line="7" selection-start-column="107" selection-end-line="7" selection-end-column="107" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/impl/ApplianceImplentations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="48" column="109" selection-start-line="48" selection-start-column="109" selection-end-line="48" selection-end-column="109" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/AuthenticationRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+          <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/StandbyDetectorAndOptimizerRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="63" selection-start-line="8" selection-start-column="63" selection-end-line="8" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/joda-time/joda-time/2.9.9/joda-time-2.9.9.jar!/org/joda/time/Seconds.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="43" column="26" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/StandbyDetectorAndOptimizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="92" selection-start-line="92" selection-end-line="92" />
+          <folding>
+            <element signature="e#1162#1163#0" expanded="true" />
+            <element signature="e#1187#1188#0" expanded="true" />
+            <element signature="e#1221#1222#0" expanded="true" />
+            <element signature="e#1249#1250#0" expanded="true" />
+            <element signature="e#1290#1291#0" expanded="true" />
+            <element signature="e#1329#1330#0" expanded="true" />
+            <element signature="e#1391#1392#0" expanded="true" />
+            <element signature="e#1447#1448#0" expanded="true" />
+            <element signature="e#1488#1489#0" expanded="true" />
+            <element signature="e#1527#1528#0" expanded="true" />
+            <element signature="e#1589#1590#0" expanded="true" />
+            <element signature="e#1645#1646#0" expanded="true" />
+            <element signature="e#1699#1700#0" expanded="true" />
+            <element signature="e#1749#1750#0" expanded="true" />
+            <element signature="e#1966#1967#0" expanded="true" />
+            <element signature="e#2015#2016#0" expanded="true" />
+            <element signature="e#2211#2212#0" expanded="true" />
+            <element signature="e#2245#2246#0" expanded="true" />
+            <element signature="e#2297#2298#0" expanded="true" />
+            <element signature="e#2343#2344#0" expanded="true" />
+            <element signature="e#2376#2377#0" expanded="true" />
+            <element signature="e#2405#2406#0" expanded="true" />
+            <element signature="e#2450#2451#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.0.7.RELEASE/spring-aop-5.0.7.RELEASE.jar!/org/springframework/aop/framework/JdkDynamicAopProxy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="94">
+          <caret line="91" selection-start-line="91" selection-end-line="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/lang/Integer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="830" selection-start-line="830" selection-end-line="830" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/ApplianceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="180" column="56" lean-forward="true" selection-start-line="180" selection-start-column="8" selection-end-line="180" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Factory/CommonFactoryAbstract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="56" column="65" selection-start-line="56" selection-start-column="65" selection-end-line="56" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Listener/RechsEventListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="914">
+          <caret line="140" selection-start-line="140" selection-end-line="140" />
+          <folding>
+            <element signature="e#7272#7273#0" expanded="true" />
+            <element signature="e#7306#7307#0" expanded="true" />
+            <element signature="e#7358#7359#0" expanded="true" />
+            <element signature="e#7404#7405#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/HeartBeat/HeartBeatController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="75" column="4" selection-start-line="75" selection-start-column="4" selection-end-line="75" selection-end-column="4" />
         </state>
       </provider>
     </entry>

@@ -23,7 +23,7 @@ public class Appliance implements Serializable {
     private Boolean status;
     private Long annualEnergyConsumption;
     private Long hourlyEnergyConsumption;
-    private Long lowestEnergyConsumption;
+    private String lowestEnergyConsumption;
     private int standbyDurationSpan; //Minutes entered by owner. Indicates the time should be considered before decide that appliance is in standby
     private String size;
     private String sizeUnit;
@@ -124,11 +124,11 @@ public class Appliance implements Serializable {
         this.hourlyEnergyConsumption = hourlyEnergyConsumption;
     }
 
-    public Long getLowestEnergyConsumption() {
+    public String getLowestEnergyConsumption() {
         return lowestEnergyConsumption;
     }
 
-    public void setLowestEnergyConsumption(Long lowestEnergyConsumption) {
+    public void setLowestEnergyConsumption(String lowestEnergyConsumption) {
         this.lowestEnergyConsumption = lowestEnergyConsumption;
     }
 

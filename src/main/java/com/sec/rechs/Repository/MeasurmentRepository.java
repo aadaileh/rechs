@@ -76,4 +76,26 @@ public interface MeasurmentRepository extends JpaRepository<Measurment, Long> {
             //"AND m.watts is not NULL " +
             "GROUP BY m.appliance")
     List<Measurment> findStatistics();
+
+     // MIN(Watts)
+    @Query("SELECT m, MIN(watts) AS lowestWatts, appliance " +
+            "FROM Measurment m " +
+            "WHERE m.createdBy = 'automatic' " +
+            "AND m.watts is not NULL " +
+            "AND m.watts != 0 " +
+            "GROUP BY m.appliance")
+    List<Measurment> findLowestWatts();
+
+    // MIN(created_timestamp), MAX(created_timestamp)
+    @Query("SELECT " +
+            "   m, " +
+            "   MIN(createdTimestamp) AS latest_created_timestamp, " +
+            "   MAX(createdTimestamp) AS oldest_created_timestamp, " +
+            "   appliance " +
+            "FROM Measurment m " +
+            "WHERE m.createdBy = 'automatic' " +
+            "AND m.watts is not NULL " +
+            "AND m.watts != 0 " +
+            "GROUP BY m.appliance")
+    List<Measurment> findLatestAndOldestCreatedTimestamp();
 }

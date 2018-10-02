@@ -1,7 +1,8 @@
 <?php
+ini_set('max_execution_time', 300); // 5minutes
 session_start();
 error_reporting(E_ALL);
-ini_set('display_errors', 1);
+ini_set('display_errors', 0);
 
 include("inc/cgi/library.php");
 
@@ -169,7 +170,7 @@ $schedule_stats_frig = $library->makeCurl ("/appliances/3/schedule/list", "GET")
 
     $jobsEnd[] = $value->end;
   }  
-  $totalJobs = count($schedule_stats_lamp) + count($schedule_stats_tv) + count($schedule_stats_frig);
+$totalJobs = count($schedule_stats_lamp) + count($schedule_stats_tv) + count($schedule_stats_frig);
   if ($totalActiveJobs == 0) {$totalActiveJobs = "None";}
   if ($activeJobs_frig == 0) {$activeJobs_frig = "0";}
   if ($activeJobs_tv == 0) {$activeJobs_tv = "0";}
@@ -191,9 +192,85 @@ $schedule_stats_frig = $library->makeCurl ("/appliances/3/schedule/list", "GET")
 
 
 //Users Statistics
-  $usersList = $library->makeCurl ("/users/", "GET");
+$usersList = $library->makeCurl ("/users/", "GET");
   // echo "<pre>usersList:";
   // print_r($usersList);
+  // echo "</pre>";
+
+//SDO
+$sdo_appliances = $library->makeCurl ("/appliances/", "GET", null);
+
+  // echo "<pre>sdo_appliances:";
+  // print_r($sdo_appliances);
+  // echo "</pre>";
+
+  $sdo_frig = Array();
+  $sdo_tv = Array();
+  $sdo_lamp = Array();  
+
+  $standby_activated_devices = Array();
+  $standby_disabled_for_devices = Array();
+  foreach ($sdo_appliances as $key => $value) {
+    if($value->type == "refrigerator")  {$sdo_frig = $value;}  
+    if($value->type == "tv")            {$sdo_tv = $value;}
+    if($value->type == "lamp")          {$sdo_lamp = $value;}
+
+    if($value->standByStatus == true) {
+      $standby_activated_devices[] = '<span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#3ddb16">' . $value->label . '</span>';
+
+      switch ($value->systemName) {
+        case 'stand_lamp':
+          $sdo_lamp->highlighting = '<span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#3ddb16">' . $value->label . '</span>';
+          break;
+      
+        case 'lg_smart_tv':
+          $sdo_tv->highlighting = '<span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#3ddb16">' . $value->label . '</span>';
+          break;
+
+        case 'refrigerator':
+          $sdo_frig->highlighting = '<span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#3ddb16">' . $value->label . '</span>';
+          break;
+      }
+    } else {
+      $standby_disabled_for_devices[] = '<span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#777">' . $value->label . '</span>';
+      switch ($value->systemName) {
+        case 'stand_lamp':
+          $sdo_lamp->highlighting = '<span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#777">' . $value->label . '</span>';
+          break;
+      
+        case 'lg_smart_tv':
+          $sdo_tv->highlighting = '<span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#777">' . $value->label . '</span>';
+          break;
+
+        case 'refrigerator':
+          $sdo_frig->highlighting = '<span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#777">' . $value->label . '</span>';
+          break;
+      }
+    }
+  }
+
+  $sdo_lowestWatts = $library->makeCurl ("/measurments/watts/lowest", "GET", null);
+  // echo "<pre>sdo_lowestWatts:";
+  // print_r($sdo_lowestWatts);
+  // echo "</pre>";
+    
+  foreach ($sdo_lowestWatts as $key => $value) {
+    if($value[2]->systemName == "stand_lamp")   {$sdo_lamp->lowestEnergyConsumption = $value[1];}
+    if($value[2]->systemName == "lg_smart_tv")  {$sdo_tv->lowestEnergyConsumption = $value[1];}  
+    if($value[2]->systemName == "refrigerator") {$sdo_frig->lowestEnergyConsumption = $value[1];}
+  }
+
+
+  // echo "<pre style='color:red;'>sdo_lamp:";
+  // print_r($sdo_lamp);
+  // echo "</pre>";
+
+  // echo "<pre style='color:red;'>sdo_tv:";
+  // print_r($sdo_tv);
+  // echo "</pre>";
+
+  // echo "<pre style='color:red;'>sdo_frig:";
+  // print_r($sdo_frig);
   // echo "</pre>";
 
   ?>
@@ -279,6 +356,7 @@ $schedule_stats_frig = $library->makeCurl ("/appliances/3/schedule/list", "GET")
     </div>
     <div class="col-sm-6">
 
+      <!-- ECTR -->
       <div id="customized-home-panel-right">
         <div class="panel panel-primary">
           <div class="panel-heading"><span data-toggle="tooltip" title="Tracks and records electrictity consumption including Ampers, kwh and Watts">
@@ -303,6 +381,7 @@ $schedule_stats_frig = $library->makeCurl ("/appliances/3/schedule/list", "GET")
         </div>
       </div>
 
+      <!-- ARR -->
       <div id="customized-home-panel-right">
         <div class="panel panel-primary">
           <div class="panel-heading"><span data-toggle="tooltip" title="Appliance Replacement Recommender. It tells when to replace an appliance.">
@@ -341,28 +420,34 @@ $schedule_stats_frig = $library->makeCurl ("/appliances/3/schedule/list", "GET")
         </div>
       </div>
 
+      <!-- SDO -->
       <div id="customized-home-panel-right">
         <div class="panel panel-primary">
           <div class="panel-heading"><span data-toggle="tooltip" title="A module defines the standby values and completely switch off the appliance when not needed"><strong>SDO</strong> (<strong>S</strong>tandby <strong>D</strong>etector & <strong>O</strong>ptimizer)</span></div>
           <div class="panel-body">
             
-            Based on the calculated standby energy consumption and behaviour, RECHS has ascertained the following facts:<br/><br/>
-            <strong>Node #1: (Refrigerator):</strong><br/>
-            <strong style="color:red;">Standby is turned off.</strong> No tracking, neither suggestions are made. To turn it on, please refer to <a href="/appliances-overview.php">Appliances overview module</a>
-            <br><br>
+            This module was activated for: <?php echo implode(", ", $standby_activated_devices);?> and disabled for <?php echo implode(", ", $standby_disabled_for_devices);?>. For those appliances that got this module activated for them, following characteristics were collected:
 
-            <strong>Node #2: (TV):</strong><br/>
-            Lorem ipsum dolor amet
-            <br><br>
+            <ul>
 
-            <strong>Node #3: (Lamp):</strong><br/>
-            Lorem ipsum dolor amet
-            <br>
+              <?php              
+                foreach ($sdo_appliances as $key => $value) {
+
+                  $updatedTimestamp = new DateTime($value->updatedTimestamp);
+                  $updatedTimestamp = $updatedTimestamp->format('Y-m-d H:i:s');
+
+                  echo '<li style="line-height:30px;">' . $value->highlighting . ': was last updated on <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#337ab7">' . $updatedTimestamp . '</span>. The lowest Energy consumption which will be taken in consideration when judging the Standby mode is <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:orange">' . $value->lowestEnergyConsumption . ' </span> Watts. The entered Standby Duration Span is <span class="badge badge-secondary" style="font-weight:bold; color:#fff; background-color:#3ddb16">' . $value->standbyDurationSpan . ' </span> Seconds.</li>';
+                }
+                
+              ?>
+
+            </ul>
+
           </div>
         </div>
       </div>
 
-
+      <!-- ESO -->
       <div id="customized-home-panel-right">
         <div class="panel panel-primary">
           <div class="panel-heading">
@@ -392,6 +477,7 @@ $schedule_stats_frig = $library->makeCurl ("/appliances/3/schedule/list", "GET")
         </div>
       </div>
 
+      <!-- Schedular Details -->
       <div id="customized-home-panel-right">
         <div class="panel panel-primary">
           <div class="panel-heading">
@@ -419,6 +505,7 @@ $schedule_stats_frig = $library->makeCurl ("/appliances/3/schedule/list", "GET")
         </div>
       </div>      
       
+      <!-- Users Overview -->
       <div id="customized-home-panel-right">
         <div class="panel panel-primary">
           <div class="panel-heading"><span data-toggle="tooltip" title="Brief users overview details"><strong>Users Overview</strong></span></div>
@@ -461,7 +548,6 @@ $schedule_stats_frig = $library->makeCurl ("/appliances/3/schedule/list", "GET")
           </div>
         </div>
       </div>
-
      
     </div>
   </div>

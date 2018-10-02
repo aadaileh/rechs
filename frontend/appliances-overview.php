@@ -15,6 +15,10 @@ if(count($_SESSION["user"]) == 0) {
   $library = new Library();
   $data = $library->makeCurl ("/appliances/", "GET", null);
 
+  // echo "<pre>data:";
+  // print_r($data);
+  // echo "</pre>";
+
   $refrigerator = Array();
   $tv = Array();
   $lamp = Array();
@@ -34,24 +38,34 @@ if(count($_SESSION["user"]) == 0) {
     }    
   }
 
-  $lowestWatts = $library->makeCurl ("/measurments/watts/lowest", "GET", null);
-  foreach ($lowestWatts as $key => $value) {
+  // $lowestEnergyConsumption = $library->makeCurl ("/measurments/watts/lowest", "GET", null);
 
-    if($value[2]->systemName == "stand_lamp") {
-       $lamp->lowestWatts = $value[1];
-    }
+  // // echo "<pre>lowestEnergyConsumption:";
+  // // print_r($lowestEnergyConsumption);
+  // // echo "</pre>";
+    
+  // foreach ($lowestEnergyConsumption as $key => $value) {
+
+  //   if($value[2]->systemName == "stand_lamp") {
+  //      $lamp->lowestEnergyConsumption = $value[1];
+  //   }
   
-    if($value[2]->systemName == "lg_smart_tv") {
-       $tv->lowestWatts = $value[1];
-    }
+  //   if($value[2]->systemName == "lg_smart_tv") {
+  //      $tv->lowestEnergyConsumption = $value[1];
+  //   }
   
-    if($value[2]->systemName == "refrigerator") {
-       $refrigerator->lowestWatts = $value[1];
-    }
+  //   if($value[2]->systemName == "refrigerator") {
+  //      $refrigerator->lowestEnergyConsumption = $value[1];
+  //   }
      
-  }
+  // }
 
   $oldestLatestCreatedTimestamp = $library->makeCurl ("/measurments/created-timestamp/latest-oldest", "GET", null);
+
+  // echo "<pre>oldestLatestCreatedTimestamp:";
+  // print_r($oldestLatestCreatedTimestamp);
+  // echo "</pre>";
+
   foreach ($oldestLatestCreatedTimestamp as $key => $value) {
 
     if($value[3]->systemName == "stand_lamp") {
@@ -224,7 +238,7 @@ if(count($_SESSION["user"]) == 0) {
             </tr>
             <tr>
               <td>lowest watts detected:</td>
-              <td><?php echo $refrigerator->lowestWatts; ?> (Watts)</td>
+              <td><?php echo $refrigerator->lowestEnergyConsumption; ?> (Watts)</td>
             </tr>
             <tr>
               <td>Added on:</td>
@@ -481,7 +495,7 @@ if(count($_SESSION["user"]) == 0) {
             </tr>
             <tr>
               <td>lowest watts detected:</td>
-              <td><?php echo $tv->lowestWatts; ?> (Watts)</td>
+              <td><?php echo $tv->lowestEnergyConsumption; ?> (Watts)</td>
             </tr>
             <tr>
               <td>Added on:</td>
@@ -738,7 +752,7 @@ if(count($_SESSION["user"]) == 0) {
             </tr>
             <tr>
               <td>lowest watts detected:</td>
-              <td><?php echo $lamp->lowestWatts; ?> (Watts)</td>
+              <td><?php echo $lamp->lowestEnergyConsumption; ?> (Watts)</td>
             </tr>            
             <tr>
               <td>Added on:</td>

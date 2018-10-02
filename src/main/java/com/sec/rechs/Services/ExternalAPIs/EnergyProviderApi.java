@@ -1,6 +1,6 @@
 package com.sec.rechs.Services.ExternalAPIs;
 
-import com.sec.rechs.DTOs.EnergyProviderInput;
+import com.sec.rechs.DTOs.XEditableInput;
 import com.sec.rechs.Model.EnergyProvider;
 import com.sec.rechs.Repository.EnergyProviderRepository;
 import com.sec.rechs.Services.Authentication.AuthenticationController;
@@ -39,30 +39,30 @@ public class EnergyProviderApi {
 
     @PutMapping("/")
     @ApiOperation("Update current energy provider data")
-    public EnergyProvider updateCurrentEnergyProvider(@RequestBody EnergyProviderInput energyProviderInput) {
+    public EnergyProvider updateCurrentEnergyProvider(@RequestBody XEditableInput xEditableInput) {
         Optional<EnergyProvider> energyProviderOptional = energyProviderRepository.findById(1L);
         EnergyProvider energyProvider = energyProviderOptional.get();
 
-        switch ( energyProviderInput.getName() ) {
+        switch ( xEditableInput.getName() ) {
 
             case "name":
-                energyProvider.setName(energyProviderInput.getValue());
+                energyProvider.setName(xEditableInput.getValue());
                 break;
 
             case "contract_begin":
-                energyProvider.setContract_begin(energyProviderInput.getValue());
+                energyProvider.setContract_begin(xEditableInput.getValue());
                 break;
 
             case "contract_end":
-                energyProvider.setContract_end(energyProviderInput.getValue());
+                energyProvider.setContract_end(xEditableInput.getValue());
                 break;
 
             case "unit_price":
-                energyProvider.setUnit_price(energyProviderInput.getValue());
+                energyProvider.setUnit_price(xEditableInput.getValue());
                 break;
 
             case "total_annual_consumption":
-                energyProvider.setTotal_annual_consumption(energyProviderInput.getValue());
+                energyProvider.setTotal_annual_consumption(xEditableInput.getValue());
                 break;
         }
 

@@ -1,6 +1,7 @@
 package com.sec.rechs.Services.UsersManagement;
 
 
+import com.sec.rechs.DTOs.XEditableInput;
 import com.sec.rechs.Exception.ResourceNotFoundException;
 import com.sec.rechs.Model.User;
 import com.sec.rechs.Repository.ApplianceRepository;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
@@ -35,6 +37,43 @@ public class UsersManagementController {
     public List<User> getAllUsers() {
 
         return usersManagementRepository.findAll();
+    }
+
+    // Get a User
+    @GetMapping("/{user-id}")
+    @ApiOperation("Retrieve a User based on the given user-id")
+    public User getUser(@PathVariable(value = "user-id") Long userId) {
+
+        Optional<User> optionalUser = usersManagementRepository.findById(userId);
+        return optionalUser.get();
+    }
+
+    @PutMapping("/")
+    @ApiOperation("Update current user's Profile data")
+    public User updateCurrentUserProfile(@RequestBody XEditableInput xEditableInput) {
+        Optional<User> userOptional = usersManagementRepository.findById(xEditableInput.getId());
+        User user = userOptional.get();
+
+        switch ( xEditableInput.getName() ) {
+
+            case "fullName":
+                user.setFullName(xEditableInput.getValue());
+                break;
+
+            case "email":
+                user.setEmail(xEditableInput.getValue());
+                break;
+
+            case "username":
+                user.setUsername(xEditableInput.getValue());
+                break;
+
+            case "password":
+                user.setPassword(authenticationImplentations.encrypt(xEditableInput.getValue()));
+                break;
+        }
+
+        return usersManagementRepository.save(user);
     }
 
     // Create a new User
