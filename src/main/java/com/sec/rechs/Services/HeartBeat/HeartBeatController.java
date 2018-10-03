@@ -11,7 +11,6 @@ import com.sec.rechs.Services.HeartBeat.impl.HeartBeatImplentations;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,7 +55,7 @@ public class HeartBeatController extends CommonFactoryAbstract {
     HeartBeatImplentations heartBeatImplentations = new HeartBeatImplentations();
 
     // Run Heart Beat
-    @Scheduled(fixedDelay = 90000)
+    //@Scheduled(fixedDelay = 90000)
     @GetMapping("/schedules")
     @ApiOperation("Repeatedly check & run scheduled jobs")
     public void runSchedules() {
@@ -73,7 +72,7 @@ public class HeartBeatController extends CommonFactoryAbstract {
     }
 
     //Get lowest consumed watts and write it to the appliance
-    @Scheduled(fixedDelay = 9000)
+    //@Scheduled(fixedDelay = 9000)
     @ApiOperation("Repeatedly get lowest consumed watts and write it to the appliance")
     public void getLowestWattAndWriteToAppliance() {
 

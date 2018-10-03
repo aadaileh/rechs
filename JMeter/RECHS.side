@@ -1,0 +1,42 @@
+{
+  "id": "4841cc6c-b181-40e9-9210-bc4dfc0a3f77",
+  "version": "1.1",
+  "name": "RECHS",
+  "url": "http://rechs.kingston.ac.uk/",
+  "tests": [{
+    "id": "56c8a748-6e5f-4449-98fd-fcce5b30eab3",
+    "name": "Call main page",
+    "commands": [{
+      "id": "73713f76-d3ed-4e61-a91e-cd2a37833782",
+      "comment": "",
+      "command": "open",
+      "target": "http://rechs.kingston.ac.uk/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bd3777a9-8451-43b6-bdc0-2920b67dfe4b",
+      "comment": "",
+      "command": "clickAt",
+      "target": "linkText=ENTER",
+      "targets": [
+        ["linkText=ENTER", "linkText"],
+        ["css=a.btn.btn-primary", "css"],
+        ["//a[contains(text(),'ENTER')]", "xpath:link"],
+        ["//div[@id='page']/section/div/div[2]/div/div/div/div[2]/a", "xpath:idRelative"],
+        ["//a[contains(@href, 'login.php')]", "xpath:href"],
+        ["//div/div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "5eed0912-874d-4c8f-a292-8862b549ebcb",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["56c8a748-6e5f-4449-98fd-fcce5b30eab3"]
+  }],
+  "urls": ["http://rechs.kingston.ac.uk/"],
+  "plugins": []
+}

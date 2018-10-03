@@ -2,25 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d8941bbd-1646-470d-be8d-b43dcf7611da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/StandbyDetectorAndOptimizerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/appliances-overview.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/appliances-overview.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/energy-provider-optimizer - Kopie.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/EnergyProviderInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/XEditableInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/MeasurmentCustomized.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/DTOs/MeasurmentCustomized.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Factory/CommonFactoryAbstract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Factory/CommonFactoryAbstract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Listener/RechsEventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Listener/RechsEventListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/Appliance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/Appliance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/StandbyDetectorAndOptimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/StandbyDetectorAndOptimizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Repository/MeasurmentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/ApplianceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/ApplianceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/impl/ApplianceImplentations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Appliance/impl/ApplianceImplentations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/ExternalAPIs/EnergyProviderApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/ExternalAPIs/EnergyProviderApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JMeter/rechs.jmx" beforeDir="false" afterPath="$PROJECT_DIR$/JMeter/rechs.jmx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/HeartBeat/HeartBeatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/HeartBeat/HeartBeatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Measurment/MeasurmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/UsersManagement/UsersManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/UsersManagement/UsersManagementController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -62,14 +45,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="166" />
-          <entry key="java" value="13297" />
+          <entry key="java" value="13301" />
           <entry key="properties" value="50" />
           <entry key="xml" value="32" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="13297" />
+          <entry key="JAVA" value="13301" />
           <entry key="PLAIN_TEXT" value="166" />
           <entry key="Properties" value="50" />
           <entry key="XML" value="32" />
@@ -78,7 +61,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="17" />
-          <entry key="java" value="179" />
+          <entry key="java" value="181" />
           <entry key="properties" value="4" />
           <entry key="xml" value="4" />
         </counts>
@@ -86,7 +69,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="17" />
-          <entry key="JAVA" value="179" />
+          <entry key="JAVA" value="181" />
           <entry key="Properties" value="4" />
           <entry key="XML" value="4" />
         </counts>
@@ -99,8 +82,26 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/HeartBeat/HeartBeatController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="75" column="4" selection-start-line="75" selection-start-column="4" selection-end-line="75" selection-end-column="4" />
+            <state relative-caret-position="98">
+              <caret line="57" column="6" selection-start-line="57" selection-start-column="6" selection-end-line="57" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Authentication/AuthenticationController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="167">
+              <caret line="64" column="47" selection-start-line="64" selection-start-column="47" selection-end-line="64" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Authentication/impl/AuthenticationImplentations.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="47" column="68" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -359,7 +360,17 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="rechs" type="462c0819:PsiDirectoryNode" />
               <item name="Services" type="462c0819:PsiDirectoryNode" />
-              <item name="Appliance" type="462c0819:PsiDirectoryNode" />
+              <item name="Authentication" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rechs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rechs" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="rechs" type="462c0819:PsiDirectoryNode" />
+              <item name="Services" type="462c0819:PsiDirectoryNode" />
+              <item name="ExternalAPIs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="rechs" type="b2602c69:ProjectViewProjectNode" />
@@ -378,7 +389,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538512301920" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538565228916" />
     <property name="extract.method.default.visibility" value="packageLocal" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../library/obera_zwave.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -538,8 +549,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23758389" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23758389" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="DB Browser" order="3" />
@@ -551,7 +563,7 @@
       <window_info id="Capture Tool" order="9" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.57872343" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.45531914" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.45531914" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.49078014" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -635,7 +647,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/HeartBeat/HeartBeatController.java</url>
-          <line>69</line>
+          <line>68</line>
           <properties />
           <option name="timeStamp" value="154" />
         </line-breakpoint>
@@ -914,13 +926,6 @@ o1 = ((TreeMap) o).get(0);</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Authentication/AuthenticationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="49" column="57" selection-start-line="49" selection-start-column="57" selection-end-line="49" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Model/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -936,13 +941,6 @@ o1 = ((TreeMap) o).get(0);</expression-string>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="45" column="45" lean-forward="true" selection-start-line="45" selection-start-column="45" selection-end-line="45" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Authentication/impl/AuthenticationImplentations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="42" column="25" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -1247,10 +1245,24 @@ o1 = ((TreeMap) o).get(0);</expression-string>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Authentication/AuthenticationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="64" column="47" selection-start-line="64" selection-start-column="47" selection-end-line="64" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/Authentication/impl/AuthenticationImplentations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="47" column="68" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/sec/rechs/Services/HeartBeat/HeartBeatController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="75" column="4" selection-start-line="75" selection-start-column="4" selection-end-line="75" selection-end-column="4" />
+        <state relative-caret-position="98">
+          <caret line="57" column="6" selection-start-line="57" selection-start-column="6" selection-end-line="57" selection-end-column="6" />
         </state>
       </provider>
     </entry>
