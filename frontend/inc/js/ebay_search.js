@@ -24,7 +24,7 @@ $(document).ready(function(){
       },
       success: function(response) {
         //alert("response: " + response);
-        //console.log(response);
+        console.log(response);
         //$("#search-response-true-3").append(response).fadeIn();
 
         var results = JSON.parse(response);

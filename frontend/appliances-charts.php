@@ -392,7 +392,7 @@ $watts_Arrays_Tv = $library->getStats (2);
 
 <div style="float:left; width: 33%; padding-left: 5px;">
   <div class="panel panel-primary">
-    <div class="panel-heading"><strong>Node 2: Refrigerator</strong></div>
+    <div class="panel-heading"><strong>Node 1: Refrigerator</strong></div>
     <div class="panel-body">
       <div><canvas id="canvasWattsHourlyFrig"></canvas></div>
       <div><canvas id="canvasWattsDailyFrig"></canvas></div>
