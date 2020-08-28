@@ -15,9 +15,9 @@ if(count($_SESSION["user"]) == 0) {
   $library = new Library();
   $data = $library->makeCurl ("/appliances/", "GET", null);
 
-  // echo "<pre>data:";
-  // print_r($data);
-  // echo "</pre>";
+  echo "<pre>data:";
+  print_r($data);
+  echo "</pre>";
 
   $refrigerator = Array();
   $tv = Array();
